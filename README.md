@@ -1,0 +1,4 @@
+mygradle
+========
+
+first-gradle-project
