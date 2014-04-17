@@ -1,4 +1,0 @@
-mygradle
-========
-
-first-gradle-project
