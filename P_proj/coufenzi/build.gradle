@@ -38,6 +38,7 @@ dependencies {
     compile 'com.github.chrisbanes.actionbarpulltorefresh:extra-abc:+'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     //    compile 'com.github.qx:android-common::+'
-    //    
+    //
     //    compile('cn.trinea.android.common:android-common:4.2').ext.git = 'https://github.com/qx/android-common.git'
+    compile project(':app')
 }
