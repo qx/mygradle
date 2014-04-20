@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_title">#ff9d70bf</color>
+    <color name="bg_main">#fff5f5f5</color>
+    <color name="text_color">#fffcfbfa</color>
+    <color name="btn">#ff3c85b6</color>
+    <color name="btn_up_down">#ff17bfde</color>
+    <color name="btn_login">#ff3f8abb</color>
+    <color name="btn_login_qq">#ffd3e5f0</color>
+    <color name="btn_login_weibo">#fffaeed7</color>
+    <color name="btn_pay_enough">#ff22ac38</color>
+    <color name="btn_pay_notenough_pressed">#ff1b6c2c</color>
+    <color name="btn_pay_notenough">#fff18318</color>
+    <color name="progress_in">#ff79da0f</color>
+    <color name="progress_bg">#ffd3d3d5</color>
+    <color name="btn_join">#ffef4b19</color>
+    <color name="btn_join_pressed">#ff415161</color>
+    <color name="btn_join_result">#ff415161</color>
+    <color name="btn_address_save">#fffd7512</color>
+    <color name="btn_address_save_pressed">#ff415161</color>
+    <color name="btn_charge">#ff327eb4</color>
+    <color name="btn_charge_pressed">#ff143248</color>
+    <color name="bg_account">#ff746a69</color>
+    <color name="bg_account_outside">#ff746a6a</color>
+
+</resources>

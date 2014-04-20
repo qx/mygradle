@@ -1,4 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">myproject</string>
+    <string name="app_name">凑份子</string>
+    <string name="tab_product_all">所有商品</string>
+    <string name="tab_product_get">揭晓商品</string>
+    <string name="tab_user_info">揭晓商品</string>
+    <string name="user_name">我要凑份</string>
+    <string name="user_num">18163241123</string>
+    <string name="user_extra">凑份人品:%1$d</string>
+    <string name="user_score">积分</string>
+    <string name="user_remain">%1$.1f元</string>
+    <string name="user_account_charge">充值</string>
+    <string name="user_account_action_list">我的凑份记录</string>
+    <string name="user_account_action_getlist">获得的商品</string>
+    <string name="user_account_trade_list">账户明细</string>
+    <string name="user_account_address">我的收货地址</string>
+    <string name="user_account_message">我的聊天</string>
+
+    <string name="item_product_done">%1$d已凑份</string>
+    <string name="item_product_cost">%1$d价值</string>
+    <string name="item_product_remain">%1$d还需</string>
+
+
+    <string name="item_product_action_id">第%1$d期</string>
+    <string name="itme_product_name">第%1$d期</string>
+    <string name="itme_product_detail">第%1$d期</string>
+    <string name="itme_product_get_time">揭晓时间:%1$s</string>
+    <string name="itme_product_tobeget">敬请期待</string>
+    <string name="itme_product_who_get">获奖人:%1$s</string>
+    <string name="itme_product_text_icon">已经揭晓</string>
+    <string name="title_advice">意见反馈</string>
+    <string name="advice_contact">您的联系方式</string>
+    <string name="advice_content">您的意见</string>
+    <string name="advice_btn_text">提交意见</string>
+    <string name="title_remain">余额支付</string>
+    <string name="remmain_paycount">支付需要%1$d元</string>
+    <string name="remmain_detail">您的账户余额为%1$d元</string>
+    <string name="remmain_notenough">余额不足,无法支付</string>
+    <string name="remmain_btn">支付</string>
+    <string name="title_lucky_user">凑份高手</string>
+    <string name="item_lucky_produce_name">获得商品:%1$s</string>
+    <string name="item_lucky_produce_count">凑了%1$d份</string>
+    <string name="item_lucky_produce_action_id">幸运码:%1$s</string>
+    <string name="item_lucky_produce_action_time">揭晓时间:%1$s</string>
+    <string name="item_lucky_produce_msg">评论 %1$d</string>
+    <string name="item_lucky_message_tips">给点评论吧</string>
+    <string name="item_lucky_message_send">发送</string>
+    <string name="title_account">账户充值</string>
+    <string name="title_account_sub">账户明细</string>
+    <string name="account_remain">您的账户余额为%1$d元</string>
+    <string name="account_charge_tips">输入金额</string>
+    <string name="account_charge_taobaopay">支付宝充值</string>
+    <string name="account_charge_bankpay">网银充值</string>
+    <string name="account_charge_trade_title_all">(消费总额%1$d元)</string>
+    <string name="account_charge_detail_title">充值明细</string>
+    <string name="account_charge_detail_title_all">(充值总额%1$d元)</string>
+    <string name="account_charge_trade_title">消费记录</string>
+    <string name="account_charge_time">时间</string>
+    <string name="account_charge_money">金额</string>
+    <string name="title_pwd_find">找回密码</string>
+    <string name="pwd_find_tips">请输入您的手机号/邮箱</string>
+    <string name="pwd_find_tips_next">下一步</string>
+    <string name="pwd_find_next_tips">如果未收到验证短信,在%1$d秒后点击重新发送</string>
+    <string name="pwd_find_next_btn">重新发送</string>
+    <string name="pwd_find_next_reset">请重置6-20位登陆密码</string>
+    <string name="title_register">注册</string>
+    <string name="title_register_sure">我已经阅读并同意</string>
+    <string name="title_register_agreement">《凑份子商品协议》</string>
+    <string name="title_verify">身份验证</string>
+    <string name="title_address">收货地址</string>
+    <string name="address_accept_name">收货人:</string>
+    <string name="address_accept_num">手机号码:</string>
+    <string name="address_accept_detail">详细地址:</string>
+    <string name="address_accept_btn">修改收货地址</string>
+
+
+    <string name="title_edit_userpic">编辑图像</string>
+    <string name="title_edit_userpic_sub">保存</string>
+    <string name="title_edit_nickname">昵称</string>
+    <string name="edit_capture">拍照</string>
+    <string name="edit_pic_selector">相册选择</string>
+
+    <string name="title_explain">产品解释</string>
+    <string name="title_pay">凑份支付</string>
+    <string name="pay_tips">您的凑份:%1$d元</string>
+    <string name="pay_tips_remain">%1$d元</string>
+    <string name="pay_types">您的支付方式</string>
+    <string name="pay_types_up">加一份</string>
+    <string name="pay_types_down">减一份</string>
+    <string name="pay_types_notenough">福分不足(您的福分%1$分)</string>
+    <string name="pay_types_remain">余额支付(您的余额%1$元)</string>
+    <string name="pay_types_bank">网银支付</string>
+    <string name="pay_types_taobao">支付宝支付</string>
+
+    <string name="log_types_qq">QQ账号支付</string>
+    <string name="log_types_weibo">微博账号登录</string>
+    <string name="log_passwd_tips">请输入您的密码</string>
+
+    <string name="log_forgetten">忘记密码</string>
+    <string name="log_register">新用户注册</string>
+
+    <string name="title_share">分享到</string>
+    <string name="share_qq">分享到QQ</string>
+    <string name="share_weichat">分享到微信</string>
+    <string name="share_renren">分享到人人网</string>
+    <string name="share_weibo">分享到微博</string>
+
+    <string name="title_pay_score">福分支付</string>
+    <string name="pay_score_need">支付需要%1$d分</string>
+    <string name="pay_score_notenough">福分不足,无法支付</string>
+    <string name="pay_score_remain">您的福分余额为%1$d分</string>
+    <string name="pay_btn">支付</string>
+
+    <string name="title_more">更多信息</string>
+    <string name="more_explain">产品介绍</string>
+    <string name="more_advice">产品介绍</string>
+    <string name="more_contact">客服电话:078978907</string>
+    <string name="more_update">版本更新:当前%1$s版本</string>
+
+    <!--String text = String.format(-->
+    <!--res.getString(R.string.welcome_messages),-->
+    <!--username, mailCount);-->
+    <!--%d：表示整数型；-->
+    <!--%f ：表示浮点型，其中f前面的.2表示小数的位数-->
+    <!--%s：表示字符串-->
+    <!--<string name="data">整数型:%1$d，浮点型：%2$.2f，字符串:%3$s</string>-->
+
 </resources>
