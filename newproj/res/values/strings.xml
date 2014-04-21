@@ -3,6 +3,7 @@
     <string name="app_name">凑份子</string>
     <string name="tab_product_all">所有商品</string>
     <string name="tab_product_get">揭晓商品</string>
+    <string name="tab_product_user">用户信息</string>
     <string name="tab_user_info">揭晓商品</string>
     <string name="user_name">我要凑份</string>
     <string name="user_num">18163241123</string>
