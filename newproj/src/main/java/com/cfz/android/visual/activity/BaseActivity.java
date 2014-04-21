@@ -2,6 +2,7 @@ package com.cfz.android.visual.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -10,7 +11,7 @@ import com.cfz.android.R;
 /**
  * Created by Administrator on 2014/4/21.
  */
-public class BaseActivity extends Activity {
+public class BaseActivity extends FragmentActivity {
     protected TextView title;
 
 

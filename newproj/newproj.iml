@@ -31,6 +31,7 @@
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpmime:4.1" level="project" />
     <orderEntry type="library" name="Maven: com.android.tools:dvlib:22.7.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-compress:1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.android:support-v4:r7" level="project" />
   </component>
 </module>
 
