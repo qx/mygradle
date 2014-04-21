@@ -10,6 +10,7 @@
             android:scaleType="center"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/left_back_btn"
+            android:onClick="onReturn"
             android:src="@drawable/before_arrow_left"/>
     <TextView
             android:id="@+id/title"
