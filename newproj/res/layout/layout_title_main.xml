@@ -12,6 +12,7 @@
             android:layout_marginLeft="@dimen/left_back_btn"
             android:src="@drawable/before_arrow_left"/>
     <TextView
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/title_share"
