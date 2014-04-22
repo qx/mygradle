@@ -3,6 +3,9 @@ package com.pivotallabs;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
