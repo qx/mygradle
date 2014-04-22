@@ -1,4 +1,4 @@
-﻿package com.oauthTest.utils;
+package com.oauthTest.utils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
