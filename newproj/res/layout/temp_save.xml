@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true">
+
+    <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/userinfo_icon_login"
+            android:layout_margin="30dp"/>
+
+    <LinearLayout
+            android:id="@+id/line_text"
+            android:layout_toRightOf="@id/imageView"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_name"
+                android:textSize="15sp"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_num"
+                android:textSize="15sp"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_extra"
+                android:textSize="15sp"
+                />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/line_text2"
+            android:layout_toRightOf="@id/line_text"
+            android:layout_width="wrap_content"
+            android:layout_height="130dp"
+            android:padding="16dp"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_score"
+                android:textSize="15sp"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="88"
+                android:textSize="15sp"
+                />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/line_text3"
+            android:layout_toRightOf="@id/line_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="130dp"
+            android:padding="16dp"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_remain"
+                android:textSize="15sp"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="83"
+                android:textSize="15sp"
+                />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:id="@+id/line_text4"
+            android:layout_below="@id/line_text3"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:background="@color/progress_in"
+            android:layout_height="wrap_content">
+    </LinearLayout>
+</RelativeLayout>
