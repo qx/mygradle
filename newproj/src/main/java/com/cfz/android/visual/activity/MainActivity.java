@@ -16,6 +16,9 @@ import com.cfz.android.R;
 
 import java.util.ArrayList;
 
+/**
+ * 主界面
+ */
 public class MainActivity extends BaseActivity {
     TabHost mTabHost;
     ViewPager mViewPager;
@@ -53,8 +56,8 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected String getActivityTitle() {
-        return getResources().getString(R.string.app_name);
+    protected int getActivityTitle() {
+        return R.string.app_name;
     }
 
 

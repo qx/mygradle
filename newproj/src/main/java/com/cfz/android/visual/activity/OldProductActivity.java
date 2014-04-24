@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 /**
+ * 获取商品界面
  * Created by Administrator on 2014/4/21.
  */
 public class OldProductActivity extends Activity {

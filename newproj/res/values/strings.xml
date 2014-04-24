@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="null_string">""</string>
     <string name="app_name">凑份子</string>
     <string name="tab_product_all">所有商品</string>
     <string name="tab_product_get">揭晓商品</string>
@@ -112,12 +113,15 @@
     <string name="pay_score_remain">您的福分余额为%1$d分</string>
     <string name="pay_btn">支付</string>
 
+
     <string name="title_more">更多信息</string>
+    <string name="title_product_msg">留言界面</string>
     <string name="more_explain">产品介绍</string>
     <string name="more_advice">产品介绍</string>
     <string name="more_contact">客服电话:078978907</string>
     <string name="more_update">版本更新:当前%1$s版本</string>
     <string name="log_text_login">登录</string>
+    <string name="title_others_action">其它凑份</string>
 
     <!--String text = String.format(-->
     <!--res.getString(R.string.welcome_messages),-->
