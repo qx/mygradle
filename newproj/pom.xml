@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -22,9 +22,9 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>com.oyqx.te</groupId>-->
-            <!--<artifactId>oyqx</artifactId>-->
-            <!--<version>3.5</version>-->
+        <!--<groupId>com.oyqx.te</groupId>-->
+        <!--<artifactId>oyqx</artifactId>-->
+        <!--<version>3.5</version>-->
         <!--</dependency>-->
 
         <dependency>
@@ -73,13 +73,13 @@
         <defaultGoal>compile</defaultGoal>
         <plugins>
             <!--<plugin>-->
-                <!--<groupId>com.jayway.maven.plugins.android.generation2</groupId>-->
-                <!--<artifactId>android-maven-plugin</artifactId>-->
-                <!--<configuration>-->
-                    <!--<sdk>-->
-                        <!--<platform>${platform.version}</platform>-->
-                    <!--</sdk>-->
-                <!--</configuration>-->
+            <!--<groupId>com.jayway.maven.plugins.android.generation2</groupId>-->
+            <!--<artifactId>android-maven-plugin</artifactId>-->
+            <!--<configuration>-->
+            <!--<sdk>-->
+            <!--<platform>${platform.version}</platform>-->
+            <!--</sdk>-->
+            <!--</configuration>-->
             <!--</plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

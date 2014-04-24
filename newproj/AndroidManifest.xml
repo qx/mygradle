@@ -9,25 +9,25 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:icon="@drawable/ic_launcher">
-        <!--<activity-->
-                <!--android:name=".visual.activity.MainActivity"-->
-                <!--android:label="@string/app_name">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN"/>-->
-                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
-        <!--</activity>-->
+        <activity
+                android:name=".visual.activity.MainActivity"
+                android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".visual.activity.BaseActivity"/>
         <activity android:name=".visual.activity.AllProductActivity"/>
         <activity android:name=".visual.activity.OldProductActivity"/>
         <activity android:name=".visual.activity.UserActivity"/>
         <activity android:name=".visual.activity.ShareActivity"/>
-        <activity android:name=".visual.activity.TesterActivity"
-                >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN"/>
-            <category android:name="android.intent.category.LAUNCHER"/>
-        </intent-filter>
-        </activity>
+        <!--<activity android:name=".visual.activity.TesterActivity"-->
+        <!-->-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN"/>-->
+        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+        <!--</intent-filter>-->
+        <!--</activity>-->
     </application>
 </manifest>

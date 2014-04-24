@@ -22,5 +22,9 @@
     <color name="btn_charge_pressed">#ff143248</color>
     <color name="bg_account">#ff746a69</color>
     <color name="bg_account_outside">#ff746a6a</color>
+    <color name="black">#ff000000</color>
+    <color name="tab_bg">#ff372940</color>
+    <color name="tab_line_bg">#fffcfbfd</color>
+    <color name="transparent">@android:color/transparent</color>
 
 </resources>

@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:fitsSystemWindows="true"
-                android:paddingLeft="5dip"
-                android:paddingRight="5dip">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="40dp"
+              android:fitsSystemWindows="true"
+              android:background="@color/tab_bg"
+              android:gravity="center"
+              android:paddingLeft="5dip"
+              android:orientation="vertical"
+              android:paddingRight="5dip"
+        >
 
     <TextView
             android:id="@+id/tab_label"
             android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:layout_centerInParent="true"
+            android:layout_height="wrap_content"
             android:gravity="top|center_horizontal"
-            android:paddingTop="10dip"
+            android:textSize="20sp"
+            android:textColor="@color/text_color"
             android:textStyle="bold"/>
 
-</RelativeLayout>
+    <View
+            android:id="@+id/bg_selector_tag"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@drawable/selector_tab_selector"
+            />
+
+</LinearLayout>

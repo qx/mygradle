@@ -23,10 +23,11 @@
     <EditText
             android:id="@+id/v_value"
             style="@style/my_edittext_style"
-            android:layout_width="0.0dip"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:hint="@string/log_passwd_tips"
             android:imeOptions="actionDone"
-            android:inputType="" />
+            android:inputType=""
+            android:layout_marginTop="50dp"/>
+
 </LinearLayout>
