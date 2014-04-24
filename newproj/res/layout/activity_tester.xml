@@ -4,7 +4,8 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:gravity="center">
+              android:gravity="center"
+        >
 
     <ProgressBar
             android:id="@+id/progress_bar"
@@ -18,4 +19,14 @@
             android:max="100"
             android:progress="77"
             android:progressDrawable="@drawable/progress_style"/>
+
+    <EditText
+            android:id="@+id/v_value"
+            style="@style/my_edittext_style"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/log_passwd_tips"
+            android:imeOptions="actionDone"
+            android:inputType="" />
 </LinearLayout>
