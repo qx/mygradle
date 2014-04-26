@@ -1,9 +1,6 @@
 package com.cfz.android.utils.net; /**
  * Created by Administrator on 2014/4/25.
  */
-
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;

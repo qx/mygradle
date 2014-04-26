@@ -21,7 +21,6 @@
         <activity android:name=".visual.activity.AllProductActivity"/>
         <activity android:name=".visual.activity.OldProductActivity"/>
         <activity android:name=".visual.activity.UserActivity"/>
-        <activity android:name=".visual.activity.ShareActivity"/>
         <!--<activity android:name=".visual.activity.TesterActivity"-->
         <!-->-->
         <!--<intent-filter>-->
@@ -47,7 +46,13 @@
                 <!--<category android:name="android.intent.category.LAUNCHER"/>-->
             <!--</intent-filter>-->
         <!--</activity>-->
-        <activity android:name=".visual.activity.OthersActionActivity">
+        <!--<activity android:name=".visual.activity.OthersActionActivity">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
+                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+        <activity android:name=".visual.activity.ShareActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
