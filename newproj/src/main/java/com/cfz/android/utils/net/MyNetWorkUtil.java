@@ -1,8 +1,11 @@
 package com.cfz.android.utils.net;
 
 import cn.trinea.android.common.util.HttpUtils;
+import cn.trinea.android.common.util.JSONUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Map;
 
 /**
  * Created by Administrator on 2014/4/25.
@@ -29,5 +32,16 @@ public class MyNetWorkUtil {
         return HttpUtils.httpGetString("http://114.215.177.210:8080/cfz/product_getProductingList");
 //        return JSONUtils.parseKeyAndValueToMap(HttpUtils.httpGetString("http://114.215.177.210:8080/cfz/product_getProductingList"));
 
+    }
+
+    public static Map<String, String> getData2MapFromNet() {
+        String objstr = HttpUtils.httpGetString("http://114.215.177.210:8080/cfz/product_getProductingList");
+        try {
+            JSONObject jsonObject = new JSONObject(objstr);
+            return JSONUtils.parseKeyAndValueToMap(jsonObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
