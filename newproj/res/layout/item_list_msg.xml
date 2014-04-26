@@ -1,8 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_msg_sub_item"
+        android:orientation="horizontal">
 
-</LinearLayout>
+    <ImageView
+            android:id="@+id/start_img_4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/chat_icon_default_blue"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="@dimen/left_spin_msg"
+            android:paddingRight="15dp"
+            />
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/start_img_4"
+            android:layout_toLeftOf="@+id/text_time_before"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="张三"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="运气真好啊,这都能中"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:textSize="17sp"
+                />
+
+
+    </LinearLayout>
+
+    <!--<ImageView-->
+    <!--android:padding="17dp"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:src="@drawable/chat_arrow_right"-->
+    <!--android:id="@+id/text_time_before"/>-->
+    <TextView
+            android:padding="17dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:text="5分钟前"
+            android:id="@+id/text_time_before"/>
+</RelativeLayout>

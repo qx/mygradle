@@ -29,30 +29,54 @@
         <!--</intent-filter>-->
         <!--</activity>-->
         <!--<activity android:name=".visual.activity.MoreActivity">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN"/>-->
-                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN"/>-->
+        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+        <!--</intent-filter>-->
         <!--</activity>-->
         <!--<activity android:name=".visual.activity.ProductMsgActivity">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN"/>-->
-                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN"/>-->
+        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+        <!--</intent-filter>-->
         <!--</activity>-->
         <!--<activity android:name=".visual.activity.NickNameActivity">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN"/>-->
-                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN"/>-->
+        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+        <!--</intent-filter>-->
         <!--</activity>-->
         <!--<activity android:name=".visual.activity.OthersActionActivity">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN"/>-->
-                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN"/>-->
+        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+        <!--</intent-filter>-->
         <!--</activity>-->
-        <activity android:name=".visual.activity.ShareActivity">
+        <!--<activity android:name=".visual.activity.ShareActivity">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN"/>-->
+        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+        <!--</intent-filter>-->
+        <!--</activity>-->
+        <!--<activity android:name=".visual.activity.ProductMsgActivity">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN"/>-->
+        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+        <!--</intent-filter>-->
+        <!--</activity>-->
+        <!--<activity android:name=".visual.activity.NickNameActivity">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN"/>-->
+        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+        <!--</intent-filter>-->
+        <!--</activity>-->
+        <!--<activity android:name=".visual.activity.OthersActionActivity">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN"/>-->
+        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+        <!--</intent-filter>-->
+        <!--</activity>-->
+        <activity android:name=".visual.activity.ProductDetailActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

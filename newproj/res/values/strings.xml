@@ -122,7 +122,10 @@
     <string name="more_update">版本更新:当前%1$s版本</string>
     <string name="log_text_login">登录</string>
     <string name="title_others_action">其它凑份</string>
+    <string name="nickname_text_tips">昵称长度为2-20个字符,有汉字,字母,数字组成</string>
 
+    <string name="title_product_detail">商品详情</string>
+    <string name="product_detail_share">分享</string>
     <!--String text = String.format(-->
     <!--res.getString(R.string.welcome_messages),-->
     <!--username, mailCount);-->

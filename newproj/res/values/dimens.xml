@@ -7,5 +7,8 @@
     <dimen name="title_bg_height">60dp</dimen>
     <dimen name="item_height">75dp</dimen>
     <dimen name="height_share_item">65dp</dimen>
+    <dimen name="height_msg_main_item">100dp</dimen>
+    <dimen name="height_msg_sub_item">70dp</dimen>
+    <dimen name="left_spin_msg">22dp</dimen>
 
 </resources>

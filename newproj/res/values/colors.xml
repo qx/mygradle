@@ -26,5 +26,8 @@
     <color name="tab_bg">#ff372940</color>
     <color name="tab_line_bg">#fffcfbfd</color>
     <color name="transparent">@android:color/transparent</color>
+    <color name="grey">#ffcfcfcf</color>
+    <color name="blue">#ff667ebf</color>
+    <color name="text_hint">#ff9a9a9a</color>
 
 </resources>
