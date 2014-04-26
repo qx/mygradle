@@ -1,5 +1,11 @@
 package cn.trinea.android.common.util;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,12 +13,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
-
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 
 /**
  * ImageUtils
@@ -36,14 +36,14 @@ import android.graphics.drawable.Drawable;
  * <li>{@link #scaleImageTo(Bitmap, int, int)}</li>
  * <li>{@link #scaleImage(Bitmap, float, float)}</li>
  * </ul>
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2012-6-27
  */
 public class ImageUtils {
 
     /**
      * convert Bitmap to byte array
-     * 
+     *
      * @param b
      * @return
      */
@@ -59,7 +59,7 @@ public class ImageUtils {
 
     /**
      * convert byte array to Bitmap
-     * 
+     *
      * @param b
      * @return
      */
@@ -69,17 +69,17 @@ public class ImageUtils {
 
     /**
      * convert Drawable to Bitmap
-     * 
+     *
      * @param d
      * @return
      */
     public static Bitmap drawableToBitmap(Drawable d) {
-        return d == null ? null : ((BitmapDrawable)d).getBitmap();
+        return d == null ? null : ((BitmapDrawable) d).getBitmap();
     }
 
     /**
      * convert Bitmap to Drawable
-     * 
+     *
      * @param b
      * @return
      */
@@ -89,7 +89,7 @@ public class ImageUtils {
 
     /**
      * convert Drawable to byte array
-     * 
+     *
      * @param d
      * @return
      */
@@ -99,7 +99,7 @@ public class ImageUtils {
 
     /**
      * convert byte array to Drawable
-     * 
+     *
      * @param b
      * @return
      */
@@ -109,7 +109,7 @@ public class ImageUtils {
 
     /**
      * get input stream from network by imageurl, you need to close inputStream yourself
-     * 
+     *
      * @param imageUrl
      * @param readTimeOutMillis
      * @return
@@ -121,7 +121,7 @@ public class ImageUtils {
 
     /**
      * get input stream from network by imageurl, you need to close inputStream yourself
-     * 
+     *
      * @param imageUrl
      * @param readTimeOutMillis read time out, if less than 0, not set, in mills
      * @param requestProperties http request properties
@@ -130,11 +130,11 @@ public class ImageUtils {
      * @throws IOException
      */
     public static InputStream getInputStreamFromUrl(String imageUrl, int readTimeOutMillis,
-            Map<String, String> requestProperties) {
+                                                    Map<String, String> requestProperties) {
         InputStream stream = null;
         try {
             URL url = new URL(imageUrl);
-            HttpURLConnection con = (HttpURLConnection)url.openConnection();
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
             HttpUtils.setURLConnection(requestProperties, con);
             if (readTimeOutMillis > 0) {
                 con.setReadTimeout(readTimeOutMillis);
@@ -152,7 +152,7 @@ public class ImageUtils {
 
     /**
      * get drawable by imageUrl
-     * 
+     *
      * @param imageUrl
      * @param readTimeOutMillis
      * @return
@@ -164,14 +164,14 @@ public class ImageUtils {
 
     /**
      * get drawable by imageUrl
-     * 
+     *
      * @param imageUrl
      * @param readTimeOutMillis read time out, if less than 0, not set, in mills
      * @param requestProperties http request properties
      * @return
      */
     public static Drawable getDrawableFromUrl(String imageUrl, int readTimeOutMillis,
-            Map<String, String> requestProperties) {
+                                              Map<String, String> requestProperties) {
         InputStream stream = getInputStreamFromUrl(imageUrl, readTimeOutMillis, requestProperties);
         Drawable d = Drawable.createFromStream(stream, "src");
         closeInputStream(stream);
@@ -180,7 +180,7 @@ public class ImageUtils {
 
     /**
      * get Bitmap by imageUrl
-     * 
+     *
      * @param imageUrl
      * @param readTimeOut
      * @return
@@ -192,7 +192,7 @@ public class ImageUtils {
 
     /**
      * get Bitmap by imageUrl
-     * 
+     *
      * @param imageUrl
      * @param requestProperties http request properties
      * @return
@@ -206,21 +206,21 @@ public class ImageUtils {
 
     /**
      * scale image
-     * 
+     *
      * @param org
      * @param newWidth
      * @param newHeight
      * @return
      */
     public static Bitmap scaleImageTo(Bitmap org, int newWidth, int newHeight) {
-        return scaleImage(org, (float)newWidth / org.getWidth(), (float)newHeight / org.getHeight());
+        return scaleImage(org, (float) newWidth / org.getWidth(), (float) newHeight / org.getHeight());
     }
 
     /**
      * scale image
-     * 
+     *
      * @param org
-     * @param scaleWidth sacle of width
+     * @param scaleWidth  sacle of width
      * @param scaleHeight scale of height
      * @return
      */
@@ -236,7 +236,7 @@ public class ImageUtils {
 
     /**
      * close inputStream
-     * 
+     *
      * @param s
      */
     private static void closeInputStream(InputStream s) {

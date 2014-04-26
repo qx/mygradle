@@ -1,10 +1,5 @@
 package cn.trinea.android.demo;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
-
 import android.app.ActionBar;
 import android.app.ActionBar.LayoutParams;
 import android.content.Context;
@@ -12,52 +7,53 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.Display;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.WindowManager;
+import android.view.*;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
 import android.widget.SearchView.OnCloseListener;
 import android.widget.TextView;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+
 /**
  * SearchViewDemo
- * 
+ *
  * @author <a href="http://www.trinea.cn/android/android-searchview-and-search-tips-impl/" target="_blank">Trinea</a>
- * 2013-5-9
+ *         2013-5-9
  */
 public class SearchViewDemo extends BaseActivity {
 
-    private SearchView               searchView;
-    private MyHandler                handler;
+    private SearchView searchView;
+    private MyHandler handler;
 
     // schedule executor
     private ScheduledExecutorService scheduledExecutor = Executors.newScheduledThreadPool(10);
-    private String                   currentSearchTip;
+    private String currentSearchTip;
 
-    private TextView                 searchInfo;
+    private TextView searchInfo;
 
-    private InputMethodManager       inputMethodManager;
+    private InputMethodManager inputMethodManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.search_view_demo);
 
-        inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         handler = new MyHandler();
-        searchInfo = (TextView)findViewById(R.id.search_info);
+        searchInfo = (TextView) findViewById(R.id.search_info);
 
         // set title style
         ActionBar bar = getActionBar();
         bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_HOME_AS_UP
-                              | ActionBar.DISPLAY_SHOW_CUSTOM);
+                | ActionBar.DISPLAY_SHOW_CUSTOM);
         setTitle(" ");
-        LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View customActionBarView = inflater.inflate(R.layout.search_view_demo_title, null);
 
-        searchView = (SearchView)customActionBarView.findViewById(R.id.search_view);
+        searchView = (SearchView) customActionBarView.findViewById(R.id.search_view);
         searchView.setVisibility(View.VISIBLE);
         searchView.setIconifiedByDefault(true);
         searchView.setIconified(false);
@@ -91,12 +87,12 @@ public class SearchViewDemo extends BaseActivity {
         });
         Display display = getWindowManager().getDefaultDisplay();
         LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT,
-                                               LayoutParams.WRAP_CONTENT, Gravity.CENTER_VERTICAL | Gravity.RIGHT);
+                LayoutParams.WRAP_CONTENT, Gravity.CENTER_VERTICAL | Gravity.RIGHT);
         bar.setCustomView(customActionBarView, params);
 
         // show keyboard
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
-                                             | WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+                | WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
     }
 
     public void showSearchTip(String newText) {
@@ -108,7 +104,7 @@ public class SearchViewDemo extends BaseActivity {
 
         String newText;
 
-        public SearchTipThread(String newText){
+        public SearchTipThread(String newText) {
             this.newText = newText;
         }
 
@@ -131,7 +127,7 @@ public class SearchViewDemo extends BaseActivity {
 
             switch (msg.what) {
                 case 1:
-                    searchInfo.setText((String)msg.obj);
+                    searchInfo.setText((String) msg.obj);
                     break;
             }
         }

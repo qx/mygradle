@@ -1,10 +1,5 @@
 package cn.trinea.android.common.service.impl;
 
-import java.io.File;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ExecutorService;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,6 +9,11 @@ import cn.trinea.android.common.entity.CacheObject;
 import cn.trinea.android.common.service.CacheFullRemoveType;
 import cn.trinea.android.common.service.FileNameRule;
 import cn.trinea.android.common.util.FileUtils;
+
+import java.io.File;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutorService;
 
 /**
  * <strong>Image Cache</strong><br/>
@@ -55,25 +55,31 @@ import cn.trinea.android.common.util.FileUtils;
  * <li>You should add <strong>android.permission.ACCESS_NETWORK_STATE</strong> in manifest if you get image from
  * network.</li>
  * </ul>
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-10-18
  */
 public class ImageCache extends ImageMemoryCache {
 
-    private static final long  serialVersionUID     = 1L;
-    private ImageSDCardCache   secondaryCache;
-    /** image compress size **/
-    private int                compressSize         = 1;
-    /** compress listener, advanced image compress, will override compressSize **/
-    private CompressListener   compressListener;
+    private static final long serialVersionUID = 1L;
+    private ImageSDCardCache secondaryCache;
+    /**
+     * image compress size *
+     */
+    private int compressSize = 1;
+    /**
+     * compress listener, advanced image compress, will override compressSize *
+     */
+    private CompressListener compressListener;
 
-    /** cache folder path which be used when saving images **/
+    /**
+     * cache folder path which be used when saving images *
+     */
     public static final String DEFAULT_CACHE_FOLDER = new StringBuilder()
-                                                            .append(Environment.getExternalStorageDirectory()
-                                                                    .getAbsolutePath()).append(File.separator)
-                                                            .append("Trinea").append(File.separator)
-                                                            .append("AndroidCommon").append(File.separator)
-                                                            .append("ImageCache").toString();
+            .append(Environment.getExternalStorageDirectory()
+                    .getAbsolutePath()).append(File.separator)
+            .append("Trinea").append(File.separator)
+            .append("AndroidCommon").append(File.separator)
+            .append("ImageCache").toString();
 
     /**
      * <ul>
@@ -82,7 +88,7 @@ public class ImageCache extends ImageMemoryCache {
      * <li>thread pool size of primary cache and secondary cache both are
      * {@link PreloadDataCache#DEFAULT_THREAD_POOL_SIZE}</li>
      * </ul>
-     * 
+     *
      * @see {@link #ImageCache(int, int, int, int)}
      */
     public ImageCache() {
@@ -96,7 +102,7 @@ public class ImageCache extends ImageMemoryCache {
      * <li>thread pool size of primary cache and secondary cache both are
      * {@link PreloadDataCache#DEFAULT_THREAD_POOL_SIZE}</li>
      * </ul>
-     * 
+     *
      * @param primaryCacheMaxSize
      * @param secondaryCacheMaxSize
      * @see {@link #ImageCache(int, int, int, int)}
@@ -108,7 +114,7 @@ public class ImageCache extends ImageMemoryCache {
 
     /**
      * thread pool size of primary cache and secondary cache both are {@link PreloadDataCache#DEFAULT_THREAD_POOL_SIZE}
-     * 
+     *
      * @param primaryCacheMaxSize
      * @param secondaryCacheMaxSize
      * @see {@link #ImageCache(int, int, int, int)}
@@ -130,14 +136,14 @@ public class ImageCache extends ImageMemoryCache {
      * <li>Elements of the cache will not invalid</li>
      * <li>Remove type of primary cache is {@link RemoveTypeUsedCountSmall} when cache is full</li>
      * </ul>
-     * 
-     * @param primaryCacheMaxSize maximum size of the primary cache
-     * @param primaryCacheThreadPoolSize getting data thread pool size of the primary cache
-     * @param secondaryCacheMaxSize maximum size of the secondary cache
+     *
+     * @param primaryCacheMaxSize          maximum size of the primary cache
+     * @param primaryCacheThreadPoolSize   getting data thread pool size of the primary cache
+     * @param secondaryCacheMaxSize        maximum size of the secondary cache
      * @param secondaryCacheThreadPoolSize getting data thread pool size of the secondary cache
      */
     public ImageCache(int primaryCacheMaxSize, int primaryCacheThreadPoolSize, int secondaryCacheMaxSize,
-            int secondaryCacheThreadPoolSize) {
+                      int secondaryCacheThreadPoolSize) {
         super(primaryCacheMaxSize, primaryCacheThreadPoolSize);
 
         setOnGetDataListener(new OnGetDataListener<String, Bitmap>() {
@@ -181,7 +187,7 @@ public class ImageCache extends ImageMemoryCache {
 
     /**
      * get compressSize
-     * 
+     *
      * @return the compressSize
      */
     public int getCompressSize() {
@@ -194,7 +200,7 @@ public class ImageCache extends ImageMemoryCache {
      * <strong>Attentions:</strong>
      * <li>if {@link #setCompressListener(CompressListener)} is set, this function is not work</li>
      * </ul>
-     * 
+     *
      * @param compressSize the compressSize to set
      * @see {@link #setCompressSize(String)}
      */
@@ -208,7 +214,7 @@ public class ImageCache extends ImageMemoryCache {
      * <strong>Attentions:</strong>
      * <li>if this function is set, the function {@link #setCompressSize(String)} is not work</li>
      * </ul>
-     * 
+     *
      * @param compressListener
      */
     public void setCompressListener(CompressListener compressListener) {
@@ -217,7 +223,7 @@ public class ImageCache extends ImageMemoryCache {
 
     /**
      * get compressListener
-     * 
+     *
      * @return compressListener
      */
     public CompressListener getCompressListener() {
@@ -235,22 +241,22 @@ public class ImageCache extends ImageMemoryCache {
          * <strong>Attentions:</strong>
          * <li>if this function is set, the function {@link #setCompressSize(String)} is not work</li>
          * </ul>
-         * 
+         *
          * @param imagePath
          * @return return compressSize, If > 1, requests the decoder to subsample the original image, returning a
-         *         smaller image to save memory. The sample size is the number of pixels in either dimension that
-         *         correspond to a single pixel in the decoded bitmap. For example, inSampleSize == 4 returns an image
-         *         that is 1/4 the width/height of the original, and 1/16 the number of pixels. Any value <= 1 is
-         *         treated the same as 1. Note: the decoder will try to fulfill this request, but the resulting bitmap
-         *         may have different dimensions that precisely what has been requested. Also, powers of 2 are often
-         *         faster/easier for the decoder to honor.
+         * smaller image to save memory. The sample size is the number of pixels in either dimension that
+         * correspond to a single pixel in the decoded bitmap. For example, inSampleSize == 4 returns an image
+         * that is 1/4 the width/height of the original, and 1/16 the number of pixels. Any value <= 1 is
+         * treated the same as 1. Note: the decoder will try to fulfill this request, but the resulting bitmap
+         * may have different dimensions that precisely what has been requested. Also, powers of 2 are often
+         * faster/easier for the decoder to honor.
          */
         public int getCompressSize(String imagePath);
     }
 
     /**
      * get http read image time out of secondary cache, if less than 0, not set. default is not set
-     * 
+     *
      * @return the httpReadTimeOut
      */
     @Override
@@ -260,7 +266,7 @@ public class ImageCache extends ImageMemoryCache {
 
     /**
      * set http read image time out of secondary cache, if less than 0, not set. default is not set, in mills
-     * 
+     *
      * @param readTimeOutMillis
      */
     @Override
@@ -330,7 +336,7 @@ public class ImageCache extends ImageMemoryCache {
      * <li>If image is from the different server, setRequestProperty("Connection", "false") is recommended. If image is
      * from the same server, true is recommended, and this is the default value</li>
      * </ul>
-     * 
+     *
      * @param requestProperties
      */
     public void setRequestProperties(Map<String, String> requestProperties) {
@@ -339,7 +345,7 @@ public class ImageCache extends ImageMemoryCache {
 
     /**
      * get http request properties
-     * 
+     *
      * @return
      */
     public Map<String, String> getRequestProperties() {
@@ -348,8 +354,8 @@ public class ImageCache extends ImageMemoryCache {
 
     /**
      * Sets the value of the http request header field
-     * 
-     * @param field the request header field to be set
+     *
+     * @param field    the request header field to be set
      * @param newValue the new value of the specified property
      * @see {@link #setRequestProperties(Map)}
      */
@@ -359,7 +365,7 @@ public class ImageCache extends ImageMemoryCache {
 
     /**
      * get cache folder path which be used when saving images, default is {@link #DEFAULT_CACHE_FOLDER}
-     * 
+     *
      * @return the cacheFolder
      * @see ImageSDCardCache#getCacheFolder()
      */
@@ -369,7 +375,7 @@ public class ImageCache extends ImageMemoryCache {
 
     /**
      * set cache folder path which be used when saving images, default is {@link #DEFAULT_CACHE_FOLDER}
-     * 
+     *
      * @param cacheFolder
      * @see ImageSDCardCache#setCacheFolder(String)
      */
@@ -379,7 +385,7 @@ public class ImageCache extends ImageMemoryCache {
 
     /**
      * get file name rule which be used when saving images, default is {@link FileNameRuleImageUrl}
-     * 
+     *
      * @return the fileNameRule
      * @see ImageSDCardCache#getFileNameRule()
      */
@@ -389,7 +395,7 @@ public class ImageCache extends ImageMemoryCache {
 
     /**
      * set file name rule which be used when saving images, default is {@link FileNameRuleImageUrl}
-     * 
+     *
      * @param fileNameRule
      * @see ImageSDCardCache#setFileNameRule(FileNameRule)
      */
@@ -403,7 +409,7 @@ public class ImageCache extends ImageMemoryCache {
      * <li>It's a combination of {@link #loadDataFromDb(Context, String)} and {@link #deleteUnusedFiles()}</li>
      * <li>You should use {@link #saveDataToDb(Context, String)} to save data when app exit</li>
      * </ul>
-     * 
+     *
      * @param context
      * @param tag
      * @see #loadDataFromDb(Context, String)
@@ -417,7 +423,7 @@ public class ImageCache extends ImageMemoryCache {
     /**
      * delete unused file in {@link #getCacheFolder()}, you can use it after {@link #loadDataFromDb(Context, String)} at
      * first time
-     * 
+     *
      * @see {@link ImageSDCardCache#deleteUnusedFiles()}
      */
     public void deleteUnusedFiles() {
@@ -431,10 +437,10 @@ public class ImageCache extends ImageMemoryCache {
      * <li>If tag is null or empty, throws exception</li>
      * <li>You should use {@link #saveDataToDb(Context, String)} to save data when app exit</li>
      * </ul>
-     * 
+     *
      * @param context
-     * @param tag tag used to mark this cache when save to and load from db, should be unique and cannot be null or
-     *        empty
+     * @param tag     tag used to mark this cache when save to and load from db, should be unique and cannot be null or
+     *                empty
      * @return
      * @see ImageSDCardCache#loadDataFromDb(Context, ImageSDCardCache, String)
      */
@@ -451,10 +457,10 @@ public class ImageCache extends ImageMemoryCache {
      * <li>You can use {@link #initData(Context, String)} or {@link #loadDataFromDb(Context, String)} to init data when
      * app start</li>
      * </ul>
-     * 
+     *
      * @param context
-     * @param tag tag used to mark this cache when save to and load from db, should be unique and cannot be null or
-     *        empty
+     * @param tag     tag used to mark this cache when save to and load from db, should be unique and cannot be null or
+     *                empty
      * @return
      * @see ImageSDCardCache#saveDataToDb(Context, ImageSDCardCache, String)
      */
@@ -464,7 +470,7 @@ public class ImageCache extends ImageMemoryCache {
 
     /**
      * get image file path
-     * 
+     *
      * @param imageUrl
      * @return if not in cache return null, else return full path.
      */
@@ -492,7 +498,7 @@ public class ImageCache extends ImageMemoryCache {
 
     /**
      * get get image listener of primary cache
-     * 
+     *
      * @return
      * @see {@link PreloadDataCache#getOnGetDataListener()}
      */
@@ -502,7 +508,7 @@ public class ImageCache extends ImageMemoryCache {
 
     /**
      * set get data listener of primary cache, primary cache will get data and preload data by it
-     * 
+     *
      * @param onGetImageListener
      * @see {@link PreloadDataCache#setOnGetDataListener(OnGetDataListener)}
      */
@@ -512,7 +518,7 @@ public class ImageCache extends ImageMemoryCache {
 
     /**
      * get get image listener of secondary cache
-     * 
+     *
      * @return
      */
     public OnGetDataListener<String, String> getOnGetImageListenerOfSecondaryCache() {
@@ -521,7 +527,7 @@ public class ImageCache extends ImageMemoryCache {
 
     /**
      * set get data listener of secondary cache, secondary cache will get data and preload data by it
-     * 
+     *
      * @param onGetImageListener
      */
     public void setOnGetImageListenerOfSecondaryCache(OnGetDataListener<String, String> onGetImageListener) {
@@ -530,7 +536,7 @@ public class ImageCache extends ImageMemoryCache {
 
     /**
      * get remove type when secondary cache is full
-     * 
+     *
      * @return
      */
     public CacheFullRemoveType<String> getCacheFullRemoveTypeOfSecondaryCache() {
@@ -539,7 +545,7 @@ public class ImageCache extends ImageMemoryCache {
 
     /**
      * set remove type when secondary cache is full
-     * 
+     *
      * @param cacheFullRemoveType the cacheFullRemoveType to set
      */
     public void setCacheFullRemoveTypeOfSecondaryCache(CacheFullRemoveType<String> cacheFullRemoveType) {

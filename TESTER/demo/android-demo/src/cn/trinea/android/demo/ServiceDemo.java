@@ -15,49 +15,49 @@ import cn.trinea.android.demo.MyService.MyBinder;
 
 /**
  * ServiceDemo, incluse start service, bind service and intent service
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-5-9
  */
 public class ServiceDemo extends BaseActivity {
 
-    private MyService         myService;
-    private Intent            myServiceIntent;
-    private Intent            myAIDLServiceIntent;
-    private Intent            myIntentServiceIntent;
-    private Intent            myIntentService2Intent;
+    private MyService myService;
+    private Intent myServiceIntent;
+    private Intent myAIDLServiceIntent;
+    private Intent myIntentServiceIntent;
+    private Intent myIntentService2Intent;
 
-    private Button            startServiceBtn;
-    private Button            stopServiceBtn;
-    private Button            startIntentServiceBtn;
+    private Button startServiceBtn;
+    private Button stopServiceBtn;
+    private Button startIntentServiceBtn;
 
-    private Button            boundServiceBtn;
-    private Button            operateBoundServiceBtn;
-    private Button            getBoundServiceProBtn;
-    private Button            unboundServiceBtn;
+    private Button boundServiceBtn;
+    private Button operateBoundServiceBtn;
+    private Button getBoundServiceProBtn;
+    private Button unboundServiceBtn;
 
-    private Button            startAIDLServiceBtn;
-    private Button            stopAIDLServiceBtn;
+    private Button startAIDLServiceBtn;
+    private Button stopAIDLServiceBtn;
 
     private ServiceConnection con = new ServiceConnection() {
 
-                                      /**
-                                       * Called when a connection to the Service has been lost
-                                       */
-                                      @Override
-                                      public void onServiceDisconnected(ComponentName name) {
-                                          Toast.makeText(getApplicationContext(), "Service disconnect",
-                                                         Toast.LENGTH_SHORT).show();
-                                      }
+        /**
+         * Called when a connection to the Service has been lost
+         */
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            Toast.makeText(getApplicationContext(), "Service disconnect",
+                    Toast.LENGTH_SHORT).show();
+        }
 
-                                      /**
-                                       * Called when a connection to the Service has been established,
-                                       */
-                                      @Override
-                                      public void onServiceConnected(ComponentName name, IBinder service) {
-                                          myService = ((MyBinder)service).getService();
-                                          Toast.makeText(getApplicationContext(), "Service Connect", Toast.LENGTH_SHORT).show();
-                                      }
-                                  };
+        /**
+         * Called when a connection to the Service has been established,
+         */
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            myService = ((MyBinder) service).getService();
+            Toast.makeText(getApplicationContext(), "Service Connect", Toast.LENGTH_SHORT).show();
+        }
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,7 +68,7 @@ public class ServiceDemo extends BaseActivity {
         myIntentServiceIntent = new Intent(ServiceDemo.this, MyIntentService.class);
         myIntentService2Intent = new Intent(ServiceDemo.this, MyIntentService.class);
 
-        startServiceBtn = (Button)findViewById(R.id.start_general_service);
+        startServiceBtn = (Button) findViewById(R.id.start_general_service);
         startServiceBtn.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -77,7 +77,7 @@ public class ServiceDemo extends BaseActivity {
             }
         });
 
-        stopServiceBtn = (Button)findViewById(R.id.stop_general_service);
+        stopServiceBtn = (Button) findViewById(R.id.stop_general_service);
         stopServiceBtn.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -86,7 +86,7 @@ public class ServiceDemo extends BaseActivity {
             }
         });
 
-        startIntentServiceBtn = (Button)findViewById(R.id.start_intent_service);
+        startIntentServiceBtn = (Button) findViewById(R.id.start_intent_service);
         startIntentServiceBtn.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -96,7 +96,7 @@ public class ServiceDemo extends BaseActivity {
             }
         });
 
-        boundServiceBtn = (Button)findViewById(R.id.bound_service);
+        boundServiceBtn = (Button) findViewById(R.id.bound_service);
         boundServiceBtn.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -105,21 +105,21 @@ public class ServiceDemo extends BaseActivity {
             }
         });
 
-        operateBoundServiceBtn = (Button)findViewById(R.id.operate_bound_service);
+        operateBoundServiceBtn = (Button) findViewById(R.id.operate_bound_service);
         operateBoundServiceBtn.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 if (myService != null) {
                     ToastUtils.show(context, R.string.operate_value_success,
-                                    Integer.toString(myService.increaseCount()));
+                            Integer.toString(myService.increaseCount()));
                 } else {
                     ToastUtils.show(context, R.string.bind_service_tip, Toast.LENGTH_SHORT);
                 }
             }
         });
 
-        getBoundServiceProBtn = (Button)findViewById(R.id.get_bound_service_pro);
+        getBoundServiceProBtn = (Button) findViewById(R.id.get_bound_service_pro);
         getBoundServiceProBtn.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -132,7 +132,7 @@ public class ServiceDemo extends BaseActivity {
             }
         });
 
-        unboundServiceBtn = (Button)findViewById(R.id.unbound_service);
+        unboundServiceBtn = (Button) findViewById(R.id.unbound_service);
         unboundServiceBtn.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -144,7 +144,7 @@ public class ServiceDemo extends BaseActivity {
             }
         });
 
-        startAIDLServiceBtn = (Button)findViewById(R.id.start_aidl_service);
+        startAIDLServiceBtn = (Button) findViewById(R.id.start_aidl_service);
         startAIDLServiceBtn.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -153,7 +153,7 @@ public class ServiceDemo extends BaseActivity {
             }
         });
 
-        stopAIDLServiceBtn = (Button)findViewById(R.id.stop_aidl_service);
+        stopAIDLServiceBtn = (Button) findViewById(R.id.stop_aidl_service);
         stopAIDLServiceBtn.setOnClickListener(new OnClickListener() {
 
             @Override

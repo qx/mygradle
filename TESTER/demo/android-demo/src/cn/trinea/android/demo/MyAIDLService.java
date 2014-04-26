@@ -8,24 +8,24 @@ import android.widget.Toast;
 
 /**
  * MyAIDLService
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-5-9
  */
 public class MyAIDLService extends Service {
 
-    private int                  mCount;
+    private int mCount;
     private MyAIDLInterface.Stub myBinder = new MyAIDLInterface.Stub() {
 
-                                              @Override
-                                              public void setCount(int count) throws RemoteException {
-                                                  mCount = count;
-                                              }
+        @Override
+        public void setCount(int count) throws RemoteException {
+            mCount = count;
+        }
 
-                                              @Override
-                                              public int getCount() throws RemoteException {
-                                                  return mCount;
-                                              }
-                                          };
+        @Override
+        public int getCount() throws RemoteException {
+            return mCount;
+        }
+    };
 
     @Override
     public void onCreate() {

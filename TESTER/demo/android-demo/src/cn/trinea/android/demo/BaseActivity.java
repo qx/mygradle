@@ -6,12 +6,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import cn.trinea.android.demo.utils.AppUtils;
-
 import com.google.analytics.tracking.android.EasyTracker;
 
 /**
  * BaseActivity
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-6-1
  */
 public class BaseActivity extends Activity {

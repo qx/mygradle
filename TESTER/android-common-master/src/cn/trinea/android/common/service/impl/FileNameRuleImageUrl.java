@@ -11,19 +11,23 @@ import cn.trinea.android.common.util.StringUtils;
  * <li>use file suffix in url as target file suffix</li>
  * <li>use {@link #setFileExtension(String)} set file extension</li>
  * </ul>
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2012-11-21
  */
 public class FileNameRuleImageUrl implements FileNameRule {
 
-    private static final long  serialVersionUID     = 1L;
+    private static final long serialVersionUID = 1L;
 
-    /** default file name if image url is empty **/
-    public static final String DEFAULT_FILE_NAME    = "ImageSDCardCacheFile.jpg";
-    /** max length of file name, not include suffix **/
-    public static final int    MAX_FILE_NAME_LENGTH = 127;
+    /**
+     * default file name if image url is empty *
+     */
+    public static final String DEFAULT_FILE_NAME = "ImageSDCardCacheFile.jpg";
+    /**
+     * max length of file name, not include suffix *
+     */
+    public static final int MAX_FILE_NAME_LENGTH = 127;
 
-    private String             fileExtension        = null;
+    private String fileExtension = null;
 
     @Override
     public String getFileName(String imageUrl) {

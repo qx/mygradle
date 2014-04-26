@@ -10,16 +10,16 @@ import cn.trinea.android.common.view.BorderScrollView.OnBorderListener;
 
 /**
  * BorderScrollViewDemo
- * 
+ *
  * @author <a href="http://www.trinea.cn/android/on-bottom-load-more-scrollview/" target="_blank">Trinea</a> 2013-5-27
  */
 public class BorderScrollViewDemo extends BaseActivity {
 
     private BorderScrollView borderScrollView;
-    private TextView         textView1;
-    private TextView         textView2;
+    private TextView textView1;
+    private TextView textView2;
 
-    private Context          context;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class BorderScrollViewDemo extends BaseActivity {
 
         context = getApplicationContext();
 
-        borderScrollView = (BorderScrollView)findViewById(R.id.scroll_view);
+        borderScrollView = (BorderScrollView) findViewById(R.id.scroll_view);
         borderScrollView.setOnBorderListener(new OnBorderListener() {
 
             @Override
@@ -42,8 +42,8 @@ public class BorderScrollViewDemo extends BaseActivity {
                 Toast.makeText(context, "has reached bottom", Toast.LENGTH_SHORT).show();
             }
         });
-        textView1 = (TextView)findViewById(R.id.text1);
-        textView2 = (TextView)findViewById(R.id.text2);
+        textView1 = (TextView) findViewById(R.id.text1);
+        textView2 = (TextView) findViewById(R.id.text2);
 
         Display display = getWindowManager().getDefaultDisplay();
         textView1.setHeight(display.getHeight() / 2);

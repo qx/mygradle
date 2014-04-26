@@ -1,12 +1,12 @@
 package cn.trinea.android.common.util;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * AssetDatabaseOpenHelper
@@ -16,13 +16,13 @@ import android.database.sqlite.SQLiteException;
  * that will be used for reading and writing. use {@link #getReadableDatabase()} to create and/or open a database that
  * will be used for reading only.</li>
  * </ul>
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-12-5
  */
 public class AssetDatabaseOpenHelper {
 
     private Context context;
-    private String  databaseName;
+    private String databaseName;
 
     public AssetDatabaseOpenHelper(Context context, String databaseName) {
         this.context = context;
@@ -31,10 +31,10 @@ public class AssetDatabaseOpenHelper {
 
     /**
      * Create and/or open a database that will be used for reading and writing.
-     * 
+     *
      * @return
      * @throws RuntimeException if cannot copy database from assets
-     * @throws SQLiteException if the database cannot be opened
+     * @throws SQLiteException  if the database cannot be opened
      */
     public synchronized SQLiteDatabase getWritableDatabase() {
         File dbFile = context.getDatabasePath(databaseName);
@@ -51,10 +51,10 @@ public class AssetDatabaseOpenHelper {
 
     /**
      * Create and/or open a database that will be used for reading only.
-     * 
+     *
      * @return
      * @throws RuntimeException if cannot copy database from assets
-     * @throws SQLiteException if the database cannot be opened
+     * @throws SQLiteException  if the database cannot be opened
      */
     public synchronized SQLiteDatabase getReadableDatabase() {
         File dbFile = context.getDatabasePath(databaseName);

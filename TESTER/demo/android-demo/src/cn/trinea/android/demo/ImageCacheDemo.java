@@ -1,9 +1,5 @@
 package cn.trinea.android.demo;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -21,34 +17,44 @@ import cn.trinea.android.common.service.impl.ImageCache;
 import cn.trinea.android.common.service.impl.ImageMemoryCache.OnImageCallbackListener;
 import cn.trinea.android.common.service.impl.RemoveTypeLastUsedTimeFirst;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * ImageCacheDemo
- * 
+ *
  * @author <a href="http://www.trinea.cn/android/android-imagecache/" target="_blank">Trinea</a> 2013-6-25
  */
 public class ImageCacheDemo extends BaseActivity {
 
-    /** column number **/
-    public static final int    COLUMNS                  = 2;
-    /** imageView default height **/
-    public static final int    IMAGEVIEW_DEFAULT_HEIGHT = 400;
-    public static final String TAG_CACHE                = "image_cache";
-    /** cache folder path which be used when saving images **/
-    public static final String DEFAULT_CACHE_FOLDER     = new StringBuilder().append(Environment.getExternalStorageDirectory()
-                                                                                                .getAbsolutePath())
-                                                                             .append(File.separator).append("Trinea")
-                                                                             .append(File.separator)
-                                                                             .append("AndroidDemo")
-                                                                             .append(File.separator)
-                                                                             .append("ImageCache").toString();
-    private RelativeLayout     parentLayout;
+    /**
+     * column number *
+     */
+    public static final int COLUMNS = 2;
+    /**
+     * imageView default height *
+     */
+    public static final int IMAGEVIEW_DEFAULT_HEIGHT = 400;
+    public static final String TAG_CACHE = "image_cache";
+    /**
+     * cache folder path which be used when saving images *
+     */
+    public static final String DEFAULT_CACHE_FOLDER = new StringBuilder().append(Environment.getExternalStorageDirectory()
+            .getAbsolutePath())
+            .append(File.separator).append("Trinea")
+            .append(File.separator)
+            .append("AndroidDemo")
+            .append(File.separator)
+            .append("ImageCache").toString();
+    private RelativeLayout parentLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.image_cache_demo);
 
         Context context = getApplicationContext();
-        parentLayout = (RelativeLayout)findViewById(R.id.image_cache_parent_layout);
+        parentLayout = (RelativeLayout) findViewById(R.id.image_cache_parent_layout);
         initImageUrlList();
         IMAGE_CACHE.initData(this, TAG_CACHE);
         IMAGE_CACHE.setContext(context);
@@ -84,7 +90,7 @@ public class ImageCacheDemo extends BaseActivity {
             parentLayout.addView(imageView);
 
             // set imageView layout params
-            LayoutParams layoutParams = (RelativeLayout.LayoutParams)imageView.getLayoutParams();
+            LayoutParams layoutParams = (RelativeLayout.LayoutParams) imageView.getLayoutParams();
             layoutParams.width = imageWidth;
             layoutParams.topMargin = verticalSpacing;
             layoutParams.rightMargin = horizontalSpacing;
@@ -110,7 +116,9 @@ public class ImageCacheDemo extends BaseActivity {
         super.onDestroy();
     }
 
-    /** icon cache **/
+    /**
+     * icon cache *
+     */
     public static final ImageCache IMAGE_CACHE = new ImageCache(128, 512);
 
     static {
@@ -119,16 +127,16 @@ public class ImageCacheDemo extends BaseActivity {
 
             /**
              * callback function after get image successfully, run on ui thread
-             * 
-             * @param imageUrl imageUrl
+             *
+             * @param imageUrl    imageUrl
              * @param loadedImage bitmap
-             * @param view view need the image
-             * @param isInCache whether already in cache or got realtime
+             * @param view        view need the image
+             * @param isInCache   whether already in cache or got realtime
              */
             @Override
             public void onGetSuccess(String imageUrl, Bitmap loadedImage, View view, boolean isInCache) {
                 if (view != null && loadedImage != null) {
-                    ImageView imageView = (ImageView)view;
+                    ImageView imageView = (ImageView) view;
                     imageView.setImageBitmap(loadedImage);
                     // first time show with animation
                     if (!isInCache) {
@@ -136,7 +144,7 @@ public class ImageCacheDemo extends BaseActivity {
                     }
 
                     // auto set height accroding to rate between height and weight
-                    LayoutParams imageParams = (LayoutParams)imageView.getLayoutParams();
+                    LayoutParams imageParams = (LayoutParams) imageView.getLayoutParams();
                     imageParams.height = imageParams.width * loadedImage.getHeight() / loadedImage.getWidth();
                     imageView.setScaleType(ScaleType.FIT_XY);
                 }
@@ -144,9 +152,9 @@ public class ImageCacheDemo extends BaseActivity {
 
             /**
              * callback function before get image, run on ui thread
-             * 
+             *
              * @param imageUrl imageUrl
-             * @param view view need the image
+             * @param view     view need the image
              */
             @Override
             public void onPreGet(String imageUrl, View view) {
@@ -155,24 +163,25 @@ public class ImageCacheDemo extends BaseActivity {
 
             /**
              * callback function after get image failed, run on ui thread
-             * 
-             * @param imageUrl imageUrl
-             * @param loadedImage bitmap
-             * @param view view need the image
+             *
+             * @param imageUrl     imageUrl
+             * @param loadedImage  bitmap
+             * @param view         view need the image
              * @param failedReason failed reason for get image
              */
             @Override
             public void onGetFailed(String imageUrl, Bitmap loadedImage, View view, FailedReason failedReason) {
                 Log.e(TAG_CACHE,
-                      new StringBuilder(128).append("get image ").append(imageUrl).append(" error, failed type is: ")
-                                            .append(failedReason.getFailedType()).append(", failed reason is: ")
-                                            .append(failedReason.getCause().getMessage()).toString());
+                        new StringBuilder(128).append("get image ").append(imageUrl).append(" error, failed type is: ")
+                                .append(failedReason.getFailedType()).append(", failed reason is: ")
+                                .append(failedReason.getCause().getMessage()).toString()
+                );
             }
 
             @Override
             public void onGetNotInCache(String imageUrl, View view) {
                 if (view != null && view instanceof ImageView) {
-                    ((ImageView)view).setImageResource(R.drawable.trinea);
+                    ((ImageView) view).setImageResource(R.drawable.trinea);
                 }
             }
         };

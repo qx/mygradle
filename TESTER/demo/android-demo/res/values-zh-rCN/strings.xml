@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="send_general_broadcast">发送广播</string>
     <string name="send_local_broadcast">发送Local广播</string>
@@ -15,7 +15,7 @@
     <string name="ordered_broadcast_medium_cancel_tip">优先级中等的接收者接收到广播并已取消广播继续传递，内容为： <xliff:g>%1$s</xliff:g>，上一个接收者为：<xliff:g>%2$s</xliff:g></string>
     <string name="ordered_broadcast_low_tip">优先级最低的接收者接收到广播，内容为： <xliff:g>%1$s</xliff:g>，上一个接收者为：<xliff:g>%2$s</xliff:g></string>
     <string name="ordered_broadcast_tip">默认优先级接收者接收到广播，内容为： <xliff:g>%1$s</xliff:g>，上一个接收者为：<xliff:g>%2$s</xliff:g></string>
-    
+
     <string name="start_general_service">启动普通服务</string>
     <string name="stop_general_service">停止普通服务</string>
     <string name="start_intent_service">启动Intent Service</string>
@@ -28,7 +28,7 @@
     <string name="operate_value_success">增加成功，当前值为： <xliff:g>%1$s</xliff:g></string>
     <string name="operate_value_tip">当前值为： <xliff:g>%1$s</xliff:g></string>
     <string name="bind_service_tip">请先绑定服务</string>
-    
+
     <string name="app_status_download">点击下载美丽说APK</string>
     <string name="app_status_downloaded">已下载过，点击重新下载</string>
     <string name="app_status_download_fail">下载失败，点击重新下载</string>
@@ -40,19 +40,19 @@
     <string name="app_status_pause">暂停</string>
     <string name="app_status_downloading">下载中</string>
     <string name="tip_download_file">文件将下载到：</string>
-    
+
     <string name="auto_scroll_view_pager_single">单个ViewPager</string>
     <string name="auto_scroll_view_pager_inner">ViewPager嵌套</string>
-    
+
     <string name="update_at">更新于:&#160;</string>
-    
+
     <string name="profile">个人主页:&#160;</string>
     <string name="description">更多介绍:&#160;</string>
     <string name="http_cache_get">获取内容</string>
-    
+
     <string name="drop_down_tip">下拉刷新或滚动到底部加载更多</string>
     <string name="on_border_tip">滚动到顶部或底部进行体验</string>
-    
+
     <string name="desc_search_view">SearchView介绍及搜索提示实现</string>
     <string name="desc_view_pager_multi_page">viewpager实现画廊效果</string>
     <string name="desc_download_manager">系统下载管理使用</string>

@@ -1,8 +1,5 @@
 package cn.trinea.android.demo;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,21 +8,24 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 /**
  * demo list
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2012-6-17
  */
 public class MainActivity extends BaseActivity {
 
-    public static final String    TAG      = "DemoList";
+    public static final String TAG = "DemoList";
 
-    private static final String[] mStrings = { "AutoScrollViewPager Demo", "HttpCache Demo", "ImageCache Demo",
+    private static final String[] mStrings = {"AutoScrollViewPager Demo", "HttpCache Demo", "ImageCache Demo",
             "ImageSDCardCache Demo", "DropDownListView Demo", "onBottom onTop ScrollView Demo", "DownloadManager Demo",
             "SearchView Demo", "ViewPager Multi Fragment Demo", "Slide One Page Gallery Demo", "ViewPager Demo",
-            "Service Demo", "BroadcastReceiver Demo" };
+            "Service Demo", "BroadcastReceiver Demo"};
 
-    private static final int      total    = mStrings.length - 1;
+    private static final int total = mStrings.length - 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class MainActivity extends BaseActivity {
         mListItems.addAll(Arrays.asList(mStrings));
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mListItems);
 
-        ListView demoListView = (ListView)findViewById(R.id.simple_list_view);
+        ListView demoListView = (ListView) findViewById(R.id.simple_list_view);
         demoListView.setAdapter(adapter);
         demoListView.setOnItemClickListener(new OnItemClickListener() {
 

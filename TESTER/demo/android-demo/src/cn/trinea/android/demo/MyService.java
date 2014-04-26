@@ -8,12 +8,12 @@ import android.widget.Toast;
 
 /**
  * MyService
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-5-9
  */
 public class MyService extends Service {
 
-    private int      count;
+    private int count;
     private MyBinder myBinder = new MyBinder();
 
     @Override

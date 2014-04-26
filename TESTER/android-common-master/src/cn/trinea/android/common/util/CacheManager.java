@@ -8,7 +8,7 @@ import cn.trinea.android.common.service.impl.ImageSDCardCache;
 
 /**
  * CacheManager
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2014-2-11
  */
 public class CacheManager {
@@ -21,7 +21,7 @@ public class CacheManager {
 
     /**
      * get the singleton instance of HttpCache
-     * 
+     *
      * @param context {@link Activity#getApplicationContext()}
      * @return
      */
@@ -38,7 +38,7 @@ public class CacheManager {
 
     /**
      * get the singleton instance of ImageCache
-     * 
+     *
      * @return
      * @see ImageCacheManager#getImageCache()
      */
@@ -48,7 +48,7 @@ public class CacheManager {
 
     /**
      * get the singleton instance of ImageSDCardCache
-     * 
+     *
      * @return
      * @see ImageCacheManager#getImageSDCardCache()
      */

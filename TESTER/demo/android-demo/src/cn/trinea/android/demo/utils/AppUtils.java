@@ -10,24 +10,11 @@ import android.text.Spanned;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import cn.trinea.android.demo.BorderScrollViewDemo;
-import cn.trinea.android.demo.BroadcastReceiverDemo;
-import cn.trinea.android.demo.DownloadManagerDemo;
-import cn.trinea.android.demo.DropDownListViewDemo;
-import cn.trinea.android.demo.HttpCacheDemo;
-import cn.trinea.android.demo.ImageCacheDemo;
-import cn.trinea.android.demo.ImageSDCardCacheDemo;
-import cn.trinea.android.demo.MainActivity;
-import cn.trinea.android.demo.R;
-import cn.trinea.android.demo.SearchViewDemo;
-import cn.trinea.android.demo.ServiceDemo;
-import cn.trinea.android.demo.SlideOnePageGalleryDemo;
-import cn.trinea.android.demo.ViewPagerDemo;
-import cn.trinea.android.demo.ViewPagerMulTiFragmentDemo;
+import cn.trinea.android.demo.*;
 
 /**
  * AppUtils
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-5-9
  */
 public class AppUtils {
@@ -52,10 +39,10 @@ public class AppUtils {
         ActionBar bar = activity.getActionBar();
         if (activity instanceof MainActivity) {
             bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_SHOW_CUSTOM
-                                  | ActionBar.DISPLAY_SHOW_HOME);
+                    | ActionBar.DISPLAY_SHOW_HOME);
         } else {
             bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE | ActionBar.DISPLAY_HOME_AS_UP
-                                  | ActionBar.DISPLAY_SHOW_CUSTOM);
+                    | ActionBar.DISPLAY_SHOW_CUSTOM);
         }
     }
 
@@ -64,7 +51,7 @@ public class AppUtils {
             return;
         }
 
-        Button trineaInfoTv = (Button)activity.findViewById(R.id.trinea_info);
+        Button trineaInfoTv = (Button) activity.findViewById(R.id.trinea_info);
         final String[] result = getText(activity);
         if (result == null) {
             return;
@@ -130,8 +117,8 @@ public class AppUtils {
             url = "http://www.trinea.cn";
             contentSrcId = R.string.desc_default;
         }
-        String[] result = new String[] { url,
-                getUrlInfo(activity.getString(prefixSrcId), url, activity.getString(contentSrcId)) };
+        String[] result = new String[]{url,
+                getUrlInfo(activity.getString(prefixSrcId), url, activity.getString(contentSrcId))};
         return result;
     }
 

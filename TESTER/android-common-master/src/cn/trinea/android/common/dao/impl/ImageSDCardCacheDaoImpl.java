@@ -1,7 +1,5 @@
 package cn.trinea.android.common.dao.impl;
 
-import java.util.Map.Entry;
-
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,9 +10,11 @@ import cn.trinea.android.common.service.impl.ImageSDCardCache;
 import cn.trinea.android.common.util.SqliteUtils;
 import cn.trinea.android.common.util.StringUtils;
 
+import java.util.Map.Entry;
+
 /**
  * ImageSDCardCacheDao
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-10-21
  */
 public class ImageSDCardCacheDaoImpl implements ImageSDCardCacheDao {

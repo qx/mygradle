@@ -4,39 +4,34 @@ import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
+import android.view.*;
 import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import cn.trinea.android.demo.utils.AppUtils;
-
 import com.google.analytics.tracking.android.EasyTracker;
 
 /**
  * ViewPager implements gallery effect
- * 
+ *
  * @author <a href="http://www.trinea.cn/android/viewpager-multi-fragment-effect/" target="_blank">Trinea</a> 2013-04-03
  */
 public class ViewPagerMulTiFragmentDemo extends BaseActivity {
 
-    private static int     TOTAL_COUNT = 3;
+    private static int TOTAL_COUNT = 3;
 
     private RelativeLayout viewPagerContainer;
-    private ViewPager      viewPager;
-    private TextView       indexText;
+    private ViewPager viewPager;
+    private TextView indexText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.view_pager_multi_fragment_demo);
 
-        viewPager = (ViewPager)findViewById(R.id.view_pager);
-        indexText = (TextView)findViewById(R.id.view_pager_index);
-        viewPagerContainer = (RelativeLayout)findViewById(R.id.pager_layout);
+        viewPager = (ViewPager) findViewById(R.id.view_pager);
+        indexText = (TextView) findViewById(R.id.view_pager_index);
+        viewPagerContainer = (RelativeLayout) findViewById(R.id.pager_layout);
         viewPager.setAdapter(new MyPagerAdapter());
         // to cache all page, or we will see the right item delayed
         viewPager.setOffscreenPageLimit(TOTAL_COUNT);
@@ -57,7 +52,7 @@ public class ViewPagerMulTiFragmentDemo extends BaseActivity {
 
     /**
      * this is a example fragment, just a imageview, u can replace it with your needs
-     * 
+     *
      * @author Trinea 2013-04-03
      */
     class MyPagerAdapter extends PagerAdapter {
@@ -76,14 +71,14 @@ public class ViewPagerMulTiFragmentDemo extends BaseActivity {
         public Object instantiateItem(ViewGroup container, int position) {
             ImageView imageView = new ImageView(ViewPagerMulTiFragmentDemo.this);
             imageView.setImageResource(R.drawable.image1 + position);
-            ((ViewPager)container).addView(imageView, position);
+            ((ViewPager) container).addView(imageView, position);
             return imageView;
 
         }
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
-            ((ViewPager)container).removeView((ImageView)object);
+            ((ViewPager) container).removeView((ImageView) object);
         }
     }
 

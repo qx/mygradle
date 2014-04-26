@@ -12,7 +12,7 @@ import cn.trinea.android.common.util.ImageUtils;
  * <li>if bitmap is equal to each other, remove the one which is used less</li>
  * <li>if bitmap is equal to each other and used count is equal, remove the one which is first in</li>
  * </ul>
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2011-12-26
  */
 public class RemoveTypeBitmapLarge implements CacheFullRemoveType<Bitmap> {
@@ -35,7 +35,7 @@ public class RemoveTypeBitmapLarge implements CacheFullRemoveType<Bitmap> {
 
     /**
      * get size of bitmap
-     * 
+     *
      * @param o
      * @return
      */

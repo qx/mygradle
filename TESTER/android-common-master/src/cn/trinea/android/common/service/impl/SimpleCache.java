@@ -1,5 +1,11 @@
 package cn.trinea.android.common.service.impl;
 
+import cn.trinea.android.common.entity.CacheObject;
+import cn.trinea.android.common.service.Cache;
+import cn.trinea.android.common.service.CacheFullRemoveType;
+import cn.trinea.android.common.util.MapUtils;
+import cn.trinea.android.common.util.SerializeUtils;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Map;
@@ -7,12 +13,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
-
-import cn.trinea.android.common.entity.CacheObject;
-import cn.trinea.android.common.service.Cache;
-import cn.trinea.android.common.service.CacheFullRemoveType;
-import cn.trinea.android.common.util.MapUtils;
-import cn.trinea.android.common.util.SerializeUtils;
 
 /**
  * Simple Cache<br/>
@@ -46,32 +46,46 @@ import cn.trinea.android.common.util.SerializeUtils;
  * <ul>
  * <strong>Other interfaces same to {@link Map} </strong>
  * </ul>
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2011-12-23
  */
 public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
 
-    private static final long        serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-    /** default maximum capacity of the cache **/
-    public static final int          DEFAULT_MAX_SIZE = 64;
+    /**
+     * default maximum capacity of the cache *
+     */
+    public static final int DEFAULT_MAX_SIZE = 64;
 
-    /** maximum size of the cache, if not set, use {@link #DEFAULT_MAX_SIZE} **/
-    private final int                maxSize;
+    /**
+     * maximum size of the cache, if not set, use {@link #DEFAULT_MAX_SIZE} *
+     */
+    private final int maxSize;
 
-    /** valid time of elements in cache, in mills. It means not invalid if less than 0 **/
-    private long                     validTime;
+    /**
+     * valid time of elements in cache, in mills. It means not invalid if less than 0 *
+     */
+    private long validTime;
 
-    /** remove type when cache is full **/
-    private CacheFullRemoveType<V>   cacheFullRemoveType;
+    /**
+     * remove type when cache is full *
+     */
+    private CacheFullRemoveType<V> cacheFullRemoveType;
 
-    /** map to storage element **/
+    /**
+     * map to storage element *
+     */
     protected Map<K, CacheObject<V>> cache;
 
-    /** hit count of cache **/
-    protected AtomicLong             hitCount         = new AtomicLong(0);
-    /** miss count of cache **/
-    protected AtomicLong             missCount        = new AtomicLong(0);
+    /**
+     * hit count of cache *
+     */
+    protected AtomicLong hitCount = new AtomicLong(0);
+    /**
+     * miss count of cache *
+     */
+    protected AtomicLong missCount = new AtomicLong(0);
 
     /**
      * <ul>
@@ -89,7 +103,7 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
      * <li>Elements of the cache will not invalid, can set by {@link #setValidTime(long)}</li>
      * <li>Remove type is {@link RemoveTypeEnterTimeFirst} when cache is full</li>
      * </ul>
-     * 
+     *
      * @param maxSize maximum size of the cache
      */
     public SimpleCache(int maxSize) {
@@ -105,7 +119,7 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
 
     /**
      * get the maximum capacity of the cache
-     * 
+     *
      * @return
      */
     public int getMaxSize() {
@@ -114,7 +128,7 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
 
     /**
      * get valid time of elements in cache, in mills. It means not invalid if less than 0
-     * 
+     *
      * @return
      */
     public long getValidTime() {
@@ -123,9 +137,9 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
 
     /**
      * set valid time of elements in cache, in mills
-     * 
+     *
      * @param validTime valid time of elements in cache, in mills. If less than 0, it will be set to -1 and means not
-     *        invalid. Rule of invalid see {@link #isExpired(CacheObject)}
+     *                  invalid. Rule of invalid see {@link #isExpired(CacheObject)}
      */
     public void setValidTime(long validTime) {
         this.validTime = validTime <= 0 ? -1 : validTime;
@@ -133,7 +147,7 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
 
     /**
      * get remove type when cache is full
-     * 
+     *
      * @return
      */
     public CacheFullRemoveType<V> getCacheFullRemoveType() {
@@ -142,7 +156,7 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
 
     /**
      * set remove type when cache is full
-     * 
+     *
      * @param cacheFullRemoveType the cacheFullRemoveType to set
      */
     public void setCacheFullRemoveType(CacheFullRemoveType<V> cacheFullRemoveType) {
@@ -154,7 +168,7 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
 
     /**
      * get the number of elements in the cache valid
-     * 
+     *
      * @return
      */
     @Override
@@ -165,7 +179,7 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
 
     /**
      * get element
-     * 
+     *
      * @param key
      * @return element if this cache contains the specified key and the element is valid, null otherwise.
      */
@@ -184,7 +198,7 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
 
     /**
      * set used info
-     * 
+     *
      * @param obj
      */
     protected synchronized void setUsedInfo(CacheObject<V> obj) {
@@ -196,8 +210,8 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
 
     /**
      * put element, key not allowed to be null
-     * 
-     * @param key key
+     *
+     * @param key   key
      * @param value data of {@link CacheObject}
      * @return return null if cache is full and cannot remove one, else return the value be putted
      * @see SimpleCache#put(Object, CacheObject)
@@ -212,7 +226,7 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
 
     /**
      * put element, key and value both not allowed to be null
-     * 
+     *
      * @param key
      * @param value
      * @return return null if cache is full and cannot remove one, else return the value be putted
@@ -236,7 +250,7 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
 
     /**
      * pull all elements of cache2 to this
-     * 
+     *
      * @param cache2
      */
     @Override
@@ -250,7 +264,7 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
 
     /**
      * whether this cache contains the specified key.
-     * 
+     *
      * @param key
      * @return true if this cache contains the specified key and the element is valid, false otherwise.
      */
@@ -261,7 +275,7 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
 
     /**
      * whether the element of the specified key has invalided
-     * 
+     *
      * @param key
      * @return
      * @see SimpleCache#isExpired(CacheObject)
@@ -272,7 +286,7 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
 
     /**
      * remove the specified key from cache, key not allowed to be null
-     * 
+     *
      * @param key
      * @return the value of the removed or null if no mapping for the specified key was found.
      */
@@ -287,7 +301,7 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
      * <li>if {@link #getCacheFullRemoveType()} is instance of {@link RemoveTypeNotRemove} return null, else</li>
      * <li>remove a element according to {@link #getCacheFullRemoveType()}</li>
      * </ul>
-     * 
+     *
      * @param key
      * @return the value of the removed or null if no element can be remove.
      */
@@ -319,7 +333,7 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
 
     /**
      * remove invalid elements
-     * 
+     *
      * @return the count be removed
      */
     protected synchronized int removeExpired() {
@@ -340,7 +354,7 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
 
     /**
      * Removes all elements from this Map, leaving it empty.
-     * 
+     *
      * @see Map#clear()
      */
     @Override
@@ -357,39 +371,39 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
      * <li>if {@link CacheObject#getEnterTime()} add {@link #getValidTime()} less than current time, return true</li>
      * <li>return false</li>
      * </ul>
-     * 
+     *
      * @param obj
      * @return
      */
     protected boolean isExpired(CacheObject<V> obj) {
         return validTime != -1
                 && (obj == null || (obj.isExpired() && !obj.isForever()) || (obj.getEnterTime() + validTime) < System
-                        .currentTimeMillis());
+                .currentTimeMillis());
     }
 
     /**
      * get hit count
-     **/
+     */
     public long getHitCount() {
         return hitCount.get();
     }
 
     /**
      * get miss count
-     **/
+     */
     public long getMissCount() {
         return missCount.get();
     }
 
     /**
      * get hit rate
-     * 
+     *
      * @return
      */
     @Override
     public synchronized double getHitRate() {
         long total = hitCount.get() + missCount.get();
-        return (total == 0 ? 0 : ((double)hitCount.get()) / total);
+        return (total == 0 ? 0 : ((double) hitCount.get()) / total);
     }
 
     /**
@@ -424,18 +438,18 @@ public class SimpleCache<K, V> implements Cache<K, V>, Serializable {
 
     /**
      * restore cache from file
-     * 
+     *
      * @param filePath
      * @return
      */
     @SuppressWarnings("unchecked")
     public static <K, V> SimpleCache<K, V> loadCache(String filePath) {
-        return (SimpleCache<K, V>)SerializeUtils.deserialization(filePath);
+        return (SimpleCache<K, V>) SerializeUtils.deserialization(filePath);
     }
 
     /**
      * save cache to file, the data of {@link CacheObject} should can be serializabled
-     * 
+     *
      * @param <K>
      * @param <V>
      * @param filePath

@@ -1,9 +1,5 @@
 package cn.trinea.android.demo;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -25,21 +21,27 @@ import cn.trinea.android.common.service.impl.RemoveTypeLastUsedTimeFirst;
 import cn.trinea.android.common.util.ListUtils;
 import cn.trinea.android.common.view.SlideOnePageGallery;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * ImageSDCardCacheDemo
- * 
+ *
  * @author <a href="http://www.trinea.cn/android/android-imagesdcardcache/" target="_blank">Trinea</a> 2013-6-25
  */
 public class ImageSDCardCacheDemo extends BaseActivity {
 
-    public static final String TAG_CACHE            = "image_sdcard_cache";
-    /** cache folder path which be used when saving images **/
+    public static final String TAG_CACHE = "image_sdcard_cache";
+    /**
+     * cache folder path which be used when saving images *
+     */
     public static final String DEFAULT_CACHE_FOLDER = new StringBuilder().append(Environment.getExternalStorageDirectory()
-                                                                                            .getAbsolutePath())
-                                                                         .append(File.separator).append("Trinea")
-                                                                         .append(File.separator).append("AndroidDemo")
-                                                                         .append(File.separator)
-                                                                         .append("ImageSDCardCache").toString();
+            .getAbsolutePath())
+            .append(File.separator).append("Trinea")
+            .append(File.separator).append("AndroidDemo")
+            .append(File.separator)
+            .append("ImageSDCardCache").toString();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,7 @@ public class ImageSDCardCacheDemo extends BaseActivity {
         IMAGE_SD_CACHE.setContext(context);
         IMAGE_SD_CACHE.setCacheFolder(DEFAULT_CACHE_FOLDER);
 
-        SlideOnePageGallery imageGallery = (SlideOnePageGallery)findViewById(R.id.app_app_image_gallery);
+        SlideOnePageGallery imageGallery = (SlideOnePageGallery) findViewById(R.id.app_app_image_gallery);
         ImageAdapter adapter = new ImageAdapter(context);
         adapter.setImageUrlList(imageUrlList);
         imageGallery.setAdapter(adapter);
@@ -64,7 +66,9 @@ public class ImageSDCardCacheDemo extends BaseActivity {
         super.onDestroy();
     }
 
-    /** image cache **/
+    /**
+     * image cache *
+     */
     public static final ImageSDCardCache IMAGE_SD_CACHE = new ImageSDCardCache();
 
     static {
@@ -75,15 +79,15 @@ public class ImageSDCardCacheDemo extends BaseActivity {
 
             /**
              * callback function after get image successfully, run on ui thread
-             * 
-             * @param imageUrl imageUrl
+             *
+             * @param imageUrl  imageUrl
              * @param imagePath image path
-             * @param view view need the image
+             * @param view      view need the image
              * @param isInCache whether already in cache or got realtime
              */
             @Override
             public void onGetSuccess(String imageUrl, String imagePath, View view, boolean isInCache) {
-                ImageView imageView = (ImageView)view;
+                ImageView imageView = (ImageView) view;
 
                 // avoid oom caused by bitmap size exceeds VM budget
                 BitmapFactory.Options option = new BitmapFactory.Options();
@@ -102,9 +106,9 @@ public class ImageSDCardCacheDemo extends BaseActivity {
 
             /**
              * callback function before get image, run on ui thread
-             * 
+             *
              * @param imageUrl imageUrl
-             * @param view view need the image
+             * @param view     view need the image
              */
             @Override
             public void onPreGet(String imageUrl, View view) {
@@ -115,25 +119,26 @@ public class ImageSDCardCacheDemo extends BaseActivity {
             public void onGetNotInCache(String imageUrl, View view) {
                 // you can do something when image not in cache, for example set default image
                 if (view != null && view instanceof ImageView) {
-                    ((ImageView)view).setImageResource(R.drawable.trinea);
-                    ((ImageView)view).setScaleType(ScaleType.CENTER);
+                    ((ImageView) view).setImageResource(R.drawable.trinea);
+                    ((ImageView) view).setScaleType(ScaleType.CENTER);
                 }
             }
 
             /**
              * callback function after get image failed, run on ui thread
-             * 
-             * @param imageUrl imageUrl
-             * @param imagePath image path
-             * @param view view need the image
+             *
+             * @param imageUrl     imageUrl
+             * @param imagePath    image path
+             * @param view         view need the image
              * @param failedReason failed reason for get image
              */
             @Override
             public void onGetFailed(String imageUrl, String imagePath, View view, FailedReason failedReason) {
                 Log.e(TAG_CACHE,
-                      new StringBuilder(128).append("get image ").append(imageUrl).append(" error, failed type is: ")
-                                            .append(failedReason.getFailedType()).append(", failed reason is: ")
-                                            .append(failedReason.getCause().getMessage()).toString());
+                        new StringBuilder(128).append("get image ").append(imageUrl).append(" error, failed type is: ")
+                                .append(failedReason.getFailedType()).append(", failed reason is: ")
+                                .append(failedReason.getCause().getMessage()).toString()
+                );
             }
         };
         IMAGE_SD_CACHE.setOnImageSDCallbackListener(imageCallBack);
@@ -158,7 +163,7 @@ public class ImageSDCardCacheDemo extends BaseActivity {
 
     /**
      * scale image to fixed height and weight
-     * 
+     *
      * @param imagePath
      * @return
      */
@@ -176,8 +181,8 @@ public class ImageSDCardCacheDemo extends BaseActivity {
         return scale;
     }
 
-    private static int   IMAGE_MAX_WIDTH  = 480;
-    private static int   IMAGE_MAX_HEIGHT = 960;
+    private static int IMAGE_MAX_WIDTH = 480;
+    private static int IMAGE_MAX_HEIGHT = 960;
 
     private List<String> imageUrlList;
 
@@ -199,9 +204,9 @@ public class ImageSDCardCacheDemo extends BaseActivity {
     private static class ImageAdapter extends BaseAdapter {
 
         private LayoutInflater inflater;
-        public List<String>    imageUrlList;
+        public List<String> imageUrlList;
 
-        public ImageAdapter(Context context){
+        public ImageAdapter(Context context) {
             super();
             inflater = LayoutInflater.from(context);
         }
@@ -227,10 +232,10 @@ public class ImageSDCardCacheDemo extends BaseActivity {
             if (convertView == null) {
                 convertView = inflater.inflate(R.layout.image_list_item, null);
                 holder = new ViewHolder();
-                holder.imageView = (ImageView)convertView.findViewById(R.id.image_list_image);
+                holder.imageView = (ImageView) convertView.findViewById(R.id.image_list_image);
                 convertView.setTag(holder);
             } else {
-                holder = (ViewHolder)convertView.getTag();
+                holder = (ViewHolder) convertView.getTag();
             }
 
             IMAGE_SD_CACHE.get(imageUrlList.get(position), holder.imageView);
@@ -243,7 +248,7 @@ public class ImageSDCardCacheDemo extends BaseActivity {
 
         /**
          * ViewHolder
-         * 
+         *
          * @author Trinea 2012-11-22
          */
         static class ViewHolder {

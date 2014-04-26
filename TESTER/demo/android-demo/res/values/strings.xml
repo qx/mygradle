@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="app_name">Trinea Android Demo</string>
-    
+
     <string name="imagesdcardcache_demo_activity_title">ImageSDCardCache Demo</string>
     <string name="httpcache_demo_activity_title">HttpCache Demo</string>
     <string name="imagecache_demo_activity_title">ImageCache Demo</string>
@@ -19,7 +19,7 @@
     <string name="intent_demo_activity_title">Intent Demo</string>
     <string name="service_demo_activity_title">Service Demo</string>
     <string name="broadcastreceiver_demo_activity_title">BroadcastReceiver Demo</string>
-        
+
     <string name="send_general_broadcast">send general broadcast</string>
     <string name="send_local_broadcast">send local broadcast</string>
     <string name="send_ordered_broadcast">send ordered broadcast</string>
@@ -34,7 +34,7 @@
     <string name="ordered_broadcast_medium_cancel_tip">Medium priority receiver receive and calcel broadcast deliver, content is： <xliff:g>%1$s</xliff:g>, last receiver is <xliff:g>%2$s</xliff:g></string>
     <string name="ordered_broadcast_low_tip">Low priority receiver receive, content is: <xliff:g>%1$s</xliff:g>, last receiver is <xliff:g>%2$s</xliff:g></string>
     <string name="ordered_broadcast_tip">Default priority receiver receive, content is:  <xliff:g>%1$s</xliff:g>, last receiver is <xliff:g>%2$s</xliff:g></string>
- 
+
     <string name="start_general_service">start general service</string>
     <string name="stop_general_service">stop_general service</string>
     <string name="start_intent_service">start intent service</string>
@@ -47,7 +47,7 @@
     <string name="operate_value_success">Add value success, current value is:<xliff:g>%1$s</xliff:g></string>
     <string name="operate_value_tip">Current value is: <xliff:g>%1$s</xliff:g></string>
     <string name="bind_service_tip">Please bind service first</string>
-       
+
     <string name="app_status_download">click to download</string>
     <string name="app_status_downloaded">downloaded, click to download again</string>
     <string name="app_status_download_fail">download fail, click to download again</string>
@@ -59,22 +59,22 @@
     <string name="app_status_pause">Pause</string>
     <string name="app_status_downloading">downloading</string>
     <string name="tip_download_file">file will be saved to sdcard, the path is: </string>
-    
+
     <string name="auto_scroll_view_pager_single">Single ViewPager</string>
     <string name="auto_scroll_view_pager_inner">ViewPager in ViewPager</string>
-    
+
     <string name="update_at">updated at:&#160;</string>
     <string name="github">GitHub</string>
     <string name="github_tip">TrineaAndroidCommon on GitHub</string>
-    
+
     <string name="image_content">image</string>
     <string name="profile">Profile:&#160;</string>
     <string name="description">Description:&#160;</string>
     <string name="http_cache_get">Get content</string>
-    
+
     <string name="drop_down_tip">Pull down to refresh or scroll to bottom to load more</string>
     <string name="on_border_tip">Scroll to top or bottom to experience</string>
-        
+
     <string name="desc_search_view">SearchView Desc And Implement Search Tip</string>
     <string name="desc_view_pager_multi_page">Viewpager With Multi Page</string>
     <string name="desc_download_manager">Download Manager Usage</string>

@@ -1,32 +1,32 @@
 package cn.trinea.android.demo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.os.Bundle;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.widget.TextView;
 import cn.trinea.android.demo.adapter.ImagePagerAdapter;
 import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * AutoScrollViewPagerSingleDemo
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2014-2-22
  */
 public class AutoScrollViewPagerSingleDemo extends BaseActivity {
 
     private AutoScrollViewPager viewPager;
-    private TextView            indexText;
+    private TextView indexText;
 
-    private List<Integer>       imageIdList;
+    private List<Integer> imageIdList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.auto_scroll_view_pager_single_demo);
 
-        viewPager = (AutoScrollViewPager)findViewById(R.id.view_pager);
-        indexText = (TextView)findViewById(R.id.view_pager_index);
+        viewPager = (AutoScrollViewPager) findViewById(R.id.view_pager);
+        indexText = (TextView) findViewById(R.id.view_pager_index);
 
         imageIdList = new ArrayList<Integer>();
         imageIdList.add(R.drawable.banner1);

@@ -1,13 +1,5 @@
 package cn.trinea.android.common.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-
 import android.content.Context;
 import android.os.AsyncTask;
 import cn.trinea.android.common.constant.HttpConstants;
@@ -16,11 +8,15 @@ import cn.trinea.android.common.dao.impl.HttpCacheDaoImpl;
 import cn.trinea.android.common.entity.HttpRequest;
 import cn.trinea.android.common.entity.HttpResponse;
 import cn.trinea.android.common.service.impl.ImageCache;
-import cn.trinea.android.common.util.ArrayUtils;
-import cn.trinea.android.common.util.HttpUtils;
-import cn.trinea.android.common.util.SqliteUtils;
-import cn.trinea.android.common.util.StringUtils;
-import cn.trinea.android.common.util.SystemUtils;
+import cn.trinea.android.common.util.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 /**
  * <strong>Http Cache</strong><br/>
@@ -43,22 +39,28 @@ import cn.trinea.android.common.util.SystemUtils;
  * <li>{@link #httpGetString(HttpRequest)}</li>
  * <li>{@link #httpGetString(String)}</li>
  * </ul>
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-11-1
  */
 public class HttpCache {
 
-    private Context                   context;
+    private Context context;
 
-    /** http memory cache **/
+    /**
+     * http memory cache *
+     */
     private Map<String, HttpResponse> cache;
-    /** dao to get data from http db cache **/
-    private HttpCacheDao              httpCacheDao;
-    private int                       type                 = -1;
+    /**
+     * dao to get data from http db cache *
+     */
+    private HttpCacheDao httpCacheDao;
+    private int type = -1;
 
-    /** Default {@link Executor} that be used to execute tasks in parallel. **/
-    public static final Executor      THREAD_POOL_EXECUTOR = Executors
-                                                                   .newFixedThreadPool(SystemUtils.DEFAULT_THREAD_POOL_SIZE);
+    /**
+     * Default {@link Executor} that be used to execute tasks in parallel. *
+     */
+    public static final Executor THREAD_POOL_EXECUTOR = Executors
+            .newFixedThreadPool(SystemUtils.DEFAULT_THREAD_POOL_SIZE);
 
     public HttpCache(Context context) {
         if (context == null) {
@@ -71,9 +73,9 @@ public class HttpCache {
 
     /**
      * waiting to be perfect^_^
-     * 
+     *
      * @param context
-     * @param type get httpResponse whose type is type into memory as primary cache to improve performance
+     * @param type    get httpResponse whose type is type into memory as primary cache to improve performance
      */
     private HttpCache(Context context, int type) {
         this(context);
@@ -83,7 +85,7 @@ public class HttpCache {
 
     /**
      * get httpResponse whose type is type into memory as primary cache to improve performance
-     * 
+     *
      * @param type
      */
     private void initData(int type) {
@@ -101,7 +103,7 @@ public class HttpCache {
      * synchronous.</li>
      * <li>If you want get data asynchronous, use {@link HttpCache#httpGet(HttpRequest, HttpCacheListener)}</li>
      * </ul>
-     * 
+     *
      * @param httpRequest
      * @return the response of the url, if null represents http error
      */
@@ -146,10 +148,10 @@ public class HttpCache {
      * <li>If you want get data synchronous, use {@link HttpCache#httpGet(HttpRequest)} or
      * {@link HttpCache#httpGetString(HttpRequest)}</li>
      * </ul>
-     * 
+     *
      * @param url
      * @param listener listener which can do something before or after HttpGet. this can be null if you not want to do
-     *        something
+     *                 something
      */
     public void httpGet(String url, HttpCacheListener listener) {
         new HttpCacheStringAsyncTask(listener).executeOnExecutor(THREAD_POOL_EXECUTOR, url);
@@ -162,10 +164,10 @@ public class HttpCache {
      * <li>If you want get data synchronous, use {@link HttpCache#httpGet(HttpRequest)} or
      * {@link HttpCache#httpGetString(HttpRequest)}</li>
      * </ul>
-     * 
+     *
      * @param request
      * @param listener listener which can do something before or after HttpGet. this can be null if you not want to do
-     *        something
+     *                 something
      */
     public void httpGet(HttpRequest request, HttpCacheListener listener) {
         new HttpCacheRequestAsyncTask(listener).executeOnExecutor(THREAD_POOL_EXECUTOR, request);
@@ -179,7 +181,7 @@ public class HttpCache {
      * synchronous.</li>
      * <li>If you want get data asynchronous, use {@link HttpCache#httpGet(HttpRequest, HttpCacheListener)}</li>
      * </ul>
-     * 
+     *
      * @param url
      * @return the response of the url, if null represents http error
      */
@@ -195,7 +197,7 @@ public class HttpCache {
      * synchronous.</li>
      * <li>If you want get data asynchronous, use {@link HttpCache#httpGet(String, HttpCacheListener)}</li>
      * </ul>
-     * 
+     *
      * @param url
      * @return the response body of the url, if null represents http error
      */
@@ -212,7 +214,7 @@ public class HttpCache {
      * synchronous.</li>
      * <li>If you want get data asynchronous, use {@link HttpCache#httpGet(HttpRequest, HttpCacheListener)}</li>
      * </ul>
-     * 
+     *
      * @param httpRequest
      * @return the response body of the url, if null represents http error
      */
@@ -222,7 +224,7 @@ public class HttpCache {
 
     /**
      * whether this cache contains the specified url.
-     * 
+     *
      * @param url
      * @return true if this cache contains the specified url and the element is valid, false otherwise.
      */
@@ -232,7 +234,7 @@ public class HttpCache {
 
     /**
      * whether the element of the specified url has invalided
-     * 
+     *
      * @param url
      * @return true if the element of the specified url has invalided, false otherwise.
      */
@@ -250,7 +252,7 @@ public class HttpCache {
 
     /**
      * HttpCacheListener, can do something before or after HttpGet
-     * 
+     *
      * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-11-15
      */
     public static abstract class HttpCacheListener {
@@ -261,23 +263,25 @@ public class HttpCache {
          * <li>this can be null if you not want to do something</li>
          * </ul>
          */
-        protected void onPreGet() {}
+        protected void onPreGet() {
+        }
 
         /**
          * Runs on the UI thread after httpGet. The httpResponse is returned by httpGet.
          * <ul>
          * <li>this can be null if you not want to do something</li>
          * </ul>
-         * 
+         *
          * @param httpResponse get by the url
-         * @param isInCache the data responsed to the url whether is in cache
+         * @param isInCache    the data responsed to the url whether is in cache
          */
-        protected void onPostGet(HttpResponse httpResponse, boolean isInCache) {}
+        protected void onPostGet(HttpResponse httpResponse, boolean isInCache) {
+        }
     }
 
     /**
      * get type, waiting to be perfect^_^
-     * 
+     *
      * @return the type
      */
     private int getType() {
@@ -290,7 +294,7 @@ public class HttpCache {
      * <li>put response to db, if {@link HttpResponse#getType()} == {@link HttpCache#getType()}, also put into memory
      * cache</li>
      * </ul>
-     * 
+     *
      * @param httpResponse
      * @return if insert into db error, return null, otherwise return HttpResponse
      */
@@ -308,12 +312,12 @@ public class HttpCache {
 
     /**
      * get from memory cache first, if not exist in memory cache, get from db
-     * 
+     *
      * @param url
      * @return <ul>
-     *         <li>if neither exit in memory cache nor db, return null</li>
-     *         <li>if is expired, return null, otherwise return cache response</li>
-     *         </ul>
+     * <li>if neither exit in memory cache nor db, return null</li>
+     * <li>if is expired, return null, otherwise return cache response</li>
+     * </ul>
      */
     public HttpResponse getFromCache(String url) {
         if (StringUtils.isEmpty(url)) {
@@ -329,7 +333,7 @@ public class HttpCache {
 
     /**
      * AsyncTask to get data by String url
-     * 
+     *
      * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-11-15
      */
     private class HttpCacheStringAsyncTask extends AsyncTask<String, Void, HttpResponse> {
@@ -362,7 +366,7 @@ public class HttpCache {
 
     /**
      * AsyncTask to get data by HttpRequest
-     * 
+     *
      * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-11-15
      */
     private class HttpCacheRequestAsyncTask extends AsyncTask<HttpRequest, Void, HttpResponse> {

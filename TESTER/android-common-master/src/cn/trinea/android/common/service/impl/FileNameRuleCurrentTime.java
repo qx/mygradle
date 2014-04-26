@@ -1,10 +1,10 @@
 package cn.trinea.android.common.service.impl;
 
-import java.util.Calendar;
-
 import cn.trinea.android.common.service.FileNameRule;
 import cn.trinea.android.common.util.FileUtils;
 import cn.trinea.android.common.util.StringUtils;
+
+import java.util.Calendar;
 
 /**
  * File name rule, used when saving images in {@link ImageSDCardCache}
@@ -12,14 +12,14 @@ import cn.trinea.android.common.util.StringUtils;
  * <li>use {@link TimeRule} as file name</li>
  * <li>use file suffix in url as target file suffix</li>
  * </ul>
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2012-7-6
  */
 public class FileNameRuleCurrentTime implements FileNameRule {
 
     private static final long serialVersionUID = 1L;
 
-    private TimeRule          timeRule;
+    private TimeRule timeRule;
 
     /**
      * @param timeRule see {@link TimeRule}
@@ -94,7 +94,7 @@ public class FileNameRuleCurrentTime implements FileNameRule {
      * <li>{@link #TO_MILLIS} current time in milliseconds, E.g., at 2012-7-6 14:37:58.365 PM result is 1341556678365</li>
      * <li>{@link #TO_SECONDS} current time in seconds, E.g., at 2012-7-6 14:37:58.365 PM result is 1341556678</li>
      * </ul>
-     * 
+     *
      * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2012-7-6
      */
     public enum TimeRule {

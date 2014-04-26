@@ -1,5 +1,11 @@
 package cn.trinea.android.common.util;
 
+import android.os.AsyncTask;
+import cn.trinea.android.common.constant.HttpConstants;
+import cn.trinea.android.common.entity.HttpRequest;
+import cn.trinea.android.common.entity.HttpResponse;
+import cn.trinea.android.common.service.HttpCache;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,12 +16,6 @@ import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
-
-import android.os.AsyncTask;
-import cn.trinea.android.common.constant.HttpConstants;
-import cn.trinea.android.common.entity.HttpRequest;
-import cn.trinea.android.common.entity.HttpResponse;
-import cn.trinea.android.common.service.HttpCache;
 
 /**
  * HttpUtils
@@ -43,19 +43,27 @@ import cn.trinea.android.common.service.HttpCache;
  * <li>{@link #appendParaToUrl(String, String, String)}</li>
  * <li>{@link #parseGmtTime(String)}</li>
  * </ul>
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-5-12
  */
 public class HttpUtils {
 
-    /** url and para separator **/
+    /**
+     * url and para separator *
+     */
     public static final String URL_AND_PARA_SEPARATOR = "?";
-    /** parameters separator **/
-    public static final String PARAMETERS_SEPARATOR   = "&";
-    /** paths separator **/
-    public static final String PATHS_SEPARATOR        = "/";
-    /** equal sign **/
-    public static final String EQUAL_SIGN             = "=";
+    /**
+     * parameters separator *
+     */
+    public static final String PARAMETERS_SEPARATOR = "&";
+    /**
+     * paths separator *
+     */
+    public static final String PATHS_SEPARATOR = "/";
+    /**
+     * equal sign *
+     */
+    public static final String EQUAL_SIGN = "=";
 
     /**
      * http get synchronous
@@ -63,7 +71,7 @@ public class HttpUtils {
      * <li>use gzip compression default</li>
      * <li>use bufferedReader to improve the reading speed</li>
      * </ul>
-     * 
+     *
      * @param request
      * @return the response of the url, if null represents http error
      */
@@ -79,7 +87,7 @@ public class HttpUtils {
             try {
                 HttpResponse response = new HttpResponse(request.getUrl());
                 // default gzip encode
-                con = (HttpURLConnection)url.openConnection();
+                con = (HttpURLConnection) url.openConnection();
                 setURLConnection(request, con);
                 input = new BufferedReader(new InputStreamReader(con.getInputStream()));
                 StringBuilder sb = new StringBuilder();
@@ -115,7 +123,7 @@ public class HttpUtils {
 
     /**
      * http get synchronous
-     * 
+     *
      * @param httpUrl
      * @return the response of the url, if null represents http error
      * @see HttpUtils#httpGet(HttpRequest)
@@ -126,7 +134,7 @@ public class HttpUtils {
 
     /**
      * http get synchronous
-     * 
+     *
      * @param request
      * @return the content of the url, if null represents http error
      * @see HttpUtils#httpGet(HttpRequest)
@@ -138,7 +146,7 @@ public class HttpUtils {
 
     /**
      * http get synchronous
-     * 
+     *
      * @param httpUrl
      * @return the content of the url, if null represents http error
      * @see HttpUtils#httpGet(HttpRequest)
@@ -154,10 +162,10 @@ public class HttpUtils {
      * <li>It gets data from network asynchronous.</li>
      * <li>If you want get data synchronous, use {@link #httpGet(HttpRequest)} or {@link #httpGetString(HttpRequest)}</li>
      * </ul>
-     * 
+     *
      * @param url
      * @param listener listener which can do something before or after HttpGet. this can be null if you not want to do
-     *        something
+     *                 something
      */
     public static void httpGet(String url, HttpListener listener) {
         new HttpStringAsyncTask(listener).execute(url);
@@ -170,10 +178,10 @@ public class HttpUtils {
      * <li>If you want get data synchronous, use {@link HttpCache#httpGet(HttpRequest)} or
      * {@link HttpCache#httpGetString(HttpRequest)}</li>
      * </ul>
-     * 
+     *
      * @param request
      * @param listener listener which can do something before or after HttpGet. this can be null if you not want to do
-     *        something
+     *                 something
      */
     public static void httpGet(HttpRequest request, HttpListener listener) {
         new HttpRequestAsyncTask(listener).execute(request);
@@ -185,7 +193,7 @@ public class HttpUtils {
      * <li>use gzip compression default</li>
      * <li>use bufferedReader to improve the reading speed</li>
      * </ul>
-     * 
+     *
      * @param httpUrl
      * @param paras
      * @return the response of the url, if null represents http error
@@ -202,7 +210,7 @@ public class HttpUtils {
             try {
                 HttpResponse response = new HttpResponse(request.getUrl());
                 // default gzip encode
-                con = (HttpURLConnection)url.openConnection();
+                con = (HttpURLConnection) url.openConnection();
                 setURLConnection(request, con);
                 con.setRequestMethod("POST");
                 con.setDoOutput(true);
@@ -244,7 +252,7 @@ public class HttpUtils {
 
     /**
      * http post
-     * 
+     *
      * @param httpUrl
      * @return the response of the url, if null represents http error
      * @see HttpUtils#httpPost(HttpRequest)
@@ -255,7 +263,7 @@ public class HttpUtils {
 
     /**
      * http post
-     * 
+     *
      * @param httpUrl
      * @return the content of the url, if null represents http error
      * @see HttpUtils#httpPost(HttpRequest)
@@ -267,10 +275,10 @@ public class HttpUtils {
 
     /**
      * http post
-     * 
+     *
      * @param httpUrl
      * @param parasMap paras map, key is para name, value is para value. will be transfrom to String by
-     *        {@link HttpUtils#joinParas(Map)}
+     *                 {@link HttpUtils#joinParas(Map)}
      * @return the content of the url, if null represents http error
      * @see HttpUtils#httpPost(HttpRequest)
      */
@@ -281,15 +289,15 @@ public class HttpUtils {
 
     /**
      * join url and paras
-     * 
+     * <p/>
      * <pre>
      * getUrlWithParas(null, {(a, b)})                        =   "?a=b";
      * getUrlWithParas("baidu.com", {})                       =   "baidu.com";
      * getUrlWithParas("baidu.com", {(a, b), (i, j)})         =   "baidu.com?a=b&i=j";
      * getUrlWithParas("baidu.com", {(a, b), (i, j), (c, d)}) =   "baidu.com?a=b&i=j&c=d";
      * </pre>
-     * 
-     * @param url url
+     *
+     * @param url      url
      * @param parasMap paras map, key is para name, value is para value
      * @return if url is null, process it as empty string
      */
@@ -304,7 +312,7 @@ public class HttpUtils {
 
     /**
      * join url and encoded paras
-     * 
+     *
      * @param url
      * @param parasMap
      * @return
@@ -322,7 +330,7 @@ public class HttpUtils {
 
     /**
      * join paras
-     * 
+     *
      * @param parasMap paras map, key is para name, value is para value
      * @return join key and value with {@link #EQUAL_SIGN}, join keys with {@link #PARAMETERS_SEPARATOR}
      */
@@ -334,7 +342,7 @@ public class HttpUtils {
         StringBuilder paras = new StringBuilder();
         Iterator<Map.Entry<String, String>> ite = parasMap.entrySet().iterator();
         while (ite.hasNext()) {
-            Map.Entry<String, String> entry = (Map.Entry<String, String>)ite.next();
+            Map.Entry<String, String> entry = (Map.Entry<String, String>) ite.next();
             paras.append(entry.getKey()).append(EQUAL_SIGN).append(entry.getValue());
             if (ite.hasNext()) {
                 paras.append(PARAMETERS_SEPARATOR);
@@ -345,7 +353,7 @@ public class HttpUtils {
 
     /**
      * join paras with encoded value
-     * 
+     *
      * @param parasMap
      * @return
      * @see #joinParas(Map)
@@ -357,7 +365,7 @@ public class HttpUtils {
             Iterator<Map.Entry<String, String>> ite = parasMap.entrySet().iterator();
             try {
                 while (ite.hasNext()) {
-                    Map.Entry<String, String> entry = (Map.Entry<String, String>)ite.next();
+                    Map.Entry<String, String> entry = (Map.Entry<String, String>) ite.next();
                     paras.append(entry.getKey()).append(EQUAL_SIGN).append(StringUtils.utf8Encode(entry.getValue()));
                     if (ite.hasNext()) {
                         paras.append(PARAMETERS_SEPARATOR);
@@ -372,7 +380,7 @@ public class HttpUtils {
 
     /**
      * append a key and value pair to url
-     * 
+     *
      * @param url
      * @param paraKey
      * @param paraValue
@@ -393,11 +401,11 @@ public class HttpUtils {
     }
 
     private static final SimpleDateFormat GMT_FORMAT = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss z",
-                                                             Locale.ENGLISH);
+            Locale.ENGLISH);
 
     /**
      * parse gmt time to long
-     * 
+     *
      * @param gmtTime likes Thu, 11 Apr 2013 10:20:30 GMT
      * @return -1 represents exception otherwise time in milliseconds
      */
@@ -412,8 +420,8 @@ public class HttpUtils {
 
     /**
      * set HttpRequest to HttpURLConnection
-     * 
-     * @param request source request
+     *
+     * @param request       source request
      * @param urlConnection destin url connection
      */
     private static void setURLConnection(HttpRequest request, HttpURLConnection urlConnection) {
@@ -432,7 +440,7 @@ public class HttpUtils {
 
     /**
      * set HttpURLConnection property
-     * 
+     *
      * @param requestProperties
      * @param urlConnection
      */
@@ -450,9 +458,9 @@ public class HttpUtils {
 
     /**
      * set HttpURLConnection to HttpResponse
-     * 
+     *
      * @param urlConnection source url connection
-     * @param response destin response
+     * @param response      destin response
      */
     private static void setHttpResponse(HttpURLConnection urlConnection, HttpResponse response) {
         if (response == null || urlConnection == null) {
@@ -469,7 +477,7 @@ public class HttpUtils {
 
     /**
      * AsyncTask to get data by String url
-     * 
+     *
      * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-11-15
      */
     private static class HttpStringAsyncTask extends AsyncTask<String, Void, HttpResponse> {
@@ -502,7 +510,7 @@ public class HttpUtils {
 
     /**
      * AsyncTask to get data by HttpRequest
-     * 
+     *
      * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-11-15
      */
     private static class HttpRequestAsyncTask extends AsyncTask<HttpRequest, Void, HttpResponse> {
@@ -535,7 +543,7 @@ public class HttpUtils {
 
     /**
      * HttpListener, can do something before or after HttpGet
-     * 
+     *
      * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-11-15
      */
     public static abstract class HttpListener {
@@ -546,16 +554,18 @@ public class HttpUtils {
          * <li>this can be null if you not want to do something</li>
          * </ul>
          */
-        protected void onPreGet() {}
+        protected void onPreGet() {
+        }
 
         /**
          * Runs on the UI thread after httpGet. The httpResponse is returned by httpGet.
          * <ul>
          * <li>this can be null if you not want to do something</li>
          * </ul>
-         * 
+         *
          * @param httpResponse get by the url
          */
-        protected void onPostGet(HttpResponse httpResponse) {}
+        protected void onPostGet(HttpResponse httpResponse) {
+        }
     }
 }

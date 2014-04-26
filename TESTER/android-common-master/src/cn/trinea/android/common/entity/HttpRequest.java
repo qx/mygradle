@@ -1,10 +1,10 @@
 package cn.trinea.android.common.entity;
 
+import cn.trinea.android.common.util.HttpUtils;
+
 import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Map;
-
-import cn.trinea.android.common.util.HttpUtils;
 
 /**
  * <strong>HttpRequest</strong><br/>
@@ -22,14 +22,14 @@ import cn.trinea.android.common.util.HttpUtils;
  * <li>{@link #setRequestProperty(String, String)}</li>
  * <li>{@link #setRequestProperties(Map)}</li>
  * </ul>
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-5-12
  */
 public class HttpRequest {
 
-    private String              url;
-    private int                 connectTimeout;
-    private int                 readTimeout;
+    private String url;
+    private int connectTimeout;
+    private int readTimeout;
     private Map<String, String> parasMap;
     private Map<String, String> requestProperties;
 
@@ -92,7 +92,7 @@ public class HttpRequest {
 
     /**
      * get paras map
-     * 
+     *
      * @return
      */
     public Map<String, String> getParasMap() {
@@ -101,7 +101,7 @@ public class HttpRequest {
 
     /**
      * set paras map
-     * 
+     *
      * @param parasMap
      */
     public void setParasMap(Map<String, String> parasMap) {
@@ -134,7 +134,7 @@ public class HttpRequest {
 
     /**
      * same to {@link #setRequestProperty(String, String)} filed is User-Agent
-     * 
+     *
      * @param value
      * @see URLConnection#setRequestProperty(String, String)
      */

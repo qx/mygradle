@@ -7,7 +7,7 @@ import cn.trinea.android.common.constant.DbConstants;
 
 /**
  * db helper
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-10-21
  */
 public class DbHelper extends SQLiteOpenHelper {
@@ -33,5 +33,6 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    }
 }

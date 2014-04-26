@@ -1,18 +1,12 @@
 package cn.trinea.android.common.util;
 
-import java.lang.reflect.Field;
-
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
+import android.widget.*;
 import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+
+import java.lang.reflect.Field;
 
 /**
  * ViewUtils
@@ -35,14 +29,14 @@ import android.widget.TextView;
  * <strong>set other info</strong>
  * <li>{@link ViewUtils#setSearchViewOnClickListener(View, OnClickListener)}</li>
  * </ul>
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-12-24
  */
 public class ViewUtils {
 
     /**
      * get ListView height according to every children
-     * 
+     *
      * @param view
      * @return
      */
@@ -105,12 +99,12 @@ public class ViewUtils {
     // return view.getNumColumns();
     // }
 
-    private static final String CLASS_NAME_GRID_VIEW        = "android.widget.GridView";
+    private static final String CLASS_NAME_GRID_VIEW = "android.widget.GridView";
     private static final String FIELD_NAME_VERTICAL_SPACING = "mVerticalSpacing";
 
     /**
      * get GridView vertical spacing
-     * 
+     *
      * @param view
      * @return
      */
@@ -122,7 +116,7 @@ public class ViewUtils {
             demo = Class.forName(CLASS_NAME_GRID_VIEW);
             Field field = demo.getDeclaredField(FIELD_NAME_VERTICAL_SPACING);
             field.setAccessible(true);
-            verticalSpacing = (Integer)field.get(view);
+            verticalSpacing = (Integer) field.get(view);
             return verticalSpacing;
         } catch (Exception e) {
             /**
@@ -136,7 +130,7 @@ public class ViewUtils {
 
     /**
      * get AbsListView height according to every children
-     * 
+     *
      * @param view
      * @return
      */
@@ -161,7 +155,7 @@ public class ViewUtils {
 
     /**
      * set view height
-     * 
+     *
      * @param view
      * @param height
      */
@@ -186,7 +180,7 @@ public class ViewUtils {
 
     /**
      * set ListView height which is calculated by {@link # getListViewHeightBasedOnChildren(ListView)}
-     * 
+     *
      * @param view
      * @return
      */
@@ -196,7 +190,7 @@ public class ViewUtils {
 
     /**
      * set AbsListView height which is calculated by {@link # getAbsListViewHeightBasedOnChildren(AbsListView)}
-     * 
+     *
      * @param view
      * @return
      */
@@ -206,13 +200,13 @@ public class ViewUtils {
 
     /**
      * set SearchView OnClickListener
-     * 
+     *
      * @param v
      * @param listener
      */
     public static void setSearchViewOnClickListener(View v, OnClickListener listener) {
         if (v instanceof ViewGroup) {
-            ViewGroup group = (ViewGroup)v;
+            ViewGroup group = (ViewGroup) v;
             int count = group.getChildCount();
             for (int i = 0; i < count; i++) {
                 View child = group.getChildAt(i);
@@ -221,7 +215,7 @@ public class ViewUtils {
                 }
 
                 if (child instanceof TextView) {
-                    TextView text = (TextView)child;
+                    TextView text = (TextView) child;
                     text.setFocusable(false);
                 }
                 child.setOnClickListener(listener);

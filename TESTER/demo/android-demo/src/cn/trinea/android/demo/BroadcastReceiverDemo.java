@@ -15,36 +15,36 @@ import android.widget.TextView;
 
 /**
  * BroadcastReceiver Demo, include general broadcast, local broadcast, ordered broadcast,sticky broadcast
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2012-9-20
  */
 public class BroadcastReceiverDemo extends BaseActivity {
 
-    private final static String                    ACTION_GENERAL_SEND = "cn.trinea.android.demo.BroadcastReceiverDemo.sendGeneralBroadcast";
-    private final static String                    ACTION_LOCAL_SEND   = "cn.trinea.android.demo.BroadcastReceiverDemo.sendLocalBroadcast";
-    private final static String                    ACTION_ORDERED_SEND = "cn.trinea.android.demo.BroadcastReceiverDemo.sendOrderedBroadcast";
-    private final static String                    ACTION_STICKY_SEND  = "cn.trinea.android.demo.BroadcastReceiverDemo.sendStickyBroadcast";
+    private final static String ACTION_GENERAL_SEND = "cn.trinea.android.demo.BroadcastReceiverDemo.sendGeneralBroadcast";
+    private final static String ACTION_LOCAL_SEND = "cn.trinea.android.demo.BroadcastReceiverDemo.sendLocalBroadcast";
+    private final static String ACTION_ORDERED_SEND = "cn.trinea.android.demo.BroadcastReceiverDemo.sendOrderedBroadcast";
+    private final static String ACTION_STICKY_SEND = "cn.trinea.android.demo.BroadcastReceiverDemo.sendStickyBroadcast";
 
-    private final static String                    MSG_KEY             = "msg";
-    private final static String                    RUSULT_MSG_KEY      = "resultMsg";
-    private boolean                                isStickyRegister    = false;
+    private final static String MSG_KEY = "msg";
+    private final static String RUSULT_MSG_KEY = "resultMsg";
+    private boolean isStickyRegister = false;
 
-    private MyBroadcastReceiver                    generalReceiver;
-    private OrderedBroadcastReceiverPriorityHigh   orderedReceiverHigh;
+    private MyBroadcastReceiver generalReceiver;
+    private OrderedBroadcastReceiverPriorityHigh orderedReceiverHigh;
     private OrderedBroadcastReceiverPriorityMedium orderedReceiverMed;
-    private OrderedBroadcastReceiverPriorityLow    orderedReceiverLow;
-    private LocalBroadcastReceiver                 localReceiver;
-    private StickyBroadcastReceiver                stickyReceiver;
+    private OrderedBroadcastReceiverPriorityLow orderedReceiverLow;
+    private LocalBroadcastReceiver localReceiver;
+    private StickyBroadcastReceiver stickyReceiver;
 
-    private Button                                 sendGeneralBtn;
-    private Button                                 sendLocalBtn;
-    private Button                                 sendOrderedBtn;
-    private Button                                 sendStickyBtn;
+    private Button sendGeneralBtn;
+    private Button sendLocalBtn;
+    private Button sendOrderedBtn;
+    private Button sendStickyBtn;
 
-    private TextView                               generalMsg;
-    private TextView                               localMsg;
-    private TextView                               orderedMsg;
-    private TextView                               stickyMsg;
+    private TextView generalMsg;
+    private TextView localMsg;
+    private TextView orderedMsg;
+    private TextView stickyMsg;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,12 +54,12 @@ public class BroadcastReceiverDemo extends BaseActivity {
     }
 
     private void initView() {
-        generalMsg = (TextView)findViewById(R.id.general_broadcast_msg);
-        localMsg = (TextView)findViewById(R.id.local_broadcast_msg);
-        orderedMsg = (TextView)findViewById(R.id.ordered_broadcast_msg);
-        stickyMsg = (TextView)findViewById(R.id.sticky_broadcast_msg);
+        generalMsg = (TextView) findViewById(R.id.general_broadcast_msg);
+        localMsg = (TextView) findViewById(R.id.local_broadcast_msg);
+        orderedMsg = (TextView) findViewById(R.id.ordered_broadcast_msg);
+        stickyMsg = (TextView) findViewById(R.id.sticky_broadcast_msg);
 
-        sendGeneralBtn = (Button)findViewById(R.id.send_general_broadcast);
+        sendGeneralBtn = (Button) findViewById(R.id.send_general_broadcast);
         sendGeneralBtn.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -70,7 +70,7 @@ public class BroadcastReceiverDemo extends BaseActivity {
             }
         });
 
-        sendLocalBtn = (Button)findViewById(R.id.send_local_broadcast);
+        sendLocalBtn = (Button) findViewById(R.id.send_local_broadcast);
         sendLocalBtn.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -81,7 +81,7 @@ public class BroadcastReceiverDemo extends BaseActivity {
             }
         });
 
-        sendOrderedBtn = (Button)findViewById(R.id.send_ordered_broadcast);
+        sendOrderedBtn = (Button) findViewById(R.id.send_ordered_broadcast);
         sendOrderedBtn.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -89,11 +89,11 @@ public class BroadcastReceiverDemo extends BaseActivity {
                 Intent i = new Intent(ACTION_ORDERED_SEND);
                 i.putExtra(MSG_KEY, getString(R.string.ordered_broadcast_msg));
                 sendOrderedBroadcast(i, null, new OrderedBroadcastReceiverResultReceiver(), null, Activity.RESULT_OK,
-                                     null, null);
+                        null, null);
             }
         });
 
-        sendStickyBtn = (Button)findViewById(R.id.send_sticky_broadcast);
+        sendStickyBtn = (Button) findViewById(R.id.send_sticky_broadcast);
         sendStickyBtn.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -184,7 +184,7 @@ public class BroadcastReceiverDemo extends BaseActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             orderedMsg.setText(String.format(getString(R.string.ordered_broadcast_high_tip),
-                                             intent.getStringExtra(MSG_KEY)));
+                    intent.getStringExtra(MSG_KEY)));
             // modify broadcast content
             getResultExtras(true).putString(RUSULT_MSG_KEY, "High");
         }
@@ -197,18 +197,18 @@ public class BroadcastReceiverDemo extends BaseActivity {
             boolean isCancel = false;
             if (isCancel) {
                 orderedMsg.setText(orderedMsg.getText()
-                                   + "\r\n"
-                                   + String.format(getString(R.string.ordered_broadcast_medium_cancel_tip),
-                                                   intent.getStringExtra(MSG_KEY),
-                                                   getResultExtras(true).getString(RUSULT_MSG_KEY)));
+                        + "\r\n"
+                        + String.format(getString(R.string.ordered_broadcast_medium_cancel_tip),
+                        intent.getStringExtra(MSG_KEY),
+                        getResultExtras(true).getString(RUSULT_MSG_KEY)));
                 // calcel broadcast
                 abortBroadcast();
             } else {
                 orderedMsg.setText(orderedMsg.getText()
-                                   + "\r\n"
-                                   + String.format(getString(R.string.ordered_broadcast_medium_tip),
-                                                   intent.getStringExtra(MSG_KEY),
-                                                   getResultExtras(true).getString(RUSULT_MSG_KEY)));
+                        + "\r\n"
+                        + String.format(getString(R.string.ordered_broadcast_medium_tip),
+                        intent.getStringExtra(MSG_KEY),
+                        getResultExtras(true).getString(RUSULT_MSG_KEY)));
                 getResultExtras(true).putString(RUSULT_MSG_KEY, "Medium");
             }
         }
@@ -219,10 +219,10 @@ public class BroadcastReceiverDemo extends BaseActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             orderedMsg.setText(orderedMsg.getText()
-                               + "\r\n"
-                               + String.format(getString(R.string.ordered_broadcast_low_tip),
-                                               intent.getStringExtra(MSG_KEY),
-                                               getResultExtras(true).getString(RUSULT_MSG_KEY)));
+                    + "\r\n"
+                    + String.format(getString(R.string.ordered_broadcast_low_tip),
+                    intent.getStringExtra(MSG_KEY),
+                    getResultExtras(true).getString(RUSULT_MSG_KEY)));
             getResultExtras(true).putString(RUSULT_MSG_KEY, "Low");
         }
     }
@@ -232,10 +232,10 @@ public class BroadcastReceiverDemo extends BaseActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             orderedMsg.setText(orderedMsg.getText()
-                               + "\r\n"
-                               + String.format(getString(R.string.ordered_broadcast_tip),
-                                               intent.getStringExtra(MSG_KEY),
-                                               getResultExtras(true).getString(RUSULT_MSG_KEY)));
+                    + "\r\n"
+                    + String.format(getString(R.string.ordered_broadcast_tip),
+                    intent.getStringExtra(MSG_KEY),
+                    getResultExtras(true).getString(RUSULT_MSG_KEY)));
         }
     }
 }

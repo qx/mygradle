@@ -1,7 +1,5 @@
 package cn.trinea.android.demo.adapter;
 
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,17 +9,19 @@ import android.widget.ImageView;
 import cn.trinea.android.common.util.ListUtils;
 import cn.trinea.android.demo.R;
 
+import java.util.List;
+
 /**
  * image list adapter
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2012-11-22
  */
 public class ImageListAdapter extends BaseAdapter {
 
     private LayoutInflater inflater;
-    public List<Integer>   imageResIdList;
+    public List<Integer> imageResIdList;
 
-    public ImageListAdapter(Context context){
+    public ImageListAdapter(Context context) {
         super();
         inflater = LayoutInflater.from(context);
     }
@@ -47,10 +47,10 @@ public class ImageListAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.image_list_item, null);
             holder = new ViewHolder();
-            holder.imageView = (ImageView)convertView.findViewById(R.id.image_list_image);
+            holder.imageView = (ImageView) convertView.findViewById(R.id.image_list_image);
             convertView.setTag(holder);
         } else {
-            holder = (ViewHolder)convertView.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
         holder.imageView.setImageResource(imageResIdList.get(position));
         return convertView;
@@ -66,7 +66,7 @@ public class ImageListAdapter extends BaseAdapter {
 
     /**
      * ViewHolder
-     * 
+     *
      * @author Trinea 2012-11-22
      */
     static class ViewHolder {

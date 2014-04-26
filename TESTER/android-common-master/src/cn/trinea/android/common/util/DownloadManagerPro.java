@@ -1,12 +1,12 @@
 package cn.trinea.android.common.util;
 
-import java.lang.reflect.Method;
-
 import android.app.DownloadManager;
 import android.app.DownloadManager.Request;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
+
+import java.lang.reflect.Method;
 
 /**
  * DownloadManagerPro
@@ -33,27 +33,31 @@ import android.os.Build;
  * <li>{@link RequestPro#setNotiClass(String)} set noti class</li>
  * <li>{@link RequestPro#setNotiExtras(String)} set noti extras</li>
  * </ul>
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-5-4
  */
 public class DownloadManagerPro {
 
-    public static final Uri    CONTENT_URI                 = Uri.parse("content://downloads/my_downloads");
-    /** represents downloaded file above api 11 **/
-    public static final String COLUMN_LOCAL_FILENAME       = "local_filename";
-    /** represents downloaded file below api 11 **/
-    public static final String COLUMN_LOCAL_URI            = "local_uri";
+    public static final Uri CONTENT_URI = Uri.parse("content://downloads/my_downloads");
+    /**
+     * represents downloaded file above api 11 *
+     */
+    public static final String COLUMN_LOCAL_FILENAME = "local_filename";
+    /**
+     * represents downloaded file below api 11 *
+     */
+    public static final String COLUMN_LOCAL_URI = "local_uri";
 
-    public static final String METHOD_NAME_PAUSE_DOWNLOAD  = "pauseDownload";
+    public static final String METHOD_NAME_PAUSE_DOWNLOAD = "pauseDownload";
     public static final String METHOD_NAME_RESUME_DOWNLOAD = "resumeDownload";
 
-    private static boolean     isInitPauseDownload         = false;
-    private static boolean     isInitResumeDownload        = false;
+    private static boolean isInitPauseDownload = false;
+    private static boolean isInitResumeDownload = false;
 
-    private static Method      pauseDownload               = null;
-    private static Method      resumeDownload              = null;
+    private static Method pauseDownload = null;
+    private static Method resumeDownload = null;
 
-    private DownloadManager    downloadManager;
+    private DownloadManager downloadManager;
 
     public DownloadManagerPro(DownloadManager downloadManager) {
         this.downloadManager = downloadManager;
@@ -61,7 +65,7 @@ public class DownloadManagerPro {
 
     /**
      * get download status
-     * 
+     *
      * @param downloadId
      * @return
      */
@@ -71,32 +75,32 @@ public class DownloadManagerPro {
 
     /**
      * get downloaded byte, total byte
-     * 
+     *
      * @param downloadId
      * @return a int array with two elements
-     *         <ul>
-     *         <li>result[0] represents downloaded bytes, This will initially be -1.</li>
-     *         <li>result[1] represents total bytes, This will initially be -1.</li>
-     *         </ul>
+     * <ul>
+     * <li>result[0] represents downloaded bytes, This will initially be -1.</li>
+     * <li>result[1] represents total bytes, This will initially be -1.</li>
+     * </ul>
      */
     public int[] getDownloadBytes(long downloadId) {
         int[] bytesAndStatus = getBytesAndStatus(downloadId);
-        return new int[] {bytesAndStatus[0], bytesAndStatus[1]};
+        return new int[]{bytesAndStatus[0], bytesAndStatus[1]};
     }
 
     /**
      * get downloaded byte, total byte and download status
-     * 
+     *
      * @param downloadId
      * @return a int array with three elements
-     *         <ul>
-     *         <li>result[0] represents downloaded bytes, This will initially be -1.</li>
-     *         <li>result[1] represents total bytes, This will initially be -1.</li>
-     *         <li>result[2] represents download status, This will initially be 0.</li>
-     *         </ul>
+     * <ul>
+     * <li>result[0] represents downloaded bytes, This will initially be -1.</li>
+     * <li>result[1] represents total bytes, This will initially be -1.</li>
+     * <li>result[2] represents download status, This will initially be 0.</li>
+     * </ul>
      */
     public int[] getBytesAndStatus(long downloadId) {
-        int[] bytesAndStatus = new int[] {-1, -1, 0};
+        int[] bytesAndStatus = new int[]{-1, -1, 0};
         DownloadManager.Query query = new DownloadManager.Query().setFilterById(downloadId);
         Cursor c = null;
         try {
@@ -116,7 +120,7 @@ public class DownloadManagerPro {
 
     /**
      * pause download
-     * 
+     *
      * @param ids the IDs of the downloads to be paused
      * @return the number of downloads actually paused, -1 if exception or method not exist
      */
@@ -127,7 +131,7 @@ public class DownloadManagerPro {
         }
 
         try {
-            return ((Integer)pauseDownload.invoke(downloadManager, ids)).intValue();
+            return ((Integer) pauseDownload.invoke(downloadManager, ids)).intValue();
         } catch (Exception e) {
             /**
              * accept all exception, include ClassNotFoundException, NoSuchMethodException, InvocationTargetException,
@@ -140,7 +144,7 @@ public class DownloadManagerPro {
 
     /**
      * resume download
-     * 
+     *
      * @param ids the IDs of the downloads to be resumed
      * @return the number of downloads actually resumed, -1 if exception or method not exist
      */
@@ -151,7 +155,7 @@ public class DownloadManagerPro {
         }
 
         try {
-            return ((Integer)resumeDownload.invoke(downloadManager, ids)).intValue();
+            return ((Integer) resumeDownload.invoke(downloadManager, ids)).intValue();
         } catch (Exception e) {
             /**
              * accept all exception, include ClassNotFoundException, NoSuchMethodException, InvocationTargetException,
@@ -164,7 +168,7 @@ public class DownloadManagerPro {
 
     /**
      * whether exist pauseDownload and resumeDownload method in {@link DownloadManager}
-     * 
+     *
      * @return
      */
     public static boolean isExistPauseAndResumeMethod() {
@@ -203,7 +207,7 @@ public class DownloadManagerPro {
 
     /**
      * get download file name
-     * 
+     *
      * @param downloadId
      * @return
      */
@@ -213,7 +217,7 @@ public class DownloadManagerPro {
 
     /**
      * get download uri
-     * 
+     *
      * @param downloadId
      * @return
      */
@@ -223,15 +227,15 @@ public class DownloadManagerPro {
 
     /**
      * get failed code or paused reason
-     * 
+     *
      * @param downloadId
      * @return <ul>
-     *         <li>if status of downloadId is {@link DownloadManager#STATUS_PAUSED}, return
-     *         {@link #getPausedReason(long)}</li>
-     *         <li>if status of downloadId is {@link DownloadManager#STATUS_FAILED}, return {@link #getErrorCode(long)}</li>
-     *         <li>if status of downloadId is neither {@link DownloadManager#STATUS_PAUSED} nor
-     *         {@link DownloadManager#STATUS_FAILED}, return 0</li>
-     *         </ul>
+     * <li>if status of downloadId is {@link DownloadManager#STATUS_PAUSED}, return
+     * {@link #getPausedReason(long)}</li>
+     * <li>if status of downloadId is {@link DownloadManager#STATUS_FAILED}, return {@link #getErrorCode(long)}</li>
+     * <li>if status of downloadId is neither {@link DownloadManager#STATUS_PAUSED} nor
+     * {@link DownloadManager#STATUS_FAILED}, return 0</li>
+     * </ul>
      */
     public int getReason(long downloadId) {
         return getInt(downloadId, DownloadManager.COLUMN_REASON);
@@ -239,16 +243,16 @@ public class DownloadManagerPro {
 
     /**
      * get paused reason
-     * 
+     *
      * @param downloadId
      * @return <ul>
-     *         <li>if status of downloadId is {@link DownloadManager#STATUS_PAUSED}, return one of
-     *         {@link DownloadManager#PAUSED_WAITING_TO_RETRY}<br/>
-     *         {@link DownloadManager#PAUSED_WAITING_FOR_NETWORK}<br/>
-     *         {@link DownloadManager#PAUSED_QUEUED_FOR_WIFI}<br/>
-     *         {@link DownloadManager#PAUSED_UNKNOWN}</li>
-     *         <li>else return {@link DownloadManager#PAUSED_UNKNOWN}</li>
-     *         </ul>
+     * <li>if status of downloadId is {@link DownloadManager#STATUS_PAUSED}, return one of
+     * {@link DownloadManager#PAUSED_WAITING_TO_RETRY}<br/>
+     * {@link DownloadManager#PAUSED_WAITING_FOR_NETWORK}<br/>
+     * {@link DownloadManager#PAUSED_QUEUED_FOR_WIFI}<br/>
+     * {@link DownloadManager#PAUSED_UNKNOWN}</li>
+     * <li>else return {@link DownloadManager#PAUSED_UNKNOWN}</li>
+     * </ul>
      */
     public int getPausedReason(long downloadId) {
         return getInt(downloadId, DownloadManager.COLUMN_REASON);
@@ -256,7 +260,7 @@ public class DownloadManagerPro {
 
     /**
      * get failed error code
-     * 
+     *
      * @param downloadId
      * @return one of {@link DownloadManager#ERROR_*}
      */
@@ -266,14 +270,14 @@ public class DownloadManagerPro {
 
     public static class RequestPro extends DownloadManager.Request {
 
-        public static final String METHOD_NAME_SET_NOTI_CLASS  = "setNotiClass";
+        public static final String METHOD_NAME_SET_NOTI_CLASS = "setNotiClass";
         public static final String METHOD_NAME_SET_NOTI_EXTRAS = "setNotiExtras";
 
-        private static boolean     isInitNotiClass             = false;
-        private static boolean     isInitNotiExtras            = false;
+        private static boolean isInitNotiClass = false;
+        private static boolean isInitNotiExtras = false;
 
-        private static Method      setNotiClass                = null;
-        private static Method      setNotiExtras               = null;
+        private static Method setNotiClass = null;
+        private static Method setNotiExtras = null;
 
         /**
          * @param uri the HTTP URI to download.
@@ -284,7 +288,7 @@ public class DownloadManagerPro {
 
         /**
          * set noti class, only init once
-         * 
+         *
          * @param className full class name
          */
         public void setNotiClass(String className) {
@@ -316,7 +320,7 @@ public class DownloadManagerPro {
 
         /**
          * set noti extras, only init once
-         * 
+         *
          * @param extras
          */
         public void setNotiExtras(String extras) {
@@ -349,7 +353,7 @@ public class DownloadManagerPro {
 
     /**
      * get string column
-     * 
+     *
      * @param downloadId
      * @param columnName
      * @return
@@ -373,7 +377,7 @@ public class DownloadManagerPro {
 
     /**
      * get int column
-     * 
+     *
      * @param downloadId
      * @param columnName
      * @return

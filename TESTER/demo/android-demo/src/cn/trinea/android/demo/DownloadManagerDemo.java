@@ -1,8 +1,5 @@
 package cn.trinea.android.demo;
 
-import java.io.File;
-import java.text.DecimalFormat;
-
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -23,35 +20,38 @@ import android.widget.Toast;
 import cn.trinea.android.common.util.DownloadManagerPro;
 import cn.trinea.android.common.util.PreferencesUtils;
 
+import java.io.File;
+import java.text.DecimalFormat;
+
 /**
  * DownloadManagerDemo
- * 
+ *
  * @author <a href="http://www.trinea.cn/android/android-downloadmanager/" target="_blank">Trinea</a> 2013-5-9
  */
 public class DownloadManagerDemo extends BaseActivity {
 
-    public static final String     DOWNLOAD_FOLDER_NAME = "Trinea";
-    public static final String     DOWNLOAD_FILE_NAME   = "MeiLiShuo.apk";
+    public static final String DOWNLOAD_FOLDER_NAME = "Trinea";
+    public static final String DOWNLOAD_FILE_NAME = "MeiLiShuo.apk";
 
-    public static final String     APK_URL              = "http://img.meilishuo.net/css/images/AndroidShare/Meilishuo_3.6.1_10006.apk";
-    public static final String     KEY_NAME_DOWNLOAD_ID = "downloadId";
+    public static final String APK_URL = "http://img.meilishuo.net/css/images/AndroidShare/Meilishuo_3.6.1_10006.apk";
+    public static final String KEY_NAME_DOWNLOAD_ID = "downloadId";
 
-    private Button                 downloadButton;
-    private ProgressBar            downloadProgress;
-    private TextView               downloadTip;
-    private TextView               downloadSize;
-    private TextView               downloadPrecent;
-    private Button                 downloadCancel;
+    private Button downloadButton;
+    private ProgressBar downloadProgress;
+    private TextView downloadTip;
+    private TextView downloadSize;
+    private TextView downloadPrecent;
+    private Button downloadCancel;
 
-    private DownloadManager        downloadManager;
-    private DownloadManagerPro     downloadManagerPro;
-    private long                   downloadId           = 0;
+    private DownloadManager downloadManager;
+    private DownloadManagerPro downloadManagerPro;
+    private long downloadId = 0;
 
-    private Context                context;
-    private MyHandler              handler;
+    private Context context;
+    private MyHandler handler;
 
     private DownloadChangeObserver downloadObserver;
-    private CompleteReceiver       completeReceiver;
+    private CompleteReceiver completeReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +59,7 @@ public class DownloadManagerDemo extends BaseActivity {
 
         context = getApplicationContext();
         handler = new MyHandler();
-        downloadManager = (DownloadManager)getSystemService(DOWNLOAD_SERVICE);
+        downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
         downloadManagerPro = new DownloadManagerPro(downloadManager);
 
         // see android mainfest.xml, accept minetype of cn.trinea.download.file
@@ -105,14 +105,14 @@ public class DownloadManagerDemo extends BaseActivity {
     }
 
     private void initView() {
-        downloadButton = (Button)findViewById(R.id.download_button);
-        downloadCancel = (Button)findViewById(R.id.download_cancel);
-        downloadProgress = (ProgressBar)findViewById(R.id.download_progress);
-        downloadTip = (TextView)findViewById(R.id.download_tip);
+        downloadButton = (Button) findViewById(R.id.download_button);
+        downloadCancel = (Button) findViewById(R.id.download_cancel);
+        downloadProgress = (ProgressBar) findViewById(R.id.download_progress);
+        downloadTip = (TextView) findViewById(R.id.download_tip);
         downloadTip.setText(getString(R.string.tip_download_file)
-                            + Environment.getExternalStoragePublicDirectory(DOWNLOAD_FOLDER_NAME));
-        downloadSize = (TextView)findViewById(R.id.download_size);
-        downloadPrecent = (TextView)findViewById(R.id.download_precent);
+                + Environment.getExternalStoragePublicDirectory(DOWNLOAD_FOLDER_NAME));
+        downloadSize = (TextView) findViewById(R.id.download_size);
+        downloadPrecent = (TextView) findViewById(R.id.download_precent);
     }
 
     private void initData() {
@@ -160,7 +160,7 @@ public class DownloadManagerDemo extends BaseActivity {
 
     /**
      * install app
-     * 
+     *
      * @param context
      * @param filePath
      * @return whether apk exist
@@ -179,7 +179,7 @@ public class DownloadManagerDemo extends BaseActivity {
 
     class DownloadChangeObserver extends ContentObserver {
 
-        public DownloadChangeObserver(){
+        public DownloadChangeObserver() {
             super(handler);
         }
 
@@ -205,15 +205,17 @@ public class DownloadManagerDemo extends BaseActivity {
                 // if download successful, install apk
                 if (downloadManagerPro.getStatusById(downloadId) == DownloadManager.STATUS_SUCCESSFUL) {
                     String apkFilePath = new StringBuilder(Environment.getExternalStorageDirectory().getAbsolutePath()).append(File.separator)
-                                                                                                                       .append(DOWNLOAD_FOLDER_NAME)
-                                                                                                                       .append(File.separator)
-                                                                                                                       .append(DOWNLOAD_FILE_NAME)
-                                                                                                                       .toString();
+                            .append(DOWNLOAD_FOLDER_NAME)
+                            .append(File.separator)
+                            .append(DOWNLOAD_FILE_NAME)
+                            .toString();
                     install(context, apkFilePath);
                 }
             }
         }
-    };
+    }
+
+    ;
 
     public void updateView() {
         int[] bytesAndStatus = downloadManagerPro.getBytesAndStatus(downloadId);
@@ -222,7 +224,7 @@ public class DownloadManagerDemo extends BaseActivity {
 
     /**
      * MyHandler
-     * 
+     *
      * @author Trinea 2012-12-18
      */
     private class MyHandler extends Handler {
@@ -233,7 +235,7 @@ public class DownloadManagerDemo extends BaseActivity {
 
             switch (msg.what) {
                 case 0:
-                    int status = (Integer)msg.obj;
+                    int status = (Integer) msg.obj;
                     if (isDownloading(status)) {
                         downloadProgress.setVisibility(View.VISIBLE);
                         downloadProgress.setMax(0);
@@ -278,8 +280,8 @@ public class DownloadManagerDemo extends BaseActivity {
 
     static final DecimalFormat DOUBLE_DECIMAL_FORMAT = new DecimalFormat("0.##");
 
-    public static final int    MB_2_BYTE             = 1024 * 1024;
-    public static final int    KB_2_BYTE             = 1024;
+    public static final int MB_2_BYTE = 1024 * 1024;
+    public static final int KB_2_BYTE = 1024;
 
     /**
      * @param size
@@ -291,9 +293,9 @@ public class DownloadManagerDemo extends BaseActivity {
         }
 
         if (size >= MB_2_BYTE) {
-            return new StringBuilder(16).append(DOUBLE_DECIMAL_FORMAT.format((double)size / MB_2_BYTE)).append("M");
+            return new StringBuilder(16).append(DOUBLE_DECIMAL_FORMAT.format((double) size / MB_2_BYTE)).append("M");
         } else if (size >= KB_2_BYTE) {
-            return new StringBuilder(16).append(DOUBLE_DECIMAL_FORMAT.format((double)size / KB_2_BYTE)).append("K");
+            return new StringBuilder(16).append(DOUBLE_DECIMAL_FORMAT.format((double) size / KB_2_BYTE)).append("K");
         } else {
             return size + "B";
         }
@@ -306,14 +308,14 @@ public class DownloadManagerDemo extends BaseActivity {
         } else if (progress > max) {
             rate = 100;
         } else {
-            rate = (int)((double)progress / max * 100);
+            rate = (int) ((double) progress / max * 100);
         }
         return new StringBuilder(16).append(rate).append("%").toString();
     }
 
     public static boolean isDownloading(int downloadManagerStatus) {
         return downloadManagerStatus == DownloadManager.STATUS_RUNNING
-               || downloadManagerStatus == DownloadManager.STATUS_PAUSED
-               || downloadManagerStatus == DownloadManager.STATUS_PENDING;
+                || downloadManagerStatus == DownloadManager.STATUS_PAUSED
+                || downloadManagerStatus == DownloadManager.STATUS_PENDING;
     }
 }

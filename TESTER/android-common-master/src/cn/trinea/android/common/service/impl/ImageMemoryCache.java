@@ -1,13 +1,5 @@
 package cn.trinea.android.common.service.impl;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Handler;
@@ -23,6 +15,14 @@ import cn.trinea.android.common.util.ImageUtils;
 import cn.trinea.android.common.util.SizeUtils;
 import cn.trinea.android.common.util.StringUtils;
 import cn.trinea.android.common.util.SystemUtils;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * <strong>Image Memory Cache</strong><br/>
@@ -57,53 +57,67 @@ import cn.trinea.android.common.util.SystemUtils;
  * <li>You should add <strong>android.permission.ACCESS_NETWORK_STATE</strong> in manifest if you get image from
  * network.</li>
  * </ul>
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2012-4-5
  */
 public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
 
-    private static final long                    serialVersionUID       = 1L;
+    private static final long serialVersionUID = 1L;
 
-    private static final String                  TAG                    = "ImageCache";
+    private static final String TAG = "ImageCache";
 
-    /** callback interface when getting image **/
-    private OnImageCallbackListener              onImageCallbackListener;
-    /** http read image time out, if less than 0, not set. default is not set **/
-    private int                                  httpReadTimeOut        = -1;
+    /**
+     * callback interface when getting image *
+     */
+    private OnImageCallbackListener onImageCallbackListener;
+    /**
+     * http read image time out, if less than 0, not set. default is not set *
+     */
+    private int httpReadTimeOut = -1;
     /**
      * whether open waiting queue, default is true. If true, save all view waiting for image loaded, else only save the
      * newest one
-     **/
-    private boolean                              isOpenWaitingQueue     = true;
-    /** http request properties **/
-    private Map<String, String>                  requestProperties      = null;
+     */
+    private boolean isOpenWaitingQueue = true;
+    /**
+     * http request properties *
+     */
+    private Map<String, String> requestProperties = null;
 
-    /** recommend default max cache size according to dalvik max memory **/
-    public static final int                      DEFAULT_MAX_SIZE       = getDefaultMaxSize();
-    /** message what for get image successfully **/
-    private static final int                     WHAT_GET_IMAGE_SUCCESS = 1;
-    /** message what for get image failed **/
-    private static final int                     WHAT_GET_IMAGE_FAILED  = 2;
+    /**
+     * recommend default max cache size according to dalvik max memory *
+     */
+    public static final int DEFAULT_MAX_SIZE = getDefaultMaxSize();
+    /**
+     * message what for get image successfully *
+     */
+    private static final int WHAT_GET_IMAGE_SUCCESS = 1;
+    /**
+     * message what for get image failed *
+     */
+    private static final int WHAT_GET_IMAGE_FAILED = 2;
 
-    /** thread pool whose wait for data got, attention, not the get data thread pool **/
-    private transient ExecutorService            threadPool             = Executors
-                                                                                .newFixedThreadPool(SystemUtils.DEFAULT_THREAD_POOL_SIZE);
+    /**
+     * thread pool whose wait for data got, attention, not the get data thread pool *
+     */
+    private transient ExecutorService threadPool = Executors
+            .newFixedThreadPool(SystemUtils.DEFAULT_THREAD_POOL_SIZE);
     /**
      * key is image url, value is the newest view which waiting for image loaded, used when {@link #isOpenWaitingQueue}
      * is false
-     **/
-    private transient Map<String, View>          viewMap;
+     */
+    private transient Map<String, View> viewMap;
     /**
      * key is image url, value is view set those waiting for image loaded, used when {@link #isOpenWaitingQueue} is true
-     **/
+     */
     private transient Map<String, HashSet<View>> viewSetMap;
 
-    private transient Handler                    handler;
+    private transient Handler handler;
 
     /**
      * get image asynchronous. when get image success, it will pass to
      * {@link OnImageCallbackListener#onGetSuccess(String, Bitmap, View, boolean)}
-     * 
+     *
      * @param imageUrl
      * @param view
      * @return whether image already in cache or not
@@ -114,11 +128,11 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
 
     /**
      * get image asynchronous and preload other images asynchronous according to urlList
-     * 
+     *
      * @param imageUrl
-     * @param urlList url list, if is null, not preload, else preload forward by
-     *        {@link PreloadDataCache#preloadDataForward(Object, List, int)}, preload backward by
-     *        {@link PreloadDataCache#preloadDataBackward(Object, List, int)}
+     * @param urlList  url list, if is null, not preload, else preload forward by
+     *                 {@link PreloadDataCache#preloadDataForward(Object, List, int)}, preload backward by
+     *                 {@link PreloadDataCache#preloadDataBackward(Object, List, int)}
      * @param view
      * @return whether image already in cache or not
      */
@@ -174,7 +188,7 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
 
     /**
      * get callback interface when getting image
-     * 
+     *
      * @return the onImageCallbackListener
      */
     public OnImageCallbackListener getOnImageCallbackListener() {
@@ -183,7 +197,7 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
 
     /**
      * set callback interface when getting image
-     * 
+     *
      * @param onImageCallbackListener
      */
     public void setOnImageCallbackListener(OnImageCallbackListener onImageCallbackListener) {
@@ -192,7 +206,7 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
 
     /**
      * get http read image time out, if less than 0, not set. default is not set
-     * 
+     *
      * @return the httpReadTimeOut
      */
     public int getHttpReadTimeOut() {
@@ -201,7 +215,7 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
 
     /**
      * set http read image time out, if less than 0, not set. default is not set, in mills
-     * 
+     *
      * @param readTimeOutMillis
      */
     public void setHttpReadTimeOut(int readTimeOutMillis) {
@@ -211,7 +225,7 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
     /**
      * get whether open waiting queue, default is true. If true, save all view waiting for image loaded, else only save
      * the newest one
-     * 
+     *
      * @return
      */
     public boolean isOpenWaitingQueue() {
@@ -221,7 +235,7 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
     /**
      * set whether open waiting queue, default is true. If true, save all view waiting for image loaded, else only save
      * the newest one
-     * 
+     *
      * @param isOpenWaitingQueue
      */
     public void setOpenWaitingQueue(boolean isOpenWaitingQueue) {
@@ -234,7 +248,7 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
      * <li>If image is from the different server, setRequestProperty("Connection", "false") is recommended. If image is
      * from the same server, true is recommended, and this is the default value</li>
      * </ul>
-     * 
+     *
      * @param requestProperties
      */
     public void setRequestProperties(Map<String, String> requestProperties) {
@@ -243,7 +257,7 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
 
     /**
      * get http request properties
-     * 
+     *
      * @return
      */
     public Map<String, String> getRequestProperties() {
@@ -252,8 +266,8 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
 
     /**
      * Sets the value of the http request header field
-     * 
-     * @param field the request header field to be set
+     *
+     * @param field    the request header field to be set
      * @param newValue the new value of the specified property
      * @see {@link #setRequestProperties(Map)}
      */
@@ -277,7 +291,7 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
      * <li>Elements of the cache will not invalid</li>
      * <li>Remove type is {@link RemoveTypeUsedCountSmall} when cache is full</li>
      * </ul>
-     * 
+     *
      * @see PreloadDataCache#PreloadDataCache()
      */
     public ImageMemoryCache() {
@@ -292,7 +306,7 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
      * <li>Elements of the cache will not invalid</li>
      * <li>Remove type is {@link RemoveTypeUsedCountSmall} when cache is full</li>
      * </ul>
-     * 
+     *
      * @param maxSize maximum size of the cache
      * @see PreloadDataCache#PreloadDataCache(int)
      */
@@ -308,8 +322,8 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
      * <li>Elements of the cache will not invalid</li>
      * <li>Remove type is {@link RemoveTypeUsedCountSmall} when cache is full</li>
      * </ul>
-     * 
-     * @param maxSize maximum size of the cache
+     *
+     * @param maxSize        maximum size of the cache
      * @param threadPoolSize getting data thread pool size
      * @see PreloadDataCache#PreloadDataCache(int, int)
      */
@@ -328,16 +342,16 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
 
     /**
      * callback interface when getting image
-     * 
+     *
      * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2012-4-5
      */
     public interface OnImageCallbackListener {
 
         /**
          * callback function before get image, run on ui thread
-         * 
+         *
          * @param imageUrl imageUrl
-         * @param view view need the image
+         * @param view     view need the image
          */
         public void onPreGet(String imageUrl, View view);
 
@@ -346,28 +360,28 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
          * Will be called after {@link #onPreGet(String, View)}, before
          * {@link #onGetSuccess(String, String, View, boolean)} and
          * {@link #onGetFailed(String, String, View, FailedReason)}
-         * 
+         *
          * @param imageUrl imageUrl
-         * @param view view need the image
+         * @param view     view need the image
          */
         public void onGetNotInCache(String imageUrl, View view);
 
         /**
          * callback function after get image successfully, run on ui thread
-         * 
-         * @param imageUrl imageUrl
+         *
+         * @param imageUrl    imageUrl
          * @param loadedImage loaded image bitmap
-         * @param view view need the image
-         * @param isInCache whether already in cache or got realtime
+         * @param view        view need the image
+         * @param isInCache   whether already in cache or got realtime
          */
         public void onGetSuccess(String imageUrl, Bitmap loadedImage, View view, boolean isInCache);
 
         /**
          * callback function after get image failed, run on ui thread
-         * 
-         * @param imageUrl imageUrl
-         * @param loadedImage loaded image bitmap
-         * @param view view need the image
+         *
+         * @param imageUrl     imageUrl
+         * @param loadedImage  loaded image bitmap
+         * @param view         view need the image
          * @param failedReason failed reason for get image
          */
         public void onGetFailed(String imageUrl, Bitmap loadedImage, View view, FailedReason failedReason);
@@ -391,7 +405,7 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
 
     /**
      * My handler
-     * 
+     *
      * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2012-11-20
      */
     private class MyHandler extends Handler {
@@ -400,7 +414,7 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
             switch (message.what) {
                 case WHAT_GET_IMAGE_SUCCESS:
                 case WHAT_GET_IMAGE_FAILED:
-                    MessageObject object = (MessageObject)message.obj;
+                    MessageObject object = (MessageObject) message.obj;
                     if (object == null) {
                         break;
                     }
@@ -446,7 +460,9 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
                     break;
             }
         }
-    };
+    }
+
+    ;
 
     private void onGetSuccess(String imageUrl, Bitmap loadedImage, View view, boolean isInCache) {
         if (onImageCallbackListener == null) {
@@ -463,13 +479,13 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
 
     /**
      * message object
-     * 
+     *
      * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-1-14
      */
     private class MessageObject {
 
-        String       imageUrl;
-        Bitmap       bitmap;
+        String imageUrl;
+        Bitmap bitmap;
         FailedReason failedReason;
 
         public MessageObject(String imageUrl, Bitmap bitmap) {
@@ -487,11 +503,11 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
 
     /**
      * start thread to wait for image get
-     * 
+     *
      * @param imageUrl
-     * @param urlList url list, if is null, not preload, else preload forward by
-     *        {@link PreloadDataCache#preloadDataForward(Object, List, int)}, preload backward by
-     *        {@link PreloadDataCache#preloadDataBackward(Object, List, int)}
+     * @param urlList  url list, if is null, not preload, else preload forward by
+     *                 {@link PreloadDataCache#preloadDataForward(Object, List, int)}, preload backward by
+     *                 {@link PreloadDataCache#preloadDataBackward(Object, List, int)}
      */
     private void startGetImageThread(final String imageUrl, final List<String> urlList) {
         // wait for image be got success and send message
@@ -524,7 +540,7 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
 
     /**
      * default get image listener
-     * 
+     *
      * @return
      */
     public OnGetDataListener<String, Bitmap> getDefaultOnGetImageListener() {
@@ -547,7 +563,7 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
 
     /**
      * get recommend default max cache size according to dalvik max memory
-     * 
+     *
      * @return
      */
     static int getDefaultMaxSize() {
@@ -556,7 +572,7 @@ public class ImageMemoryCache extends PreloadDataCache<String, Bitmap> {
             return 512;
         }
 
-        int mb = (int)(maxMemory / SizeUtils.MB_2_BYTE);
+        int mb = (int) (maxMemory / SizeUtils.MB_2_BYTE);
         return mb > 16 ? mb * 2 : 16;
     }
 }

@@ -1,22 +1,17 @@
 package cn.trinea.android.common.util;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 /**
  * Serialize Utils
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2012-5-14
  */
 public class SerializeUtils {
 
     /**
      * deserialization from file
-     * 
+     *
      * @param filePath
      * @return
      * @throws RuntimeException if an error occurs
@@ -47,7 +42,7 @@ public class SerializeUtils {
 
     /**
      * serialize to file
-     * 
+     *
      * @param filePath
      * @param obj
      * @return

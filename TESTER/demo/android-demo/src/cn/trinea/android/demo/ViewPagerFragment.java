@@ -13,15 +13,15 @@ import android.widget.TextView;
  */
 public class ViewPagerFragment extends Fragment {
 
-    public ViewPagerFragment(){
+    public ViewPagerFragment() {
         super();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.view_pager_fragment_demo1, container, false);
-        TextView tv = (TextView)v.findViewById(R.id.view_pager_text);
-        ImageView image = (ImageView)v.findViewById(R.id.view_pager_image);
+        TextView tv = (TextView) v.findViewById(R.id.view_pager_text);
+        ImageView image = (ImageView) v.findViewById(R.id.view_pager_image);
 
         Bundle bundle = getArguments();
         if (bundle != null) {

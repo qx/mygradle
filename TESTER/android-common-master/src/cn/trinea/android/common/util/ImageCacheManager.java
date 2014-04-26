@@ -15,17 +15,17 @@ import cn.trinea.android.common.service.impl.RemoveTypeLastUsedTimeFirst;
 
 /**
  * ImageCacheManager
- * 
+ *
  * @author maxiaohui hackooo@sina.cn 2014-2-14
  */
 public class ImageCacheManager {
 
-    private static ImageCache       imageCache       = null;
+    private static ImageCache imageCache = null;
     private static ImageSDCardCache imageSDCardCache = null;
 
     /**
      * get the singleton instance of ImageCache
-     * 
+     *
      * @return
      */
     public static ImageCache getImageCache() {
@@ -42,7 +42,7 @@ public class ImageCacheManager {
 
     /**
      * get the singleton instance of ImageSDCardCache
-     * 
+     *
      * @return
      */
     public static ImageSDCardCache getImageSDCardCache() {
@@ -70,7 +70,7 @@ public class ImageCacheManager {
             @Override
             public void onGetSuccess(String imageUrl, Bitmap loadedImage, View view, boolean isInCache) {
                 if (view != null && loadedImage != null) {
-                    ImageView imageView = (ImageView)view;
+                    ImageView imageView = (ImageView) view;
                     imageView.setImageBitmap(loadedImage);
                     // first time show with animation
                     if (!isInCache) {
@@ -80,13 +80,16 @@ public class ImageCacheManager {
             }
 
             @Override
-            public void onPreGet(String imageUrl, View view) {}
+            public void onPreGet(String imageUrl, View view) {
+            }
 
             @Override
-            public void onGetFailed(String imageUrl, Bitmap loadedImage, View view, FailedReason failedReason) {}
+            public void onGetFailed(String imageUrl, Bitmap loadedImage, View view, FailedReason failedReason) {
+            }
 
             @Override
-            public void onGetNotInCache(String imageUrl, View view) {}
+            public void onGetNotInCache(String imageUrl, View view) {
+            }
         };
         imageCache.setOnImageCallbackListener(imageCallBack);
         imageCache.setCacheFullRemoveType(new RemoveTypeLastUsedTimeFirst<Bitmap>());
@@ -109,7 +112,7 @@ public class ImageCacheManager {
 
             @Override
             public void onGetSuccess(String imageUrl, String imagePath, View view, boolean isInCache) {
-                ImageView imageView = (ImageView)view;
+                ImageView imageView = (ImageView) view;
 
                 // if oom please use BitmapFactory.decodeFile(imagePath, option)
                 Bitmap bm = BitmapFactory.decodeFile(imagePath);
@@ -124,13 +127,16 @@ public class ImageCacheManager {
             }
 
             @Override
-            public void onPreGet(String imageUrl, View view) {}
+            public void onPreGet(String imageUrl, View view) {
+            }
 
             @Override
-            public void onGetNotInCache(String imageUrl, View view) {}
+            public void onGetNotInCache(String imageUrl, View view) {
+            }
 
             @Override
-            public void onGetFailed(String imageUrl, String imagePath, View view, FailedReason failedReason) {}
+            public void onGetFailed(String imageUrl, String imagePath, View view, FailedReason failedReason) {
+            }
         };
         imageSDCardCache.setOnImageSDCallbackListener(imageCallBack);
         imageSDCardCache.setCacheFullRemoveType(new RemoveTypeLastUsedTimeFirst<String>());

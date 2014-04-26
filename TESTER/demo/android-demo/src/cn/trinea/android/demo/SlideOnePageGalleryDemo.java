@@ -1,8 +1,5 @@
 package cn.trinea.android.demo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,9 +8,12 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import cn.trinea.android.common.view.SlideOnePageGallery;
 import cn.trinea.android.demo.adapter.ImageListAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * SlideOnePageGalleryDemo
- * 
+ *
  * @author <a href="http://www.trinea.cn/android/gallery-scroll-one-page/" target="_blank">Trinea</a> 2013-5-9
  */
 public class SlideOnePageGalleryDemo extends BaseActivity {
@@ -22,7 +22,7 @@ public class SlideOnePageGalleryDemo extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.slide_one_page_gallery_demo);
 
-        SlideOnePageGallery imageGallery = (SlideOnePageGallery)findViewById(R.id.app_app_image_gallery);
+        SlideOnePageGallery imageGallery = (SlideOnePageGallery) findViewById(R.id.app_app_image_gallery);
         imageGallery.setOnItemClickListener(new OnItemClickListener() {
 
             @Override

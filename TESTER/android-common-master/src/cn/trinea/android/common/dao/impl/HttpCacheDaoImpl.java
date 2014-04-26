@@ -1,8 +1,5 @@
 package cn.trinea.android.common.dao.impl;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import android.content.ContentValues;
 import android.database.Cursor;
 import cn.trinea.android.common.constant.DbConstants;
@@ -12,9 +9,12 @@ import cn.trinea.android.common.util.SqliteUtils;
 import cn.trinea.android.common.util.StringUtils;
 import cn.trinea.android.common.util.TimeUtils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * HttpCacheDaoImpl
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-11-5
  */
 public class HttpCacheDaoImpl implements HttpCacheDao {
@@ -105,7 +105,7 @@ public class HttpCacheDaoImpl implements HttpCacheDao {
 
     /**
      * convert cursor to HttpResponse
-     * 
+     *
      * @param cursor
      * @param url
      * @return
@@ -130,7 +130,7 @@ public class HttpCacheDaoImpl implements HttpCacheDao {
 
     /**
      * convert HttpResponse to ContentValues
-     * 
+     *
      * @param httpResponse
      * @return
      */

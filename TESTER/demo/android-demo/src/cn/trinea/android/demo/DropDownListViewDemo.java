@@ -1,10 +1,5 @@
 package cn.trinea.android.demo;
 
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.LinkedList;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -16,28 +11,33 @@ import cn.trinea.android.common.util.ToastUtils;
 import cn.trinea.android.common.view.DropDownListView;
 import cn.trinea.android.common.view.DropDownListView.OnDropDownListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.LinkedList;
+
 /**
  * DropDownListViewDemo
- * 
+ *
  * @author <a href="http://www.trinea.cn/android/dropdown-to-refresh-and-bottom-load-more-listview/"
- * target="_blank">Trinea</a> 2013-6-1
+ *         target="_blank">Trinea</a> 2013-6-1
  */
 public class DropDownListViewDemo extends BaseActivity {
 
-    private LinkedList<String>   listItems           = null;
-    private DropDownListView     listView            = null;
+    private LinkedList<String> listItems = null;
+    private DropDownListView listView = null;
     private ArrayAdapter<String> adapter;
 
-    private String[]             mStrings            = { "Aaaaaa", "Bbbbbb", "Cccccc", "Dddddd", "Eeeeee", "Ffffff",
-            "Gggggg", "Hhhhhh", "Iiiiii", "Jjjjjj", "Kkkkkk", "Llllll", "Mmmmmm", "Nnnnnn", };
-    public static final int      MORE_DATA_MAX_COUNT = 3;
-    public int                   moreDataCount       = 0;
+    private String[] mStrings = {"Aaaaaa", "Bbbbbb", "Cccccc", "Dddddd", "Eeeeee", "Ffffff",
+            "Gggggg", "Hhhhhh", "Iiiiii", "Jjjjjj", "Kkkkkk", "Llllll", "Mmmmmm", "Nnnnnn",};
+    public static final int MORE_DATA_MAX_COUNT = 3;
+    public int moreDataCount = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.drop_down_listview_demo);
 
-        listView = (DropDownListView)findViewById(R.id.list_view);
+        listView = (DropDownListView) findViewById(R.id.list_view);
         // set drop down listener
         listView.setOnDropDownListener(new OnDropDownListener() {
 
@@ -74,7 +74,7 @@ public class DropDownListViewDemo extends BaseActivity {
 
         private boolean isDropDown;
 
-        public GetDataTask(boolean isDropDown){
+        public GetDataTask(boolean isDropDown) {
             this.isDropDown = isDropDown;
         }
 

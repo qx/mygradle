@@ -6,12 +6,11 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import cn.trinea.android.demo.utils.AppUtils;
-
 import com.google.analytics.tracking.android.EasyTracker;
 
 /**
  * BaseFragmentActivity
- * 
+ *
  * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2014-2-23
  */
 public class BaseFragmentActivity extends FragmentActivity {
