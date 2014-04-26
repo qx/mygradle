@@ -76,6 +76,22 @@
         <!--<category android:name="android.intent.category.LAUNCHER"/>-->
         <!--</intent-filter>-->
         <!--</activity>-->
+        <activity
+                android:name=".visual.customview.fancycoverflow.example.SimpleExample"
+                android:label="@string/activity_label_simple"/>
+
+        <activity
+                android:name=".visual.customview.fancycoverflow.example.ViewGroupExample"
+                android:label="@string/activity_label_viewgroup"/>
+
+        <activity
+                android:name=".visual.customview.fancycoverflow.example.ViewGroupReflectionExample"
+                android:label="@string/activity_label_viewgroupreflection"/>
+
+        <activity
+                android:name=".visual.customview.fancycoverflow.example.XmlInflateExample"
+                android:label="@string/activity_label_inflate_xml"
+                />
         <activity android:name=".visual.activity.ProductDetailActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

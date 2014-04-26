@@ -29,5 +29,6 @@
     <color name="grey">#ffcfcfcf</color>
     <color name="blue">#ff667ebf</color>
     <color name="text_hint">#ff9a9a9a</color>
+    <color name="item_bg">#ffe4e4e4</color>
 
 </resources>
