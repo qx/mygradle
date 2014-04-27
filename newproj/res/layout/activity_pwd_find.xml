@@ -3,8 +3,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:gravity="center_horizontal">
 
-    <include layout="@layout/layout_title_main"
+    <include layout="@layout/layout_title_only"
             />
+
+    <EditText
+            android:id="@+id/edit_username"
+            android:background="@drawable/biankuang_login_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/pwd_find_tips"
+            android:imeOptions="actionDone"
+            android:inputType="textEmailAddress"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"/>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_btn_login"
+            android:text="@string/pwd_find_tips_next"
+            android:layout_marginTop="30dp"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            >
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/pwd_find_next_tips"
+                android:paddingTop="40dp"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_btn_login"
+                android:text="@string/pwd_find_next_btn"
+                android:onClick="onResent"
+                android:layout_marginTop="15dp"/>
+    </LinearLayout>
 </LinearLayout>
