@@ -48,7 +48,8 @@ public class MainActivity extends BaseActivity {
         mTabsAdapter.addTab(mTabHost.newTabSpec("contacts").setIndicator(mOldIndicator),
                 OldProductFragment.class, null);
         mTabsAdapter.addTab(mTabHost.newTabSpec("custom").setIndicator(mUserIndicator),
-                UserLoginFragment.class, null);
+                UserInfoFragment.class, null);
+//                UserLoginFragment.class, null);
 
         if (savedInstanceState != null) {
             mTabHost.setCurrentTabByTag(savedInstanceState.getString("tab"));

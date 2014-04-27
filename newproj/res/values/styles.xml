@@ -12,7 +12,7 @@
 
     <style name="item_img_left_style">
         <item name="android:id">
-            @+id/img_left
+            @id/img_left
         </item>
         <item name="android:paddingLeft">
             22dp
@@ -51,10 +51,10 @@
             20sp
         </item>
         <item name="android:layout_toLeftOf">
-            @+id/img_right
+            @id/img_right
         </item>
         <item name="android:layout_toRightOf">
-            @+id/img_left
+            @id/img_left
         </item>
         <item name="android:scaleType">
             center
@@ -65,7 +65,7 @@
 
     <style name="item_img_right_style">
         <item name="android:id">
-            @+id/img_right
+            @id/img_right
         </item>
         <item name="android:layout_width">
             wrap_content

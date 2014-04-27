@@ -18,7 +18,7 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 16 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="main" />
+    <orderEntry type="module" module-name="main" scope="PROVIDED" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.2" level="project" />
     <orderEntry type="library" name="Maven: com.android.tools:sdklib:22.7.2" level="project" />
