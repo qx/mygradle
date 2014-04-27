@@ -1,6 +1,5 @@
 package com.cfz.android.visual.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.cfz.android.R;
 

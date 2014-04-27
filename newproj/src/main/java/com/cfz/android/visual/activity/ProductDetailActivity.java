@@ -11,6 +11,7 @@ import com.cfz.android.visual.customview.fancycoverflow.FancyCoverFlowSampleAdap
 public class ProductDetailActivity extends BaseActivity {
 
     private FancyCoverFlow fancyCoverFlow;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);

@@ -1,6 +1,7 @@
 package com.cfz.android.utils.net; /**
  * Created by Administrator on 2014/4/25.
  */
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
@@ -25,10 +26,9 @@ public class MyNetWorkUtilTest {
     @Test
     public void testGetData2MapFromNet() {
 //            assertThat(ToStringBuilder.reflectionToString(getData2MapFromNet(), ToStringStyle.DEFAULT_STYLE), equalTo(null));
-            assertThat(getData2MapFromNet().toString(), equalTo(null));
+        assertThat(getData2MapFromNet().toString(), equalTo(null));
 //        assertThat(rmSetNotInBase(mSet, mSet2), equalTo(mSet3));
     }
-
 
 
 }
