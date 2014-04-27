@@ -91,4 +91,14 @@
         <item name="android:layout_alignParentRight">true</item>
     </style>
 
+    <style name="myCheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
+
+        <item name="android:button">@drawable/selector_checkbox</item>
+
+        <!--<item name="android:paddingLeft">3dip</item>-->
+        <!--<item name="android:paddingTop">10dp</item>-->
+
+
+    </style>
+
 </resources>

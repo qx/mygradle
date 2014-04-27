@@ -2,9 +2,52 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
+              android:gravity="center_horizontal"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <include layout="@layout/layout_title_main"
+    <include layout="@layout/layout_title_only"
             />
+
+    <EditText
+            android:id="@+id/edit_username"
+            android:background="@drawable/biankuang_login_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/pwd_find_tips"
+            android:imeOptions="actionDone"
+            android:inputType="textEmailAddress"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"/>
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_btn_login"
+            android:text="@string/pwd_find_tips_next"
+            android:layout_marginTop="30dp"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            android:gravity="center">
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register_txt_sure"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:paddingLeft="2dp"
+                style="@style/myCheckBox"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_agreement"
+                android:textSize="16sp"
+                android:text="@string/register_txt_agreement"/>
+    </LinearLayout>
 </LinearLayout>

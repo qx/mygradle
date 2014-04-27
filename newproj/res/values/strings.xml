@@ -66,10 +66,10 @@
     <string name="pwd_find_next_btn">重新发送</string>
     <string name="pwd_find_next_reset">请重置6-20位登陆密码</string>
     <string name="title_register">注册</string>
-    <string name="title_register_sure">我已经阅读并同意</string>
-    <string name="title_register_agreement">《凑份子商品协议》</string>
-    <string name="title_verify">身份验证</string>
-    <string name="title_address">收货地址</string>
+    <string name="register_txt_sure">我已经阅读并同意</string>
+    <string name="register_txt_agreement">《凑份子商品协议》</string>
+    <string name="txt_verify">身份验证</string>
+    <string name="txt_address">收货地址</string>
     <string name="address_accept_name">收货人:</string>
     <string name="address_accept_num">手机号码:</string>
     <string name="address_accept_detail">详细地址:</string>

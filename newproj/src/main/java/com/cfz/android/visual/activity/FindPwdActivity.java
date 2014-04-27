@@ -2,7 +2,6 @@ package com.cfz.android.visual.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 import cn.trinea.android.common.util.ToastUtils;
 import com.cfz.android.R;
 
@@ -21,9 +20,7 @@ public class FindPwdActivity extends BaseActivity {
     }
 
     public void onResent(View view) {
-
-        ToastUtils.show(this,R.string.pwd_find_next_reset);
-//        Toast.makeText(this,"slkj",0).show();
+        ToastUtils.show(this, R.string.pwd_find_next_reset);
     }
 
 }

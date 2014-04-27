@@ -30,5 +30,6 @@
     <color name="blue">#ff667ebf</color>
     <color name="text_hint">#ff9a9a9a</color>
     <color name="item_bg">#ffe4e4e4</color>
+    <color name="color_agreement">#ff596ac4</color>
 
 </resources>

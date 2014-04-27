@@ -92,7 +92,13 @@
                 android:name=".visual.customview.fancycoverflow.example.XmlInflateExample"
                 android:label="@string/activity_label_inflate_xml"
                 />
-        <activity android:name=".visual.activity.FindPwdActivity">
+        <!--<activity android:name=".visual.activity.FindPwdActivity">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN"/>-->
+        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+        <!--</intent-filter>-->
+        <!--</activity>-->
+        <activity android:name=".visual.activity.RegistActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
