@@ -9,14 +9,14 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:icon="@drawable/ic_launcher">
-        <!--<activity-->
-                <!--android:name=".visual.activity.MainActivity"-->
-                <!--android:label="@string/app_name">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN"/>-->
-                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
-        <!--</activity>-->
+        <activity
+                android:name=".visual.activity.MainActivity"
+                android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".visual.activity.BaseActivity"/>
         <activity android:name=".visual.activity.AllProductActivity"/>
         <activity android:name=".visual.activity.OldProductActivity"/>
@@ -76,6 +76,38 @@
         <!--<category android:name="android.intent.category.LAUNCHER"/>-->
         <!--</intent-filter>-->
         <!--</activity>-->
+
+        <!--<activity android:name=".visual.activity.FindPwdActivity">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN"/>-->
+        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+        <!--</intent-filter>-->
+        <!--</activity>-->
+        <!--<activity android:name=".visual.activity.RegistActivity" >-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN"/>-->
+        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+        <!--</intent-filter>-->
+        <!--</activity>-->
+        <!--<activity android:name=".visual.activity.VerifyActivity">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN"/>-->
+        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+        <!--</intent-filter>-->
+        <!--</activity>-->
+        <!--<activity android:name=".visual.activity.UserIconEditActivity">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN"/>-->
+        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+        <!--</intent-filter>-->
+        <!--</activity>-->
+        <!--<activity android:name=".visual.activity.ProductDetailActivity">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN"/>-->
+        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+        <!--</intent-filter>-->
+        <!--</activity>-->
+
         <activity
                 android:name=".visual.customview.fancycoverflow.example.SimpleExample"
                 android:label="@string/activity_label_simple"/>
@@ -92,23 +124,5 @@
                 android:name=".visual.customview.fancycoverflow.example.XmlInflateExample"
                 android:label="@string/activity_label_inflate_xml"
                 />
-        <!--<activity android:name=".visual.activity.FindPwdActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN"/>-->
-        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-        <activity android:name=".visual.activity.RegistActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-        <!--<activity android:name=".visual.activity.ProductDetailActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN"/>-->
-        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
     </application>
 </manifest>

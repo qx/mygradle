@@ -5,6 +5,62 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <include layout="@layout/layout_title_main"
+    <include layout="@layout/layout_title_center_right"
             />
+
+    <EditText
+            android:id="@+id/v_value"
+            style="@style/my_edittext_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:inputType=""
+            android:hint="@string/title_edit_nickname"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/grey"
+            android:orientation="vertical"
+            android:layout_marginBottom="100dp"
+            android:gravity="center_horizontal"
+            >
+
+        <ImageView
+                android:layout_weight="2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/userinfo_icon_login"/>
+
+        <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_btn_short"
+                    android:text="@string/edit_capture"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="20dp"
+                    />
+
+            <Button
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_btn_short"
+                    android:text="@string/edit_pic_selector"
+                    />
+
+        </LinearLayout>
+
+    </LinearLayout>
 </LinearLayout>
