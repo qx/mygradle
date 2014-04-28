@@ -1,6 +1,8 @@
 package com.example.myapp;
 
 import com.google.api.client.util.Key;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 
 /**
  * Created by Administrator on 2014/4/27.
@@ -16,23 +18,27 @@ public class Product {
     @Key
     public String productName;
     @Key
-    public String price;
+    public Float price;
     @Key
-    public String totalCnt;
+    public Integer totalCnt;
     @Key
-    public String currentCnt;
+    public Integer currentCnt;
     @Key
     public String detail;
 
+    //    @Override
+//    public String toString() {
+//        return
+//                productId + " - " +
+//                        productImg + " - " +
+//                        productName + " - " +
+//                        price + " - " +
+//                        totalCnt + " - " +
+//                        currentCnt + " - " +
+//                        detail;
+//    }
     @Override
     public String toString() {
-        return
-                productId + " - " +
-                        productImg + " - " +
-                        productName + " - " +
-                        price + " - " +
-                        totalCnt + " - " +
-                        currentCnt + " - " +
-                        detail;
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
     }
 }

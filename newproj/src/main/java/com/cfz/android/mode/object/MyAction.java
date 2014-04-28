@@ -4,8 +4,15 @@ import java.util.List;
 
 /**
  * My Action information
+ * 我的凑份信息
  */
 public class MyAction {
-    private List<OldProduct> oldProductList;
-    private List<NewProduct> newProductList;
+    /**
+     * 往期产品凑份信息列表
+     */
+    public List<OldProduct> oldProductList;
+    /**
+     * 当期(新)产品凑份信息列表
+     */
+    public List<NewProduct> newProductList;
 }

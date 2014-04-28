@@ -4,9 +4,17 @@ import java.util.Date;
 
 /**
  * account incoming
+ * 入账明细(单)
  */
 public class AccountIn {
-    private Date inTime;
-    private Long inAccount;
+    /**
+     * 入账时间
+     */
+    public Date inTime;
+
+    /**
+     * 金额
+     */
+    public Long inAccount;
 
 }

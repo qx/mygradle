@@ -4,8 +4,15 @@ import java.util.Date;
 
 /**
  * account out
+ * 出账明细(单)
  */
 public class AccountOut {
-    private Date outTime;
-    private Long outConsume;
+    /**
+     * 日期时间
+     */
+    public Date outTime;
+    /**
+     * 出账金额
+     */
+    public Long outConsume;
 }

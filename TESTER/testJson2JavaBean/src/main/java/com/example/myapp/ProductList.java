@@ -1,6 +1,8 @@
 package com.example.myapp;
 
 import com.google.api.client.util.Key;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 
 import java.util.List;
 
@@ -12,6 +14,10 @@ public class ProductList {
     public String status;
 
     @Key
-    public List<Product> results;
+    public List<Product> result;
 
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+    }
 }

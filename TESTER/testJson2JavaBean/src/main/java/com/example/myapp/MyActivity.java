@@ -2,7 +2,6 @@ package com.example.myapp;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import com.google.api.client.http.*;
 import com.google.api.client.http.apache.ApacheHttpTransport;
 import com.google.api.client.http.json.JsonHttpParser;
@@ -39,7 +38,7 @@ public class MyActivity extends Activity {
     }
 
     //
-    public ProductList performSearch() throws Exception {
+    public static ProductList performSearch() throws Exception {
         try {
             HttpTransport transport = new ApacheHttpTransport();
             GenericUrl reqUrl = new GenericUrl(PLACES_SEARCH_URL + GET_PRODUCT);
@@ -51,8 +50,8 @@ public class MyActivity extends Activity {
             System.out.println("get =============================str=" + str);
             ProductList places = request.execute().parseAs(ProductList.class);
 
-            for (Product place : places.results) {
-                Log.v("oyqx", place.productName);
+            for (Product place : places.result) {
+                System.out.println("oyqx:name=" + place.productName);
 
             }
             return places;
@@ -72,7 +71,7 @@ public class MyActivity extends Activity {
 //                headers.setApplicationName("Google-Places-DemoApp");
 //                request.setHeaders(headers);
                 JsonHttpParser parser = new JsonHttpParser(new JacksonFactory());
-
+                System.out.println("oyqx:content type=" + parser.getContentType());
                 //JsonHttpParser.builder(new JacksonFactory());
                 //parser.jsonFactory = new JacksonFactory();
                 request.addParser(parser);

@@ -6,9 +6,19 @@ import java.util.Map;
 
 /**
  * Old product
+ * 往期凑份商品
  */
 public class OldProduct extends Product {
-    private int number_lucky;
-    private Date time_lucky;
-    private Map<User, ActionScore> user_action_map;
+    /**
+     * 幸运号
+     */
+    public int number_lucky;
+    /**
+     * 揭晓时间
+     */
+    public Date time_lucky;
+    /**
+     * 用户--凑份数 MAP
+     */
+    public Map<User, ActionScore> user_action_map;
 }
