@@ -1,5 +1,6 @@
 package com.example.myapp;
 
+import com.example.myapp.mode.MyObject;
 import com.google.api.client.util.Key;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
@@ -9,8 +10,11 @@ import org.apache.commons.lang.builder.ToStringStyle;
  */
 public class Product {
 
+
     @Key
     public String productId;
+    @Key
+    public MyObject myObject;
 
     @Key
     public String productImg;
@@ -41,4 +45,9 @@ public class Product {
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
     }
+
+//    private class MyObject {
+//        @Key
+//        private String first;
+//    }
 }

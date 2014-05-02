@@ -35,7 +35,8 @@ public class MyNetWorkUtil {
     }
 
     public static Map<String, String> getData2MapFromNet() {
-        String objstr = HttpUtils.httpGetString("http://114.215.177.210:8080/cfz/product_getProductingList");
+//        String objstr = HttpUtils.httpGetString("http://114.215.177.210:8080/cfz/product_getProductingList");
+        String objstr = HttpUtils.httpGetString("http://192.168.1.104:8081/json2");
         try {
             JSONObject jsonObject = new JSONObject(objstr);
             return JSONUtils.parseKeyAndValueToMap(jsonObject);
