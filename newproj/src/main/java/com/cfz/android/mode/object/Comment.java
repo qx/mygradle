@@ -19,4 +19,5 @@ public class Comment {
      * 评论内容
      */
     public String content;
+
 }
