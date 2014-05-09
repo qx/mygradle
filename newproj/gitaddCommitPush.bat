@@ -1,11 +1,11 @@
 @echo off
 
-echo This bat will add all file?
 git status
 if "%errorlevel%"=="1"  echo fail
 if errorlevel 0 goto add
 
 :add
+echo This bat will add all file? Please press any key to continue.
 pause
 git add --all :/
 if "%errorlevel%"=="1"  echo fail
