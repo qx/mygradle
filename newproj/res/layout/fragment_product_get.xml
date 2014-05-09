@@ -10,11 +10,17 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <include layout="@layout/item_list_product_get"/>
+        <include
+                android:id="@+id/first_get"
+                layout="@layout/item_list_product_get"/>
 
-        <include layout="@layout/item_list_product_get"/>
+        <include
+                android:id="@+id/second_get"
+                layout="@layout/item_list_product_get"/>
 
-        <include layout="@layout/item_list_product_get"/>
+        <include
+                android:id="@+id/third_get"
+                layout="@layout/item_list_product_get"/>
     </LinearLayout>
 
 </LinearLayout>

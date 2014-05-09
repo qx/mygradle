@@ -31,6 +31,7 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="65dp"
+            android:id="@+id/my_history"
             >
 
         <ImageView
@@ -50,6 +51,7 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="65dp"
+            android:id="@+id/my_product"
             >
 
         <ImageView
@@ -69,6 +71,7 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="65dp"
+            android:id="@+id/my_account"
             >
 
         <ImageView
@@ -88,6 +91,7 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="65dp"
+            android:id="@+id/my_address"
             >
 
         <ImageView
@@ -107,6 +111,7 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="65dp"
+            android:id="@+id/my_msg"
             >
 
         <ImageView

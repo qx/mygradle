@@ -13,16 +13,22 @@ import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
 import com.cfz.android.R;
+import com.cfz.android.visual.activity.listener.FragmentActivityListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * 主界面
  */
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements FragmentActivityListener {
     TabHost mTabHost;
     ViewPager mViewPager;
     TabsAdapter mTabsAdapter;
+    /**
+     * this data used by fragment and activity
+     */
+    private HashMap<String, String> mFragmentActivityData;
 
     /**
      * Called when the activity is first created.
@@ -57,10 +63,9 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected int getActivityTitle() {
-        return R.string.app_name;
+    public void updateActivityData(HashMap<String, String> mActivityDataInfo) {
+        mFragmentActivityData = mActivityDataInfo;
     }
-
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -68,17 +73,13 @@ public class MainActivity extends BaseActivity {
         outState.putString("tab", mTabHost.getCurrentTabTag());
     }
 
-    /**
-     * This is a helper class that implements the management of tabs and all
-     * details of connecting a ViewPager with associated TabHost.  It relies on a
-     * trick.  Normally a tab host has a simple API for supplying a View or
-     * Intent that each tab will show.  This is not sufficient for switching
-     * between pages.  So instead we make the content part of the tab host
-     * 0dp high (it is not shown) and the TabsAdapter supplies its own dummy
-     * view to show as the tab content.  It listens to changes in tabs, and takes
-     * care of switch to the correct paged in the ViewPager whenever the selected
-     * tab changes.
-     */
+    @Override
+    protected int getActivityTitle() {
+        return R.string.app_name;
+    }
+
+
+
     public static class TabsAdapter extends FragmentPagerAdapter
             implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
         private final Context mContext;

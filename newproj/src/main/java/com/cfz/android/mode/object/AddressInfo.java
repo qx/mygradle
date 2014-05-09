@@ -7,7 +7,7 @@ package com.cfz.android.mode.object;
 public class AddressInfo {
 
     /**
-     *收货人
+     * 收货人
      */
     public String consignee;
     /**

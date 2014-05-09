@@ -114,7 +114,9 @@
     <string name="pay_btn">支付</string>
 
 
+    <string name="title_address">我的收货地址</string>
     <string name="title_more">更多信息</string>
+    <string name="title_history">我的凑份记录</string>
     <string name="title_product_msg">留言界面</string>
     <string name="more_explain">产品介绍</string>
     <string name="more_advice">意见反馈</string>

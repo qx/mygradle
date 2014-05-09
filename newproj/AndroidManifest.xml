@@ -10,6 +10,7 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:icon="@drawable/ic_launcher">
+
         <activity
                 android:name=".visual.activity.MainActivity"
                 android:label="@string/app_name">
@@ -18,10 +19,16 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity android:name=".visual.activity.BaseActivity"/>
+
         <activity android:name=".visual.activity.AllProductActivity"/>
+
         <activity android:name=".visual.activity.OldProductActivity"/>
+
+
         <activity android:name=".visual.activity.UserActivity"/>
+
         <activity android:name=".visual.activity.TesterActivity"
                 >
         </activity>
@@ -73,5 +80,10 @@
                 android:name=".visual.customview.fancycoverflow.example.XmlInflateExample"
                 android:label="@string/activity_label_inflate_xml"
                 />
+        <activity android:name=".visual.activity.MyHistoryActivity"/>
+        <activity android:name=".visual.activity.MyAccountActivity"/>
+        <activity android:name=".visual.activity.MyAddressActivity"/>
+        <activity android:name=".visual.activity.MyMessageActivity"/>
+        <activity android:name=".visual.activity.MyGetProductActivity"/>
     </application>
 </manifest>

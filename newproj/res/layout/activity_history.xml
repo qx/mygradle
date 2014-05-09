@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <include layout="@layout/layout_title_only"
+            />
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_share_item"
+            android:orientation="horizontal">
+
+        <ImageView
+                android:src="@drawable/share_circle_blue"
+                style="@style/item_img_left_style"
+                />
+
+        <TextView
+                android:text="@string/more_explain"
+                style="@style/item_text_center_style"/>
+
+        <ImageView
+                style="@style/item_img_right_style"
+                android:src="@drawable/share_arrow_right"
+                />
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_share_item"
+            android:orientation="horizontal">
+
+        <ImageView
+                android:src="@drawable/share_circle_green"
+                style="@style/item_img_left_style"/>
+
+        <TextView
+                android:text="@string/more_advice"
+                style="@style/item_text_center_style"/>
+
+        <ImageView
+                style="@style/item_img_right_style"
+                android:src="@drawable/share_arrow_right"
+                />
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_share_item"
+            android:orientation="horizontal">
+
+        <ImageView
+                android:src="@drawable/share_circle_orange"
+                style="@style/item_img_left_style"/>
+
+        <TextView
+                android:text="@string/more_contact"
+                style="@style/item_text_center_style"/>
+
+        <ImageView
+                style="@style/item_img_right_style"
+                android:src="@drawable/share_arrow_right"
+                />
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_share_item"
+            android:orientation="horizontal">
+
+        <ImageView
+                android:src="@drawable/share_circle_red"
+                style="@style/item_img_left_style"
+                />
+
+        <TextView
+                android:text="@string/more_update"
+                style="@style/item_text_center_style"/>
+
+        <ImageView
+                style="@style/item_img_right_style"
+                android:src="@drawable/share_arrow_right"
+                />
+    </RelativeLayout>
+</LinearLayout>
