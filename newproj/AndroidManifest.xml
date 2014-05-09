@@ -3,6 +3,7 @@
           package="com.cfz.android"
           android:versionCode="1"
           android:versionName="1.0">
+
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-sdk android:minSdkVersion="14"/>
     <application
@@ -21,92 +22,40 @@
         <activity android:name=".visual.activity.AllProductActivity"/>
         <activity android:name=".visual.activity.OldProductActivity"/>
         <activity android:name=".visual.activity.UserActivity"/>
-        <!--<activity android:name=".visual.activity.TesterActivity"-->
-        <!-->-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN"/>-->
-        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-        <!--<activity android:name=".visual.activity.MoreActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN"/>-->
-        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-        <!--<activity android:name=".visual.activity.ProductMsgActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN"/>-->
-        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-        <!--<activity android:name=".visual.activity.NickNameActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN"/>-->
-        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-        <!--<activity android:name=".visual.activity.OthersActionActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN"/>-->
-        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-        <!--<activity android:name=".visual.activity.ShareActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN"/>-->
-        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-        <!--<activity android:name=".visual.activity.ProductMsgActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN"/>-->
-        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-        <!--<activity android:name=".visual.activity.NickNameActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN"/>-->
-        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-        <!--<activity android:name=".visual.activity.OthersActionActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN"/>-->
-        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
+        <activity android:name=".visual.activity.TesterActivity"
+                >
+        </activity>
+        <activity android:name=".visual.activity.MoreActivity">
 
-        <!--<activity android:name=".visual.activity.FindPwdActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN"/>-->
-        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-        <!--<activity android:name=".visual.activity.RegistActivity" >-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN"/>-->
-        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-        <!--<activity android:name=".visual.activity.VerifyActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN"/>-->
-        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-        <!--<activity android:name=".visual.activity.UserIconEditActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN"/>-->
-        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-        <!--<activity android:name=".visual.activity.ProductDetailActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN"/>-->
-        <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
+        </activity>
+        <activity android:name=".visual.activity.ProductMsgActivity">
+
+        </activity>
+        <activity android:name=".visual.activity.NickNameActivity">
+
+        </activity>
+        <activity android:name=".visual.activity.OthersActionActivity">
+
+        </activity>
+        <activity android:name=".visual.activity.ShareActivity">
+
+        </activity>
+
+        <activity android:name=".visual.activity.FindPwdActivity">
+
+        </activity>
+        <activity android:name=".visual.activity.RegistActivity">
+
+        </activity>
+        <activity android:name=".visual.activity.VerifyActivity">
+
+        </activity>
+        <activity android:name=".visual.activity.UserIconEditActivity">
+
+        </activity>
+        <activity android:name=".visual.activity.ProductDetailActivity">
+
+        </activity>
 
         <activity
                 android:name=".visual.customview.fancycoverflow.example.SimpleExample"
