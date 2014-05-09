@@ -5,11 +5,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.cfz.android.R;
+import com.cfz.android.visual.activity.listener.SecondClickListener;
 
 /**
  * Created by Administrator on 2014/4/21.
  */
-public class BaseActivity extends FragmentActivity {
+public class BaseActivity extends FragmentActivity implements SecondClickListener{
     protected TextView title;
     protected TextView title2;
     protected ImageView img;
@@ -30,6 +31,8 @@ public class BaseActivity extends FragmentActivity {
         if (img != null) {
             img.setImageResource(getActivityMoreImg());
         }
+
+
     }
 
     /**
@@ -52,10 +55,21 @@ public class BaseActivity extends FragmentActivity {
         }
     }
 
+    public void onSecondClick(View view) {
+        if (view != null) {
+            secondClick();
+        }
+    }
+
     /**
      * @return resid
      */
     protected int getActivityTitle() {
         return 0;
     }
+
+    @Override
+    public void secondClick() {
+    }
+
 }

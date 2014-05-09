@@ -55,7 +55,14 @@ public class UserInfoFragment extends BaseFragment {
         }
     }
 
-    public void startIntent(Class<? extends Activity> target) {
-        startActivity(new Intent(getActivity(), target));
+    public static UserInfoFragment newInstance() {
+        UserInfoFragment f = new UserInfoFragment();
+        return f;
     }
+
+//    public void startIntent(Class<? extends Activity> target) {
+//        startActivity(new Intent(getActivity(), target));
+//    }
+
+
 }

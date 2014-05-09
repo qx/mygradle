@@ -1,14 +1,17 @@
 package com.cfz.android.visual.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.cfz.android.R;
 import com.cfz.android.utils.LogUtil;
 import com.cfz.android.visual.activity.constant.BaseClass;
 import com.cfz.android.visual.activity.constant.HandlerConstant;
@@ -21,7 +24,10 @@ public class BaseFragment extends Fragment implements View.OnClickListener, Hand
     protected int layoutId;
     protected FragmentActivity mAppFragmentTabActivity;
     protected View curView;
-
+//    public static SecondPageFragment newInstance() {
+//        SecondPageFragment f = new SecondPageFragment();
+//        return f;
+//    }
 
     @Override
     public void onAttach(Activity activity) {
@@ -76,5 +82,11 @@ public class BaseFragment extends Fragment implements View.OnClickListener, Hand
             }
         }
     }
+
+    protected void startIntent(Class<? extends Activity> target) {
+        startActivity(new Intent(getActivity(), target));
+    }
+
+
 
 }

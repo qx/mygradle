@@ -22,13 +22,6 @@
 
         <activity android:name=".visual.activity.BaseActivity"/>
 
-        <activity android:name=".visual.activity.AllProductActivity"/>
-
-        <activity android:name=".visual.activity.OldProductActivity"/>
-
-
-        <activity android:name=".visual.activity.UserActivity"/>
-
         <activity android:name=".visual.activity.TesterActivity"
                 >
         </activity>

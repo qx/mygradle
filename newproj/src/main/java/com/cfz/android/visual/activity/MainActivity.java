@@ -1,6 +1,7 @@
 package com.cfz.android.visual.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -13,6 +14,7 @@ import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
 import com.cfz.android.R;
+import com.cfz.android.visual.activity.adapter.ViewPageFragmentAdapter;
 import com.cfz.android.visual.activity.listener.FragmentActivityListener;
 
 import java.util.ArrayList;
@@ -54,8 +56,8 @@ public class MainActivity extends BaseActivity implements FragmentActivityListen
         mTabsAdapter.addTab(mTabHost.newTabSpec("contacts").setIndicator(mOldIndicator),
                 OldProductFragment.class, null);
         mTabsAdapter.addTab(mTabHost.newTabSpec("custom").setIndicator(mUserIndicator),
-                UserInfoFragment.class, null);
-//                UserLoginFragment.class, null);
+//                UserInfoFragment.class, null);
+                UserLoginFragment.class, null);
 
         if (savedInstanceState != null) {
             mTabHost.setCurrentTabByTag(savedInstanceState.getString("tab"));
@@ -79,8 +81,12 @@ public class MainActivity extends BaseActivity implements FragmentActivityListen
     }
 
 
+    @Override
+    public void secondClick() {
+        startActivity(new Intent(this, MoreActivity.class));
+    }
 
-    public static class TabsAdapter extends FragmentPagerAdapter
+    public static class TabsAdapter extends ViewPageFragmentAdapter
             implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
         private final Context mContext;
         private final TabHost mTabHost;

@@ -13,6 +13,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/left_back_btn"
             android:onClick="onReturn"
+            android:paddingRight="30dp"
             android:src="@drawable/before_arrow_left"/>
 
     <LinearLayout
@@ -38,7 +39,7 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
-            android:onClick="onSecondClick"
+            android:background="@android:color/holo_blue_light"
             android:paddingRight="10dp"
             android:layout_height="match_parent">
 
