@@ -8,81 +8,87 @@
     <include layout="@layout/layout_title_only"
             />
 
-    <RelativeLayout
+    <TextView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_share_item"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="页面缺"/>
 
-        <ImageView
-                android:src="@drawable/share_circle_blue"
-                style="@style/item_img_left_style"
-                />
+    <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/height_share_item"-->
+            <!--android:orientation="horizontal">-->
 
-        <TextView
-                android:text="@string/more_explain"
-                style="@style/item_text_center_style"/>
+        <!--<ImageView-->
+                <!--android:src="@drawable/share_circle_blue"-->
+                <!--style="@style/item_img_left_style"-->
+                <!--/>-->
 
-        <ImageView
-                style="@style/item_img_right_style"
-                android:src="@drawable/share_arrow_right"
-                />
-    </RelativeLayout>
+        <!--<TextView-->
+                <!--android:text="@string/more_explain"-->
+                <!--style="@style/item_text_center_style"/>-->
 
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_share_item"
-            android:orientation="horizontal">
+        <!--<ImageView-->
+                <!--style="@style/item_img_right_style"-->
+                <!--android:src="@drawable/share_arrow_right"-->
+                <!--/>-->
+    <!--</RelativeLayout>-->
 
-        <ImageView
-                android:src="@drawable/share_circle_green"
-                style="@style/item_img_left_style"/>
+    <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/height_share_item"-->
+            <!--android:orientation="horizontal">-->
 
-        <TextView
-                android:text="@string/more_advice"
-                style="@style/item_text_center_style"/>
+        <!--<ImageView-->
+                <!--android:src="@drawable/share_circle_green"-->
+                <!--style="@style/item_img_left_style"/>-->
 
-        <ImageView
-                style="@style/item_img_right_style"
-                android:src="@drawable/share_arrow_right"
-                />
-    </RelativeLayout>
+        <!--<TextView-->
+                <!--android:text="@string/more_advice"-->
+                <!--style="@style/item_text_center_style"/>-->
 
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_share_item"
-            android:orientation="horizontal">
+        <!--<ImageView-->
+                <!--style="@style/item_img_right_style"-->
+                <!--android:src="@drawable/share_arrow_right"-->
+                <!--/>-->
+    <!--</RelativeLayout>-->
 
-        <ImageView
-                android:src="@drawable/share_circle_orange"
-                style="@style/item_img_left_style"/>
+    <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/height_share_item"-->
+            <!--android:orientation="horizontal">-->
 
-        <TextView
-                android:text="@string/more_contact"
-                style="@style/item_text_center_style"/>
+        <!--<ImageView-->
+                <!--android:src="@drawable/share_circle_orange"-->
+                <!--style="@style/item_img_left_style"/>-->
 
-        <ImageView
-                style="@style/item_img_right_style"
-                android:src="@drawable/share_arrow_right"
-                />
-    </RelativeLayout>
+        <!--<TextView-->
+                <!--android:text="@string/more_contact"-->
+                <!--style="@style/item_text_center_style"/>-->
 
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_share_item"
-            android:orientation="horizontal">
+        <!--<ImageView-->
+                <!--style="@style/item_img_right_style"-->
+                <!--android:src="@drawable/share_arrow_right"-->
+                <!--/>-->
+    <!--</RelativeLayout>-->
 
-        <ImageView
-                android:src="@drawable/share_circle_red"
-                style="@style/item_img_left_style"
-                />
+    <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/height_share_item"-->
+            <!--android:orientation="horizontal">-->
 
-        <TextView
-                android:text="@string/more_update"
-                style="@style/item_text_center_style"/>
+        <!--<ImageView-->
+                <!--android:src="@drawable/share_circle_red"-->
+                <!--style="@style/item_img_left_style"-->
+                <!--/>-->
 
-        <ImageView
-                style="@style/item_img_right_style"
-                android:src="@drawable/share_arrow_right"
-                />
-    </RelativeLayout>
+        <!--<TextView-->
+                <!--android:text="@string/more_update"-->
+                <!--style="@style/item_text_center_style"/>-->
+
+        <!--<ImageView-->
+                <!--style="@style/item_img_right_style"-->
+                <!--android:src="@drawable/share_arrow_right"-->
+                <!--/>-->
+    <!--</RelativeLayout>-->
 </LinearLayout>

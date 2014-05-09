@@ -8,12 +8,12 @@ import com.cfz.android.R;
  */
 public class MyAccountActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_account_deatail_list);
+        setContentView(R.layout.activity_account);
         super.onCreate(savedInstanceState);
     }
 
     @Override
     protected int getActivityTitle() {
-        return R.string.title_account;
+        return R.string.title_account_sub;
     }
 }

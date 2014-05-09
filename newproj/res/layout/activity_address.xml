@@ -5,6 +5,12 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <include layout="@layout/layout_title_main"
+    <include layout="@layout/layout_title_only"
             />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="页面缺"/>
 </LinearLayout>
