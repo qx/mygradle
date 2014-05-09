@@ -2,8 +2,11 @@
 
 echo This bat will add all file?
 git status
-pause
+if "%errorlevel%"=="1"  echo fail
+if errorlevel 0 goto add
 
+:add
+pause
 git add --all :/
 if "%errorlevel%"=="1"  echo fail
 if errorlevel 0 goto commit
