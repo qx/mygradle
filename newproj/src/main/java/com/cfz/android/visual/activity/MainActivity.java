@@ -13,7 +13,9 @@ import android.view.ViewGroup;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
+import cn.trinea.android.common.util.ToastUtils;
 import com.cfz.android.R;
+import com.cfz.android.utils.LogUtil;
 import com.cfz.android.visual.activity.adapter.ViewPageFragmentAdapter;
 import com.cfz.android.visual.activity.listener.FragmentActivityListener;
 
@@ -31,6 +33,9 @@ public class MainActivity extends BaseActivity implements FragmentActivityListen
      * this data used by fragment and activity
      */
     private HashMap<String, String> mFragmentActivityData;
+    private View mNewIndicator;
+    private View mOldIndicator;
+    private View mUserIndicator;
 
     /**
      * Called when the activity is first created.
@@ -43,11 +48,11 @@ public class MainActivity extends BaseActivity implements FragmentActivityListen
         mTabHost.setup();
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        View mNewIndicator = LayoutInflater.from(this).inflate(R.layout.layout_tab_mini, null);
+         mNewIndicator = LayoutInflater.from(this).inflate(R.layout.layout_tab_mini, null);
         ((TextView) mNewIndicator.findViewById(R.id.tab_label)).setText(R.string.tab_product_all);
-        View mOldIndicator = LayoutInflater.from(this).inflate(R.layout.layout_tab_mini, null);
+         mOldIndicator = LayoutInflater.from(this).inflate(R.layout.layout_tab_mini, null);
         ((TextView) mOldIndicator.findViewById(R.id.tab_label)).setText(R.string.tab_product_get);
-        View mUserIndicator = LayoutInflater.from(this).inflate(R.layout.layout_tab_mini, null);
+         mUserIndicator = LayoutInflater.from(this).inflate(R.layout.layout_tab_mini, null);
         ((TextView) mUserIndicator.findViewById(R.id.tab_label)).setText(R.string.tab_product_user);
         mTabsAdapter = new TabsAdapter(this, mTabHost, mViewPager);
 
@@ -86,7 +91,7 @@ public class MainActivity extends BaseActivity implements FragmentActivityListen
         startActivity(new Intent(this, MoreActivity.class));
     }
 
-    public static class TabsAdapter extends ViewPageFragmentAdapter
+    public class TabsAdapter extends ViewPageFragmentAdapter
             implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
         private final Context mContext;
         private final TabHost mTabHost;
@@ -128,6 +133,23 @@ public class MainActivity extends BaseActivity implements FragmentActivityListen
         public void onTabChanged(String tabId) {
             int position = mTabHost.getCurrentTab();
             mViewPager.setCurrentItem(position);
+            ToastUtils.show(MainActivity.this,tabId);
+            if (tabId.equals("simple")) {
+                mNewIndicator.setSelected(true);
+                mOldIndicator.setSelected(false);
+                mUserIndicator.setSelected(false);
+
+            }else if (tabId.equals("contacts")){
+                mNewIndicator.setSelected(false);
+                mOldIndicator.setSelected(true);
+                mUserIndicator.setSelected(false);
+
+            }else if (tabId.equals("consume")) {
+                mNewIndicator.setSelected(false);
+                mOldIndicator.setSelected(false);
+                mUserIndicator.setSelected(true);
+
+            }
         }
 
         @Override
@@ -152,7 +174,7 @@ public class MainActivity extends BaseActivity implements FragmentActivityListen
         public void onPageScrollStateChanged(int state) {
         }
 
-        static final class TabInfo {
+         final class TabInfo {
             private final String tag;
             private final Class<?> clss;
             private final Bundle args;
@@ -164,7 +186,7 @@ public class MainActivity extends BaseActivity implements FragmentActivityListen
             }
         }
 
-        static class DummyTabFactory implements TabHost.TabContentFactory {
+         class DummyTabFactory implements TabHost.TabContentFactory {
             private final Context mContext;
 
             public DummyTabFactory(Context context) {

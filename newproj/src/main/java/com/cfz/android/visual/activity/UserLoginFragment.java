@@ -31,10 +31,10 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.login:
-                Fragment productDetailFragment = UserInfoFragment.newInstance();
-                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-                transaction.addToBackStack(null);
-                transaction.replace(R.id.pager, productDetailFragment).commit();
+//                Fragment productDetailFragment = UserInfoFragment.newInstance();
+//                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+//                transaction.addToBackStack(null);
+//                transaction.replace(R.id.pager, productDetailFragment).commit();
 
                 break;
             default:

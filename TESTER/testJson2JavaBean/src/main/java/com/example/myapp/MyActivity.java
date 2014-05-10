@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class MyActivity extends Activity {
 //    private static final String PLACES_SEARCH_URL = "http://114.215.177.210:8080/cfz/";
-    private static final String PLACES_SEARCH_URL = "http://192.168.1.104:8081/json2";
+    private static final String PLACES_SEARCH_URL = "http://192.168.1.102:8081/json2";
     private static final String GET_PRODUCT = "product_getProductingList";
     //    private static final String PLACES_SEARCH_URL = "http://ip.jsontest.com/";//?mime=5
     private ProductList p;
