@@ -15,12 +15,13 @@ import com.cfz.android.R;
 import com.cfz.android.utils.LogUtil;
 import com.cfz.android.visual.activity.constant.BaseClass;
 import com.cfz.android.visual.activity.constant.HandlerConstant;
+import com.cfz.android.visual.activity.constant.URLConstant;
 import com.cfz.android.visual.activity.listener.RefreshListener;
 
 /**
  * Created by Administrator on 2014/5/9.
  */
-public class BaseFragment extends Fragment implements View.OnClickListener, HandlerConstant, BaseClass {
+public class BaseFragment extends Fragment implements View.OnClickListener, HandlerConstant, BaseClass,URLConstant {
     protected int layoutId;
     protected FragmentActivity mAppFragmentTabActivity;
     protected View curView;

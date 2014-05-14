@@ -10,9 +10,9 @@ import com.google.api.client.json.jackson.JacksonFactory;
 import java.io.IOException;
 
 public class MyActivity extends Activity {
-//    private static final String PLACES_SEARCH_URL = "http://114.215.177.210:8080/cfz/";
-    private static final String PLACES_SEARCH_URL = "http://192.168.1.102:8081/json2";
-    private static final String GET_PRODUCT = "product_getProductingList";
+    private static final String PLACES_SEARCH_URL = "http://114.215.177.210:8080/cfz/";
+//    private static final String PLACES_SEARCH_URL = "http://192.168.1.104:8081/json2";
+    private static final String GET_PRODUCT = "product_getProductingList?";
     //    private static final String PLACES_SEARCH_URL = "http://ip.jsontest.com/";//?mime=5
     private ProductList p;
 
@@ -42,10 +42,10 @@ public class MyActivity extends Activity {
     public static ProductList performSearch() throws Exception {
         try {
             HttpTransport transport = new ApacheHttpTransport();
-//            GenericUrl reqUrl = new GenericUrl(PLACES_SEARCH_URL + GET_PRODUCT);
-            GenericUrl reqUrl = new GenericUrl(PLACES_SEARCH_URL);
+            GenericUrl reqUrl = new GenericUrl(PLACES_SEARCH_URL + GET_PRODUCT);
+//            GenericUrl reqUrl = new GenericUrl(PLACES_SEARCH_URL);
 //            reqUrl.put("mine", 5);
-//            reqUrl.put("pageNum", 1);
+            reqUrl.put("pageNum", 1);
             HttpRequestFactory httpRequestFactory = createRequestFactory(transport);
             HttpRequest request = httpRequestFactory.buildGetRequest(reqUrl);
             String str = request.execute().parseAsString();
