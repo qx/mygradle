@@ -19,6 +19,10 @@
     </content>
     <orderEntry type="module" module-name="main" />
     <orderEntry type="sourceFolder" forTests="false" />
+<<<<<<< HEAD
+=======
+    <orderEntry type="library" name="android-support-v4" level="project" />
+>>>>>>> add userlogin tester and decide user network object get response;
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.2" level="project" />
     <orderEntry type="library" name="Maven: com.android.tools:sdklib:22.7.2" level="project" />
@@ -73,6 +77,10 @@
     <orderEntry type="library" scope="TEST" name="Maven: nekohtml:xercesMinimal:1.9.6.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: nekohtml:nekohtml:1.9.6.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: commons-lang:commons-lang:2.5" level="project" />
+<<<<<<< HEAD
+    <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
+    <orderEntry type="library" name="android-support-v4" level="project" />
+=======
     <orderEntry type="library" name="Maven: com.google.http-client:google-http-client-extensions-android2:1.6.0-beta" level="project" />
     <orderEntry type="library" name="Maven: com.google.http-client:google-http-client:1.6.0-beta" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:1.3.9" level="project" />
@@ -83,7 +91,7 @@
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.3" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.5" level="project" />
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
-    <orderEntry type="library" name="Maven: com.google.android:support-v4:r7" level="project" />
+>>>>>>> add userlogin tester and decide user network object get response;
   </component>
 </module>
 
