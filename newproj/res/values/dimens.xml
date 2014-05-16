@@ -15,5 +15,6 @@
 
     <dimen name="mainActivityListItemHeight">48dp</dimen>
     <dimen name="mainActivityListItemPadding">16dp</dimen>
+    <dimen name="dp_4">30dp</dimen>
 
 </resources>

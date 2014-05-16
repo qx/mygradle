@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import cn.trinea.android.common.service.impl.ImageCache;
 import cn.trinea.android.common.util.ToastUtils;
 import cn.trinea.android.common.view.DropDownListView;
 import com.cfz.android.R;
@@ -25,6 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * 主页tab 所有产品界面
@@ -36,18 +38,20 @@ public class NewProductFragment extends BaseFragment {
     private MainActivity mActivity;
     private LinkedList<String> listItems = null;
     private DropDownListView listView = null;
-    //    private ArrayAdapter<String> adapter;
+//  private ArrayAdapter<String> adapter;
     private ProductItemAdapter adapter;
-//    private static BackListProduct backNewProducts;
-
-
-    //    private String[] mStrings = {"Aaaaaa", "Bbbbbb", "Cccccc", "Dddddd", "Eeeeee", "Ffffff",
+//  private static BackListProduct backNewProducts;
+//  private String[] mStrings = {"Aaaaaa", "Bbbbbb", "Cccccc", "Dddddd", "Eeeeee", "Ffffff",
 //            "Gggggg", "Hhhhhh", "Iiiiii", "Jjjjjj", "Kkkkkk", "Llllll", "Mmmmmm", "Nnnnnn",};
     public static final int MORE_DATA_MAX_COUNT = 3;
     public int moreDataCount = 0;
     private static BackListProduct backNewProducts;
     private ArrayList<BackNewProduct> alist;
-
+    private static int page = 1;
+    /**
+     * icon cache *
+     */
+    public static final ImageCache IMAGE_CACHE = new ImageCache(128, 512);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -88,17 +92,34 @@ public class NewProductFragment extends BaseFragment {
         adapter = new ProductItemAdapter(getActivity());
 
         listView.setAdapter(adapter);
+        imageUrlList = new ArrayList<String>();
+        new GetDataTask(true).execute();
+
+
+
+
 
         return mview;
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        page = 1;
+    }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+    private List<String> imageUrlList;
     private class GetDataTask extends AsyncTask<Void, Void, Boolean> {
 
         private boolean isDropDown;
 
         public GetDataTask(boolean isDropDown) {
             this.isDropDown = isDropDown;
+
         }
 
         @Override
@@ -114,7 +135,6 @@ public class NewProductFragment extends BaseFragment {
             if (isDropDown) {
                 listItems.addFirst("Added after drop down");
                 adapter.notifyDataSetChanged();
-
                 // should call onDropDownComplete function of DropDownListView at end of drop down complete.
                 SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd HH:mm:ss");
                 listView.onDropDownComplete(getString(R.string.update_at) + dateFormat.format(new Date()));
@@ -122,7 +142,6 @@ public class NewProductFragment extends BaseFragment {
                 moreDataCount++;
                 listItems.add("Added after on bottom");
                 adapter.notifyDataSetChanged();
-
                 if (moreDataCount >= MORE_DATA_MAX_COUNT) {
                     listView.setHasMore(false);
                 }
@@ -132,6 +151,7 @@ public class NewProductFragment extends BaseFragment {
             }
             alist = backNewProducts.result;
             adapter.putData(alist);
+            page++;
             super.onPostExecute(result);
         }
     }
@@ -140,13 +160,14 @@ public class NewProductFragment extends BaseFragment {
         try {
             HttpTransport transport = new ApacheHttpTransport();
             GenericUrl reqUrl = new GenericUrl(URLConstant.PRODUCT_URL);
-            reqUrl.put(PRODUCT_URL_PARAMS_PAGE_, "1");
+            reqUrl.put(PRODUCT_URL_PARAMS_PAGE_, page+"");
             HttpRequestFactory httpRequestFactory = transport.createRequestFactory(new HttpRequestInitializer() {
                 public void initialize(HttpRequest request) {
                     JsonHttpParser parser = new JsonHttpParser(new JacksonFactory());
                     request.addParser(parser);
                 }
             });
+//            {"result":"end_page","status":"end_page"}
             HttpRequest request = httpRequestFactory.buildGetRequest(reqUrl);
             String str = request.execute().parseAsString();
             System.out.println(str);
