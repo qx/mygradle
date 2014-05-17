@@ -76,7 +76,6 @@ public class ImageCacheDemo extends BaseActivity {
         // return 1;
         // }
         // });
-
         int count = 0, viewId = 0x7F24FFF0;
         int verticalSpacing, horizontalSpacing;
         verticalSpacing = horizontalSpacing = getResources().getDimensionPixelSize(R.dimen.dp_4);
@@ -218,6 +217,7 @@ public class ImageCacheDemo extends BaseActivity {
         imageUrlList.add("http://farm3.staticflickr.com/2863/9148527892_31f9377351_o.jpg");
         imageUrlList.add("http://farm8.staticflickr.com/7310/9148528008_8e8f51997a.jpg");
         imageUrlList.add("http://farm3.staticflickr.com/2849/9148528108_dfcda19507.jpg");
+        imageUrlList.add("http://114.215.177.210:8080/imgserver/productImg/001600050.png");
         imageUrlList.add("http://farm4.staticflickr.com/3739/9148528022_e9bf03058f.jpg");
     }
 }

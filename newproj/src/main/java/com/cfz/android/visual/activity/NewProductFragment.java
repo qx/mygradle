@@ -51,7 +51,7 @@ public class NewProductFragment extends BaseFragment {
     /**
      * icon cache *
      */
-    public static final ImageCache IMAGE_CACHE = new ImageCache(128, 512);
+//    public static final ImageCache IMAGE_CACHE = new ImageCache(128, 512);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
