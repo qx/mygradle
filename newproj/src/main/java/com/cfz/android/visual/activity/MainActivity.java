@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +14,13 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 import cn.trinea.android.common.util.ToastUtils;
 import com.cfz.android.R;
-import com.cfz.android.utils.LogUtil;
+import com.cfz.android.utils.CommonHelper;
 import com.cfz.android.visual.activity.adapter.ViewPageFragmentAdapter;
 import com.cfz.android.visual.activity.listener.FragmentActivityListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 主界面
@@ -67,6 +67,10 @@ public class MainActivity extends BaseActivity implements FragmentActivityListen
         if (savedInstanceState != null) {
             mTabHost.setCurrentTabByTag(savedInstanceState.getString("tab"));
         }
+        Map<String, String> mymap = new HashMap<String, String>();
+        mymap.put("first", "firstvalue");
+        mymap.put("second", "secondvalue");
+        CommonHelper.saveObject2CommShare(this, "tester5", true);
     }
 
     @Override

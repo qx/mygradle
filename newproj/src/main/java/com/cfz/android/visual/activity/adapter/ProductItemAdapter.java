@@ -47,6 +47,9 @@ public class ProductItemAdapter extends BaseAdapter {
         if (products == null) {
             return;
         }
+        if (list == null) {
+            return;
+        }
         products.addAll(list);
         if (list != null && list.size() > 0) {
             notifyDataSetChanged();

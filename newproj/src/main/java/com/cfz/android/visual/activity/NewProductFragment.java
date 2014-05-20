@@ -7,11 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import cn.trinea.android.common.service.impl.ImageCache;
 import cn.trinea.android.common.util.ToastUtils;
 import cn.trinea.android.common.view.DropDownListView;
 import com.cfz.android.R;
-import com.cfz.android.mode.object.NewProduct;
 import com.cfz.android.mode.object.network.BackListProduct;
 import com.cfz.android.mode.object.network.BackNewProduct;
 import com.cfz.android.visual.activity.adapter.ProductItemAdapter;
@@ -148,6 +146,9 @@ public class NewProductFragment extends BaseFragment {
 
                 // should call onBottomComplete function of DropDownListView at end of on bottom complete.
                 listView.onBottomComplete();
+            }
+            if (backNewProducts == null) {
+                return;
             }
             alist = backNewProducts.result;
             adapter.putData(alist);
