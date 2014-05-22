@@ -71,12 +71,13 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
             HttpTransport transport = new ApacheHttpTransport();
 //            GenericUrl reqUrl = new GenericUrl(PLACES_SEARCH_URL + GET_PRODUCT);
             GenericUrl reqUrl = new GenericUrl(URLConstant.LOGIN_URL);
-            reqUrl.put(LOGIN_URL_PARAMS_ID_, "SADFQWE9984654ADF");
+            reqUrl.put(LOGIN_URL_PARAMS_ID_, "SADF说eQWE9984654ADF");
             reqUrl.put(LOGIN_URL_PARAMS_PHONE_, "1");
             reqUrl.put(LOGIN_URL_PARAMS_PHONEID_, "6545641251321232");
 //            reqUrl.put("pageNum", 1);
             HttpRequestFactory httpRequestFactory = createRequestFactory(transport);
             HttpRequest request = httpRequestFactory.buildGetRequest(reqUrl);
+            System.out.println("url="+reqUrl);
             String str = request.execute().parseAsString();
             BackUserLogin backUserLogin = request.execute().parseAs(BackUserLogin.class);
 

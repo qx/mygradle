@@ -7,7 +7,7 @@ import org.apache.commons.lang.builder.ToStringStyle;
 /**
  * Created by Administrator on 2014/5/15.
  */
-public class BackUserLogin {
+public class BackUserLogin extends BaseEntity{
 //    1：userId
 //    2：integral
 //    3: headImg
@@ -18,17 +18,11 @@ public class BackUserLogin {
 //    (默认头像放在客户端,应该不需要服务器返回)
 //    4:系统默认昵称
     @Key
-    public String userId;
+    public UserLoginBean bean;
 
-    @Key
-    public Integer integral;
-    @Key
-    public String headImg;
-    @Key
-    public String nickName;
 
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.SIMPLE_STYLE);
     }
 }
