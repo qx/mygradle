@@ -1,5 +1,6 @@
 package com.cfz.android.mode.object.network;
 
+import com.cfz.android.mode.object.network.entity.UserLoginBean;
 import com.google.api.client.util.Key;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;

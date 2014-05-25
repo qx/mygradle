@@ -1,4 +1,4 @@
-package com.cfz.android.mode.object.network;
+package com.cfz.android.mode.object.network.entity;
 
 import com.google.api.client.util.Key;
 
@@ -20,7 +20,7 @@ public class UserLoginBean extends BaseBean {
     public String toString() {
         return "userId=" + userId + "\n" +
                 "integral=" + integral + "\n"
-                +"headImg="+headImg+"\n"+
-                "nickName="+nickName;
+                + "headImg=" + headImg + "\n" +
+                "nickName=" + nickName;
     }
 }
