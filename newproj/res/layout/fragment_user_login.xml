@@ -1,71 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:gravity="center_horizontal"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-
-    <EditText
-            android:id="@+id/edit_username"
-            android:background="@drawable/biankuang_login_username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/pwd_find_tips"
-            android:imeOptions="actionDone"
-            android:inputType="textEmailAddress"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp"/>
-
-    <EditText
-            android:id="@+id/edit_pwd"
-            android:background="@drawable/biankuanglogin_passwd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/log_passwd_tips"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"/>
-
-    <Button
-            android:id="@+id/login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_btn_login"
-            android:text="@string/log_text_login"
-            android:layout_marginTop="50dp"
-            android:gravity="center"/>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:orientation="vertical"
+             android:gravity="center_horizontal"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
 
     <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:id="@+id/waitlog"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            >
 
-        <TextView
+        <EditText
+                android:id="@+id/edit_username"
+                android:background="@drawable/biankuang_login_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/log_forgetten"/>
+                android:hint="@string/pwd_find_tips"
+                android:imeOptions="actionDone"
+                android:inputType="textEmailAddress"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"/>
 
-        <View
-                android:layout_width="1dp"
-                android:layout_height="17dp"
-                android:background="@color/black"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                />
-
-        <TextView
+        <EditText
+                android:id="@+id/edit_pwd"
+                android:background="@drawable/biankuanglogin_passwd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/log_register"
-                />
+                android:hint="@string/log_passwd_tips"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"/>
+
+        <Button
+                android:id="@+id/login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_btn_login"
+                android:text="@string/log_text_login"
+                android:layout_marginTop="50dp"
+                android:gravity="center"/>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/log_forgetten"/>
+
+            <View
+                    android:layout_width="1dp"
+                    android:layout_height="17dp"
+                    android:background="@color/black"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/log_register"
+                    />
+        </LinearLayout>
+
+        <Button
+                android:id="@+id/loginqq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/qq_login"
+                android:layout_marginTop="30dp"/>
     </LinearLayout>
 
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/qq_login"
-            android:layout_marginTop="30dp"/>
-</LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:id="@+id/logined"
+                  android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:layout_height="match_parent"
+            >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@color/grey"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_height="150dp">
+
+
+            <ImageView
+                    android:id="@+id/img_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/userinfo_icon_login"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="17dp"
+                    android:layout_marginTop="10dp"
+                    android:text="凑份高手"/>
+        </LinearLayout>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:id="@+id/my_history"
+                >
+
+            <ImageView
+                    style="@style/item_img_left_style"
+                    android:src="@drawable/userinfo_icon_blue"/>
+
+            <TextView
+                    style="@style/item_text_center_style"
+                    android:text="@string/user_account_action_list"/>
+
+            <ImageView
+                    style="@style/item_img_right_style"
+                    android:src="@drawable/share_arrow_right"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:id="@+id/my_product"
+                >
+
+            <ImageView
+                    style="@style/item_img_left_style"
+                    android:src="@drawable/userinfo_icon_green1"/>
+
+            <TextView
+                    style="@style/item_text_center_style"
+                    android:text="@string/user_account_action_getlist"/>
+
+            <ImageView
+                    style="@style/item_img_right_style"
+                    android:src="@drawable/share_arrow_right"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:id="@+id/my_account"
+                >
+
+            <ImageView
+                    style="@style/item_img_left_style"
+                    android:src="@drawable/userinfo_icon_green2"/>
+
+            <TextView
+                    style="@style/item_text_center_style"
+                    android:text="@string/user_account_trade_list"/>
+
+            <ImageView
+                    style="@style/item_img_right_style"
+                    android:src="@drawable/share_arrow_right"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:id="@+id/my_address"
+                >
+
+            <ImageView
+                    style="@style/item_img_left_style"
+                    android:src="@drawable/userinfo_icon_orange"/>
+
+            <TextView
+                    style="@style/item_text_center_style"
+                    android:text="@string/user_account_address"/>
+
+            <ImageView
+                    style="@style/item_img_right_style"
+                    android:src="@drawable/share_arrow_right"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:id="@+id/my_msg"
+                >
+
+            <ImageView
+                    style="@style/item_img_left_style"
+                    android:src="@drawable/userinfo_icon_red"/>
+
+            <TextView
+                    style="@style/item_text_center_style"
+                    android:text="@string/user_account_message"/>
+
+            <ImageView
+                    style="@style/item_img_right_style"
+                    android:src="@drawable/share_arrow_right"
+                    />
+        </RelativeLayout>
+
+    </LinearLayout>
+</FrameLayout>

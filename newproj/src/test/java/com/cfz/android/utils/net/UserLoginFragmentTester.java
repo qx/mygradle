@@ -1,6 +1,10 @@
 package com.cfz.android.utils.net;
 
+import android.content.Context;
+import com.cfz.android.imple.RequestListener;
+import com.cfz.android.utils.LoginUtils;
 import org.junit.Test;
+import org.robolectric.Robolectric;
 
 import static com.cfz.android.visual.activity.UserLoginFragment.login;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -15,7 +19,13 @@ public class UserLoginFragmentTester {
     public void testLogin() {
 //            assertThat(ToStringBuilder.reflectionToString(getData2MapFromNet(), ToStringStyle.DEFAULT_STYLE), equalTo(null));
         try {
-            assertThat(login().toString(), equalTo(null));
+            Context mCtx = Robolectric.application;
+            assertThat(login("9888888908", "1", LoginUtils.getImei(mCtx),new RequestListener() {
+                @Override
+                public void requestCompleted(boolean isSuccess) {
+
+                }
+            }).toString(), equalTo(null));
         } catch (Exception e) {
             e.printStackTrace();
         }

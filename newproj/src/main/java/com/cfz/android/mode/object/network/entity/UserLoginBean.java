@@ -15,12 +15,15 @@ public class UserLoginBean extends BaseBean {
     public String headImg;
     @Key
     public String nickName;
+    @Key
+    public Float money;
 
     @Override
     public String toString() {
         return "userId=" + userId + "\n" +
                 "integral=" + integral + "\n"
-                + "headImg=" + headImg + "\n" +
+                + "headImg=" + headImg + "\n"
+                + "money=" + money + "\n" +
                 "nickName=" + nickName;
     }
 }

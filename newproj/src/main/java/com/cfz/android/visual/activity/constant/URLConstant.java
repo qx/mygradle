@@ -4,6 +4,12 @@ package com.cfz.android.visual.activity.constant;
  * Created by Administrator on 2014/5/15.
  */
 public interface URLConstant {
+
+    public static final String info = "info";
+
+    public static final String status = "status";
+
+
     public static final String BASE_URL = "http://114.215.177.210:8080/cfz/";
     /**
      * 登录
@@ -33,5 +39,7 @@ public interface URLConstant {
     public static final String PRODUCTOLD_URL_PARAMS_PAGE = "pageNum";
 
 
+    public static final String success = "success";
+    public static final String fail = "fail";
 }
 
