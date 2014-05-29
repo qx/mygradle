@@ -1,4 +1,4 @@
-package com.cfz.android.utils.net; /**
+package com.lenovo.powersetting.utils.net; /**
  * Created by Administrator on 2014/4/25.
  */
 
@@ -6,8 +6,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 
-import static com.cfz.android.utils.net.MyNetWorkUtil.getData2MapFromNet;
-import static com.cfz.android.utils.net.MyNetWorkUtil.getDataFromNet;
+import static com.lenovo.powersetting.utils.net.MyNetWorkUtil.getData2MapFromNet;
+import static com.lenovo.powersetting.utils.net.MyNetWorkUtil.getDataFromNet;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 

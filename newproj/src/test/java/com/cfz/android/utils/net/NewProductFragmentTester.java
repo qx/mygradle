@@ -1,8 +1,8 @@
-package com.cfz.android.utils.net;
+package com.lenovo.powersetting.utils.net;
 
 import org.junit.Test;
 
-import static com.cfz.android.visual.activity.NewProductFragment.performGetNewProduct;
+import static com.lenovo.powersetting.visual.activity.NewProductFragment.performGetNewProduct;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.cfz.android"
+          package="com.lenovo.powersetting"
           android:versionCode="1"
           android:versionName="1.0">
 
@@ -101,5 +101,7 @@
         <activity android:name="com.tencent.connect.common.AssistActivity"
                   android:theme="@android:style/Theme.Translucent.NoTitleBar"
                   android:screenOrientation="portrait"/>
+
+        <receiver android:name=".receivers.SpokerReceiver"/>
     </application>
 </manifest>

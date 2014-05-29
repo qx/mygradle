@@ -1,12 +1,12 @@
-package com.cfz.android.utils.net;
+package com.lenovo.powersetting.utils.net;
 
 import android.content.Context;
-import com.cfz.android.imple.RequestListener;
-import com.cfz.android.utils.LoginUtils;
+import com.lenovo.powersetting.impl.RequestListener;
+import com.lenovo.powersetting.utils.LoginUtils;
 import org.junit.Test;
 import org.robolectric.Robolectric;
 
-import static com.cfz.android.visual.activity.UserLoginFragment.login;
+import static com.lenovo.powersetting.visual.activity.UserLoginFragment.login;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
