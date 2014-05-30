@@ -51,7 +51,7 @@ public class ProductItemAdapter extends BaseAdapter {
             return;
         }
         products.addAll(list);
-        if (list != null && list.size() > 0) {
+        if (list.size() > 0) {
             notifyDataSetChanged();
         }
     }

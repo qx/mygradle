@@ -1,9 +1,10 @@
 package com.lenovo.powersetting;
 
 import android.content.Context;
-import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v4.content.LocalBroadcastManager;
-import com.lenovo.powersetting.constant.IntentConstant;
+import com.lenovo.powersetting.impl.HttpRequestListener;
+import com.lenovo.powersetting.utils.AsyncTaskThreadPoolExecutorHelper;
 
 /**
  * Only on/off function controller should be defined here
@@ -28,53 +29,29 @@ public class Spokers {
         return spokers;
     }
 
-    /**
-     * example
-     * start smart brightness
-     *
-     * @return excute resule
-     */
-    public boolean startSmartBrightness() {
-        manager.sendBroadcast(new Intent(IntentConstant.STARTBRIGHTNESS));
-        return false;
+    public void getUserData(String url, final HttpRequestListener httpListener) {
+
+        AsyncTaskThreadPoolExecutorHelper.execute(new AsyncTask<Object, Object, Object>() {
+            @Override
+            protected void onPreExecute() {
+                httpListener.onPre();
+                super.onPreExecute();
+            }
+
+            @Override
+            protected Object doInBackground(Object... objects) {
+                httpListener.onDoing();
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Object o) {
+                httpListener.onPost();
+                super.onPostExecute(o);
+            }
+        });
+
     }
 
-    /**
-     * smart brightness stop
-     */
-    public boolean stopSmartBrightness() {
-        return false;
-    }
 
-    public void startClassiMode() {
-        //TODO
-    }
-
-    public void stopClassiMode() {
-        //TODO
-    }
-
-    public void startTimingChanged() {
-        //TODO
-    }
-
-    public void stopTimingChanged() {
-        //TODO
-    }
-
-    public void startVMX() {
-        //TODO
-    }
-
-    public void stopVMX() {
-        //TODO
-    }
-
-    public void startSleep() {
-        //TODO
-    }
-
-    public void stopSleep() {
-        //TODO
-    }
 }

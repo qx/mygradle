@@ -7,7 +7,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 /**
  * Created by Administrator on 2014/5/15.
  */
-public class BackNewProduct {
+public class BackNewProduct extends BaseEntity {
 
     @Key
     public String productId;
@@ -24,6 +24,10 @@ public class BackNewProduct {
     public Integer currentCnt;
     @Key
     public String detail;
+
+    public BackNewProduct() {
+        super();
+    }
 
     @Override
     public String toString() {

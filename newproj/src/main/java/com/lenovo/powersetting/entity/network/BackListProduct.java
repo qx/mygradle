@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by Administrator on 2014/5/15.
  */
-public class BackListProduct {
+public class BackListProduct extends BaseEntity {
     @Key
     public String status;
 
@@ -18,6 +18,10 @@ public class BackListProduct {
 
     @Key
     public String info;
+
+    public BackListProduct() {
+super();
+    }
 
     @Override
     public String toString() {

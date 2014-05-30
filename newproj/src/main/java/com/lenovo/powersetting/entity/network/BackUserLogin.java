@@ -1,15 +1,17 @@
 package com.lenovo.powersetting.entity.network;
 
-import com.lenovo.powersetting.entity.network.bean.UserLoginBean;
 import com.google.api.client.util.Key;
+import com.lenovo.powersetting.entity.network.bean.UserLoginBean;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+
+import java.lang.reflect.Array;
 
 /**
  * Created by Administrator on 2014/5/15.
  */
-public class BackUserLogin extends BaseEntity{
-//    1：userId
+public class BackUserLogin extends BaseEntity {
+    //    1：userId
 //    2：integral
 //    3: headImg
 //    4: nickName
@@ -21,6 +23,14 @@ public class BackUserLogin extends BaseEntity{
     @Key
     public UserLoginBean bean;
 
+    //    public BackUserLogin() {
+//        super();
+//    }
+    public Object instanceArray;
+
+    public BackUserLogin() {
+        instanceArray = Array.newInstance(getGenericType(0), 100);
+    }
 
     @Override
     public String toString() {
