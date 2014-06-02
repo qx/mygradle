@@ -9,18 +9,18 @@ import java.util.ArrayList;
 /**
  * Created by Administrator on 2014/5/15.
  */
-public class BackListProduct extends BaseEntity {
+public class BackListProductEntity extends BaseEntity {
     @Key
     public String status;
 
     @Key
-    public ArrayList<BackNewProduct> result;
+    public ArrayList<BackNewProductEntity> result;
 
     @Key
     public String info;
 
-    public BackListProduct() {
-super();
+    protected BackListProductEntity(String url) {
+        super(url);
     }
 
     @Override

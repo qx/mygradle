@@ -10,10 +10,10 @@ import android.widget.AdapterView;
 import cn.trinea.android.common.util.ToastUtils;
 import cn.trinea.android.common.view.DropDownListView;
 import com.lenovo.powersetting.R;
-import com.lenovo.powersetting.entity.network.BackListProduct;
-import com.lenovo.powersetting.entity.network.BackNewProduct;
+import com.lenovo.powersetting.entity.network.BackListProductEntity;
+import com.lenovo.powersetting.entity.network.BackNewProductEntity;
 import com.lenovo.powersetting.visual.activity.adapter.ProductItemAdapter;
-import com.lenovo.powersetting.visual.activity.constant.URLConstant;
+import com.lenovo.powersetting.constant.URLConstant;
 import com.google.api.client.http.*;
 import com.google.api.client.http.apache.ApacheHttpTransport;
 import com.google.api.client.http.json.JsonHttpParser;
@@ -43,8 +43,8 @@ public class NewProductFragment extends BaseFragment {
 //            "Gggggg", "Hhhhhh", "Iiiiii", "Jjjjjj", "Kkkkkk", "Llllll", "Mmmmmm", "Nnnnnn",};
     public static final int MORE_DATA_MAX_COUNT = 3;
     public int moreDataCount = 0;
-    private static BackListProduct backNewProducts;
-    private ArrayList<BackNewProduct> alist;
+    private static BackListProductEntity backNewProducts;
+    private ArrayList<BackNewProductEntity> alist;
     private static int page = 1;
     /**
      * icon cache *
@@ -157,7 +157,7 @@ public class NewProductFragment extends BaseFragment {
         }
     }
 
-    public static BackListProduct performGetNewProduct() {
+    public static BackListProductEntity performGetNewProduct() {
         try {
             HttpTransport transport = new ApacheHttpTransport();
             GenericUrl reqUrl = new GenericUrl(URLConstant.PRODUCT_URL);
@@ -172,7 +172,7 @@ public class NewProductFragment extends BaseFragment {
             HttpRequest request = httpRequestFactory.buildGetRequest(reqUrl);
             String str = request.execute().parseAsString();
             System.out.println(str);
-            backNewProducts = request.execute().parseAs(BackListProduct.class);
+            backNewProducts = request.execute().parseAs(BackListProductEntity.class);
             return backNewProducts;
 
         } catch (HttpResponseException e) {

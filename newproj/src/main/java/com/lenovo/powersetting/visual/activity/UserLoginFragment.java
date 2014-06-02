@@ -1,7 +1,6 @@
 package com.lenovo.powersetting.visual.activity;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,17 +10,18 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import cn.trinea.android.common.util.ToastUtils;
-import com.lenovo.powersetting.R;
-import com.lenovo.powersetting.UserData;
-import com.lenovo.powersetting.impl.RequestListener;
-import com.lenovo.powersetting.entity.network.BackUserLogin;
-import com.lenovo.powersetting.utils.LoginUtils;
-import com.lenovo.powersetting.visual.activity.constant.URLConstant;
-import com.lenovo.powersetting.visual.activity.listener.FirstPageFragmentListener;
 import com.google.api.client.http.*;
 import com.google.api.client.http.apache.ApacheHttpTransport;
 import com.google.api.client.http.json.JsonHttpParser;
 import com.google.api.client.json.jackson.JacksonFactory;
+import com.lenovo.powersetting.R;
+import com.lenovo.powersetting.UserData;
+import com.lenovo.powersetting.constant.URLConstant;
+import com.lenovo.powersetting.entity.network.BackUserLoginEntity;
+import com.lenovo.powersetting.impl.HttpRequestListener;
+import com.lenovo.powersetting.impl.RequestListener;
+import com.lenovo.powersetting.utils.LoginUtils;
+import com.lenovo.powersetting.visual.activity.listener.FirstPageFragmentListener;
 import com.tencent.connect.auth.QQAuth;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
@@ -30,6 +30,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
+
+import static com.lenovo.powersetting.utils.net.MyNetWorkUtil.getRequestInfo;
 
 /**
  * 主页TAG,用户
@@ -86,16 +89,17 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
 //                phoneType = 2
 //                3:phoneId
 
-                try {
-                    login("098789070897089", LoginUtils.getPhoneType(), LoginUtils.getImei(getActivity()), new RequestListener() {
-                        @Override
-                        public void requestCompleted(boolean isSuccess) {
+//                try {
+//                    login("098789070897089", LoginUtils.getPhoneType(), LoginUtils.getImei(getActivity()), new RequestListener() {
+//                        @Override
+//                        public void requestCompleted(boolean isSuccess) {
+//
+//                        }
+//                    });
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
 
-                        }
-                    });
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
 
                 break;
             case R.id.loginqq:
@@ -115,15 +119,7 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
     }
 
     private void loginqq() {
-//        ThreadUtils.excu(new Runnable() {
-//            @Override
-//            public void run() {
-//                onClickLogin();
-//
-//            }
-//        });
-
-                onClickLogin();
+        onClickLogin();
     }
 
     @Override
@@ -138,7 +134,7 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
      * @return
      * @throws Exception
      */
-    public static BackUserLogin login(String openid, String phonetype, String imei, RequestListener requestListener) throws Exception {
+    public static BackUserLoginEntity login(String openid, String phonetype, String imei, RequestListener requestListener) throws Exception {
         try {
             HttpTransport transport = new ApacheHttpTransport();
 //            GenericUrl reqUrl = new GenericUrl(PLACES_SEARCH_URL + GET_PRODUCT);
@@ -151,18 +147,16 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
             HttpRequest request = httpRequestFactory.buildGetRequest(reqUrl);
             System.out.println("************url=" + reqUrl);
             String str = request.execute().parseAsString();
-            BackUserLogin backUserLogin = request.execute().parseAs(BackUserLogin.class);
-            System.out.println("************back data=" + backUserLogin.toString());
+            BackUserLoginEntity backUserLoginEntity = request.execute().parseAs(BackUserLoginEntity.class);
+            System.out.println("************back data=" + backUserLoginEntity.toString());
 //            for (Product place : places.result) {
 //                System.out.println("oyqx:name=" + place.productName);
 //
 //            }
-            if (backUserLogin != null) {
-                System.out.println(backUserLogin);
-                requestListener.requestCompleted(backUserLogin.status.equals(URLConstant.success));
+            System.out.println(backUserLoginEntity);
+            requestListener.requestCompleted(backUserLoginEntity.status.equals(URLConstant.success));
 //                requestListener(backUserLogin.getString(URLConstant.status));
-            }
-            return backUserLogin;
+            return backUserLoginEntity;
 
         } catch (HttpResponseException e) {
             throw e;
@@ -194,9 +188,33 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
             IUiListener listener = new BaseUiListener() {
                 @Override
                 protected void doComplete(final JSONObject values) {
+                    HashMap<String, String> params = new HashMap<String, String>();
+                    try {
+                        params.put(LOGIN_URL_PARAMS_ID_, values.getString("openid"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    params.put(LOGIN_URL_PARAMS_PHONE_, "1");
+                    params.put(LOGIN_URL_PARAMS_PHONEID_, LoginUtils.getImei(getActivity()));
+                    getRequestInfo(params, new HttpRequestListener() {
+                        @Override
+                        public void onGetStatus(boolean equals) {
+                            super.onGetStatus(equals);
+                            if (equals) {
+                                System.out.println("success");
+                                UserData.getInstance().isLogin = true;//数据变量发生变化自动刷新数据，本地广播，或实现观察者模式
+                                mHandler.sendEmptyMessage(UPDATE_VIEW);
+                            } else {
+                                System.out.println("fail");
+                                UserData.getInstance().isLogin = false;
+                            }
+                        }
+                    }, new BackUserLoginEntity(LOGIN_URL), BackUserLoginEntity.class);
+
+
 //                    updateUserInfo();
 //                    updateLoginButton();
-                    System.out.println("************complete" + values);
+/*                    System.out.println("************complete" + values);
                     try {
                         System.out.println("************complete openid" + values.getString("openid"));
                         new AsyncTask<String, String, String>() {
@@ -226,7 +244,7 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
                         e.printStackTrace();
                     } catch (Exception e) {
                         e.printStackTrace();
-                    }
+                    }*/
                 }
             };
             //mQQAuth.login(this, "all", listener);

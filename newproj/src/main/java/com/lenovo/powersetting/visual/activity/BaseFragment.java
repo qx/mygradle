@@ -7,15 +7,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.lenovo.powersetting.R;
 import com.lenovo.powersetting.utils.LogUtil;
 import com.lenovo.powersetting.visual.activity.constant.BaseClass;
-import com.lenovo.powersetting.visual.activity.constant.HandlerConstant;
-import com.lenovo.powersetting.visual.activity.constant.URLConstant;
+import com.lenovo.powersetting.constant.HandlerConstant;
+import com.lenovo.powersetting.constant.URLConstant;
 import com.lenovo.powersetting.visual.activity.listener.RefreshListener;
 
 /**

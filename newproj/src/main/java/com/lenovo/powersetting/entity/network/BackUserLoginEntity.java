@@ -5,12 +5,10 @@ import com.lenovo.powersetting.entity.network.bean.UserLoginBean;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import java.lang.reflect.Array;
-
 /**
  * Created by Administrator on 2014/5/15.
  */
-public class BackUserLogin extends BaseEntity {
+public class BackUserLoginEntity extends BaseEntity {
     //    1：userId
 //    2：integral
 //    3: headImg
@@ -23,17 +21,17 @@ public class BackUserLogin extends BaseEntity {
     @Key
     public UserLoginBean bean;
 
-    //    public BackUserLogin() {
-//        super();
-//    }
-    public Object instanceArray;
-
-    public BackUserLogin() {
-        instanceArray = Array.newInstance(getGenericType(0), 100);
+    public BackUserLoginEntity(String url) {
+        super(url);
     }
+
+    public BackUserLoginEntity() {
+        super();
+    }
+
 
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.SIMPLE_STYLE);
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
 }

@@ -1,4 +1,4 @@
-package com.lenovo.powersetting.visual.activity.constant;
+package com.lenovo.powersetting.constant;
 
 /**
  * Created by Administrator on 2014/5/9.

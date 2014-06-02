@@ -18,6 +18,8 @@ public class UserLoginBean extends BaseBean {
     @Key
     public Float money;
 
+
+
     @Override
     public String toString() {
         return "userId=" + userId + "\n" +

@@ -48,22 +48,6 @@ public final class IntentConstant {
     public static final String STOPVMX = "STOPVMX";
 
 
-    //product
-    public static final String GET_PRODUCT_DOING = "GET_PRODUCT_DOING_DETAIL";
-    public static final String GET_PRODUCT_DOING_DETAIL = "GET_PRODUCT_DOING_DETAIL";
-    public static final String GET_PRODUCT_STOPACTION = "GET_PRODUCT_STOPACTION";
-    public static final String GET_PRODUCT_STOPACTION_DETAIL = "GET_PRODUCT_STOPACTION_DETAIL";
-    public static final String GET_PRODUCT_DONE = "GET_PRODUCT_DONE";
-    public static final String GET_PRODUCT_DONE_DETAIL = "GET_PRODUCT_DONE_DETAIL";
-    //user
-    public static final String GET_USERLOGIN = "GET_USER_LOGIN";
-    public static final String GET_USERADDRESS = "GET_USER_ADDRESS";
-    public static final String GET_USERCOMMENT = "GET_USER_COMMENT";
-    public static final String GET_USERACCOUNT = "GET_USER_ACCOUNT";
-    public static final String GET_USERINFO = "GET_USER_INFO";
-    //others
-    public static final String GET_UPDATE_INFO = "GET_UPDATE_INFO";
-    public static final String GET_APP_EXPLAIN = "GET_APP_EXPLAIN";
-    public static final String GET_ADVERTISEMENT = "GET_ADVERTISEMENT";
+
 
 }

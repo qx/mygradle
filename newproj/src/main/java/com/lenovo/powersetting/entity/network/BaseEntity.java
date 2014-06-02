@@ -2,8 +2,6 @@ package com.lenovo.powersetting.entity.network;
 
 import com.google.api.client.util.Key;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.List;
 
 /**
@@ -19,20 +17,43 @@ public class BaseEntity {
     @Key
     public String status;
 
+    public String getUrl() {
+        return url;
+    }
+    private String url;
+
+    protected BaseEntity(String url) {
+        this.url = url;
+    }
+
     public BaseEntity() {
     }
-    public Class getGenericType(int index) {
-        Type genType = getClass().getGenericSuperclass();
-        if (!(genType instanceof ParameterizedType)) {
-            return Object.class;
+
+    public void writeInstance(BaseEntity baseEntity) {
+        if (baseEntity.result != null) {
+            if (this.result == null) {
+                this.result = baseEntity.result;
+            }
         }
-        Type[] params = ((ParameterizedType) genType).getActualTypeArguments();
-        if (index >= params.length || index < 0) {
-            throw new RuntimeException("Index outof bounds");
+        if (baseEntity.info != null) {
+            if (this.info == null) {
+                this.info = baseEntity.info;
+            }
         }
-        if (!(params[index] instanceof Class)) {
-            return Object.class;
+        if (baseEntity.status != null) {
+            if (this.status == null) {
+                this.status = baseEntity.status;
+            }
         }
-        return (Class) params[index];
+        if (baseEntity.url != null) {
+            if (this.url == null) {
+                this.url = baseEntity.url;
+            }
+        }
+
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
