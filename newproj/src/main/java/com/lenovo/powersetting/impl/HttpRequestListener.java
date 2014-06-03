@@ -16,11 +16,19 @@ public abstract class HttpRequestListener {
     }
 
 
+    public void onSuccess(Object o) {
+    }
+
+
+    public void onFail() {
+    }
+
+
     /**
-     *
      * @param equals 是否成功
      */
     public void onGetStatus(boolean equals) {
     }
+
 
 }

@@ -10,12 +10,12 @@ import android.widget.AdapterView;
 import cn.trinea.android.common.util.ToastUtils;
 import cn.trinea.android.common.view.DropDownListView;
 import com.lenovo.powersetting.R;
+import com.lenovo.powersetting.Spokers;
 import com.lenovo.powersetting.constant.URLConstant;
 import com.lenovo.powersetting.entity.network.BackListProductEntity;
 import com.lenovo.powersetting.entity.network.BackNewProductEntity;
 import com.lenovo.powersetting.impl.HttpRequestListener;
 import com.lenovo.powersetting.utils.AsyncTaskThreadPoolExecutorHelper;
-import com.lenovo.powersetting.utils.net.MyNetWorkUtil;
 import com.lenovo.powersetting.visual.activity.adapter.ProductItemAdapter;
 
 import java.text.SimpleDateFormat;
@@ -70,11 +70,8 @@ public class NewProductFragment extends BaseFragment {
                 ToastUtils.show(getActivity(), R.string.drop_down_tip);
             }
         });
-        // listView.setShowFooterWhenNoMore(true);
 
         listItems = new LinkedList<String>();
-//        listItems.addAll(Arrays.asList(mStrings));
-//        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listItems);
         adapter = new ProductItemAdapter(getActivity());
 
         listView.setAdapter(adapter);
@@ -113,10 +110,14 @@ public class NewProductFragment extends BaseFragment {
 //            backNewProducts = performGetNewProduct();
             HashMap<String, String> map = new HashMap<String, String>();
             map.put(PRODUCT_URL_PARAMS_PAGE_, page + "");
-            backNewProducts = (BackListProductEntity) MyNetWorkUtil.getRequestInfo(map, new HttpRequestListener() {
+            Spokers.getInstance().getHttpDataUseAsync(map, new HttpRequestListener() {
                 @Override
-                public void onGetStatus(boolean equals) {
-                    super.onGetStatus(equals);
+                public void onSuccess(Object o) {
+                    super.onSuccess(o);
+                    backNewProducts = (BackListProductEntity) o;
+                    alist = backNewProducts.result;
+                    adapter.putData(alist);
+                    page++;
                 }
             }, URLConstant.PRODUCT_URL, BackListProductEntity.class);
             return true;
@@ -150,34 +151,6 @@ public class NewProductFragment extends BaseFragment {
             super.onPostExecute(result);
         }
     }
-
-//    public static BackListProductEntity performGetNewProduct() {
-//        try {
-//            HttpTransport transport = new ApacheHttpTransport();
-//            GenericUrl reqUrl = new GenericUrl(URLConstant.PRODUCT_URL);
-//            reqUrl.put(PRODUCT_URL_PARAMS_PAGE_, page+"");
-//            HttpRequestFactory httpRequestFactory = transport.createRequestFactory(new HttpRequestInitializer() {
-//                public void initialize(HttpRequest request) {
-//                    JsonHttpParser parser = new JsonHttpParser(new JacksonFactory());
-//                    request.addParser(parser);
-//                }
-//            });
-////            {"result":"end_page","status":"end_page"}
-//            HttpRequest request = httpRequestFactory.buildGetRequest(reqUrl);
-//            String str = request.execute().parseAsString();
-//            System.out.println(str);
-//            backNewProducts = request.execute().parseAs(BackListProductEntity.class);
-//            return backNewProducts;
-//
-//        } catch (HttpResponseException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
-
-    // ((MainActivity)mAppFragmentTabActivity).updateActivityData(mActivity.mModeInfo);
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

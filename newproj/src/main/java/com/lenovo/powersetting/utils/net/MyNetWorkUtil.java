@@ -16,8 +16,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import static com.lenovo.powersetting.constant.URLConstant.success;
-
 /**
  * Created by Administrator on 2014/4/25.
  */
@@ -63,9 +61,10 @@ public class MyNetWorkUtil {
      * @param url
      * @return
      */
-    public static Object getRequestInfo(HashMap<String, String> key_value,
-                                        HttpRequestListener mHttpRequestListener,
-                                        String url, Class<? extends BaseEntity> baseClass) {
+    public static BaseEntity getRequestInfo(HashMap<String, String> key_value,
+                                            HttpRequestListener mHttpRequestListener,
+                                            String url, Class<? extends BaseEntity> baseClass) {
+        mHttpRequestListener.onPre();
         Iterator iterator = key_value.entrySet().iterator();
         GenericUrl reqUrl = new GenericUrl(url);
         try {
@@ -83,9 +82,9 @@ public class MyNetWorkUtil {
             System.out.println(url);
 
             BaseEntity x2 = request.execute().parseAs((baseClass));
-            System.out.println("******************X2************"+x2);
+            System.out.println("******************X2************" + x2);
             if (mHttpRequestListener != null && x2.status != null) {
-                mHttpRequestListener.onGetStatus(x2.status.equals(success));
+                mHttpRequestListener.onGetStatus(x2.status.equals("success"));
             }
             return x2;
         } catch (IOException e) {
