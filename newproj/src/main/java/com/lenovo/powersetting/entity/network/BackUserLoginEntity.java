@@ -21,9 +21,6 @@ public class BackUserLoginEntity extends BaseEntity {
     @Key
     public UserLoginBean bean;
 
-    public BackUserLoginEntity(String url) {
-        super(url);
-    }
 
     public BackUserLoginEntity() {
         super();

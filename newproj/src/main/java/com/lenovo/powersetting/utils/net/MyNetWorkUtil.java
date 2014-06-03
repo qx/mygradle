@@ -60,14 +60,14 @@ public class MyNetWorkUtil {
 
     /**
      * @param key_value method key-value
+     * @param url
      * @return
      */
     public static Object getRequestInfo(HashMap<String, String> key_value,
                                         HttpRequestListener mHttpRequestListener,
-                                        BaseEntity instanceBean, Class<? extends BaseEntity> baseClass) {
-        String requestUrl = instanceBean.getUrl();//instanceBean用地址字串替换
+                                        String url, Class<? extends BaseEntity> baseClass) {
         Iterator iterator = key_value.entrySet().iterator();
-        GenericUrl reqUrl = new GenericUrl(requestUrl);
+        GenericUrl reqUrl = new GenericUrl(url);
         try {
             while (iterator.hasNext()) {
                 Map.Entry entry = (Map.Entry) iterator.next();
@@ -80,10 +80,9 @@ public class MyNetWorkUtil {
             HttpRequest request = httpRequestFactory.buildGetRequest(reqUrl);
 //            String str = request.execute().parseAsString();
             System.out.println("-----------------------------------");
-            System.out.println(instanceBean);
+            System.out.println(url);
 
             BaseEntity x2 = request.execute().parseAs((baseClass));
-            x2.setUrl(instanceBean.getUrl());
             System.out.println("******************X2************"+x2);
             if (mHttpRequestListener != null && x2.status != null) {
                 mHttpRequestListener.onGetStatus(x2.status.equals(success));

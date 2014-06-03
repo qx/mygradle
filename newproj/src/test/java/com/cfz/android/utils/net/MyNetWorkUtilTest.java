@@ -50,6 +50,6 @@ public class MyNetWorkUtilTest {
                     System.out.println("fail");
                 }
             }
-        }, new BackUserLoginEntity(LOGIN_URL), BackUserLoginEntity.class), equalTo(null));
+        }, LOGIN_URL, BackUserLoginEntity.class), equalTo(null));
     }
 }

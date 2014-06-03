@@ -209,7 +209,7 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
                                 UserData.getInstance().isLogin = false;
                             }
                         }
-                    }, new BackUserLoginEntity(LOGIN_URL), BackUserLoginEntity.class);
+                    }, LOGIN_URL, BackUserLoginEntity.class);
 
 
 //                    updateUserInfo();

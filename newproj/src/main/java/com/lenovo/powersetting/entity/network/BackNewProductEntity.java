@@ -25,9 +25,6 @@ public class BackNewProductEntity extends BaseEntity {
     @Key
     public String detail;
 
-    protected BackNewProductEntity(String url) {
-        super(url);
-    }
 
 
     @Override

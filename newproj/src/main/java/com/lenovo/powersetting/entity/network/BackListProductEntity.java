@@ -19,9 +19,6 @@ public class BackListProductEntity extends BaseEntity {
     @Key
     public String info;
 
-    protected BackListProductEntity(String url) {
-        super(url);
-    }
 
     @Override
     public String toString() {
