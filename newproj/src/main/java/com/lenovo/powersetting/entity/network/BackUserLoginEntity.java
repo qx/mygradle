@@ -1,9 +1,10 @@
 package com.lenovo.powersetting.entity.network;
 
 import com.google.api.client.util.Key;
-import com.lenovo.powersetting.entity.network.bean.UserLoginBean;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+
+import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2014/5/15.
@@ -19,8 +20,7 @@ public class BackUserLoginEntity extends BaseEntity {
 //    (默认头像放在客户端,应该不需要服务器返回)
 //    4:系统默认昵称
     @Key
-    public UserLoginBean bean;
-
+    public ArrayList<Object> result;
 
     public BackUserLoginEntity() {
         super();

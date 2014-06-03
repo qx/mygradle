@@ -10,21 +10,16 @@ import android.widget.AdapterView;
 import cn.trinea.android.common.util.ToastUtils;
 import cn.trinea.android.common.view.DropDownListView;
 import com.lenovo.powersetting.R;
+import com.lenovo.powersetting.constant.URLConstant;
 import com.lenovo.powersetting.entity.network.BackListProductEntity;
 import com.lenovo.powersetting.entity.network.BackNewProductEntity;
+import com.lenovo.powersetting.impl.HttpRequestListener;
+import com.lenovo.powersetting.utils.AsyncTaskThreadPoolExecutorHelper;
+import com.lenovo.powersetting.utils.net.MyNetWorkUtil;
 import com.lenovo.powersetting.visual.activity.adapter.ProductItemAdapter;
-import com.lenovo.powersetting.constant.URLConstant;
-import com.google.api.client.http.*;
-import com.google.api.client.http.apache.ApacheHttpTransport;
-import com.google.api.client.http.json.JsonHttpParser;
-import com.google.api.client.json.jackson.JacksonFactory;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 主页tab 所有产品界面
@@ -33,14 +28,9 @@ import java.util.List;
 public class NewProductFragment extends BaseFragment {
     private View second;
     private View first;
-    private MainActivity mActivity;
     private LinkedList<String> listItems = null;
     private DropDownListView listView = null;
-//  private ArrayAdapter<String> adapter;
     private ProductItemAdapter adapter;
-//  private static BackListProduct backNewProducts;
-//  private String[] mStrings = {"Aaaaaa", "Bbbbbb", "Cccccc", "Dddddd", "Eeeeee", "Ffffff",
-//            "Gggggg", "Hhhhhh", "Iiiiii", "Jjjjjj", "Kkkkkk", "Llllll", "Mmmmmm", "Nnnnnn",};
     public static final int MORE_DATA_MAX_COUNT = 3;
     public int moreDataCount = 0;
     private static BackListProductEntity backNewProducts;
@@ -49,7 +39,6 @@ public class NewProductFragment extends BaseFragment {
     /**
      * icon cache *
      */
-//    public static final ImageCache IMAGE_CACHE = new ImageCache(128, 512);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,7 +55,6 @@ public class NewProductFragment extends BaseFragment {
                 new GetDataTask(true).execute();
             }
         });
-
         // set on bottom listener
         listView.setOnBottomListener(new View.OnClickListener() {
 
@@ -91,12 +79,7 @@ public class NewProductFragment extends BaseFragment {
 
         listView.setAdapter(adapter);
         imageUrlList = new ArrayList<String>();
-        new GetDataTask(true).execute();
-
-
-
-
-
+        AsyncTaskThreadPoolExecutorHelper.execute(new GetDataTask(true));
         return mview;
     }
 
@@ -111,6 +94,11 @@ public class NewProductFragment extends BaseFragment {
         super.onDestroy();
     }
     private List<String> imageUrlList;
+
+
+
+
+
     private class GetDataTask extends AsyncTask<Void, Void, Boolean> {
 
         private boolean isDropDown;
@@ -122,8 +110,15 @@ public class NewProductFragment extends BaseFragment {
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            //                Thread.sleep(1000);
-            backNewProducts = performGetNewProduct();
+//            backNewProducts = performGetNewProduct();
+            HashMap<String, String> map = new HashMap<String, String>();
+            map.put(PRODUCT_URL_PARAMS_PAGE_, page + "");
+            backNewProducts = (BackListProductEntity) MyNetWorkUtil.getRequestInfo(map, new HttpRequestListener() {
+                @Override
+                public void onGetStatus(boolean equals) {
+                    super.onGetStatus(equals);
+                }
+            }, URLConstant.PRODUCT_URL, BackListProductEntity.class);
             return true;
         }
 
@@ -143,7 +138,6 @@ public class NewProductFragment extends BaseFragment {
                 if (moreDataCount >= MORE_DATA_MAX_COUNT) {
                     listView.setHasMore(false);
                 }
-
                 // should call onBottomComplete function of DropDownListView at end of on bottom complete.
                 listView.onBottomComplete();
             }
@@ -157,31 +151,31 @@ public class NewProductFragment extends BaseFragment {
         }
     }
 
-    public static BackListProductEntity performGetNewProduct() {
-        try {
-            HttpTransport transport = new ApacheHttpTransport();
-            GenericUrl reqUrl = new GenericUrl(URLConstant.PRODUCT_URL);
-            reqUrl.put(PRODUCT_URL_PARAMS_PAGE_, page+"");
-            HttpRequestFactory httpRequestFactory = transport.createRequestFactory(new HttpRequestInitializer() {
-                public void initialize(HttpRequest request) {
-                    JsonHttpParser parser = new JsonHttpParser(new JacksonFactory());
-                    request.addParser(parser);
-                }
-            });
-//            {"result":"end_page","status":"end_page"}
-            HttpRequest request = httpRequestFactory.buildGetRequest(reqUrl);
-            String str = request.execute().parseAsString();
-            System.out.println(str);
-            backNewProducts = request.execute().parseAs(BackListProductEntity.class);
-            return backNewProducts;
-
-        } catch (HttpResponseException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+//    public static BackListProductEntity performGetNewProduct() {
+//        try {
+//            HttpTransport transport = new ApacheHttpTransport();
+//            GenericUrl reqUrl = new GenericUrl(URLConstant.PRODUCT_URL);
+//            reqUrl.put(PRODUCT_URL_PARAMS_PAGE_, page+"");
+//            HttpRequestFactory httpRequestFactory = transport.createRequestFactory(new HttpRequestInitializer() {
+//                public void initialize(HttpRequest request) {
+//                    JsonHttpParser parser = new JsonHttpParser(new JacksonFactory());
+//                    request.addParser(parser);
+//                }
+//            });
+////            {"result":"end_page","status":"end_page"}
+//            HttpRequest request = httpRequestFactory.buildGetRequest(reqUrl);
+//            String str = request.execute().parseAsString();
+//            System.out.println(str);
+//            backNewProducts = request.execute().parseAs(BackListProductEntity.class);
+//            return backNewProducts;
+//
+//        } catch (HttpResponseException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 
     // ((MainActivity)mAppFragmentTabActivity).updateActivityData(mActivity.mModeInfo);
     @Override

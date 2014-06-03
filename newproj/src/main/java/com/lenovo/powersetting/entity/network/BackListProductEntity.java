@@ -11,14 +11,7 @@ import java.util.ArrayList;
  */
 public class BackListProductEntity extends BaseEntity {
     @Key
-    public String status;
-
-    @Key
     public ArrayList<BackNewProductEntity> result;
-
-    @Key
-    public String info;
-
 
     @Override
     public String toString() {
