@@ -2,12 +2,16 @@ package com.cfz.android.utils.net; /**
  * Created by Administrator on 2014/4/25.
  */
 
+import com.lenovo.powersetting.entity.network.urlentity.BackUserLoginEntity;
+import com.lenovo.powersetting.impl.HttpRequestListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 
-import static com.cfz.android.utils.net.MyNetWorkUtil.getData2MapFromNet;
-import static com.cfz.android.utils.net.MyNetWorkUtil.getDataFromNet;
+import java.util.HashMap;
+
+import static com.lenovo.powersetting.constant.URLConstant.*;
+import static com.lenovo.powersetting.utils.net.MyNetWorkUtil.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -30,5 +34,22 @@ public class MyNetWorkUtilTest {
 //        assertThat(rmSetNotInBase(mSet, mSet2), equalTo(mSet3));
     }
 
-
+    @Test
+    public void testgetRequestInfo() {
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put(LOGIN_URL_PARAMS_ID_, "1234123k5j4352334");
+        params.put(LOGIN_URL_PARAMS_PHONE_, "1");
+        params.put(LOGIN_URL_PARAMS_PHONEID_, "1234123k5j4352334");
+        assertThat(getRequestInfo(params, new HttpRequestListener() {
+            @Override
+            public void onGetStatus(boolean equals) {
+                super.onGetStatus(equals);
+                if (equals) {
+                    System.out.println("success");
+                } else {
+                    System.out.println("fail");
+                }
+            }
+        }, LOGIN_URL, BackUserLoginEntity.class), equalTo(null));
+    }
 }

@@ -6,80 +6,98 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent">
 
-    <LinearLayout
-            android:id="@+id/waitlog"
+    <RelativeLayout
+            android:id="@+id/waitlog_frame"
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
             >
 
-        <EditText
-                android:id="@+id/edit_username"
-                android:background="@drawable/biankuang_login_username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/pwd_find_tips"
-                android:imeOptions="actionDone"
-                android:inputType="textEmailAddress"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="50dp"/>
-
-        <EditText
-                android:id="@+id/edit_pwd"
-                android:background="@drawable/biankuanglogin_passwd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="@string/log_passwd_tips"
-                android:imeOptions="actionDone"
-                android:inputType="textPassword"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"/>
-
-        <Button
-                android:id="@+id/login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/selector_btn_login"
-                android:text="@string/log_text_login"
-                android:layout_marginTop="50dp"
-                android:gravity="center"/>
-
         <LinearLayout
-                android:layout_width="wrap_content"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:id="@+id/waitlog"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
 
-            <TextView
+            <!--<EditText-->
+                    <!--android:id="@+id/edit_username"-->
+                    <!--android:background="@drawable/biankuang_login_username"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:hint="@string/pwd_find_tips"-->
+                    <!--android:imeOptions="actionDone"-->
+                    <!--android:inputType="textEmailAddress"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:layout_marginTop="50dp"/>-->
+
+            <!--<EditText-->
+                    <!--android:id="@+id/edit_pwd"-->
+                    <!--android:background="@drawable/biankuanglogin_passwd"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:hint="@string/log_passwd_tips"-->
+                    <!--android:imeOptions="actionDone"-->
+                    <!--android:inputType="textPassword"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:layout_marginTop="20dp"/>-->
+
+            <!--<Button-->
+                    <!--android:id="@+id/login"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@drawable/selector_btn_login"-->
+                    <!--android:text="@string/log_text_login"-->
+                    <!--android:layout_marginTop="50dp"-->
+                    <!--android:gravity="center"/>-->
+
+            <!--<LinearLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="20dp">-->
+
+                <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/log_forgetten"/>-->
+
+                <!--<View-->
+                        <!--android:layout_width="1dp"-->
+                        <!--android:layout_height="17dp"-->
+                        <!--android:background="@color/black"-->
+                        <!--android:layout_marginLeft="10dp"-->
+                        <!--android:layout_marginRight="10dp"-->
+                        <!--/>-->
+
+                <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/log_register"-->
+                        <!--/>-->
+            <!--</LinearLayout>-->
+
+            <Button
+                    android:id="@+id/loginqq"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/log_forgetten"/>
-
-            <View
-                    android:layout_width="1dp"
-                    android:layout_height="17dp"
-                    android:background="@color/black"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    />
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/log_register"
-                    />
+                    android:background="@drawable/qq_login"
+                    android:layout_marginTop="30dp"/>
         </LinearLayout>
 
-        <Button
-                android:id="@+id/loginqq"
+        <ProgressBar
+                android:id="@+id/loading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/qq_login"
-                android:layout_marginTop="30dp"/>
-    </LinearLayout>
+                android:indeterminateDrawable="@drawable/rotate_loading_360"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:visibility="gone"
+                android:indeterminateDuration="1800"/>
+    </RelativeLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:id="@+id/logined"

@@ -24,7 +24,8 @@ proguard/
 
 .idea/
 
-newproj/.idea/
-newproj/target/
-newproj/gen/
-newproj/newproj.iml
+/newproj/.idea/
+/newproj/target/
+/newproj/gen/
+/newproj/newproj.iml
+*.iml
