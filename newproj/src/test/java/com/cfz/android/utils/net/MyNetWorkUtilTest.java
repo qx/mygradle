@@ -2,8 +2,12 @@ package com.cfz.android.utils.net; /**
  * Created by Administrator on 2014/4/25.
  */
 
+import com.lenovo.powersetting.Spokers;
+import com.lenovo.powersetting.UserData;
+import com.lenovo.powersetting.entity.network.resultbean.UserLoginBean;
 import com.lenovo.powersetting.entity.network.urlentity.BackUserLoginEntity;
 import com.lenovo.powersetting.impl.HttpRequestListener;
+import com.lenovo.powersetting.utils.LoginUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
@@ -52,4 +56,54 @@ public class MyNetWorkUtilTest {
             }
         }, LOGIN_URL, BackUserLoginEntity.class), equalTo(null));
     }
+
+    @Test
+    public void testgetHttpDataUseAsync() {
+        HashMap<String, String> params = new HashMap<String, String>();
+//        final UserLoginBean userLoginBeans;
+
+        params.put(LOGIN_URL_PARAMS_ID_, "kjiuwieyr9898098");
+        params.put(LOGIN_URL_PARAMS_PHONE_, "1");
+        params.put(LOGIN_URL_PARAMS_PHONEID_, "234238743423498");
+
+        Spokers.getInstance().getHttpDataUseAsync(params, new HttpRequestListener() {
+
+
+            public UserLoginBean userLoginBeans;
+
+            @Override
+            public void onDoing() {
+                super.onDoing();
+            }
+
+            @Override
+            public void onSuccess(Object o) {
+                super.onSuccess(o);
+                BackUserLoginEntity mBackUserLoginEntity = (BackUserLoginEntity) o;
+                userLoginBeans =(UserLoginBean)mBackUserLoginEntity.bean;
+//                UserData.getInstance().isLogin = true;//数据变量发生变化自动刷新数据，本地广播，或实现观察者模式
+//                mHandler.sendEmptyMessage(UPDATE_VIEW);
+            }
+
+            @Override
+            public void onFail() {
+                super.onFail();
+                UserData.getInstance().isLogin = false;
+            }
+
+            @Override
+            public void onPre() {
+                super.onPre();
+            }
+
+            @Override
+            public void onPost() {
+                super.onPost();
+                assertThat(userLoginBeans, equalTo(null));
+
+            }
+        }, LOGIN_URL, BackUserLoginEntity.class);
+
+    }
 }
+
