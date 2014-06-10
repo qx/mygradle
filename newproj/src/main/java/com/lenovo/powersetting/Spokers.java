@@ -60,6 +60,7 @@ public class Spokers {
             protected void onPostExecute(Object o) {
                 if (o == null) {
                     System.out.println("******************************request get nothing");
+                    return;
                 }
                 if (((BaseEntity) o).status.equals("success")) {
                     httpListener.onSuccess(o);

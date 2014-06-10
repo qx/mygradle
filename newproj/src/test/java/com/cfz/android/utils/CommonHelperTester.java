@@ -1,4 +1,4 @@
-package com.lenovo.powersetting.utils;
+package com.cfz.android.utils;
 
 import android.content.Context;
 import org.junit.Test;

@@ -8,6 +8,7 @@ import com.google.api.client.http.json.JsonHttpParser;
 import com.google.api.client.json.jackson.JacksonFactory;
 import com.lenovo.powersetting.entity.network.BaseEntity;
 import com.lenovo.powersetting.impl.HttpRequestListener;
+import com.lenovo.powersetting.utils.LogUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -78,12 +79,10 @@ public class MyNetWorkUtil {
             HttpRequestFactory httpRequestFactory = createRequestFactory(transport);
             HttpRequest request = httpRequestFactory.buildGetRequest(reqUrl);
 //            String str = request.execute().parseAsString();
-            System.out.println("-----------------------------------");
-            System.out.println(url);
+            LogUtil.logNet("request base url" + url);
 
             BaseEntity x2 = request.execute().parseAs((baseClass));
-            System.out.println("******************X2************" + x2);
-            if (mHttpRequestListener != null && x2.status != null) {
+            if (x2.status != null) {
                 mHttpRequestListener.onGetStatus(x2.status.equals("success"));
             }
             return x2;

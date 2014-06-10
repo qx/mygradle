@@ -16,6 +16,7 @@ import com.lenovo.powersetting.entity.network.BackListProductEntity;
 import com.lenovo.powersetting.entity.network.BackNewProductEntity;
 import com.lenovo.powersetting.impl.HttpRequestListener;
 import com.lenovo.powersetting.utils.AsyncTaskThreadPoolExecutorHelper;
+import com.lenovo.powersetting.utils.LogUtil;
 import com.lenovo.powersetting.visual.activity.adapter.ProductItemAdapter;
 
 import java.text.SimpleDateFormat;
@@ -116,6 +117,7 @@ public class NewProductFragment extends BaseFragment {
                     super.onSuccess(o);
                     backNewProducts = (BackListProductEntity) o;
                     alist = backNewProducts.result;
+                    LogUtil.logNewProduct("onSuccess"+alist.toString());
                     adapter.putData(alist);
                     page++;
                 }
@@ -143,9 +145,11 @@ public class NewProductFragment extends BaseFragment {
                 listView.onBottomComplete();
             }
             if (backNewProducts == null) {
+                LogUtil.logNewProduct("onPostExecute return null");
                 return;
             }
             alist = backNewProducts.result;
+            LogUtil.logNewProduct(alist.toString());
             adapter.putData(alist);
             page++;
             super.onPostExecute(result);
