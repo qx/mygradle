@@ -2,7 +2,7 @@ package com.cfz.android.utils.net; /**
  * Created by Administrator on 2014/4/25.
  */
 
-import com.lenovo.powersetting.entity.network.BackUserLoginEntity;
+import com.lenovo.powersetting.entity.network.urlentity.BackUserLoginEntity;
 import com.lenovo.powersetting.impl.HttpRequestListener;
 import org.json.JSONException;
 import org.json.JSONObject;

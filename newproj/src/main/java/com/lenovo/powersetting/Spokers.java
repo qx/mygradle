@@ -7,9 +7,10 @@ import com.google.api.client.http.*;
 import com.google.api.client.http.apache.ApacheHttpTransport;
 import com.google.api.client.http.json.JsonHttpParser;
 import com.google.api.client.json.jackson.JacksonFactory;
-import com.lenovo.powersetting.entity.network.BaseEntity;
+import com.lenovo.powersetting.entity.network.urlentity.BaseEntity;
 import com.lenovo.powersetting.impl.HttpRequestListener;
 import com.lenovo.powersetting.utils.AsyncTaskThreadPoolExecutorHelper;
+import com.lenovo.powersetting.utils.LogUtil;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -59,15 +60,15 @@ public class Spokers {
             @Override
             protected void onPostExecute(Object o) {
                 if (o == null) {
-                    System.out.println("******************************request get nothing");
+                    LogUtil.logNet("REQUEST GET NOTHING");
                     return;
                 }
                 if (((BaseEntity) o).status.equals("success")) {
                     httpListener.onSuccess(o);
-                    System.out.println("******************************success");
+                    LogUtil.logNet("SUCCESS");
                 } else {
                     httpListener.onFail();
-                    System.out.println("*******************************fails");
+                    LogUtil.logNet("FAILS");
                 }
                 httpListener.onPost();
                 super.onPostExecute(o);
@@ -95,12 +96,12 @@ public class Spokers {
             HttpTransport transport = new ApacheHttpTransport();
             HttpRequestFactory httpRequestFactory = createRequestFactory(transport);
             HttpRequest request = httpRequestFactory.buildGetRequest(reqUrl);
-            System.out.println("-----------------------------------");
-            System.out.println(url);
+            LogUtil.logNet(reqUrl.build());
 
-            BaseEntity x2 = request.execute().parseAs((baseClass));
-            System.out.println("******************X2************" + x2);
-            return x2;
+            BaseEntity bs= request.execute().parseAs((baseClass));
+
+            LogUtil.logNet(bs.toString());
+            return bs;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -112,20 +113,20 @@ public class Spokers {
         return transport.createRequestFactory(new HttpRequestInitializer() {
             public void initialize(HttpRequest request) {
                 JsonHttpParser parser = new JsonHttpParser(new JacksonFactory());
-                System.out.println("oyqx:content type=" + parser.getContentType());
                 request.addParser(parser);
 
             }
         });
     }
+
     /**
      * @param key_value method key-value
      * @param url
      * @return
      */
-    public  BaseEntity getHttpDataUseListener(HashMap<String, String> key_value,
-                                                    HttpRequestListener mHttpRequestListener,
-                                                    String url, Class<? extends BaseEntity> baseClass) {
+    public BaseEntity getHttpDataUseListener(HashMap<String, String> key_value,
+                                             HttpRequestListener mHttpRequestListener,
+                                             String url, Class<? extends BaseEntity> baseClass) {
         mHttpRequestListener.onPre();
         Iterator iterator = key_value.entrySet().iterator();
         GenericUrl reqUrl = new GenericUrl(url);
@@ -145,7 +146,7 @@ public class Spokers {
 
             BaseEntity x2 = request.execute().parseAs((baseClass));
             System.out.println("******************X2************" + x2);
-            if (mHttpRequestListener != null && x2.status != null) {
+            if (x2.status != null) {
                 mHttpRequestListener.onGetStatus(x2.status.equals("success"));
             }
             return x2;

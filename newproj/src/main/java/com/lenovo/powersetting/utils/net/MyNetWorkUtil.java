@@ -6,7 +6,7 @@ import com.google.api.client.http.*;
 import com.google.api.client.http.apache.ApacheHttpTransport;
 import com.google.api.client.http.json.JsonHttpParser;
 import com.google.api.client.json.jackson.JacksonFactory;
-import com.lenovo.powersetting.entity.network.BaseEntity;
+import com.lenovo.powersetting.entity.network.urlentity.BaseEntity;
 import com.lenovo.powersetting.impl.HttpRequestListener;
 import com.lenovo.powersetting.utils.LogUtil;
 import org.json.JSONException;
