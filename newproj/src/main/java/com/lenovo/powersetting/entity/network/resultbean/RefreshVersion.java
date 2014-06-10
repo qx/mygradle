@@ -5,7 +5,7 @@ import com.google.api.client.util.Key;
 /**
  *升级检测
  */
-public class RefreshVersionBean extends BaseResultBean {
+public class RefreshVersion extends BaseResult {
 //    1：latest
 //    2：phoneType_invalid
 //    3：content

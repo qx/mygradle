@@ -79,10 +79,11 @@ public class MyNetWorkUtil {
             HttpRequestFactory httpRequestFactory = createRequestFactory(transport);
             HttpRequest request = httpRequestFactory.buildGetRequest(reqUrl);
 //            String str = request.execute().parseAsString();
-            LogUtil.logNet("request base url" + url);
+            LogUtil.logNet("request base url" + reqUrl.build());
 
             BaseEntity x2 = request.execute().parseAs((baseClass));
             if (x2.status != null) {
+                LogUtil.logNet(x2.toString());
                 mHttpRequestListener.onGetStatus(x2.status.equals("success"));
             }
             return x2;

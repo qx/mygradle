@@ -9,7 +9,7 @@ import com.google.api.client.util.Key;
  * 2：contents
  * 3：time"
  */
-public class ProductedCommentBean extends BaseResultBean  {
+public class ProductedComment extends BaseResult {
     @Key
     public String nickName;
 

@@ -5,7 +5,7 @@ import com.google.api.client.util.Key;
 /**
  * 已结束商品
  */
-public class ProductedBean extends BaseResultBean  {
+public class Producted extends BaseResult {
     //    "1：productId
 //            2：productImg
 //    3：price

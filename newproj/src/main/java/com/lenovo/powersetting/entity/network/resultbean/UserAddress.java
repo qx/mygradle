@@ -6,7 +6,7 @@ import com.google.api.client.util.Key;
  *用户收货地址信息
  *
  */
-public class UserAddressBean extends BaseResultBean {
+public class UserAddress extends BaseResult {
 //    "1:realName
 //            2:phone
 //    3:city

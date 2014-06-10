@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.lenovo.powersetting.R;
-import com.lenovo.powersetting.entity.network.resultbean.NewProductBean;
+import com.lenovo.powersetting.entity.network.resultbean.NewProductResult;
 import com.lenovo.powersetting.visual.imageutils.ImageLoader;
 
 import java.lang.ref.SoftReference;
@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class ProductItemAdapter extends BaseAdapter {
     private final ImageLoader imageLoader;
-    private ArrayList<NewProductBean> products;
+    private ArrayList<NewProductResult> products;
     private Context mContext;
     private LayoutInflater mInflater = null;
     private HashMap<String, SoftReference<Drawable>> mCachedIcons = null;
@@ -32,7 +32,7 @@ public class ProductItemAdapter extends BaseAdapter {
         this.mContext = mContext;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mCachedIcons = new HashMap<String, SoftReference<Drawable>>();
-        products = new ArrayList<NewProductBean>();
+        products = new ArrayList<NewProductResult>();
         imageLoader = new ImageLoader(mContext.getApplicationContext());
 
     }
@@ -42,7 +42,7 @@ public class ProductItemAdapter extends BaseAdapter {
      *
      * @param list
      */
-    public void putData(final List<NewProductBean> list) {
+    public void putData(final List<NewProductResult> list) {
 
         if (products == null) {
             return;

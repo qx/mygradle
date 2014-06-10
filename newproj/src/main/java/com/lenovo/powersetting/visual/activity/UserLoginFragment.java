@@ -27,7 +27,6 @@ import com.tencent.tauth.UiError;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -158,7 +157,7 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
                         public void onSuccess(Object o) {
                             super.onSuccess(o);
                             BackUserLoginEntity mBackUserLoginEntity = (BackUserLoginEntity) o;
-                            ArrayList<UserLoginBean> userLoginBeans = mBackUserLoginEntity.result;
+                            UserLoginBean userLoginBeans =(UserLoginBean)mBackUserLoginEntity.bean;
                             UserData.getInstance().isLogin = true;//数据变量发生变化自动刷新数据，本地广播，或实现观察者模式
                             mHandler.sendEmptyMessage(UPDATE_VIEW);
                         }

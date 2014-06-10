@@ -1,9 +1,7 @@
 package com.lenovo.powersetting.entity.network.urlentity;
 
 import com.google.api.client.util.Key;
-import com.lenovo.powersetting.entity.network.resultbean.NewProductBean;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import com.lenovo.powersetting.entity.network.resultbean.NewProductResult;
 
 import java.util.ArrayList;
 
@@ -12,5 +10,5 @@ import java.util.ArrayList;
  */
 public class BackListProductEntity extends BaseEntity {
     @Key
-    public ArrayList<NewProductBean> result;
+    public ArrayList<NewProductResult> result;
 }

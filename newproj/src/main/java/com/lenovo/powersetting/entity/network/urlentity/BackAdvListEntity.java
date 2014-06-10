@@ -1,8 +1,7 @@
 package com.lenovo.powersetting.entity.network.urlentity;
 
 import com.google.api.client.util.Key;
-import com.lenovo.powersetting.entity.network.resultbean.AdsBean;
-import com.lenovo.powersetting.entity.network.resultbean.NewProductBean;
+import com.lenovo.powersetting.entity.network.resultbean.Ads;
 
 import java.util.ArrayList;
 
@@ -11,5 +10,5 @@ import java.util.ArrayList;
  */
 public class BackAdvListEntity extends BaseEntity {
     @Key
-    public ArrayList<AdsBean> result;
+    public ArrayList<Ads> result;
 }

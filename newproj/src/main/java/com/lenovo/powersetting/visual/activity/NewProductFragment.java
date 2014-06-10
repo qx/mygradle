@@ -12,8 +12,8 @@ import cn.trinea.android.common.view.DropDownListView;
 import com.lenovo.powersetting.R;
 import com.lenovo.powersetting.Spokers;
 import com.lenovo.powersetting.constant.URLConstant;
+import com.lenovo.powersetting.entity.network.resultbean.NewProductResult;
 import com.lenovo.powersetting.entity.network.urlentity.BackListProductEntity;
-import com.lenovo.powersetting.entity.network.resultbean.NewProductBean;
 import com.lenovo.powersetting.impl.HttpRequestListener;
 import com.lenovo.powersetting.utils.AsyncTaskThreadPoolExecutorHelper;
 import com.lenovo.powersetting.utils.LogUtil;
@@ -35,7 +35,7 @@ public class NewProductFragment extends BaseFragment {
     public static final int MORE_DATA_MAX_COUNT = 3;
     public int moreDataCount = 0;
     private static BackListProductEntity backNewProducts;
-    private ArrayList<NewProductBean> alist;
+    private ArrayList<NewProductResult> alist;
     private static int page = 1;
     /**
      * icon cache *

@@ -5,7 +5,7 @@ import com.google.api.client.util.Key;
 /**
  * 凑份详情
  */
-public class BetPageDetailBean extends BaseResultBean  {
+public class BetPageDetail extends BaseResult {
 
 //    1：productId
 //    2：productImg

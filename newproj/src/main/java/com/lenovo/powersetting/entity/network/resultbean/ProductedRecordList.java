@@ -5,7 +5,7 @@ import com.google.api.client.util.Key;
 /**
  *
  */
-public class ProductedRecordListBean extends BaseResultBean {
+public class ProductedRecordList extends BaseResult {
     //    "1：productId
 //            2：productImg
 //    3：activityNum

@@ -5,7 +5,7 @@ import com.google.api.client.util.Key;
 /**
  * 评论列表模块
  */
-public class ProductedCommentListBean extends BaseResultBean  {
+public class ProductedCommentList extends BaseResult {
     //    "1:nickName
 //            2:contents
 //    3:time"

@@ -5,7 +5,7 @@ import com.google.api.client.util.Key;
 /**
  * 广告
  */
-public class AdsBean extends BaseResultBean {
+public class Ads extends BaseResult {
 //    ：advId
 //    2：advImg
 //    3：advType

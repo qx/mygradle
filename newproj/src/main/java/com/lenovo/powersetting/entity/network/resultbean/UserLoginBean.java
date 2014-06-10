@@ -5,7 +5,7 @@ import com.google.api.client.util.Key;
 /**
  * Created by ok on 14-5-22.
  */
-public class UserLoginBean extends BaseResultBean {
+public class UserLoginBean extends BaseBean {
 
     @Key
     public String userId;
@@ -17,5 +17,6 @@ public class UserLoginBean extends BaseResultBean {
     public String nickName;
     @Key
     public Float money;
+
 
 }

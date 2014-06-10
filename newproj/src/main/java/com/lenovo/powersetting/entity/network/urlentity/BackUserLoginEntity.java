@@ -2,8 +2,6 @@ package com.lenovo.powersetting.entity.network.urlentity;
 
 import com.google.api.client.util.Key;
 import com.lenovo.powersetting.entity.network.resultbean.UserLoginBean;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.util.ArrayList;
 
@@ -22,5 +20,7 @@ public class BackUserLoginEntity extends BaseEntity {
 //    4:系统默认昵称
     @Key
     public ArrayList<UserLoginBean> result;
+    @Key
+    public UserLoginBean bean;
 
 }
