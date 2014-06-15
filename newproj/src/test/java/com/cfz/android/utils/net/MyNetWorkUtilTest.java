@@ -2,20 +2,20 @@ package com.cfz.android.utils.net; /**
  * Created by Administrator on 2014/4/25.
  */
 
-import com.lenovo.powersetting.Spokers;
-import com.lenovo.powersetting.UserData;
-import com.lenovo.powersetting.entity.network.resultbean.UserLoginBean;
-import com.lenovo.powersetting.entity.network.urlentity.BackUserLoginEntity;
-import com.lenovo.powersetting.impl.HttpRequestListener;
-import com.lenovo.powersetting.utils.LoginUtils;
+import com.cfz.android.Spokers;
+import com.cfz.android.UserData;
+import com.cfz.android.entity.network.resultbean.UserLoginBean;
+import com.cfz.android.entity.network.urlentity.BackUserLoginEntity;
+import com.cfz.android.impl.HttpRequestListener;
+import com.cfz.android.utils.LoginUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 
 import java.util.HashMap;
 
-import static com.lenovo.powersetting.constant.URLConstant.*;
-import static com.lenovo.powersetting.utils.net.MyNetWorkUtil.*;
+import static com.cfz.android.constant.URLConstant.*;
+import static com.cfz.android.utils.net.MyNetWorkUtil.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 

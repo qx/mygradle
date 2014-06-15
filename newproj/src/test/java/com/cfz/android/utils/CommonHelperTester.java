@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
-import static com.lenovo.powersetting.utils.CommonHelper.saveObject2CommShare;
+import static com.cfz.android.utils.CommonHelper.saveObject2CommShare;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 

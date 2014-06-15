@@ -22,7 +22,7 @@
               android:layout_height="fill_parent"
         >
 
-    <com.lenovo.powersetting.visual.customview.fancycoverflow.FancyCoverFlow
+    <com.cfz.android.visual.customview.fancycoverflow.FancyCoverFlow
             android:id="@+id/fancyCoverFlow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
