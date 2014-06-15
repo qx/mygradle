@@ -2,11 +2,13 @@ package com.cfz.android.utils.net; /**
  * Created by Administrator on 2014/4/25.
  */
 
+import com.cfz.android.BaseClass;
 import com.cfz.android.Spokers;
 import com.cfz.android.UserData;
 import com.cfz.android.entity.network.resultbean.UserLoginBean;
 import com.cfz.android.entity.network.urlentity.BackUserLoginEntity;
 import com.cfz.android.impl.HttpRequestListener;
+import com.cfz.android.utils.LogUtil;
 import com.cfz.android.utils.LoginUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,7 +21,7 @@ import static com.cfz.android.utils.net.MyNetWorkUtil.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class MyNetWorkUtilTest {
+public class MyNetWorkUtilTest extends BaseClass {
     @Test
     public void testGetDataFromNet() {
         try {
@@ -49,9 +51,9 @@ public class MyNetWorkUtilTest {
             public void onGetStatus(boolean equals) {
                 super.onGetStatus(equals);
                 if (equals) {
-                    System.out.println("success");
+                    LogUtil.i(NET, "SUCCESS");
                 } else {
-                    System.out.println("fail");
+                    LogUtil.i(NET, "FAIL");
                 }
             }
         }, LOGIN_URL, BackUserLoginEntity.class), equalTo(null));

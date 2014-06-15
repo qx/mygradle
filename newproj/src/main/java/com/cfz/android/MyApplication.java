@@ -27,5 +27,7 @@ public class MyApplication extends Application {
 
     private void initData() {
 
+        UserData ud = UserData.getInstance();
+        ud.registerObserver(new UserDataUser("test"));
     }
 }

@@ -1,7 +1,9 @@
 package com.cfz.android.utils.net;
 
+import android.util.Log;
 import cn.trinea.android.common.util.HttpUtils;
 import cn.trinea.android.common.util.JSONUtils;
+import com.cfz.android.constant.LogTag;
 import com.google.api.client.http.*;
 import com.google.api.client.http.apache.ApacheHttpTransport;
 import com.google.api.client.http.json.JsonHttpParser;
@@ -20,7 +22,7 @@ import java.util.Map;
 /**
  * Created by Administrator on 2014/4/25.
  */
-public class MyNetWorkUtil {
+public class MyNetWorkUtil implements LogTag {
 
 //    1:用户注册	user_loginOrReg	"1:qqId
 //            2:phoneType = 1
@@ -99,7 +101,7 @@ public class MyNetWorkUtil {
         return transport.createRequestFactory(new HttpRequestInitializer() {
             public void initialize(HttpRequest request) {
                 JsonHttpParser parser = new JsonHttpParser(new JacksonFactory());
-                System.out.println("oyqx:content type=" + parser.getContentType());
+                LogUtil.i(NET, "content type=" + parser.getContentType());
                 request.addParser(parser);
 
             }

@@ -3,14 +3,15 @@ package com.cfz.android;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v4.content.LocalBroadcastManager;
-import com.google.api.client.http.*;
-import com.google.api.client.http.apache.ApacheHttpTransport;
-import com.google.api.client.http.json.JsonHttpParser;
-import com.google.api.client.json.jackson.JacksonFactory;
+import com.cfz.android.constant.LogTag;
 import com.cfz.android.entity.network.urlentity.BaseEntity;
 import com.cfz.android.impl.HttpRequestListener;
 import com.cfz.android.utils.AsyncTaskThreadPoolExecutorHelper;
 import com.cfz.android.utils.LogUtil;
+import com.google.api.client.http.*;
+import com.google.api.client.http.apache.ApacheHttpTransport;
+import com.google.api.client.http.json.JsonHttpParser;
+import com.google.api.client.json.jackson.JacksonFactory;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -22,7 +23,7 @@ import java.util.Map;
  * <p/>
  * You should comment on the method first.
  */
-public class Spokers {
+public class Spokers implements LogTag {
 
     private LocalBroadcastManager manager;
     private Context mContext;
@@ -98,7 +99,7 @@ public class Spokers {
             HttpRequest request = httpRequestFactory.buildGetRequest(reqUrl);
             LogUtil.logNet(reqUrl.build());
 
-            BaseEntity bs= request.execute().parseAs((baseClass));
+            BaseEntity bs = request.execute().parseAs((baseClass));
 
             LogUtil.logNet(bs.toString());
             return bs;
@@ -141,11 +142,11 @@ public class Spokers {
             HttpRequestFactory httpRequestFactory = createRequestFactory(transport);
             HttpRequest request = httpRequestFactory.buildGetRequest(reqUrl);
 //            String str = request.execute().parseAsString();
-            System.out.println("-----------------------------------");
-            System.out.println(url);
+            LogUtil.i(NET, "-----------------------------------");
+            LogUtil.i(NET, url);
 
             BaseEntity x2 = request.execute().parseAs((baseClass));
-            System.out.println("******************X2************" + x2);
+            LogUtil.i(NET, "******************X2************" + x2);
             if (x2.status != null) {
                 mHttpRequestListener.onGetStatus(x2.status.equals("success"));
             }
