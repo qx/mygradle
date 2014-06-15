@@ -36,10 +36,11 @@
     </LinearLayout>
 
     <LinearLayout
+            android:id="@+id/title_right_click"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="@android:color/holo_blue_light"
+            android:background="@drawable/selector_btn_title"
             android:paddingRight="10dp"
             android:layout_height="match_parent">
 

@@ -48,6 +48,7 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
     private RelativeLayout my_address;
     private RelativeLayout my_msg;
     private ImageView img_user;
+    private TextView nickname;
     private ImageLoader imageLoader;
 
     @Override
@@ -68,7 +69,8 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
         my_address.setOnClickListener(this);
         my_msg.setOnClickListener(this);
         img_user = (ImageView) v.findViewById(R.id.img_user);
-
+        nickname = (TextView) v.findViewById(R.id.nickname);
+        img_user.setOnClickListener(this);
         return v;
     }
 
@@ -93,7 +95,8 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.loginqq:
-                loginqq();
+//                loginqq();
+                simulateUtilslogin();
                 break;
             case R.id.my_history:
                 startActivity(new Intent(getActivity(), MyHistoryActivity.class));
@@ -111,10 +114,37 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
                 startActivity(new Intent(getActivity(), MyMessageActivity.class));
                 break;
 
+            case R.id.img_user:
+                startActivity(new Intent(getActivity(), UserIconEditActivity.class));
+                break;
+
             default:
                 break;
 
         }
+    }
+
+    private void simulateUtilslogin() {
+//        bean=com.cfz.android.entity.network.resultbean.UserLoginBean@41f48cf0[
+//                headImg=http://114.215.177.210:8080/imgserver/headImg/DefaultHeadImg.png
+//        integral=10
+//        money=0.0
+//        nickName=凑分高手
+//        userId=f2573152462998cc01463899fce70002
+//        ]
+//        result=[]
+//        info=
+//                status=success
+//        ]
+        UserData ud = UserData.getInstance();
+        ud.isLogin = true;//数据变量发生变化自动刷新数据，本地广播，或实现观察者模式
+        ud.setUserImage("http://114.215.177.210:8080/imgserver/headImg/DefaultHeadImg.png");
+        ud.setUserintegral(10);
+        ud.setUserMoney(0.0f);
+        ud.setUserNickName("测试高手");
+        ud.setUserUserId("f2573152462998cc01463899fce70002");
+        mHandler.sendEmptyMessage(SHOW_LOADING);
+        mHandler.sendEmptyMessage(UPDATE_VIEW);
     }
 
     @Override
@@ -158,7 +188,7 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
                         public void onSuccess(Object o) {
                             super.onSuccess(o);
                             BackUserLoginEntity mBackUserLoginEntity = (BackUserLoginEntity) o;
-                            UserLoginBean userLoginBeans =(UserLoginBean)mBackUserLoginEntity.bean;
+                            UserLoginBean userLoginBeans = (UserLoginBean) mBackUserLoginEntity.bean;
                             UserData ud = UserData.getInstance();
                             ud.isLogin = true;//数据变量发生变化自动刷新数据，本地广播，或实现观察者模式
                             ud.setUserImage(userLoginBeans.headImg);
@@ -215,8 +245,8 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
     private void initUserInfo() {
 //        img_user
         imageLoader = new ImageLoader(getActivity().getApplicationContext());
-        imageLoader.DisplayImage(UserData.getInstance().getUserImage(),img_user);
-
+        imageLoader.DisplayImage(UserData.getInstance().getUserImage(), img_user);
+        nickname.setText(UserData.getInstance().getUserNickName());
     }
 
     private void initview() {

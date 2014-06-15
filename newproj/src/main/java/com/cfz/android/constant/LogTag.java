@@ -1,6 +1,5 @@
 package com.cfz.android.constant;
 
-import com.cfz.android.entity.data.User;
 
 /**
  * Created by ok on 14-6-15.

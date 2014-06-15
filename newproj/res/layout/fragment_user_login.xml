@@ -122,6 +122,7 @@
                     android:src="@drawable/userinfo_icon_login"/>
 
             <TextView
+                    android:id="@+id/nickname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="17dp"
