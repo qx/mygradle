@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <uses-sdk android:minSdkVersion="14"/>
 
@@ -58,9 +58,12 @@
         <activity android:name="com.cfz.android.visual.activity.VerifyActivity">
 
         </activity>
-        <activity android:name="com.cfz.android.visual.activity.UserIconEditActivity">
+        <activity
+                android:name="com.cfz.android.visual.activity.UserIconEditActivity"
+                android:configChanges="keyboardHidden|orientation"
+                android:windowSoftInputMode="stateHidden"
+                />
 
-        </activity>
         <activity android:name="com.cfz.android.visual.activity.ProductDetailActivity">
 
         </activity>
@@ -93,15 +96,18 @@
                 android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
+
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
+
                 <data android:scheme="tencent101097138"/>
             </intent-filter>
         </activity>
 
-        <activity android:name="com.tencent.connect.common.AssistActivity"
-                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
-                  android:screenOrientation="portrait"/>
+        <activity
+                android:name="com.tencent.connect.common.AssistActivity"
+                android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                android:screenOrientation="portrait"/>
 
         <receiver android:name="com.cfz.android.receivers.SpokerReceiver"/>
     </application>
