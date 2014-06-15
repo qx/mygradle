@@ -7,10 +7,7 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
+import android.widget.*;
 import cn.trinea.android.common.util.ToastUtils;
 import com.cfz.android.R;
 import com.cfz.android.Spokers;
@@ -20,6 +17,7 @@ import com.cfz.android.entity.network.urlentity.BackUserLoginEntity;
 import com.cfz.android.impl.HttpRequestListener;
 import com.cfz.android.utils.LoginUtils;
 import com.cfz.android.visual.activity.listener.FirstPageFragmentListener;
+import com.cfz.android.visual.imageutils.ImageLoader;
 import com.tencent.connect.auth.QQAuth;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
@@ -49,6 +47,8 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
     private RelativeLayout my_account;
     private RelativeLayout my_address;
     private RelativeLayout my_msg;
+    private ImageView img_user;
+    private ImageLoader imageLoader;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,6 +67,7 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
         my_account.setOnClickListener(this);
         my_address.setOnClickListener(this);
         my_msg.setOnClickListener(this);
+        img_user = (ImageView) v.findViewById(R.id.img_user);
 
         return v;
     }
@@ -158,7 +159,14 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
                             super.onSuccess(o);
                             BackUserLoginEntity mBackUserLoginEntity = (BackUserLoginEntity) o;
                             UserLoginBean userLoginBeans =(UserLoginBean)mBackUserLoginEntity.bean;
-                            UserData.getInstance().isLogin = true;//数据变量发生变化自动刷新数据，本地广播，或实现观察者模式
+                            UserData ud = UserData.getInstance();
+                            ud.isLogin = true;//数据变量发生变化自动刷新数据，本地广播，或实现观察者模式
+                            ud.setUserImage(userLoginBeans.headImg);
+                            ud.setUserintegral(userLoginBeans.integral);
+                            ud.setUserMoney(userLoginBeans.money);
+                            ud.setUserNickName(userLoginBeans.nickName);
+                            ud.setUserUserId(userLoginBeans.userId);
+
                             mHandler.sendEmptyMessage(UPDATE_VIEW);
                         }
 
@@ -200,6 +208,15 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
     private void showloading() {
         loading.setVisibility(View.VISIBLE);
         waitlog.setVisibility(View.GONE);
+
+        initUserInfo();
+    }
+
+    private void initUserInfo() {
+//        img_user
+        imageLoader = new ImageLoader(getActivity().getApplicationContext());
+        imageLoader.DisplayImage(UserData.getInstance().getUserImage(),img_user);
+
     }
 
     private void initview() {
