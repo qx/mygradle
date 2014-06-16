@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import cn.trinea.android.common.util.ToastUtils;
 import com.cfz.android.R;
 import com.cfz.android.Spokers;
 import com.cfz.android.UserData;
@@ -21,10 +22,9 @@ import com.cfz.android.entity.network.urlentity.BaseEntity;
 import com.cfz.android.impl.HttpRequestListener;
 import com.cfz.android.visual.imageutils.ImageLoader;
 import com.google.api.client.http.HttpContent;
+import com.google.api.client.http.InputStreamContent;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 
 /**
  * Created by Administrator on 2014/4/27.
@@ -41,6 +41,9 @@ public class UserIconEditActivity extends BaseUrlActivity implements View.OnClic
     private static final int CAPTURE_IMAGE = 2;
     private String selectedImagePath;
     private String filePath;
+
+    private File tempfile;
+    private InputStream inputstream;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,16 +106,49 @@ public class UserIconEditActivity extends BaseUrlActivity implements View.OnClic
             if (requestCode == SELECT_PICTURE) {
                 Uri selectedImageUri = data.getData();
                 selectedImagePath = getPath(selectedImageUri);
-                user_img.setImageDrawable(Drawable.createFromPath(selectedImagePath));
+
+                tempfile = getFileFromDrawable(selectedImagePath);
+                Drawable dw = Drawable.createFromPath(selectedImagePath);
+
+                user_img.setImageDrawable(dw);
+
             } else if (requestCode == CAPTURE_IMAGE) {
 
 //                BitmapFactory.Options options = new BitmapFactory.Options();
 //                options.inPreferredConfig = Bitmap.Config.ARGB_8888;
 //                Bitmap photo = BitmapFactory.decodeFile(filePath, options);
                 Bitmap photo = decodeSampledBitmapFromFile(filePath, MAX_WIDTH, MAX_HEIGHT);
+                tempfile = getFileFromBitmap(photo);
                 user_img.setImageBitmap(photo);
             }
         }
+    }
+
+    private File getFileFromDrawable(String selectedImagePath) {
+        Bitmap bmp = BitmapFactory.decodeFile(selectedImagePath);
+        return getFileFromBitmap(bmp);
+    }
+
+    private File getFileFromBitmap(Bitmap bitmap) {
+        File f = new File(this.getCacheDir(), "tempfile.jpeg");
+        try {
+            //create a file to write bitmap data
+            f.createNewFile();
+
+//Convert bitmap to byte array
+//        Bitmap bitmap = your bitmap;
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+            byte[] bitmapdata = bos.toByteArray();
+
+//write the bytes in file
+            FileOutputStream fos = new FileOutputStream(f);
+            fos.write(bitmapdata);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return f;
     }
 
     private void getFromCarema() {
@@ -196,39 +232,53 @@ public class UserIconEditActivity extends BaseUrlActivity implements View.OnClic
     }
 
     private void saveIcon() {
+//        HashMap<String, Object> hashMap = new HashMap<String, Object>();
+//        hashMap.put(SETHEAD_PARAMS_IMAGE, tempfile);
+//        Spokers.getInstance().getHttpDataUseAsync(hashMap,new HttpRequestListener() {
+//            @Override
+//            public void onDoing() {
+//                super.onDoing();
+//            }
+//
+//            @Override
+//            public void onSuccess(Object o) {
+//                ToastUtils.show(UserIconEditActivity.this, "success");
+//                super.onSuccess(o);
+//            }
+//
+//            @Override
+//            public void onFail() {
+//                ToastUtils.show(UserIconEditActivity.this, "fail");
+//                super.onFail();
+//            }
+//        }, SETHEAD_URL, BaseEntity.class);
 
+        try {
+            inputstream = new FileInputStream(tempfile);
+            HttpContent imc = new InputStreamContent("image/jpeg", inputstream);
 
-        Spokers.getInstance().postHttpDataUseAsync(new HttpContent() {
-            @Override
-            public long getLength() throws IOException {
-                return 0;
-            }
+            Spokers.getInstance().postHttpDataUseAsync(imc, new HttpRequestListener() {
+                @Override
+                public void onDoing() {
+                    super.onDoing();
+                }
 
-            @Override
-            public String getEncoding() {
-                return null;
-            }
+                @Override
+                public void onSuccess(Object o) {
+                    ToastUtils.show(UserIconEditActivity.this, "success");
+                    super.onSuccess(o);
+                }
 
-            @Override
-            public String getType() {
-                return null;
-            }
+                @Override
+                public void onFail() {
+                    ToastUtils.show(UserIconEditActivity.this, "fail");
+                    super.onFail();
+                }
+            }, SETHEAD_URL, BaseEntity.class);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
-            @Override
-            public void writeTo(OutputStream outputStream) throws IOException {
-
-            }
-
-            @Override
-            public boolean retrySupported() {
-                return false;
-            }
-        }, new HttpRequestListener() {
-            @Override
-            public void onDoing() {
-                super.onDoing();
-            }
-        }, SETHEAD_URL, BaseEntity.class);
     }
 
 

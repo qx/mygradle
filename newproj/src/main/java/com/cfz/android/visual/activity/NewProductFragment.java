@@ -109,7 +109,7 @@ public class NewProductFragment extends BaseFragment {
         @Override
         protected Boolean doInBackground(Void... params) {
 //            backNewProducts = performGetNewProduct();
-            HashMap<String, String> map = new HashMap<String, String>();
+            HashMap<String, Object> map = new HashMap<String, Object>();
             map.put(PRODUCT_URL_PARAMS_PAGE_, page + "");
             Spokers.getInstance().getHttpDataUseAsync(map, new HttpRequestListener() {
                 @Override

@@ -45,7 +45,7 @@ public class Spokers implements LogTag {
         return spokers;
     }
 
-    public void getHttpDataUseAsync(final HashMap<String, String> key_value, final HttpRequestListener httpListener, final String url, final Class<? extends BaseEntity> baseClass) {
+    public void getHttpDataUseAsync(final HashMap<String, Object> key_value, final HttpRequestListener httpListener, final String url, final Class<? extends BaseEntity> baseClass) {
 
         AsyncTaskThreadPoolExecutorHelper.execute(new AsyncTask<Object, Object, Object>() {
             @Override
@@ -85,7 +85,7 @@ public class Spokers implements LogTag {
      * @param url
      * @return
      */
-    private static BaseEntity sendRequest(HashMap<String, String> key_value,
+    private static BaseEntity sendRequest(HashMap<String, Object> key_value,
                                           String url, Class<? extends BaseEntity> baseClass) {
         Iterator iterator = key_value.entrySet().iterator();
         GenericUrl reqUrl = new GenericUrl(url);
@@ -93,9 +93,11 @@ public class Spokers implements LogTag {
             while (iterator.hasNext()) {
                 Map.Entry entry = (Map.Entry) iterator.next();
                 String mkey = (String) entry.getKey();
-                String mValue = (String) entry.getValue();
+                Object mValue = entry.getValue();
                 reqUrl.put(mkey, mValue);
+
             }
+
             HttpTransport transport = new ApacheHttpTransport();
             HttpRequestFactory httpRequestFactory = createRequestFactory(transport);
             HttpRequest request = httpRequestFactory.buildGetRequest(reqUrl);
@@ -173,33 +175,6 @@ public class Spokers implements LogTag {
             @Override
             protected Object doInBackground(Object... objects) {
                 httpListener.onDoing();
-//                HttpContent httpContent=new HttpContent() {
-//                    @Override
-//                    public long getLength() throws IOException {
-//                        return 0;
-//                    }
-//
-//                    @Override
-//                    public String getEncoding() {
-//                        return null;
-//                    }
-//
-//                    @Override
-//                    public String getType() {
-//                        return null;
-//                    }
-//
-//                    @Override
-//                    public void writeTo(OutputStream outputStream) throws IOException {
-//
-//                    }
-//
-//                    @Override
-//                    public boolean retrySupported() {
-//                        return false;
-//                    }
-//                };
-
                 return sendRequestInPost( url, baseClass, httpContent);
             }
 

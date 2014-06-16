@@ -169,7 +169,7 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
             IUiListener listener = new BaseUiListener() {
                 @Override
                 protected void doComplete(final JSONObject values) {
-                    HashMap<String, String> params = new HashMap<String, String>();
+                    HashMap<String, Object> params = new HashMap<String, Object>();
                     try {
                         params.put(LOGIN_URL_PARAMS_ID_, values.getString("openid"));
                     } catch (JSONException e) {

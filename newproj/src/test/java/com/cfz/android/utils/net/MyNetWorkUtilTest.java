@@ -61,7 +61,7 @@ public class MyNetWorkUtilTest extends BaseClass {
 
     @Test
     public void testgetHttpDataUseAsync() {
-        HashMap<String, String> params = new HashMap<String, String>();
+        HashMap<String, Object> params = new HashMap<String, Object>();
 //        final UserLoginBean userLoginBeans;
 
         params.put(LOGIN_URL_PARAMS_ID_, "kjiuwieyr9898098");

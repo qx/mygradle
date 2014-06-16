@@ -10,8 +10,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.cfz.android.BaseClass;
 import com.cfz.android.utils.LogUtil;
-import com.cfz.android.visual.activity.constant.BaseClass;
 import com.cfz.android.constant.HandlerConstant;
 import com.cfz.android.constant.URLConstant;
 import com.cfz.android.visual.activity.listener.RefreshListener;
@@ -19,7 +19,7 @@ import com.cfz.android.visual.activity.listener.RefreshListener;
 /**
  * Created by Administrator on 2014/5/9.
  */
-public class BaseFragment extends Fragment implements View.OnClickListener, HandlerConstant, BaseClass,URLConstant {
+public class BaseFragment extends Fragment implements View.OnClickListener, HandlerConstant,URLConstant {
     protected int layoutId;
     protected FragmentActivity mAppFragmentTabActivity;
     protected View curView;
@@ -38,7 +38,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener, Hand
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         if (layoutId == 0) {
-            LogUtil.excep(Log_NAME_FIRST, "you must set layoutId in your fragment first");
+            LogUtil.excep("TITLE", "you must set layoutId in your fragment first");
         }
         curView = inflater.inflate(layoutId, container, false);
         return curView;
