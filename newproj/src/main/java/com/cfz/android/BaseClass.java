@@ -1,13 +1,14 @@
 package com.cfz.android;
 
 import com.cfz.android.constant.LogTag;
+import com.cfz.android.constant.URLConstant;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * Created by ok on 14-6-15.
  */
-public class BaseClass implements Cloneable ,LogTag {
+public class BaseClass implements Cloneable ,LogTag,URLConstant {
 
     public int hashCode() {
         return super.hashCode();

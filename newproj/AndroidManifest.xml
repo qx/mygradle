@@ -108,6 +108,7 @@
                 android:name="com.tencent.connect.common.AssistActivity"
                 android:theme="@android:style/Theme.Translucent.NoTitleBar"
                 android:screenOrientation="portrait"/>
+        <activity android:name=".visual.activity.BaseUrlActivity"/>
 
         <receiver android:name="com.cfz.android.receivers.SpokerReceiver"/>
     </application>

@@ -10,10 +10,12 @@ import com.cfz.android.utils.AsyncTaskThreadPoolExecutorHelper;
 import com.cfz.android.utils.LogUtil;
 import com.google.api.client.http.*;
 import com.google.api.client.http.apache.ApacheHttpTransport;
+import com.google.api.client.http.json.JsonHttpContent;
 import com.google.api.client.http.json.JsonHttpParser;
 import com.google.api.client.json.jackson.JacksonFactory;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -97,6 +99,7 @@ public class Spokers implements LogTag {
             HttpTransport transport = new ApacheHttpTransport();
             HttpRequestFactory httpRequestFactory = createRequestFactory(transport);
             HttpRequest request = httpRequestFactory.buildGetRequest(reqUrl);
+
             LogUtil.logNet(reqUrl.build());
 
             BaseEntity bs = request.execute().parseAs((baseClass));
@@ -151,6 +154,100 @@ public class Spokers implements LogTag {
                 mHttpRequestListener.onGetStatus(x2.status.equals("success"));
             }
             return x2;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public void postHttpDataUseAsync(final HttpContent httpContent,final HttpRequestListener httpListener, final String url, final Class<? extends BaseEntity> baseClass) {
+
+        AsyncTaskThreadPoolExecutorHelper.execute(new AsyncTask<Object, Object, Object>() {
+            @Override
+            protected void onPreExecute() {
+                httpListener.onPre();
+                super.onPreExecute();
+            }
+
+            @Override
+            protected Object doInBackground(Object... objects) {
+                httpListener.onDoing();
+//                HttpContent httpContent=new HttpContent() {
+//                    @Override
+//                    public long getLength() throws IOException {
+//                        return 0;
+//                    }
+//
+//                    @Override
+//                    public String getEncoding() {
+//                        return null;
+//                    }
+//
+//                    @Override
+//                    public String getType() {
+//                        return null;
+//                    }
+//
+//                    @Override
+//                    public void writeTo(OutputStream outputStream) throws IOException {
+//
+//                    }
+//
+//                    @Override
+//                    public boolean retrySupported() {
+//                        return false;
+//                    }
+//                };
+
+                return sendRequestInPost( url, baseClass, httpContent);
+            }
+
+            @Override
+            protected void onPostExecute(Object o) {
+                if (o == null) {
+                    LogUtil.logNet("REQUEST GET NOTHING");
+                    return;
+                }
+                if (((BaseEntity) o).status.equals("success")) {
+                    httpListener.onSuccess(o);
+                    LogUtil.logNet("SUCCESS");
+                } else {
+                    httpListener.onFail();
+                    LogUtil.logNet("FAILS");
+                }
+                httpListener.onPost();
+                super.onPostExecute(o);
+            }
+        });
+
+    }
+
+    /**
+     * @param url
+     * @return
+     */
+    private static BaseEntity sendRequestInPost(
+                                          String url, Class<? extends BaseEntity> baseClass,HttpContent httpContent) {
+//        Iterator iterator = key_value.entrySet().iterator();
+        GenericUrl reqUrl = new GenericUrl(url);
+        try {
+//            while (iterator.hasNext()) {
+//                Map.Entry entry = (Map.Entry) iterator.next();
+//                String mkey = (String) entry.getKey();
+//                String mValue = (String) entry.getValue();
+//                reqUrl.put(mkey, mValue);
+//            }
+            HttpTransport transport = new ApacheHttpTransport();
+            HttpRequestFactory httpRequestFactory = createRequestFactory(transport);
+            HttpRequest request = httpRequestFactory.buildPostRequest(reqUrl, httpContent);
+
+            LogUtil.logNet(reqUrl.build());
+
+            BaseEntity bs = request.execute().parseAs((baseClass));
+
+            LogUtil.logNet(bs.toString());
+            return bs;
         } catch (IOException e) {
             e.printStackTrace();
         }

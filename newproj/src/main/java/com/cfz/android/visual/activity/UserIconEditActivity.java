@@ -14,17 +14,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import cn.trinea.android.common.util.ToastUtils;
 import com.cfz.android.R;
+import com.cfz.android.Spokers;
 import com.cfz.android.UserData;
+import com.cfz.android.entity.network.urlentity.BaseEntity;
+import com.cfz.android.impl.HttpRequestListener;
 import com.cfz.android.visual.imageutils.ImageLoader;
+import com.google.api.client.http.HttpContent;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * Created by Administrator on 2014/4/27.
  */
-public class UserIconEditActivity extends BaseActivity implements View.OnClickListener {
+public class UserIconEditActivity extends BaseUrlActivity implements View.OnClickListener {
     private static final int MAX_HEIGHT = 600;
     private static final int MAX_WIDTH = 600;
     private EditText v_value;
@@ -186,7 +191,44 @@ public class UserIconEditActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void saveToServer() {
-        //TODO
+        saveIcon();
+//        saveNickName();
+    }
+
+    private void saveIcon() {
+
+
+        Spokers.getInstance().postHttpDataUseAsync(new HttpContent() {
+            @Override
+            public long getLength() throws IOException {
+                return 0;
+            }
+
+            @Override
+            public String getEncoding() {
+                return null;
+            }
+
+            @Override
+            public String getType() {
+                return null;
+            }
+
+            @Override
+            public void writeTo(OutputStream outputStream) throws IOException {
+
+            }
+
+            @Override
+            public boolean retrySupported() {
+                return false;
+            }
+        }, new HttpRequestListener() {
+            @Override
+            public void onDoing() {
+                super.onDoing();
+            }
+        }, SETHEAD_URL, BaseEntity.class);
     }
 
 
