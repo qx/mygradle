@@ -213,9 +213,12 @@ public class Spokers implements LogTag {
 //                String mValue = (String) entry.getValue();
 //                reqUrl.put(mkey, mValue);
 //            }
+
             HttpTransport transport = new ApacheHttpTransport();
+
             HttpRequestFactory httpRequestFactory = createRequestFactory(transport);
             HttpRequest request = httpRequestFactory.buildPostRequest(reqUrl, httpContent);
+
 
             LogUtil.logNet(reqUrl.build());
 

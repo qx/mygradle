@@ -153,7 +153,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="用户注册(完成)"/>
-
+n
             <Button
                     android:id="@+id/zijinchi"
                     android:layout_weight="1"

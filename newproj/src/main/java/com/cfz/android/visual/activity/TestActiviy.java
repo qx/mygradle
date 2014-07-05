@@ -9,10 +9,7 @@ import com.cfz.android.constant.URLConstant;
 import com.cfz.android.entity.network.urlentity.BaseEntity;
 import com.cfz.android.impl.HttpRequestListener;
 import com.google.api.client.http.HttpContent;
-import com.google.api.client.http.InputStreamContent;
-import com.google.api.client.http.protobuf.ProtoHttpContent;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -81,7 +78,7 @@ public class TestActiviy extends BaseActivity implements URLConstant , View.OnCl
                     ToastUtils.show(TestActiviy.this, "fail");
                     super.onFail();
                 }
-            }, GET_PRODUCT_URL, BaseEntity.class);
+            }, URL_ADS, BaseEntity.class);
     }
 
     @Override

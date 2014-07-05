@@ -9,12 +9,16 @@ import com.cfz.android.R;
 import com.cfz.android.Spokers;
 import com.cfz.android.constant.URLConstant;
 import com.cfz.android.entity.network.urlentity.BackAdvListEntity;
+import com.cfz.android.entity.network.urlentity.BackJinRiEntity;
+import com.cfz.android.entity.network.urlentity.BackListProductEntity;
 import com.cfz.android.entity.network.urlentity.BaseEntity;
 import com.cfz.android.impl.HttpRequestListener;
 import com.google.api.client.http.HttpContent;
+import com.google.api.client.http.UrlEncodedContent;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.HashMap;
 
 /**
  * Created by Administrator on 2014/4/24.
@@ -44,7 +48,9 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
     private Button shezhidizhi;
     private Button shangpinpinglun;
     private Button pinglun;
+    private HttpContent httpContent;
 
+    private HashMap<String, Object> data=new HashMap<String, Object>();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,39 +133,41 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
         pinglun.setOnClickListener(this);
 
 
-        testUrl();
+//        httpContent = new UrlEncodedContent();
+//                httpContent = new HttpContent() {
+//            @Override
+//            public long getLength() throws IOException {
+//                return 0;
+//            }
+//
+//            @Override
+//            public String getEncoding() {
+//                return null;
+//            }
+//
+//            @Override
+//            public String getType() {
+//                return null;
+//            }
+//
+//            @Override
+//            public void writeTo(OutputStream outputStream) throws IOException {
+//
+//            }
+//
+//            @Override
+//            public boolean retrySupported() {
+//                return false;
+//            }
+//        };
+
+//        testUrl();
 
     }
 
     private void testUrl() {
-        HttpContent httpContent = new HttpContent() {
-            @Override
-            public long getLength() throws IOException {
-                return 0;
-            }
-
-            @Override
-            public String getEncoding() {
-                return null;
-            }
-
-            @Override
-            public String getType() {
-                return null;
-            }
-
-            @Override
-            public void writeTo(OutputStream outputStream) throws IOException {
-
-            }
-
-            @Override
-            public boolean retrySupported() {
-                return false;
-            }
-        };
         ToastUtils.show(TesterActivity.this, "touch");
-        testMethod(GET_PRODUCT_URL, BackAdvListEntity.class, httpContent);
+        testMethod(URL_ADS, BackAdvListEntity.class, httpContent);
     }
 
 
@@ -170,7 +178,7 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
      * @param backentity 返回封装类
      * @param content    内容
      */
-    private void testMethod(String Url, Class<? extends BaseEntity> backentity, HttpContent content) {
+    public static void testMethod(String Url, Class<? extends BaseEntity> backentity, HttpContent content) {
         Spokers.getInstance().postHttpDataUseAsync(content, new HttpRequestListener() {
             @Override
             public void onDoing() {
@@ -179,17 +187,15 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
 
             @Override
             public void onSuccess(Object o) {
-                ToastUtils.show(TesterActivity.this, "success");
                 super.onSuccess(o);
             }
 
             @Override
             public void onFail() {
-                ToastUtils.show(TesterActivity.this, "fail");
                 super.onFail();
             }
-        }, GET_PRODUCT_URL, BackAdvListEntity.class);
-//        }, GET_PRODUCT_URL, BackAdvListEntity.class);
+        }, Url, backentity);
+//        }, URL_ADS, BackAdvListEntity.class);
     }
 
     @Override
@@ -197,16 +203,51 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
 //        testUrl();
         switch (v.getId()) {
             case R.id.guanggao:
-                ToastUtils.show(TesterActivity.this, "guanggao");
+//                ToastUtils.show(TesterActivity.this, "guanggao");
+                httpContent = new HttpContent() {
+                    @Override
+                    public long getLength() throws IOException {
+                        return 0;
+                    }
+
+                    @Override
+                    public String getEncoding() {
+                        return null;
+                    }
+
+                    @Override
+                    public String getType() {
+                        return null;
+                    }
+
+                    @Override
+                    public void writeTo(OutputStream outputStream) throws IOException {
+
+                    }
+
+                    @Override
+                    public boolean retrySupported() {
+                        return false;
+                    }
+                };
+
+                testMethod(URL_ADS, BackAdvListEntity.class, httpContent);
+//                testMethod(URL_ADS, BackAdvListEntity.class, httpContent);
+
                 break;
             case R.id.huodong:
-                ToastUtils.show(TesterActivity.this, "huodong");
+//                ToastUtils.show(TesterActivity.this, "huodong");
+                testMethod(PRODUCT_URL, BackListProductEntity.class, httpContent);
                 break;
             case R.id.jinri:
-                ToastUtils.show(TesterActivity.this, "jinri");
+//                ToastUtils.show(TesterActivity.this, "jinri");
+                data.put(PARAMS_JINRI, 1);
+                httpContent = new UrlEncodedContent(data);
+                testMethod(URL_JINRI, BackJinRiEntity.class, httpContent);
                 break;
             case R.id.deng:
-                ToastUtils.show(TesterActivity.this, "deng");
+//                ToastUtils.show(TesterActivity.this, "deng");
+                testMethod(PRODUCT_URL, BackListProductEntity.class, httpContent);
                 break;
 
 

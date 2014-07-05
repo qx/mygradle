@@ -6,10 +6,13 @@ import com.cfz.android.BaseClass;
 import com.cfz.android.Spokers;
 import com.cfz.android.UserData;
 import com.cfz.android.entity.network.resultbean.UserLoginBean;
+import com.cfz.android.entity.network.urlentity.BackJinRiEntity;
 import com.cfz.android.entity.network.urlentity.BackUserLoginEntity;
 import com.cfz.android.impl.HttpRequestListener;
 import com.cfz.android.utils.LogUtil;
 import com.cfz.android.utils.LoginUtils;
+import com.google.api.client.http.HttpContent;
+import com.google.api.client.http.UrlEncodedContent;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
@@ -18,6 +21,7 @@ import java.util.HashMap;
 
 import static com.cfz.android.constant.URLConstant.*;
 import static com.cfz.android.utils.net.MyNetWorkUtil.*;
+import static com.cfz.android.visual.activity.TesterActivity.testMethod;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -107,5 +111,16 @@ public class MyNetWorkUtilTest extends BaseClass {
         }, LOGIN_URL, BackUserLoginEntity.class);
 
     }
+
+    @Test
+    public void testJinRi() {
+        HashMap<String, Object> data=new HashMap<String, Object>();
+        data.put(PARAMS_JINRI, 1);
+        HttpContent httpContent = new UrlEncodedContent(data);
+        testMethod(URL_JINRI, BackJinRiEntity.class, httpContent);
+
+    }
+
+
 }
 
