@@ -9,7 +9,6 @@ public class NewProductResult extends BaseResult {
 
     @Key
     public String productId;
-
     @Key
     public String productImg;
     @Key

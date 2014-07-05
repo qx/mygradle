@@ -256,6 +256,8 @@ public class UserIconEditActivity extends BaseUrlActivity implements View.OnClic
         try {
             inputstream = new FileInputStream(tempfile);
             HttpContent imc = new InputStreamContent("image/jpeg", inputstream);
+//            HttpContent imc = new I
+//            HttpContent imb=
 
             Spokers.getInstance().postHttpDataUseAsync(imc, new HttpRequestListener() {
                 @Override

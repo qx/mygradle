@@ -19,19 +19,24 @@
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:icon="@drawable/ic_launcher">
 
-        <activity
-                android:name="com.cfz.android.visual.activity.MainActivity"
-                android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
+        <!--<activity-->
+                <!--android:name="com.cfz.android.visual.activity.MainActivity"-->
+                <!--android:label="@string/app_name">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
+                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+
 
         <activity android:name="com.cfz.android.visual.activity.BaseActivity"/>
 
         <activity android:name="com.cfz.android.visual.activity.TesterActivity"
                 >
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
+            <category android:name="android.intent.category.LAUNCHER"/>
+        </intent-filter>
         </activity>
         <activity android:name="com.cfz.android.visual.activity.MoreActivity">
 
@@ -109,6 +114,7 @@
                 android:theme="@android:style/Theme.Translucent.NoTitleBar"
                 android:screenOrientation="portrait"/>
         <activity android:name=".visual.activity.BaseUrlActivity"/>
+        <activity android:name=".visual.activity.TestActiviy"/>
 
         <receiver android:name="com.cfz.android.receivers.SpokerReceiver"/>
     </application>

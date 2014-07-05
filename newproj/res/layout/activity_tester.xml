@@ -1,33 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center"
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
         >
 
-    <ProgressBar
-            android:id="@+id/progress_bar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="5dip"
-            android:layout_marginTop="10dip"
-            android:layout_marginBottom="3dip"
-            android:layout_marginLeft="2dip"
-            android:layout_marginRight="2dip"
-            android:max="100"
-            android:progress="77"
-            android:progressDrawable="@drawable/progress_style"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            >
 
-    <EditText
-            android:id="@+id/v_value"
-            style="@style/my_edittext_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/log_passwd_tips"
-            android:imeOptions="actionDone"
-            android:inputType=""
-            android:layout_marginTop="50dp"/>
+        <!--<ProgressBar-->
+        <!--android:id="@+id/progress_bar"-->
+        <!--style="?android:attr/progressBarStyleHorizontal"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="5dip"-->
+        <!--android:layout_marginTop="10dip"-->
+        <!--android:layout_marginBottom="3dip"-->
+        <!--android:layout_marginLeft="2dip"-->
+        <!--android:layout_marginRight="2dip"-->
+        <!--android:max="100"-->
+        <!--android:progress="77"-->
+        <!--android:progressDrawable="@drawable/progress_style"/>-->
 
-</LinearLayout>
+        <!--<EditText-->
+        <!--android:id="@+id/v_value"-->
+        <!--style="@style/my_edittext_style"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:hint="@string/log_passwd_tips"-->
+        <!--android:imeOptions="actionDone"-->
+        <!--android:inputType=""-->
+        <!--android:layout_marginTop="50dp"/>-->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                >
+
+            <Button
+                    android:id="@+id/guanggao"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="广告列表(完成)"/>
+
+            <Button
+                    android:id="@+id/huodong"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="活动商品(完成)"/>
+
+            <Button
+                    android:id="@+id/jinri"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="今日开奖商品(完成)"/>
+
+            <Button
+                    android:id="@+id/deng"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="等待开奖商品(完成)"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:layout_height="wrap_content">
+
+            <Button
+                    android:id="@+id/lishi"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="历史开奖商品(完成)"/>
+
+            <Button
+                    android:id="@+id/xiangqing"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="详情页面(完成)"/>
+
+            <Button
+                    android:id="@+id/tongkuan"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="同款商品往期回顾(完成)"/>
+
+            <Button
+                    android:id="@+id/jilu"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="商品的凑分记录()"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:layout_height="wrap_content">
+
+            <Button
+                    android:id="@+id/coufeng"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="用户凑分功能"/>
+
+            <Button
+                    android:id="@+id/gengduo"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="更多信息(完成)"/>
+
+            <Button
+                    android:id="@+id/yijian"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="用户意见反馈"/>
+
+            <Button
+                    android:id="@+id/gengxin"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="版本更新检测"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:layout_height="wrap_content">
+
+            <Button
+                    android:id="@+id/zhuce"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="用户注册(完成)"/>
+
+            <Button
+                    android:id="@+id/zijinchi"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="资金池和积分刷新"/>
+
+            <Button
+                    android:id="@+id/yonghu"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="修改用户头像(完成)"/>
+
+            <Button
+                    android:id="@+id/nicheng"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="修改昵称(完成)"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:layout_height="wrap_content">
+
+            <Button
+                    android:id="@+id/dizhi"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="获取用户收获地址(完成)"/>
+
+            <Button
+                    android:id="@+id/shezhidizhi"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="设置用户收获地址(完成)"/>
+
+            <Button
+                    android:id="@+id/shangpinpinglun"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="获取商品评论列表"/>
+
+            <Button
+                    android:id="@+id/pinglun"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="用户活动商品评论功能"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:layout_height="wrap_content">
+
+            <Button
+                    android:id="@+id/btn21"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+            <Button
+                    android:id="@+id/btn22"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+            <Button
+                    android:id="@+id/btn23"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+            <Button
+                    android:id="@+id/btn24"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
