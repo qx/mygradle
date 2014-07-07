@@ -93,6 +93,7 @@ public interface URLConstant {
      * 15：修改用户头像(完成)
      */
     public static final String URL_USER_ICON = BASE_URL + "user_setHeadImg?";
+    public static final String URL_USER_ICON_SET = "image";
     /**
      * 16：修改昵称(完成)
      */
@@ -119,7 +120,7 @@ public interface URLConstant {
     /**
      * 20：用户活动商品评论功能
      */
-    public static final String URL_COMMENT_SET = BASE_URL + "system_refreshVersion?";
+    public static final String URL_COMMENT_SET = BASE_URL + "comment_setUserComment?";
     public static final String URL_COMMENT_SET_UID = "userId";
     public static final String URL_COMMENT_SET_PID = "productId";
     public static final String URL_COMMENT_SET_CON = "contents";

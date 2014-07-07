@@ -12,10 +12,7 @@ import com.cfz.android.R;
 import com.cfz.android.RequestInsance;
 import com.cfz.android.Spokers;
 import com.cfz.android.constant.URLConstant;
-import com.cfz.android.entity.network.urlentity.BackAdvListEntity;
-import com.cfz.android.entity.network.urlentity.BackJinRiEntity;
-import com.cfz.android.entity.network.urlentity.BackListProductEntity;
-import com.cfz.android.entity.network.urlentity.BaseEntity;
+import com.cfz.android.entity.network.urlentity.*;
 import com.cfz.android.impl.HttpRequestListener;
 import com.google.api.client.http.HttpContent;
 import com.google.api.client.http.UrlEncodedContent;
@@ -25,7 +22,8 @@ import java.io.OutputStream;
 import java.util.HashMap;
 
 /**
- * Created by Administrator on 2014/4/24.
+ *adb logcat time -v | grep -E "netTransfer|fatal exception" -i
+
  */
 public class TesterActivity extends Activity implements URLConstant, View.OnClickListener {
     private Button guanggao;
@@ -124,7 +122,7 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
         zhuce.setOnClickListener(this);
         zijinchi = (Button) (findViewById(R.id.zijinchi));
         zijinchi.setOnClickListener(this);
-        yonghu = (Button) (findViewById(R.id.yonghu));
+        yonghu = (Button) (findViewById(R.id.usericon));
         yonghu.setOnClickListener(this);
         nicheng = (Button) (findViewById(R.id.nicheng));
         nicheng.setOnClickListener(this);
@@ -216,7 +214,6 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
                 backInfo.setText(RequestInsance.getInstance().getBackinfo());
             }
         }, Url, backentity);
-//        }, URL_ADS, BackAdvListEntity.class);
     }
 
     @Override
@@ -264,56 +261,114 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
                 testMethod(URL_PRODUCTING, BackListProductEntity.class, httpContent);
                 break;
             case R.id.jinri:
-//                ToastUtils.show(TesterActivity.this, "jinri");
                 data.put(URL_LOTTERY_PN, 1);
                 httpContent = new UrlEncodedContent(data);
                 testMethod(URL_LOTTERY, BackJinRiEntity.class, httpContent);
                 break;
             case R.id.deng:
-//                ToastUtils.show(TesterActivity.this, "deng");
-                testMethod(URL_PRODUCTING, BackListProductEntity.class, httpContent);
+                data.put(URL_WAITING_PN, 1);
+                httpContent = new UrlEncodedContent(data);
+                testMethod(URL_WAITING, BackWaitingEntity.class, httpContent);
                 break;
 
 
             case R.id.lishi:
-                ToastUtils.show(TesterActivity.this, "lishi");
+                data.put(URL_HISTORY_PN, 1);
+                httpContent = new UrlEncodedContent(data);
+                testMethod(URL_HISTORY, BackHistoryEntity.class, httpContent);
                 break;
             case R.id.xiangqing:
-                ToastUtils.show(TesterActivity.this, "xiangqing");
+                data.put(URL_PRODUCT_DETAIL_PID, 1);//商品ID未知
+                data.put(URL_PRODUCT_DETAIL_IID, 1);
+                httpContent = new UrlEncodedContent(data);
+                testMethod(URL_PRODUCT_DETAIL, BackProductDetailEntity.class, httpContent);
                 break;
             case R.id.tongkuan:
-                ToastUtils.show(TesterActivity.this, "tongkuan");
+                data.put(URL_PRODUCT_SAME_PN, 1);
+                data.put(URL_PRODUCT_SAME_IID, 1);
+                httpContent = new UrlEncodedContent(data);
+                testMethod(URL_PRODUCT_SAME, BackSameWinnerEntity.class, httpContent);
                 break;
             case R.id.jilu:
-                ToastUtils.show(TesterActivity.this, "jilu");
+                data.put(URL_PRODUCT_RECORD_PID, 1);
+                data.put(URL_PRODUCT_RECORD_PN, 1);
+                httpContent = new UrlEncodedContent(data);
+                testMethod(URL_PRODUCT_RECORD, BackPdRecorderEntity.class, httpContent);
                 break;
 
 
             case R.id.coufeng:
-                ToastUtils.show(TesterActivity.this, "coufeng");
+                data.put(URL_USER_BET_PID, 1);
+                data.put(URL_USER_BET_BN, 1);
+                httpContent = new UrlEncodedContent(data);
+                testMethod(URL_USER_BET, BackBetEntity.class, httpContent);
                 break;
             case R.id.gengduo:
-                ToastUtils.show(TesterActivity.this, "gengduo");
+//                data.put(URL_MORE, 1);
+                httpContent = new UrlEncodedContent(data);
+                testMethod(URL_MORE, BackMoreEntity.class, httpContent);
                 break;
             case R.id.yijian:
-                ToastUtils.show(TesterActivity.this, "yijian");
+                data.put(URL_USER_MESSAGE_MSG, "服务器真给力");
+                httpContent = new UrlEncodedContent(data);
+                testMethod(URL_USER_MESSAGE, BaseEntity.class, httpContent);
                 break;
             case R.id.gengxin:
-                ToastUtils.show(TesterActivity.this, "gengxin");
+//                data.put(URL_LOTTERY_PN, 1);
+                httpContent = new UrlEncodedContent(data);
+                testMethod(URL_LOTTERY, BaseEntity.class, httpContent);
                 break;
 
 
             case R.id.zhuce:
-                ToastUtils.show(TesterActivity.this, "zhuce");
+                data.put(URL_LOADING_QQID, "afser23478123947123");
+                data.put(URL_LOADING_PT, 1);
+                data.put(URL_LOADING_PSN, "2123341232fEW3");
+                httpContent = new UrlEncodedContent(data);
+                testMethod(URL_LOTTERY, BackUserLoadEntity.class, httpContent);
                 break;
             case R.id.zijinchi:
-                ToastUtils.show(TesterActivity.this, "zijinchi");
+//                data.put(URL_USER_COUNT_REF, 1);
+                httpContent = new UrlEncodedContent(data);
+                testMethod(URL_USER_COUNT, BaseEntity.class, httpContent);
                 break;
-            case R.id.yonghu:
-                ToastUtils.show(TesterActivity.this, "yonghu");
+            case R.id.usericon:
+                data.put(URL_USER_ICON_SET, "9527");// 此处需要修改成文件
+                httpContent = new UrlEncodedContent(data);
+                testMethod(URL_USER_ICON, BaseEntity.class, httpContent);
                 break;
             case R.id.nicheng:
-                ToastUtils.show(TesterActivity.this, "nicheng");
+                data.put(URL_USER_NICK_SET, "9527");
+                httpContent = new UrlEncodedContent(data);
+                testMethod(URL_USER_NICK, BaseEntity.class, httpContent);
+                break;
+
+
+//
+            case R.id.dizhi:
+                httpContent = new UrlEncodedContent(data);
+                testMethod(URL_USER_ADDRESS, BaseEntity.class, httpContent);
+                break;
+            case R.id.shezhidizhi:
+                data.put(URL_USER_SETADDRESS_AD, "american white house");
+                data.put(URL_USER_SETADDRESS_CN, "newyork");
+                data.put(URL_USER_SETADDRESS_PH, "110");
+                data.put(URL_USER_SETADDRESS_REAL, "中国人民解放军");
+                httpContent = new UrlEncodedContent(data);
+                testMethod(URL_USER_SETADDRESS, BaseEntity.class, httpContent);
+                break;
+            case R.id.shangpinpinglun:
+                data.put(URL_COMMENT_GET_PID, "什么乱七八糟的");
+                data.put(URL_COMMENT_GET_PN, 1);
+                httpContent = new UrlEncodedContent(data);
+                testMethod(URL_COMMENT_GET, BackProductCommentEntity.class, httpContent);
+                break;
+            case R.id.pinglun:
+                data.put(URL_COMMENT_SET_CON, "URL_COMMENT_SET_CON");
+                data.put(URL_COMMENT_SET_UID, "URL_COMMENT_SET_UID");
+                data.put(URL_COMMENT_SET_PID, "URL_COMMENT_SET_PID");
+                httpContent = new UrlEncodedContent(data);
+                testMethod(URL_COMMENT_SET, BaseEntity.class, httpContent);
                 break;
 
 
