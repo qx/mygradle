@@ -13,13 +13,13 @@ public class JinRi extends BaseResult {
     @Key
     public String productImg;
     @Key
-    public String price;
+    public Float price;
     @Key
     public String nickName;
     @Key
     public String userHeadImg;
     @Key
-    public String bettingCnt;
+    public Integer bettingCnt;
     @Key
     public String luckyCode;
     @Key
