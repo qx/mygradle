@@ -1,5 +1,7 @@
 package com.cfz.android.entity.network.resultbean;
 
+import com.google.api.client.util.Key;
+
 /**
  *5:历史开奖商品(完成)
 
@@ -30,5 +32,40 @@ public class Histroy extends BaseResult {
 //    7:字符串
 //    8:字符串
 //    9:字符串"
+
+    @Key
+    public String productId;
+
+    @Key
+    public String productImg;
+
+
+    @Key
+    public Float price;
+
+
+    @Key
+    public String nickName;
+
+
+    @Key
+    public String userHeadImg;
+
+
+    @Key
+    public Integer bettingCnt;
+
+
+    @Key
+    public String luckyCode;
+
+
+    @Key
+    public String publishTime;
+
+
+    @Key
+    public String infoId;
+
 
 }

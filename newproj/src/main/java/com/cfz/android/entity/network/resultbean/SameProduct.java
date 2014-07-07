@@ -1,10 +1,12 @@
 package com.cfz.android.entity.network.resultbean;
 
+import com.google.api.client.util.Key;
+
 /**
- 7:同款商品往期回顾(完成)
+ * 7:同款商品往期回顾(完成)
  */
 public class SameProduct extends BaseResult {
-//    "1：activityNum
+    //    "1：activityNum
 //            2: bettingCnt
 //    3: luckyCode
 //    4：publishTime
@@ -17,5 +19,14 @@ public class SameProduct extends BaseResult {
 //    3:字符串
 //    4:字符串
 //    5:字符串"
-
+    @Key
+    public String activityNum;
+    @Key
+    public String bettingCnt;
+    @Key
+    public String luckyCode;
+    @Key
+    public String publishTime;
+    @Key
+    public String nickName;
 }

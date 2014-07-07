@@ -1,10 +1,12 @@
 package com.cfz.android.entity.network.resultbean;
 
+import com.google.api.client.util.Key;
+
 /**
- 8:获取商品的凑分记录()
+ * 8:获取商品的凑分记录()
  */
 public class ProductedRecord extends BaseResult {
-//    "1:headImg
+    //    "1:headImg
 //    2:nickName
 //    3:bettingCnt
 //    4:time"	"1:头像
@@ -14,5 +16,12 @@ public class ProductedRecord extends BaseResult {
 //    2:字符串
 //    3:字符串
 //    4:字符串"
-
+    @Key
+    public String headImg;
+    @Key
+    public String nickName;
+    @Key
+    public String bettingCnt;
+    @Key
+    public String time;
 }
