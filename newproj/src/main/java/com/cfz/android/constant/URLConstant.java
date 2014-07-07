@@ -26,7 +26,7 @@ public interface URLConstant {
     public static final String status = "status";
 
 
-        public static final String BASE_URL = "http://114.215.177.210:8080/cfz/";
+        public static final String BASE_URL = "http://114.215.177.210:8080/cfz/phone/";
 //    public static final String BASE_URL = "http://192.168.199.192:8080/cfz/phone/";
     /**
      * 登录
