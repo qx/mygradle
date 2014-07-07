@@ -185,7 +185,7 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
      * @param backentity 返回封装类
      * @param content    内容
      */
-    private  void testMethod(String Url, Class<? extends BaseEntity> backentity, HttpContent content) {
+    private void testMethod(String Url, Class<? extends BaseEntity> backentity, HttpContent content) {
         Spokers.getInstance().postHttpDataUseAsync(content, new HttpRequestListener() {
             @Override
             public void onPre() {
@@ -221,7 +221,10 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
 
     @Override
     public void onClick(View v) {
-//        testUrl();
+        if (data == null) {
+            return;
+        }
+        data.clear();
         switch (v.getId()) {
             case R.id.guanggao:
 //                ToastUtils.show(TesterActivity.this, "guanggao");

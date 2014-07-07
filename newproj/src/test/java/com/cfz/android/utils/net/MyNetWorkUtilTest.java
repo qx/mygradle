@@ -6,20 +6,15 @@ import com.cfz.android.BaseClass;
 import com.cfz.android.Spokers;
 import com.cfz.android.UserData;
 import com.cfz.android.entity.network.resultbean.UserLoginBean;
-import com.cfz.android.entity.network.urlentity.BackJinRiEntity;
-import com.cfz.android.entity.network.urlentity.BackUserLoginEntity;
+import com.cfz.android.entity.network.urlentity.BackUserLoadEntity;
 import com.cfz.android.impl.HttpRequestListener;
 import com.cfz.android.utils.LogUtil;
-import com.cfz.android.utils.LoginUtils;
-import com.google.api.client.http.HttpContent;
-import com.google.api.client.http.UrlEncodedContent;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 
 import java.util.HashMap;
 
-import static com.cfz.android.constant.URLConstant.*;
 import static com.cfz.android.utils.net.MyNetWorkUtil.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -59,7 +54,7 @@ public class MyNetWorkUtilTest extends BaseClass {
                     LogUtil.i(NET, "FAIL");
                 }
             }
-        }, URL_LOADING, BackUserLoginEntity.class), equalTo(null));
+        }, URL_LOADING, BackUserLoadEntity.class), equalTo(null));
     }
 
     @Test
@@ -84,8 +79,8 @@ public class MyNetWorkUtilTest extends BaseClass {
             @Override
             public void onSuccess(Object o) {
                 super.onSuccess(o);
-                BackUserLoginEntity mBackUserLoginEntity = (BackUserLoginEntity) o;
-                userLoginBeans =(UserLoginBean)mBackUserLoginEntity.bean;
+                BackUserLoadEntity mBackUserLoadEntity = (BackUserLoadEntity) o;
+                userLoginBeans =(UserLoginBean) mBackUserLoadEntity.bean;
 //                UserData.getInstance().isLogin = true;//数据变量发生变化自动刷新数据，本地广播，或实现观察者模式
 //                mHandler.sendEmptyMessage(UPDATE_VIEW);
             }
@@ -107,7 +102,7 @@ public class MyNetWorkUtilTest extends BaseClass {
                 assertThat(userLoginBeans, equalTo(null));
 
             }
-        }, URL_LOADING, BackUserLoginEntity.class);
+        }, URL_LOADING, BackUserLoadEntity.class);
 
     }
 

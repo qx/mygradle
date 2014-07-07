@@ -11,7 +11,7 @@
     <properties>
         <robolectric.version>2.2</robolectric.version>
     </properties>
-
+<!--http://jakewharton.github.io/butterknife/-->
     <dependencies>
         <dependency>
             <groupId>com.jakewharton</groupId>

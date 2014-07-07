@@ -13,7 +13,7 @@ import com.cfz.android.R;
 import com.cfz.android.Spokers;
 import com.cfz.android.UserData;
 import com.cfz.android.entity.network.resultbean.UserLoginBean;
-import com.cfz.android.entity.network.urlentity.BackUserLoginEntity;
+import com.cfz.android.entity.network.urlentity.BackUserLoadEntity;
 import com.cfz.android.impl.HttpRequestListener;
 import com.cfz.android.utils.LoginUtils;
 import com.cfz.android.visual.activity.listener.FirstPageFragmentListener;
@@ -187,8 +187,8 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
                         @Override
                         public void onSuccess(Object o) {
                             super.onSuccess(o);
-                            BackUserLoginEntity mBackUserLoginEntity = (BackUserLoginEntity) o;
-                            UserLoginBean userLoginBeans = (UserLoginBean) mBackUserLoginEntity.bean;
+                            BackUserLoadEntity mBackUserLoadEntity = (BackUserLoadEntity) o;
+                            UserLoginBean userLoginBeans = (UserLoginBean) mBackUserLoadEntity.bean;
                             UserData ud = UserData.getInstance();
                             ud.isLogin = true;//数据变量发生变化自动刷新数据，本地广播，或实现观察者模式
                             ud.setUserImage(userLoginBeans.headImg);
@@ -211,7 +211,7 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
                             super.onPre();
                             mHandler.sendEmptyMessage(SHOW_LOADING);
                         }
-                    }, URL_LOADING, BackUserLoginEntity.class);
+                    }, URL_LOADING, BackUserLoadEntity.class);
                 }
             };
             mTencent.loginWithOEM(getActivity(), "all", listener, "10000144", "10000144", "xxxx");
