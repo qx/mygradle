@@ -3,9 +3,9 @@ package com.cfz.android.entity.network.resultbean;
 import com.google.api.client.util.Key;
 
 /**
- * Created by ok on 14-5-22.
+ 1:用户注册(完成)
  */
-public class UserLoginBean extends BaseBean {
+public class UserLoginBean extends BaseResult {
 
     @Key
     public String userId;

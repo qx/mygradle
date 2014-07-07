@@ -4,29 +4,12 @@ package com.cfz.android.constant;
  * Created by Administrator on 2014/5/15.
  */
 public interface URLConstant {
-    //product
-//    public static final int URL_GET_PRODUCT_DOING = 1;
-//    public static final int URL_GET_PRODUCT_DOING_DETAIL = 2;
-//    public static final int URL_GET_PRODUCT_STOPACTION = 3;
-//    public static final int URL_GET_PRODUCT_STOPACTION_DETAIL = 4;
-//    public static final int URL_GET_PRODUCT_DONE = 5;
-//    public static final int URL_GET_PRODUCT_DONE_DETAIL = 6;
-//    //user
-//    public static final int URL_GET_USERLOGIN = 7;
-//    public static final int URL_GET_USERADDRESS = 8;
-//    public static final int URL_GET_USERCOMMENT = 9;
-//    public static final int URL_GET_USERACCOUNT = 10;
-//    public static final int URL_GET_USERINFO = 11;
-//    //others
-//    public static final int URL_GET_UPDATE_INFO = 12;
-//    public static final int URL_GET_APP_EXPLAIN = 13;
-//    public static final int URL_GET_ADVERTISEMENT = 14;
     public static final String info = "info";
 
     public static final String status = "status";
 
 
-        public static final String BASE_URL = "http://114.215.177.210:8080/cfz/phone/";
+    public static final String BASE_URL = "http://114.215.177.210:8080/cfz/phone/";
 //    public static final String BASE_URL = "http://192.168.199.192:8080/cfz/phone/";
     /**
      * 登录

@@ -2,7 +2,7 @@ package com.cfz.android.entity.network.urlentity;
 
 import com.google.api.client.util.Key;
 import com.cfz.android.BaseClass;
-import com.cfz.android.entity.network.resultbean.BaseBean;
+import com.cfz.android.entity.network.resultbean.BaseResult;
 
 /**
  * Created by ok on 14-5-22.

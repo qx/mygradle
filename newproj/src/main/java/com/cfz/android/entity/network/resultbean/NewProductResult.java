@@ -3,7 +3,7 @@ package com.cfz.android.entity.network.resultbean;
 import com.google.api.client.util.Key;
 
 /**
- * Created by Administrator on 2014/5/15.
+ 2:获取活动商品(完成)
  */
 public class NewProductResult extends BaseResult {
 
@@ -21,4 +21,6 @@ public class NewProductResult extends BaseResult {
     public Integer currentCnt;
     @Key
     public String detail;
+    @Key
+    public String infoId ;
 }
