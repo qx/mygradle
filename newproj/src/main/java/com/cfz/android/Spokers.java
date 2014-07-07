@@ -180,6 +180,7 @@ public class Spokers implements LogTag {
 
             @Override
             protected void onPostExecute(Object o) {
+                httpListener.onPost();
                 if (o == null) {
                     LogUtil.logNet("REQUEST GET NOTHING");
                     return;
@@ -191,7 +192,6 @@ public class Spokers implements LogTag {
                     httpListener.onFail();
                     LogUtil.logNet("FAILS");
                 }
-                httpListener.onPost();
                 super.onPostExecute(o);
             }
         });
@@ -219,11 +219,11 @@ public class Spokers implements LogTag {
             HttpRequestFactory httpRequestFactory = createRequestFactory(transport);
             HttpRequest request = httpRequestFactory.buildPostRequest(reqUrl, httpContent);
 
-
+            RequestInsance.getInstance().setRequrl(reqUrl.build());
             LogUtil.logNet(reqUrl.build());
 
             BaseEntity bs = request.execute().parseAs((baseClass));
-
+            RequestInsance.getInstance().setBackinfo(bs.toString());
             LogUtil.logNet(bs.toString());
             return bs;
         } catch (IOException e) {

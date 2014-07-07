@@ -21,7 +21,6 @@ import java.util.HashMap;
 
 import static com.cfz.android.constant.URLConstant.*;
 import static com.cfz.android.utils.net.MyNetWorkUtil.*;
-import static com.cfz.android.visual.activity.TesterActivity.testMethod;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -112,14 +111,14 @@ public class MyNetWorkUtilTest extends BaseClass {
 
     }
 
-    @Test
-    public void testJinRi() {
-        HashMap<String, Object> data=new HashMap<String, Object>();
-        data.put(PARAMS_JINRI, 1);
-        HttpContent httpContent = new UrlEncodedContent(data);
-        testMethod(URL_JINRI, BackJinRiEntity.class, httpContent);
-
-    }
+//    @Test
+//    public void testJinRi() {
+//        HashMap<String, Object> data=new HashMap<String, Object>();
+//        data.put(PARAMS_JINRI, 1);
+//        HttpContent httpContent = new UrlEncodedContent(data);
+//        testMethod(URL_JINRI, BackJinRiEntity.class, httpContent);
+//
+//    }
 
 
 }

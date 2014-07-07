@@ -4,8 +4,12 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import cn.trinea.android.common.util.ToastUtils;
 import com.cfz.android.R;
+import com.cfz.android.RequestInsance;
 import com.cfz.android.Spokers;
 import com.cfz.android.constant.URLConstant;
 import com.cfz.android.entity.network.urlentity.BackAdvListEntity;
@@ -49,8 +53,11 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
     private Button shangpinpinglun;
     private Button pinglun;
     private HttpContent httpContent;
-
-    private HashMap<String, Object> data=new HashMap<String, Object>();
+    @InjectView(R.id.requestUrl)
+    TextView requestUrl;
+    @InjectView(R.id.backInfo)
+    TextView backInfo;
+    private HashMap<String, Object> data = new HashMap<String, Object>();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +89,7 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
 //        setContentView(R.layout.activity_user_loading);
 //        setContentView(R.layout.activity_user_name);
         setContentView(R.layout.activity_tester);
-
+        ButterKnife.inject(this);
         guanggao = (Button) (findViewById(R.id.guanggao));
         guanggao.setOnClickListener(this);
         huodong = (Button) (findViewById(R.id.huodong));
@@ -178,21 +185,35 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
      * @param backentity 返回封装类
      * @param content    内容
      */
-    public static void testMethod(String Url, Class<? extends BaseEntity> backentity, HttpContent content) {
+    private  void testMethod(String Url, Class<? extends BaseEntity> backentity, HttpContent content) {
         Spokers.getInstance().postHttpDataUseAsync(content, new HttpRequestListener() {
+            @Override
+            public void onPre() {
+                super.onPre();
+
+            }
+
             @Override
             public void onDoing() {
                 super.onDoing();
             }
 
             @Override
+            public void onPost() {
+                super.onPost();
+                requestUrl.setText(RequestInsance.getInstance().getRequrl());
+            }
+
+            @Override
             public void onSuccess(Object o) {
                 super.onSuccess(o);
+                backInfo.setText(RequestInsance.getInstance().getBackinfo());
             }
 
             @Override
             public void onFail() {
                 super.onFail();
+                backInfo.setText(RequestInsance.getInstance().getBackinfo());
             }
         }, Url, backentity);
 //        }, URL_ADS, BackAdvListEntity.class);

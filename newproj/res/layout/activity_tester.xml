@@ -153,7 +153,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="用户注册(完成)"/>
-n
+            n
+
             <Button
                     android:id="@+id/zijinchi"
                     android:layout_weight="1"
@@ -242,5 +243,27 @@ n
                     android:layout_height="wrap_content"/>
         </LinearLayout>
 
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+            <TextView
+                    android:id="@+id/requestUrl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/holo_purple"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:text="-----------------------------------------------"/>
+
+            <TextView
+                    android:id="@+id/backInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
