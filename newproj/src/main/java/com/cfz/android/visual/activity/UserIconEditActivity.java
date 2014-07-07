@@ -276,7 +276,7 @@ public class UserIconEditActivity extends BaseUrlActivity implements View.OnClic
                     ToastUtils.show(UserIconEditActivity.this, "fail");
                     super.onFail();
                 }
-            }, SETHEAD_URL, BaseEntity.class);
+            }, URL_USER_ICON, BaseEntity.class);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

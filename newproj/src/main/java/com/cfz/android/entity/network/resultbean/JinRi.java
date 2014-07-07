@@ -3,8 +3,7 @@ package com.cfz.android.entity.network.resultbean;
 import com.google.api.client.util.Key;
 
 /**
- *3:今日开奖商品(完成)
-
+ * 3:今日开奖商品(完成)
  */
 public class JinRi extends BaseResult {
 

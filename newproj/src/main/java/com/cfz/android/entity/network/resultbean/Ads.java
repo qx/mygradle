@@ -4,7 +4,6 @@ import com.google.api.client.util.Key;
 
 /**
  * 1:获取广告列表(完成)
-
  */
 public class Ads extends BaseResult {
 //    ：advId

@@ -3,8 +3,7 @@ package com.cfz.android.entity.network.resultbean;
 import com.google.api.client.util.Key;
 
 /**
- *5:历史开奖商品(完成)
-
+ * 5:历史开奖商品(完成)
  */
 public class Histroy extends BaseResult {
 //    "1：productId

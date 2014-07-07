@@ -171,12 +171,12 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
                 protected void doComplete(final JSONObject values) {
                     HashMap<String, Object> params = new HashMap<String, Object>();
                     try {
-                        params.put(LOGIN_URL_PARAMS_ID_, values.getString("openid"));
+                        params.put(URL_LOADING_QQID, values.getString("openid"));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    params.put(LOGIN_URL_PARAMS_PHONE_, "1");
-                    params.put(LOGIN_URL_PARAMS_PHONEID_, LoginUtils.getImei(getActivity()));
+                    params.put(URL_LOADING_PT, "1");
+                    params.put(URL_LOADING_PSN, LoginUtils.getImei(getActivity()));
 
                     Spokers.getInstance().getHttpDataUseAsync(params, new HttpRequestListener() {
                         @Override
@@ -211,7 +211,7 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
                             super.onPre();
                             mHandler.sendEmptyMessage(SHOW_LOADING);
                         }
-                    }, LOGIN_URL, BackUserLoginEntity.class);
+                    }, URL_LOADING, BackUserLoginEntity.class);
                 }
             };
             mTencent.loginWithOEM(getActivity(), "all", listener, "10000144", "10000144", "xxxx");

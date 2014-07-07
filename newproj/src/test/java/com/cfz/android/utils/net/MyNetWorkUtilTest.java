@@ -46,9 +46,9 @@ public class MyNetWorkUtilTest extends BaseClass {
     @Test
     public void testgetRequestInfo() {
         HashMap<String, String> params = new HashMap<String, String>();
-        params.put(LOGIN_URL_PARAMS_ID_, "1234123k5j4352334");
-        params.put(LOGIN_URL_PARAMS_PHONE_, "1");
-        params.put(LOGIN_URL_PARAMS_PHONEID_, "1234123k5j4352334");
+        params.put(URL_LOADING_QQID, "1234123k5j4352334");
+        params.put(URL_LOADING_PT, "1");
+        params.put(URL_LOADING_PSN, "1234123k5j4352334");
         assertThat(getRequestInfo(params, new HttpRequestListener() {
             @Override
             public void onGetStatus(boolean equals) {
@@ -59,7 +59,7 @@ public class MyNetWorkUtilTest extends BaseClass {
                     LogUtil.i(NET, "FAIL");
                 }
             }
-        }, LOGIN_URL, BackUserLoginEntity.class), equalTo(null));
+        }, URL_LOADING, BackUserLoginEntity.class), equalTo(null));
     }
 
     @Test
@@ -67,9 +67,9 @@ public class MyNetWorkUtilTest extends BaseClass {
         HashMap<String, Object> params = new HashMap<String, Object>();
 //        final UserLoginBean userLoginBeans;
 
-        params.put(LOGIN_URL_PARAMS_ID_, "kjiuwieyr9898098");
-        params.put(LOGIN_URL_PARAMS_PHONE_, "1");
-        params.put(LOGIN_URL_PARAMS_PHONEID_, "234238743423498");
+        params.put(URL_LOADING_QQID, "kjiuwieyr9898098");
+        params.put(URL_LOADING_PT, "1");
+        params.put(URL_LOADING_PSN, "234238743423498");
 
         Spokers.getInstance().getHttpDataUseAsync(params, new HttpRequestListener() {
 
@@ -107,16 +107,16 @@ public class MyNetWorkUtilTest extends BaseClass {
                 assertThat(userLoginBeans, equalTo(null));
 
             }
-        }, LOGIN_URL, BackUserLoginEntity.class);
+        }, URL_LOADING, BackUserLoginEntity.class);
 
     }
 
 //    @Test
 //    public void testJinRi() {
 //        HashMap<String, Object> data=new HashMap<String, Object>();
-//        data.put(PARAMS_JINRI, 1);
+//        data.put(URL_LOTTERY_PN, 1);
 //        HttpContent httpContent = new UrlEncodedContent(data);
-//        testMethod(URL_JINRI, BackJinRiEntity.class, httpContent);
+//        testMethod(URL_LOTTERY, BackJinRiEntity.class, httpContent);
 //
 //    }
 

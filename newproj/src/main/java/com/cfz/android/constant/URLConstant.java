@@ -11,87 +11,123 @@ public interface URLConstant {
 
     public static final String BASE_URL = "http://114.215.177.210:8080/cfz/phone/";
 //    public static final String BASE_URL = "http://192.168.199.192:8080/cfz/phone/";
-    /**
-     * 登录
-     */
-    public static final String LOGIN_URL = BASE_URL + "user_loginOrReg?";
-    public static final String LOGIN_URL_PARAMS_ID_ = "qqId";
-    public static final String LOGIN_URL_PARAMS_PHONE_ = "phoneType";
-    public static final String LOGIN_URL_PARAMS_PHONEID_ = "phoneId";
-    /**
-     * 设置头像
-     */
-    public static final String SETHEAD_URL = BASE_URL + "user_setHeadImg?";
-    public static final String SETHEAD_PARAMS_IMAGE = "image";
 
     /**
-     * 修改昵称
-     */
-    public static final String SETNICK_URL = BASE_URL + "user_setNickName?";
-    public static final String SETNICK_PARAMS_IMAGE = "nickName";
-
-    /**
-     * 获取收获地址
-     */
-    public static final String GETUSERADDRESS_URL = "user_getAddressInfo?";
-    /**
-     * 设置收获地址
-     * address
-     * 2: cityName
-     * 3: phone
-     * 4: realName"
-     */
-    public static final String SETUSERADDRESS_URL = "user_setAddressInfo?";
-    public static final String SETUSERADDRESS_PARAMS_ADDRESS = "address";
-    public static final String SETUSERADDRESS_PARAMS_CITYNAME = "cityName";
-    public static final String SETUSERADDRESS_PARAMS_PHONE = "phone";
-    public static final String SETUSERADDRESS_PARAMS_REALNAME = "realName";
-
-
-    /**
-     * 1：获取商品评论列表
-     */
-    public static final String GETPRODUCTCOMMENT_URL = "comment_getProductedCommentList?";
-
-    /**
-     * 2：用户活动商品评论功能
-     */
-    public static final String SETUSERCOMMENT_URL = "comment_setUserComment?";
-    public static final String SETUSERCOMMENT_PARAMS_USERID = "userid";
-    public static final String SETUSERCOMMENT_PARAMS_PRODUCTID = "productId";
-    public static final String SETUSERCOMMENT_PARAMS_CONTENTS = "contents";
-
-    /**
-     * 当前进行商品
-     */
-    public static final String PRODUCT_URL = BASE_URL + "product_getProductingList?";
-    public static final String PRODUCT_URL_PARAMS_PAGE_ = "pageNum";
-
-    /**
-     * 凑份商品详情
-     */
-    public static final String PRODUCT_URL_DETAIL_ = BASE_URL + "product_betPageDetail?";
-    public static final String PRODUCT_URL_PARAMS_PRODUCTID_ = "productId";
-
-    /**
-     * 揭晓商品
-     */
-    public static final String PRODUCTOLD_URL = BASE_URL + "comment_getProductedCommentList?";
-    public static final String PRODUCTOLD_URL_PARAMS_PAGE = "pageNum";
-
-    /**
-     * 广告
+     * 1广告
      */
     public static final String URL_ADS = BASE_URL + "adv_getAdvList?";
-    public static final String PARAMS_ADS_ = "pageNum";
+    public static final String URL_ADS_PN = "pageNum";
+
+    /**
+     * 2当前进行商品
+     */
+    public static final String URL_PRODUCTING = BASE_URL + "product_getProductingList?";
+    public static final String URL_PRODUCTING_PN = "pageNum";
+
+    /**
+     * 3今日开奖商品(完成)
+     */
+    public static final String URL_LOTTERY = BASE_URL + "product_getLotteryList?";
+    public static final String URL_LOTTERY_PN = "pageNum";
+    /**
+     * 4:等待开奖商品(完成)
+     */
+    public static final String URL_WAITING = BASE_URL + "product_getProductWaitList?";
+    public static final String URL_WAITING_PN = "pageNum";
+    /**
+     * 5:历史开奖商品(完成)
+     */
+    public static final String URL_HISTORY = BASE_URL + "product_getHistoryList?";
+    public static final String URL_HISTORY_PN = "pageNum";
+    /**
+     * 6:凑分详情页面(完成)
+     */
+    public static final String URL_PRODUCT_DETAIL = BASE_URL + "product_getProductDetail?";
+    public static final String URL_PRODUCT_DETAIL_PID = "productId";
+    public static final String URL_PRODUCT_DETAIL_IID = "infoId";
 
 
     /**
-     * 今日开奖商品(完成)
+     * 7:同款商品往期回顾(完成)
      */
+    public static final String URL_PRODUCT_SAME = BASE_URL + "product_getSameProductWinner?";
+    public static final String URL_PRODUCT_SAME_PN = "productId";
+    public static final String URL_PRODUCT_SAME_IID = "infoId";
+    /**
+     * 8:获取商品的凑分记录()
+     */
+    public static final String URL_PRODUCT_RECORD = BASE_URL + "userProduct_getProductedRecordList?";
+    public static final String URL_PRODUCT_RECORD_PID = "productId";
+    public static final String URL_PRODUCT_RECORD_PN = "pageNum";
+    /**
+     * 9:用户凑分功能
+     */
+    public static final String URL_USER_BET = BASE_URL + "userProduct_executeBet?";
+    public static final String URL_USER_BET_PID = "productId";
+    public static final String URL_USER_BET_BN = "betCnt";
+    /**
+     * 10.更多信息(完成)
+     */
+    public static final String URL_MORE = BASE_URL + "system_companyRight?";
+    /**
+     * 11.用户意见反馈(完成)
+     */
+    public static final String URL_USER_MESSAGE = BASE_URL + "system_userSugguest?";
+    public static final String URL_USER_MESSAGE_MSG = "msg";
+    /**
+     * 12.版本更新检测(完成)
+     */
+    public static final String URL_UPDATE = BASE_URL + "system_refreshVersion?";
+    /**
+     * 13:用户注册(完成)
+     */
+    public static final String URL_LOADING = BASE_URL + "user_loginOrReg?";
+    public static final String URL_LOADING_QQID = "qqId";
+    public static final String URL_LOADING_PT = "android";
+    public static final String URL_LOADING_PSN = "phoneId";
+    /**
+     * 14:资金池和积分刷新
+     */
+    public static final String URL_USER_COUNT = BASE_URL + "user_refreshMoney?";
+    /**
+     * 15：修改用户头像(完成)
+     */
+    public static final String URL_USER_ICON = BASE_URL + "user_setHeadImg?";
+    /**
+     * 16：修改昵称(完成)
+     */
+    public static final String URL_USER_NICK = BASE_URL + "user_setNickName?";
+    public static final String URL_USER_NICK_SET = "nickName";
+    /**
+     * 17：获取用户收获地址(完成)
+     */
+    public static final String URL_USER_ADDRESS = BASE_URL + "user_getAddressInfo?";
+    /**
+     * 18：设置用户收获地址(完成)
+     */
+    public static final String URL_USER_SETADDRESS = BASE_URL + "user_setAddressInfo?";
+    public static final String URL_USER_SETADDRESS_AD = "address";
+    public static final String URL_USER_SETADDRESS_CN = "cityName";
+    public static final String URL_USER_SETADDRESS_PH = "phone";
+    public static final String URL_USER_SETADDRESS_REAL = "realName";
+    /**
+     * 19：获取商品评论列表
+     */
+    public static final String URL_COMMENT_GET = BASE_URL + "comment_getProductedCommentList?";
+    public static final String URL_COMMENT_GET_PID = "productId";
+    public static final String URL_COMMENT_GET_PN = "pageNum";
+    /**
+     * 20：用户活动商品评论功能
+     */
+    public static final String URL_COMMENT_SET = BASE_URL + "system_refreshVersion?";
+    public static final String URL_COMMENT_SET_UID = "userId";
+    public static final String URL_COMMENT_SET_PID = "productId";
+    public static final String URL_COMMENT_SET_CON = "contents";
 
-    public static final String URL_JINRI = BASE_URL + "product_getLotteryList?";
-    public static final String PARAMS_JINRI = "pageNum";
+
+
+
+
 
 
     public static final String success = "success";

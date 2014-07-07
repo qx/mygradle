@@ -258,17 +258,17 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
                 break;
             case R.id.huodong:
 //                ToastUtils.show(TesterActivity.this, "huodong");
-                testMethod(PRODUCT_URL, BackListProductEntity.class, httpContent);
+                testMethod(URL_PRODUCTING, BackListProductEntity.class, httpContent);
                 break;
             case R.id.jinri:
 //                ToastUtils.show(TesterActivity.this, "jinri");
-                data.put(PARAMS_JINRI, 1);
+                data.put(URL_LOTTERY_PN, 1);
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_JINRI, BackJinRiEntity.class, httpContent);
+                testMethod(URL_LOTTERY, BackJinRiEntity.class, httpContent);
                 break;
             case R.id.deng:
 //                ToastUtils.show(TesterActivity.this, "deng");
-                testMethod(PRODUCT_URL, BackListProductEntity.class, httpContent);
+                testMethod(URL_PRODUCTING, BackListProductEntity.class, httpContent);
                 break;
 
 
