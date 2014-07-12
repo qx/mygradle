@@ -1,6 +1,5 @@
 package com.cfz.android.visual.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,18 +13,19 @@ import com.cfz.android.Spokers;
 import com.cfz.android.constant.URLConstant;
 import com.cfz.android.entity.network.urlentity.*;
 import com.cfz.android.impl.HttpRequestListener;
+import com.cfz.android.utils.LogUtil;
 import com.google.api.client.http.HttpContent;
 import com.google.api.client.http.UrlEncodedContent;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.HashMap;
 
 /**
- *adb logcat time -v | grep -E "netTransfer|fatal exception" -i
-
+ * adb logcat time -v | grep -E "netTransfer|fatal exception" -i
  */
-public class TesterActivity extends Activity implements URLConstant, View.OnClickListener {
+public class TesterActivity extends BaseActivity implements URLConstant, View.OnClickListener {
     private Button guanggao;
     private Button huodong;
     private Button jinri;
@@ -58,7 +58,7 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
     private HashMap<String, Object> data = new HashMap<String, Object>();
 
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+
 //        setContentView(R.layout.activity_tester);
 //        setContentView(R.layout.activity_account_deatail_list);
 //        setContentView(R.layout.activity_address);
@@ -87,7 +87,8 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
 //        setContentView(R.layout.activity_user_loading);
 //        setContentView(R.layout.activity_user_name);
         setContentView(R.layout.activity_tester);
-        ButterKnife.inject(this);
+        super.onCreate(savedInstanceState);
+//        ButterKnife.inject(this);
         guanggao = (Button) (findViewById(R.id.guanggao));
         guanggao.setOnClickListener(this);
         huodong = (Button) (findViewById(R.id.huodong));
@@ -172,7 +173,7 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
 
     private void testUrl() {
         ToastUtils.show(TesterActivity.this, "touch");
-        testMethod(URL_ADS, BackAdvListEntity.class, httpContent);
+        testMethod(URL_ADS, BackAdvListEntity.class, httpContent, data);
     }
 
 
@@ -183,11 +184,13 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
      * @param backentity 返回封装类
      * @param content    内容
      */
-    private void testMethod(String Url, Class<? extends BaseEntity> backentity, HttpContent content) {
+    private void testMethod(String Url, Class<? extends BaseEntity> backentity, HttpContent content, final HashMap<String, Object> data) {
         Spokers.getInstance().postHttpDataUseAsync(content, new HttpRequestListener() {
             @Override
             public void onPre() {
                 super.onPre();
+//                LogUtil.i(TAG, ToStringBuilder.reflectionToString(data));
+                LogUtil.logNet("params:"+data.toString());
 
             }
 
@@ -252,48 +255,48 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
                     }
                 };
 
-                testMethod(URL_ADS, BackAdvListEntity.class, httpContent);
+                testMethod(URL_ADS, BackAdvListEntity.class, httpContent, data);
 //                testMethod(URL_ADS, BackAdvListEntity.class, httpContent);
 
                 break;
             case R.id.huodong:
 //                ToastUtils.show(TesterActivity.this, "huodong");
-                testMethod(URL_PRODUCTING, BackListProductEntity.class, httpContent);
+                testMethod(URL_PRODUCTING, BackListProductEntity.class, httpContent, data);
                 break;
             case R.id.jinri:
                 data.put(URL_LOTTERY_PN, 1);
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_LOTTERY, BackJinRiEntity.class, httpContent);
+                testMethod(URL_LOTTERY, BackJinRiEntity.class, httpContent, data);
                 break;
             case R.id.deng:
                 data.put(URL_WAITING_PN, 1);
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_WAITING, BackWaitingEntity.class, httpContent);
+                testMethod(URL_WAITING, BackWaitingEntity.class, httpContent, data);
                 break;
 
 
             case R.id.lishi:
                 data.put(URL_HISTORY_PN, 1);
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_HISTORY, BackHistoryEntity.class, httpContent);
+                testMethod(URL_HISTORY, BackHistoryEntity.class, httpContent, data);
                 break;
             case R.id.xiangqing:
-                data.put(URL_PRODUCT_DETAIL_PID, 1);//商品ID未知
-                data.put(URL_PRODUCT_DETAIL_IID, 1);
+                data.put(URL_PRODUCT_DETAIL_PID, "4028ce8145a8dd330145a8de2c3c0001");//商品ID未知
+                data.put(URL_PRODUCT_DETAIL_IID, "abc3d9da7d9f0a6d0a1209dajdfe7a1e");
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_PRODUCT_DETAIL, BackProductDetailEntity.class, httpContent);
+                testMethod(URL_PRODUCT_DETAIL, BackProductDetailEntity.class, httpContent, data);
                 break;
             case R.id.tongkuan:
                 data.put(URL_PRODUCT_SAME_PN, 1);
                 data.put(URL_PRODUCT_SAME_IID, 1);
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_PRODUCT_SAME, BackSameWinnerEntity.class, httpContent);
+                testMethod(URL_PRODUCT_SAME, BackSameWinnerEntity.class, httpContent, data);
                 break;
             case R.id.jilu:
                 data.put(URL_PRODUCT_RECORD_PID, 1);
                 data.put(URL_PRODUCT_RECORD_PN, 1);
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_PRODUCT_RECORD, BackPdRecorderEntity.class, httpContent);
+                testMethod(URL_PRODUCT_RECORD, BackPdRecorderEntity.class, httpContent, data);
                 break;
 
 
@@ -301,22 +304,22 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
                 data.put(URL_USER_BET_PID, 1);
                 data.put(URL_USER_BET_BN, 1);
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_USER_BET, BackBetEntity.class, httpContent);
+                testMethod(URL_USER_BET, BackBetEntity.class, httpContent, data);
                 break;
             case R.id.gengduo:
 //                data.put(URL_MORE, 1);
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_MORE, BackMoreEntity.class, httpContent);
+                testMethod(URL_MORE, BackMoreEntity.class, httpContent, data);
                 break;
             case R.id.yijian:
                 data.put(URL_USER_MESSAGE_MSG, "服务器真给力");
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_USER_MESSAGE, BaseEntity.class, httpContent);
+                testMethod(URL_USER_MESSAGE, BaseEntity.class, httpContent, data);
                 break;
             case R.id.gengxin:
 //                data.put(URL_LOTTERY_PN, 1);
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_LOTTERY, BaseEntity.class, httpContent);
+                testMethod(URL_LOTTERY, BaseEntity.class, httpContent, data);
                 break;
 
 
@@ -325,29 +328,29 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
                 data.put(URL_LOADING_PT, 1);
                 data.put(URL_LOADING_PSN, "2123341232fEW3");
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_LOTTERY, BackUserLoadEntity.class, httpContent);
+                testMethod(URL_LOTTERY, BackUserLoadEntity.class, httpContent, data);
                 break;
             case R.id.zijinchi:
 //                data.put(URL_USER_COUNT_REF, 1);
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_USER_COUNT, BaseEntity.class, httpContent);
+                testMethod(URL_USER_COUNT, BaseEntity.class, httpContent, data);
                 break;
             case R.id.usericon:
                 data.put(URL_USER_ICON_SET, "9527");// 此处需要修改成文件
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_USER_ICON, BaseEntity.class, httpContent);
+                testMethod(URL_USER_ICON, BaseEntity.class, httpContent, data);
                 break;
             case R.id.nicheng:
                 data.put(URL_USER_NICK_SET, "9527");
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_USER_NICK, BaseEntity.class, httpContent);
+                testMethod(URL_USER_NICK, BaseEntity.class, httpContent, data);
                 break;
 
 
 //
             case R.id.dizhi:
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_USER_ADDRESS, BaseEntity.class, httpContent);
+                testMethod(URL_USER_ADDRESS, BaseEntity.class, httpContent, data);
                 break;
             case R.id.shezhidizhi:
                 data.put(URL_USER_SETADDRESS_AD, "american white house");
@@ -355,20 +358,20 @@ public class TesterActivity extends Activity implements URLConstant, View.OnClic
                 data.put(URL_USER_SETADDRESS_PH, "110");
                 data.put(URL_USER_SETADDRESS_REAL, "中国人民解放军");
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_USER_SETADDRESS, BaseEntity.class, httpContent);
+                testMethod(URL_USER_SETADDRESS, BaseEntity.class, httpContent, data);
                 break;
             case R.id.shangpinpinglun:
                 data.put(URL_COMMENT_GET_PID, "什么乱七八糟的");
                 data.put(URL_COMMENT_GET_PN, 1);
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_COMMENT_GET, BackProductCommentEntity.class, httpContent);
+                testMethod(URL_COMMENT_GET, BackProductCommentEntity.class, httpContent, data);
                 break;
             case R.id.pinglun:
                 data.put(URL_COMMENT_SET_CON, "URL_COMMENT_SET_CON");
                 data.put(URL_COMMENT_SET_UID, "URL_COMMENT_SET_UID");
                 data.put(URL_COMMENT_SET_PID, "URL_COMMENT_SET_PID");
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_COMMENT_SET, BaseEntity.class, httpContent);
+                testMethod(URL_COMMENT_SET, BaseEntity.class, httpContent, data);
                 break;
 
 

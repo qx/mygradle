@@ -2,11 +2,17 @@ package com.cfz.android.visual.activity;
 
 import android.os.Bundle;
 import com.cfz.android.R;
+import com.cfz.android.entity.network.urlentity.BackProductDetailEntity;
+import com.cfz.android.impl.HttpRequestListener;
+import com.cfz.android.utils.LogUtil;
 import com.cfz.android.visual.customview.fancycoverflow.FancyCoverFlow;
 import com.cfz.android.visual.customview.fancycoverflow.FancyCoverFlowSampleAdapter;
+import com.google.api.client.http.UrlEncodedContent;
+
+import java.util.HashMap;
 
 /**
- * Created by Administrator on 2014/4/26.
+ * 商品详情
  */
 public class ProductDetailActivity extends BaseActivity {
 
@@ -26,6 +32,24 @@ public class ProductDetailActivity extends BaseActivity {
         this.fancyCoverFlow.setMaxRotation(0);
         this.fancyCoverFlow.setScaleDownGravity(0.2f);
         this.fancyCoverFlow.setActionDistance(FancyCoverFlow.ACTION_DISTANCE_AUTO);
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            LogUtil.i(TAG, "URL_PRODUCT_DETAIL_PID" + bundle.getString(URL_PRODUCT_DETAIL_PID) +
+                    "\t" + "URL_PRODUCT_DETAIL_IID" + bundle.getString(URL_PRODUCT_DETAIL_IID));
+            HashMap<String, Object> data = new HashMap<String, Object>();
+            data.put(URL_PRODUCT_DETAIL_PID, bundle.getString(URL_PRODUCT_DETAIL_PID));//商品ID未知
+            data.put(URL_PRODUCT_DETAIL_IID, bundle.getString(URL_PRODUCT_DETAIL_IID));
+            httpContent = new UrlEncodedContent(data);
+            testMethod(URL_PRODUCT_DETAIL, BackProductDetailEntity.class, httpContent, new HttpRequestListener() {
+                @Override
+                public void onSuccess(Object o) {
+                    super.onSuccess(o);
+//                    BackProductDetailEntity.
+                    LogUtil.i(TAG, o.toString());
+                }
+            }, data);
+        }
+
     }
 
     @Override
