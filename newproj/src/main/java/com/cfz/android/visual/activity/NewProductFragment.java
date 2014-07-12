@@ -1,6 +1,5 @@
 package com.cfz.android.visual.activity;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -82,6 +81,12 @@ public class NewProductFragment extends BaseFragment {
         adapter = new ProductItemAdapter(getActivity());
 
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
         imageUrlList = new ArrayList<String>();
         AsyncTaskThreadPoolExecutorHelper.execute(new GetDataTask(true));
         ButterKnife.inject(this, mview);
@@ -127,8 +132,6 @@ public class NewProductFragment extends BaseFragment {
             @Override
             public void onSuccess(Object o) {
                 super.onSuccess(o);
-
-                LogUtil.logNet("------------"+((BackAdvListEntity) o).result.get(0).advImg);
                 imageLoader.DisplayImage(((BackAdvListEntity) o).result.get(0).advImg, ads);
 
             }

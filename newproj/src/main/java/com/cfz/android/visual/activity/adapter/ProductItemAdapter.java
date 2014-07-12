@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import cn.trinea.android.common.util.ToastUtils;
 import com.cfz.android.R;
 import com.cfz.android.entity.network.resultbean.NewProductResult;
 import com.cfz.android.visual.imageutils.ImageLoader;
@@ -27,6 +28,7 @@ public class ProductItemAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater mInflater = null;
     private HashMap<String, SoftReference<Drawable>> mCachedIcons = null;
+    private OnClick listener;
 
     public ProductItemAdapter(Context mContext) {
         this.mContext = mContext;
@@ -104,10 +106,16 @@ public class ProductItemAdapter extends BaseAdapter {
             productViewHolder.price = (TextView) view.findViewById(R.id.price);
             productViewHolder.totalCnt = (TextView) view.findViewById(R.id.totalCnt);
             productViewHolder.currentCnt = (TextView) view.findViewById(R.id.currentCnt);
-
+            listener = new OnClick();
+            view.setOnClickListener(listener);
             view.setTag(productViewHolder);
+            view.setTag(view.getId(), listener);
         } else {
+            listener = (OnClick) view.getTag(view.getId());//重新获得监听对象
             productViewHolder = (ProductViewHolder) view.getTag();
+            if (listener != null) {
+                listener.setPosition(i);
+            }
         }
 
         productViewHolder.productName.setText(products.get(i).productName);
@@ -119,8 +127,22 @@ public class ProductItemAdapter extends BaseAdapter {
         return view;
     }
 
+    class OnClick implements View.OnClickListener {
+        int position;
 
-    final class ProductViewHolder {
+        public void setPosition(int position) {
+            this.position = position;
+        }
+
+        @Override
+        public void onClick(View v) {
+//            Log.d(TAG, list.get(position));
+            ToastUtils.show(mContext, position + "", 0);
+
+        }
+    }
+
+    private static final class ProductViewHolder {
 
         ImageView BackNewProduct;
         TextView productName;
@@ -128,6 +150,7 @@ public class ProductItemAdapter extends BaseAdapter {
         TextView price;
         TextView totalCnt;
         TextView currentCnt;
+//      OnClick listener;
 
     }
 
