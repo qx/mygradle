@@ -7,18 +7,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import cn.trinea.android.common.util.ToastUtils;
 import cn.trinea.android.common.view.DropDownListView;
 import com.cfz.android.R;
 import com.cfz.android.Spokers;
 import com.cfz.android.constant.URLConstant;
 import com.cfz.android.entity.network.resultbean.NewProductResult;
+import com.cfz.android.entity.network.urlentity.BackAdvListEntity;
 import com.cfz.android.entity.network.urlentity.BackListProductEntity;
 import com.cfz.android.impl.HttpRequestListener;
 import com.cfz.android.utils.AsyncTaskThreadPoolExecutorHelper;
 import com.cfz.android.utils.LogUtil;
 import com.cfz.android.visual.activity.adapter.ProductItemAdapter;
+import com.cfz.android.visual.imageutils.ImageLoader;
+import com.google.api.client.http.HttpContent;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -27,8 +35,6 @@ import java.util.*;
  * Created by Administrator on 2014/4/21.
  */
 public class NewProductFragment extends BaseFragment {
-    private View second;
-    private View first;
     private LinkedList<String> listItems = null;
     private DropDownListView listView = null;
     private ProductItemAdapter adapter;
@@ -37,17 +43,17 @@ public class NewProductFragment extends BaseFragment {
     private static BackListProductEntity backNewProducts;
     private ArrayList<NewProductResult> alist;
     private static int page = 1;
+    @InjectView(R.id.ads)
+    ImageView ads;
+
     /**
      * icon cache *
      */
+    private ImageLoader imageLoader;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View mview = inflater.inflate(R.layout.fragment_product_all, container, false);
-        first = mview.findViewById(R.id.first);
-        first.setOnClickListener(this);
-        second = mview.findViewById(R.id.second);
-        second.setOnClickListener(this);
         listView = (DropDownListView) mview.findViewById(R.id.list_view);
         listView.setOnDropDownListener(new DropDownListView.OnDropDownListener() {
 
@@ -78,7 +84,61 @@ public class NewProductFragment extends BaseFragment {
         listView.setAdapter(adapter);
         imageUrlList = new ArrayList<String>();
         AsyncTaskThreadPoolExecutorHelper.execute(new GetDataTask(true));
+        ButterKnife.inject(this, mview);
+        imageLoader = new ImageLoader(getActivity().getApplicationContext());
+
+
+        postAds();
+
+
         return mview;
+    }
+
+    private void postAds() {
+        //                ToastUtils.show(TesterActivity.this, "guanggao");
+        httpContent = new HttpContent() {
+            @Override
+            public long getLength() throws IOException {
+                return 0;
+            }
+
+            @Override
+            public String getEncoding() {
+                return null;
+            }
+
+            @Override
+            public String getType() {
+                return null;
+            }
+
+            @Override
+            public void writeTo(OutputStream outputStream) throws IOException {
+
+            }
+
+            @Override
+            public boolean retrySupported() {
+                return false;
+            }
+        };
+
+        testMethod(URL_ADS, BackAdvListEntity.class, httpContent, new HttpRequestListener() {
+            @Override
+            public void onSuccess(Object o) {
+                super.onSuccess(o);
+
+                LogUtil.logNet("------------"+((BackAdvListEntity) o).result.get(0).advImg);
+                imageLoader.DisplayImage(((BackAdvListEntity) o).result.get(0).advImg, ads);
+
+            }
+        });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.reset(this);
     }
 
     @Override
@@ -91,10 +151,8 @@ public class NewProductFragment extends BaseFragment {
     public void onDestroy() {
         super.onDestroy();
     }
+
     private List<String> imageUrlList;
-
-
-
 
 
     private class GetDataTask extends AsyncTask<Void, Void, Boolean> {
@@ -117,7 +175,7 @@ public class NewProductFragment extends BaseFragment {
                     super.onSuccess(o);
                     backNewProducts = (BackListProductEntity) o;
                     alist = backNewProducts.result;
-                    LogUtil.logNewProduct("onSuccess"+alist.toString());
+                    LogUtil.logNewProduct("onSuccess" + alist.toString());
                     adapter.putData(alist);
                     page++;
                 }
@@ -155,19 +213,20 @@ public class NewProductFragment extends BaseFragment {
             super.onPostExecute(result);
         }
     }
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.first:
-                startActivity(new Intent(getActivity(), ProductDetailActivity.class));
-                break;
 
-            case R.id.second:
-                startActivity(new Intent(getActivity(), ProductDetailActivity.class));
-                break;
-            default:
-                break;
-        }
-    }
+//    @Override
+//    public void onClick(View view) {
+//        switch (view.getId()) {
+//            case R.id.first:
+//                startActivity(new Intent(getActivity(), ProductDetailActivity.class));
+//                break;
+//
+//            case R.id.second:
+//                startActivity(new Intent(getActivity(), ProductDetailActivity.class));
+//                break;
+//            default:
+//                break;
+//        }
+//    }
 
 }

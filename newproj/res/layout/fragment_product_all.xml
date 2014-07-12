@@ -8,9 +8,9 @@
               android:fitsSystemWindows="true">
 
     <ImageView
+            android:id="@+id/ads"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="80dp"
             android:src="@drawable/advertsment"/>
 
     <!--<cn.trinea.android.common.view.DropDownListView-->
@@ -21,7 +21,7 @@
     <cn.trinea.android.common.view.DropDownListView
             android:id="@+id/list_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:drawSelectorOnTop="false"
             listViewAttr:isAutoLoadOnBottom="true"
             listViewAttr:isDropDownStyle="true"
@@ -29,20 +29,20 @@
     <!--<ListView-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="wrap_content"/>-->
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="vertical"
-            android:layout_weight="2">
+    <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:orientation="vertical"-->
+           <!-->-->
 
-        <include
-                layout="@layout/item_list_product"
-                android:id="@+id/first"
-                />
+        <!--<include-->
+                <!--layout="@layout/item_list_product"-->
+                <!--android:id="@+id/first"-->
+                <!--/>-->
 
-        <include
-                layout="@layout/item_list_product"
-                android:id="@+id/second"
-                />
-    </LinearLayout>
+        <!--<include-->
+                <!--layout="@layout/item_list_product"-->
+                <!--android:id="@+id/second"-->
+                <!--/>-->
+    <!--</LinearLayout>-->
 </LinearLayout>
