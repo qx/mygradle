@@ -1,5 +1,6 @@
 package com.cfz.android.visual.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -40,6 +41,7 @@ public class MoreActivity extends BaseActivity  {
         switch (view.getId()) {
             case R.id.explain:
                 ToastUtils.show(this, "explain");
+                startActivity(new Intent(this,ProductExplainActivity.class));
                 break;
             case R.id.reback:
                 ToastUtils.show(this, "reback");

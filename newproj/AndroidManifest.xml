@@ -115,6 +115,7 @@
                 android:screenOrientation="portrait"/>
         <activity android:name=".visual.activity.BaseUrlActivity"/>
         <activity android:name=".visual.activity.TestActiviy"/>
+        <activity android:name=".visual.activity.ProductExplainActivity"/>
 
         <receiver android:name="com.cfz.android.receivers.SpokerReceiver"/>
     </application>
