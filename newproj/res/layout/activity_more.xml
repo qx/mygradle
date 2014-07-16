@@ -9,6 +9,7 @@
             />
 
     <RelativeLayout
+            android:id="@+id/explain"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_share_item"
             android:orientation="horizontal">
@@ -29,6 +30,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+            android:id="@+id/reback"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_share_item"
             android:orientation="horizontal">
@@ -48,6 +50,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+            android:id="@+id/callnum"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_share_item"
             android:orientation="horizontal">
@@ -67,6 +70,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+            android:id="@+id/version"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_share_item"
             android:orientation="horizontal">
