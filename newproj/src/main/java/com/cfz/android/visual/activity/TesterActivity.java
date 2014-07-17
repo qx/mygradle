@@ -317,18 +317,18 @@ public class TesterActivity extends BaseActivity implements URLConstant, View.On
                 testMethod(URL_USER_MESSAGE, BaseEntity.class, httpContent, data);
                 break;
             case R.id.gengxin:
-//                data.put(URL_LOTTERY_PN, 1);
+//                data.put(URL_UPDATE, 1);
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_LOTTERY, BaseEntity.class, httpContent, data);
+                testMethod(URL_UPDATE, BaseEntity.class, httpContent, data);
                 break;
 
 
             case R.id.zhuce:
                 data.put(URL_LOADING_QQID, "afser23478123947123");
-                data.put(URL_LOADING_PT, 1);
+                data.put(URL_LOADING_PT, "1");
                 data.put(URL_LOADING_PSN, "2123341232fEW3");
                 httpContent = new UrlEncodedContent(data);
-                testMethod(URL_LOTTERY, BackUserLoadEntity.class, httpContent, data);
+                testMethod(URL_LOADING, BackUserLoadEntity.class, httpContent, data);
                 break;
             case R.id.zijinchi:
 //                data.put(URL_USER_COUNT_REF, 1);
