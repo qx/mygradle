@@ -116,6 +116,7 @@
         <activity android:name=".visual.activity.BaseUrlActivity"/>
         <activity android:name=".visual.activity.TestActiviy"/>
         <activity android:name=".visual.activity.ProductExplainActivity"/>
+        <activity android:name=".visual.activity.RebackActivity"/>
 
         <receiver android:name="com.cfz.android.receivers.SpokerReceiver"/>
     </application>

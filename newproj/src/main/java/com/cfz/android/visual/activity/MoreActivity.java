@@ -45,6 +45,7 @@ public class MoreActivity extends BaseActivity  {
                 break;
             case R.id.reback:
                 ToastUtils.show(this, "reback");
+                startActivity(new Intent(this,RebackActivity.class));
                 break;
             case R.id.callnum:
                 ToastUtils.show(this, "callnum");
