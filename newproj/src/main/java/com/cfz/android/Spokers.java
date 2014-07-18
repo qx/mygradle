@@ -227,6 +227,7 @@ public class Spokers implements LogTag {
             LogUtil.logNet(bs.toString());
             return bs;
         } catch (IOException e) {
+            LogUtil.logNet(e.toString());
             e.printStackTrace();
         }
         return null;
