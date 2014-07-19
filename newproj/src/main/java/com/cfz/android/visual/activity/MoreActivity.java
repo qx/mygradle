@@ -82,6 +82,7 @@ public class MoreActivity extends BaseActivity {
 
     private void checkversion() {
         HashMap<String, Object> data = new HashMap<String, Object>();
+        data.put(URL_UPDATE_PT, "1");
         httpContent = new UrlEncodedContent(data);
         testMethod(URL_UPDATE, BaseEntity.class, httpContent, new HttpRequestListener() {
             @Override

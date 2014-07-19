@@ -78,6 +78,7 @@ public interface URLConstant {
      * 12.版本更新检测(完成)
      */
     public static final String URL_UPDATE = BASE_URL + "system_refreshVersion?";
+    public static final String URL_UPDATE_PT = "phoneType";
     /**
      * 13:用户注册(完成)
      */

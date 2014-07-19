@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 import cn.trinea.android.common.util.ToastUtils;
 import com.cfz.android.R;
@@ -16,7 +15,6 @@ import com.cfz.android.impl.HttpRequestListener;
 import com.cfz.android.utils.LogUtil;
 import com.google.api.client.http.HttpContent;
 import com.google.api.client.http.UrlEncodedContent;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -190,7 +188,7 @@ public class TesterActivity extends BaseActivity implements URLConstant, View.On
             public void onPre() {
                 super.onPre();
 //                LogUtil.i(TAG, ToStringBuilder.reflectionToString(data));
-                LogUtil.logNet("params:"+data.toString());
+                LogUtil.logNet("params:" + data.toString());
 
             }
 
@@ -317,7 +315,7 @@ public class TesterActivity extends BaseActivity implements URLConstant, View.On
                 testMethod(URL_USER_MESSAGE, BaseEntity.class, httpContent, data);
                 break;
             case R.id.gengxin:
-//                data.put(URL_UPDATE, 1);
+                data.put(URL_UPDATE_PT, "1");
                 httpContent = new UrlEncodedContent(data);
                 testMethod(URL_UPDATE, BaseEntity.class, httpContent, data);
                 break;
