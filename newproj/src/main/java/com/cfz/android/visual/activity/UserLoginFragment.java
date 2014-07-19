@@ -95,8 +95,8 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.loginqq:
-//                loginqq();
-                simulateUtilslogin();
+                loginqq();
+//                simulateUtilslogin();
                 break;
             case R.id.my_history:
                 startActivity(new Intent(getActivity(), MyHistoryActivity.class));

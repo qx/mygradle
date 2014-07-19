@@ -67,16 +67,16 @@ public class MoreActivity extends BaseActivity {
     }
 
     private void showCallNum() {
-        HashMap<String, Object> data = new HashMap<String, Object>();
-        httpContent = new UrlEncodedContent(data);
-        testMethod(URL_UPDATE, BaseEntity.class, httpContent, new HttpRequestListener() {
-            @Override
-            public void onSuccess(Object o) {
-                super.onSuccess(o);
-                BaseEntity be = (BaseEntity) o;
-                LogUtil.i(TAG, o.toString());
-            }
-        }, data);
+//        HashMap<String, Object> data = new HashMap<String, Object>();
+//        httpContent = new UrlEncodedContent(data);
+//        testMethod(URL_UPDATE, BaseEntity.class, httpContent, new HttpRequestListener() {
+//            @Override
+//            public void onSuccess(Object o) {
+//                super.onSuccess(o);
+//                BaseEntity be = (BaseEntity) o;
+//                LogUtil.i(TAG, o.toString());
+//            }
+//        }, data);
 
     }
 

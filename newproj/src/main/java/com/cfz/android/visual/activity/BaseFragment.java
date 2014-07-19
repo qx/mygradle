@@ -19,6 +19,8 @@ import com.cfz.android.utils.LogUtil;
 import com.cfz.android.visual.activity.listener.RefreshListener;
 import com.google.api.client.http.HttpContent;
 
+import java.util.HashMap;
+
 /**
  * Created by Administrator on 2014/5/9.
  */
@@ -91,6 +93,17 @@ public class BaseFragment extends Fragment implements View.OnClickListener, Hand
 
     protected HttpContent httpContent;
 
+//    /**
+//     * 接口测试
+//     *
+//     * @param Url        完整URL地址
+//     * @param backentity 返回封装类
+//     * @param content    内容
+//     */
+//    protected void testMethod(String Url, Class<? extends BaseEntity> backentity, HttpContent content, HttpRequestListener httpRequestListener) {
+//        Spokers.getInstance().postHttpDataUseAsync(content, httpRequestListener, Url, backentity);
+//    }
+
     /**
      * 接口测试
      *
@@ -98,7 +111,8 @@ public class BaseFragment extends Fragment implements View.OnClickListener, Hand
      * @param backentity 返回封装类
      * @param content    内容
      */
-    protected void testMethod(String Url, Class<? extends BaseEntity> backentity, HttpContent content, HttpRequestListener httpRequestListener) {
+    protected void testMethod(String Url, Class<? extends BaseEntity> backentity, HttpContent content, HttpRequestListener httpRequestListener,final HashMap<String, Object> data) {
+        LogUtil.logNet("params:" + data.toString());
         Spokers.getInstance().postHttpDataUseAsync(content, httpRequestListener, Url, backentity);
     }
 }
