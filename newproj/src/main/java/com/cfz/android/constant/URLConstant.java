@@ -72,8 +72,9 @@ public interface URLConstant {
     /**
      * 11.用户意见反馈(完成)
      */
-    public static final String URL_USER_MESSAGE = BASE_URL + "system_userSugguest?";
+    public static final String URL_USER_MESSAGE = BASE_URL + "system_userSuggest";
     public static final String URL_USER_MESSAGE_MSG = "msg";
+    public static final String URL_USER_MESSAGE_MSG_PT = "phoneType";
     /**
      * 12.版本更新检测(完成)
      */
