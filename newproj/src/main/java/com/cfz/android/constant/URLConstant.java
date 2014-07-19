@@ -83,7 +83,7 @@ public interface URLConstant {
      */
     public static final String URL_LOADING = BASE_URL + "user_loginOrReg?";
     public static final String URL_LOADING_QQID = "qqId";
-    public static final String URL_LOADING_PT = "android";
+    public static final String URL_LOADING_PT = "phoneType";
     public static final String URL_LOADING_PSN = "phoneId";
     /**
      * 14:资金池和积分刷新

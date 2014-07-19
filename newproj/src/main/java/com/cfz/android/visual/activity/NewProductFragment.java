@@ -23,6 +23,7 @@ import com.cfz.android.utils.LogUtil;
 import com.cfz.android.visual.activity.adapter.ProductItemAdapter;
 import com.cfz.android.visual.imageutils.ImageLoader;
 import com.google.api.client.http.HttpContent;
+import com.google.api.client.http.UrlEncodedContent;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -127,7 +128,11 @@ public class NewProductFragment extends BaseFragment {
                 return false;
             }
         };
+        HashMap<String, Object> data = new HashMap<String, Object>();
 
+        data.put(URL_ADS_PN, "1");
+        httpContent = new UrlEncodedContent(data);
+//String Url, Class<? extends BaseEntity> backentity, HttpContent content, HttpRequestListener httpRequestListener,final HashMap<String, Object> data
         testMethod(URL_ADS, BackAdvListEntity.class, httpContent, new HttpRequestListener() {
             @Override
             public void onSuccess(Object o) {
@@ -135,7 +140,7 @@ public class NewProductFragment extends BaseFragment {
                 imageLoader.DisplayImage(((BackAdvListEntity) o).result.get(0).advImg, ads);
 
             }
-        });
+        }, data);
     }
 
     @Override
