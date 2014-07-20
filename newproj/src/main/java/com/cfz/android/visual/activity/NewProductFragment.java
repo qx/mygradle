@@ -12,8 +12,6 @@ import butterknife.InjectView;
 import cn.trinea.android.common.util.ToastUtils;
 import cn.trinea.android.common.view.DropDownListView;
 import com.cfz.android.R;
-import com.cfz.android.Spokers;
-import com.cfz.android.constant.URLConstant;
 import com.cfz.android.entity.network.resultbean.NewProductResult;
 import com.cfz.android.entity.network.urlentity.BackAdvListEntity;
 import com.cfz.android.entity.network.urlentity.BackListProductEntity;
@@ -101,7 +99,6 @@ public class NewProductFragment extends BaseFragment {
     }
 
     private void postAds() {
-        //                ToastUtils.show(TesterActivity.this, "guanggao");
         httpContent = new HttpContent() {
             @Override
             public long getLength() throws IOException {
@@ -132,7 +129,6 @@ public class NewProductFragment extends BaseFragment {
 
         data.put(URL_ADS_PN, "1");
         httpContent = new UrlEncodedContent(data);
-//String Url, Class<? extends BaseEntity> backentity, HttpContent content, HttpRequestListener httpRequestListener,final HashMap<String, Object> data
         testMethod(URL_ADS, BackAdvListEntity.class, httpContent, new HttpRequestListener() {
             @Override
             public void onSuccess(Object o) {
@@ -174,10 +170,11 @@ public class NewProductFragment extends BaseFragment {
 
         @Override
         protected Boolean doInBackground(Void... params) {
-//            backNewProducts = performGetNewProduct();
-            HashMap<String, Object> map = new HashMap<String, Object>();
-            map.put(URL_PRODUCTING_PN, page + "");
-            Spokers.getInstance().getHttpDataUseAsync(map, new HttpRequestListener() {
+
+            HashMap<String, Object> data = new HashMap<String, Object>();
+            data.put(URL_PRODUCTING_PN, page + "");
+            httpContent = new UrlEncodedContent(data);
+            testMethod(URL_PRODUCTING, BackListProductEntity.class, httpContent, new HttpRequestListener() {
                 @Override
                 public void onSuccess(Object o) {
                     super.onSuccess(o);
@@ -187,7 +184,7 @@ public class NewProductFragment extends BaseFragment {
                     adapter.putData(alist);
                     page++;
                 }
-            }, URLConstant.URL_PRODUCTING, BackListProductEntity.class);
+            }, data);
             return true;
         }
 
@@ -222,19 +219,5 @@ public class NewProductFragment extends BaseFragment {
         }
     }
 
-//    @Override
-//    public void onClick(View view) {
-//        switch (view.getId()) {
-//            case R.id.first:
-//                startActivity(new Intent(getActivity(), ProductDetailActivity.class));
-//                break;
-//
-//            case R.id.second:
-//                startActivity(new Intent(getActivity(), ProductDetailActivity.class));
-//                break;
-//            default:
-//                break;
-//        }
-//    }
 
 }

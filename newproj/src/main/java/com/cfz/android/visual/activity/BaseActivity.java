@@ -11,6 +11,7 @@ import com.cfz.android.RequestInsance;
 import com.cfz.android.Spokers;
 import com.cfz.android.constant.URLConstant;
 import com.cfz.android.entity.network.urlentity.BaseEntity;
+import com.cfz.android.impl.BaseNetListener;
 import com.cfz.android.impl.HttpRequestListener;
 import com.cfz.android.utils.LogUtil;
 import com.cfz.android.visual.activity.listener.SecondClickListener;
@@ -19,9 +20,9 @@ import com.google.api.client.http.HttpContent;
 import java.util.HashMap;
 
 /**
- * Created by Administrator on 2014/4/21.
+ * 基本Activity，实现netTransfer
  */
-public class BaseActivity extends FragmentActivity implements SecondClickListener,URLConstant{
+public class BaseActivity extends FragmentActivity implements SecondClickListener,URLConstant,BaseNetListener{
     protected TextView title;
     protected TextView title2;
     protected ImageView img;
@@ -98,7 +99,8 @@ public class BaseActivity extends FragmentActivity implements SecondClickListene
      * @param backentity 返回封装类
      * @param content    内容
      */
-    protected void testMethod(String Url, Class<? extends BaseEntity> backentity, HttpContent content, HttpRequestListener httpRequestListener,final HashMap<String, Object> data) {
+    @Override
+    public void testMethod(String Url, Class<? extends BaseEntity> backentity, HttpContent content, HttpRequestListener httpRequestListener,final HashMap<String, Object> data) {
         LogUtil.logNet("params:" + data.toString());
         Spokers.getInstance().postHttpDataUseAsync(content, httpRequestListener, Url, backentity);
     }

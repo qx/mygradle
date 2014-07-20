@@ -14,10 +14,12 @@ import com.cfz.android.Spokers;
 import com.cfz.android.UserData;
 import com.cfz.android.entity.network.resultbean.UserLoginBean;
 import com.cfz.android.entity.network.urlentity.BackUserLoadEntity;
+import com.cfz.android.entity.network.urlentity.BaseEntity;
 import com.cfz.android.impl.HttpRequestListener;
 import com.cfz.android.utils.LoginUtils;
 import com.cfz.android.visual.activity.listener.FirstPageFragmentListener;
 import com.cfz.android.visual.imageutils.ImageLoader;
+import com.google.api.client.http.UrlEncodedContent;
 import com.tencent.connect.auth.QQAuth;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
@@ -169,21 +171,18 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
             IUiListener listener = new BaseUiListener() {
                 @Override
                 protected void doComplete(final JSONObject values) {
-                    HashMap<String, Object> params = new HashMap<String, Object>();
+
+
+                    HashMap<String, Object> data = new HashMap<String, Object>();
                     try {
-                        params.put(URL_LOADING_QQID, values.getString("openid"));
+                        data.put(URL_LOADING_QQID, values.getString("openid"));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    params.put(URL_LOADING_PT, "1");
-                    params.put(URL_LOADING_PSN, LoginUtils.getImei(getActivity()));
-
-                    Spokers.getInstance().getHttpDataUseAsync(params, new HttpRequestListener() {
-                        @Override
-                        public void onDoing() {
-                            super.onDoing();
-                        }
-
+                    data.put(URL_LOADING_PT, "1");
+                    data.put(URL_LOADING_PSN, LoginUtils.getImei(getActivity()));
+                    httpContent = new UrlEncodedContent(data);
+                    testMethod(URL_UPDATE, BaseEntity.class, httpContent, new HttpRequestListener() {
                         @Override
                         public void onSuccess(Object o) {
                             super.onSuccess(o);
@@ -211,7 +210,8 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
                             super.onPre();
                             mHandler.sendEmptyMessage(SHOW_LOADING);
                         }
-                    }, URL_LOADING, BackUserLoadEntity.class);
+                    }, data);
+
                 }
             };
             mTencent.loginWithOEM(getActivity(), "all", listener, "10000144", "10000144", "xxxx");

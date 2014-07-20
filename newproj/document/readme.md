@@ -1,0 +1,1 @@
+adb logcat time -v | grep -E "netTransfer" -i

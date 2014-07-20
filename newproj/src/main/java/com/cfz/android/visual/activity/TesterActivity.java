@@ -312,6 +312,7 @@ public class TesterActivity extends BaseActivity implements URLConstant, View.On
             case R.id.yijian:
                 data.put(URL_USER_MESSAGE_MSG, "服务器真给力");
                 data.put(URL_USER_MESSAGE_MSG_PT, "1");
+                data.put(URL_USER_MESSAGE_MSG_VI, "10021");
                 httpContent = new UrlEncodedContent(data);
                 testMethod(URL_USER_MESSAGE, BaseEntity.class, httpContent, data);
                 break;
