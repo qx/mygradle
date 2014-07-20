@@ -5,7 +5,7 @@ package com.cfz.android.utils.net; /**
 import com.cfz.android.BaseClass;
 import com.cfz.android.Spokers;
 import com.cfz.android.UserData;
-import com.cfz.android.entity.network.resultbean.UserLoginBean;
+import com.cfz.android.entity.network.resultbean.UserLoginResult;
 import com.cfz.android.entity.network.urlentity.BackUserLoadEntity;
 import com.cfz.android.impl.HttpRequestListener;
 import com.cfz.android.utils.LogUtil;
@@ -65,44 +65,6 @@ public class MyNetWorkUtilTest extends BaseClass {
         params.put(URL_LOADING_QQID, "kjiuwieyr9898098");
         params.put(URL_LOADING_PT, "1");
         params.put(URL_LOADING_PSN, "234238743423498");
-
-        Spokers.getInstance().getHttpDataUseAsync(params, new HttpRequestListener() {
-
-
-            public UserLoginBean userLoginBeans;
-
-            @Override
-            public void onDoing() {
-                super.onDoing();
-            }
-
-            @Override
-            public void onSuccess(Object o) {
-                super.onSuccess(o);
-                BackUserLoadEntity mBackUserLoadEntity = (BackUserLoadEntity) o;
-                userLoginBeans =(UserLoginBean) mBackUserLoadEntity.bean;
-//                UserData.getInstance().isLogin = true;//数据变量发生变化自动刷新数据，本地广播，或实现观察者模式
-//                mHandler.sendEmptyMessage(UPDATE_VIEW);
-            }
-
-            @Override
-            public void onFail() {
-                super.onFail();
-                UserData.getInstance().isLogin = false;
-            }
-
-            @Override
-            public void onPre() {
-                super.onPre();
-            }
-
-            @Override
-            public void onPost() {
-                super.onPost();
-                assertThat(userLoginBeans, equalTo(null));
-
-            }
-        }, URL_LOADING, BackUserLoadEntity.class);
 
     }
 

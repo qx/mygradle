@@ -10,11 +10,9 @@ import android.view.ViewGroup;
 import android.widget.*;
 import cn.trinea.android.common.util.ToastUtils;
 import com.cfz.android.R;
-import com.cfz.android.Spokers;
 import com.cfz.android.UserData;
-import com.cfz.android.entity.network.resultbean.UserLoginBean;
+import com.cfz.android.entity.network.resultbean.UserLoginResult;
 import com.cfz.android.entity.network.urlentity.BackUserLoadEntity;
-import com.cfz.android.entity.network.urlentity.BaseEntity;
 import com.cfz.android.impl.HttpRequestListener;
 import com.cfz.android.utils.LoginUtils;
 import com.cfz.android.visual.activity.listener.FirstPageFragmentListener;
@@ -182,19 +180,19 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
                     data.put(URL_LOADING_PT, "1");
                     data.put(URL_LOADING_PSN, LoginUtils.getImei(getActivity()));
                     httpContent = new UrlEncodedContent(data);
-                    testMethod(URL_UPDATE, BaseEntity.class, httpContent, new HttpRequestListener() {
+                    testMethod(URL_LOADING, BackUserLoadEntity.class, httpContent, new HttpRequestListener() {
                         @Override
                         public void onSuccess(Object o) {
                             super.onSuccess(o);
                             BackUserLoadEntity mBackUserLoadEntity = (BackUserLoadEntity) o;
-                            UserLoginBean userLoginBeans = (UserLoginBean) mBackUserLoadEntity.bean;
+                            UserLoginResult userLoginResult = (UserLoginResult) mBackUserLoadEntity.result.get(0);
                             UserData ud = UserData.getInstance();
                             ud.isLogin = true;//数据变量发生变化自动刷新数据，本地广播，或实现观察者模式
-                            ud.setUserImage(userLoginBeans.headImg);
-                            ud.setUserintegral(userLoginBeans.integral);
-                            ud.setUserMoney(userLoginBeans.money);
-                            ud.setUserNickName(userLoginBeans.nickName);
-                            ud.setUserUserId(userLoginBeans.userId);
+                            ud.setUserImage(userLoginResult.headImg);
+                            ud.setUserintegral(userLoginResult.integral);
+                            ud.setUserMoney(userLoginResult.money);
+                            ud.setUserNickName(userLoginResult.nickName);
+                            ud.setUserUserId(userLoginResult.userId);
 
                             mHandler.sendEmptyMessage(UPDATE_VIEW);
                         }

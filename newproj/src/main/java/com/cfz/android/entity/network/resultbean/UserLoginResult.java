@@ -5,7 +5,7 @@ import com.google.api.client.util.Key;
 /**
  * 1:用户注册(完成)
  */
-public class UserLoginBean extends BaseResult {
+public class UserLoginResult extends BaseResult {
 
     @Key
     public String userId;
