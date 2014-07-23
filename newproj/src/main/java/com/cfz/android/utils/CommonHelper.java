@@ -2,7 +2,11 @@ package com.cfz.android.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.telephony.TelephonyManager;
 import com.cfz.android.MyApplication;
+import com.cfz.android.visual.activity.RebackActivity;
 
 import java.util.Map;
 import java.util.Set;
@@ -71,6 +75,32 @@ public class CommonHelper {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static String getImei(Context mContext) {
+
+        TelephonyManager telephonyManager = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
+        return telephonyManager.getDeviceId();
+    }
+
+    public static String getAppVersion(Context mContext) {
+        PackageInfo pInfo;
+        try {
+            pInfo = mContext.getPackageManager().getPackageInfo(mContext.getPackageName(), 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return "";
+        }
+        return pInfo.versionName;
+    }
+
+    /**
+     * android 1
+     * @param ctx
+     * @return
+     */
+    public static String getPhoneType(Context ctx) {
+        return "1";
     }
 
 

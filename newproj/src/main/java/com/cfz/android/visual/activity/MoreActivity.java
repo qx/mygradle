@@ -46,19 +46,15 @@ public class MoreActivity extends BaseActivity {
     public void submit(View view) {
         switch (view.getId()) {
             case R.id.explain:
-                ToastUtils.show(this, "explain");
                 startActivity(new Intent(this, ProductExplainActivity.class));
                 break;
             case R.id.reback:
-                ToastUtils.show(this, "reback");
                 startActivity(new Intent(this, RebackActivity.class));
                 break;
             case R.id.callnum:
-                ToastUtils.show(this, "callnum");
                 showCallNum();
                 break;
             case R.id.version:
-                ToastUtils.show(this, "version");
                 checkversion();
                 break;
             default:

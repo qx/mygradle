@@ -12,12 +12,10 @@ import android.view.ViewGroup;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
-import cn.trinea.android.common.util.ToastUtils;
 import com.cfz.android.R;
 import com.cfz.android.utils.CommonHelper;
 import com.cfz.android.visual.activity.adapter.ViewPageFragmentAdapter;
 import com.cfz.android.visual.activity.listener.FragmentActivityListener;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -137,7 +135,6 @@ public class MainActivity extends BaseActivity implements FragmentActivityListen
         public void onTabChanged(String tabId) {
             int position = mTabHost.getCurrentTab();
             mViewPager.setCurrentItem(position);
-            ToastUtils.show(MainActivity.this,tabId);
             if (tabId.equals("simple")) {
                 mNewIndicator.setSelected(true);
                 mOldIndicator.setSelected(false);

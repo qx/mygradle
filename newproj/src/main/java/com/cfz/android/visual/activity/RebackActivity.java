@@ -8,9 +8,11 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import cn.trinea.android.common.util.ToastUtils;
+import com.cfz.android.MyApplication;
 import com.cfz.android.R;
 import com.cfz.android.entity.network.urlentity.BaseEntity;
 import com.cfz.android.impl.HttpRequestListener;
+import com.cfz.android.utils.CommonHelper;
 import com.cfz.android.utils.LogUtil;
 import com.google.api.client.http.UrlEncodedContent;
 
@@ -46,6 +48,8 @@ public class RebackActivity extends BaseActivity {
         HashMap<String, Object> data = new HashMap<String, Object>();
 
         data.put(URL_USER_MESSAGE_MSG, contentStr);
+        data.put(URL_USER_MESSAGE_MSG_VI, CommonHelper.getAppVersion(this));
+        data.put(URL_USER_MESSAGE_MSG_PT, CommonHelper.getPhoneType(this));
         httpContent = new UrlEncodedContent(data);
         testMethod(URL_USER_MESSAGE, BaseEntity.class, httpContent, new HttpRequestListener() {
             @Override

@@ -14,6 +14,7 @@ import com.cfz.android.UserData;
 import com.cfz.android.entity.network.resultbean.UserLoginResult;
 import com.cfz.android.entity.network.urlentity.BackUserLoadEntity;
 import com.cfz.android.impl.HttpRequestListener;
+import com.cfz.android.utils.CommonHelper;
 import com.cfz.android.utils.LoginUtils;
 import com.cfz.android.visual.activity.listener.FirstPageFragmentListener;
 import com.cfz.android.visual.imageutils.ImageLoader;
@@ -178,7 +179,7 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
                         e.printStackTrace();
                     }
                     data.put(URL_LOADING_PT, "1");
-                    data.put(URL_LOADING_PSN, LoginUtils.getImei(getActivity()));
+                    data.put(URL_LOADING_PSN, CommonHelper.getImei(getActivity()));
                     httpContent = new UrlEncodedContent(data);
                     testMethod(URL_LOADING, BackUserLoadEntity.class, httpContent, new HttpRequestListener() {
                         @Override

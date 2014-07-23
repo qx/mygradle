@@ -8,11 +8,6 @@ import android.telephony.TelephonyManager;
  */
 public class LoginUtils {
 
-    public static String getImei(Context mContext) {
-
-        TelephonyManager telephonyManager = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
-        return telephonyManager.getDeviceId();
-    }
 
     public static String getPhoneType() {
         return "1";
