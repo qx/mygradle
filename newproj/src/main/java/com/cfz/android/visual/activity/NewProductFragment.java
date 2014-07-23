@@ -77,8 +77,8 @@ public class NewProductFragment extends BaseFragment {
         });
 
         listItems = new LinkedList<String>();
-        adapter = new ProductItemAdapter(getActivity());
 
+        adapter = new ProductItemAdapter(getActivity());
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -23,4 +23,5 @@ public class NewProductResult extends BaseResult {
     public String detail;
     @Key
     public String infoId;
+
 }

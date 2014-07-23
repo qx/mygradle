@@ -1,11 +1,12 @@
 package com.cfz.android.entity.network.resultbean;
 
-import com.google.api.client.util.Key;
+import com.cfz.android.entity.network.urlentity.BaseFinishedProductResult;
+import com.cfz.android.visual.activity.listener.GlobalConstant;
 
 /**
  * 5:历史开奖商品(完成)
  */
-public class Histroy extends BaseResult {
+public class Histroy extends BaseFinishedProductResult {
 //    "1：productId
 //            2：productImg
 //    3：price
@@ -32,39 +33,39 @@ public class Histroy extends BaseResult {
 //    8:字符串
 //    9:字符串"
 
-    @Key
-    public String productId;
+//    @Key
+//    public String productId;
+//
+//    @Key
+//    public String productImg;
+//
+//
+//    @Key
+//    public Float price;
+//
+//
+//    @Key
+//    public String nickName;
+//
+//
+//    @Key
+//    public String userHeadImg;
+//
+//
+//    @Key
+//    public Integer bettingCnt;
+//
+//
+//    @Key
+//    public String luckyCode;
+//
+//
+//    @Key
+//    public String publishTime;
+//
+//
+//    @Key
+//    public String infoId;
 
-    @Key
-    public String productImg;
-
-
-    @Key
-    public Float price;
-
-
-    @Key
-    public String nickName;
-
-
-    @Key
-    public String userHeadImg;
-
-
-    @Key
-    public Integer bettingCnt;
-
-
-    @Key
-    public String luckyCode;
-
-
-    @Key
-    public String publishTime;
-
-
-    @Key
-    public String infoId;
-
-
+    public int productType = GlobalConstant.TYPE_HISTROY;
 }

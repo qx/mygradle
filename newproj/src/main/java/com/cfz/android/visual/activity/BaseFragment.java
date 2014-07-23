@@ -27,7 +27,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener, Hand
     protected int layoutId;
     protected FragmentActivity mAppFragmentTabActivity;
     protected View curView;
-
+    protected String TAG;
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -52,6 +52,7 @@ public class BaseFragment extends Fragment implements View.OnClickListener, Hand
 
         };
         mHandler = new RefreshHandler();
+        TAG = getActivity().getLocalClassName()+"___";
     }
 
     @Override

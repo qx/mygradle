@@ -1,11 +1,14 @@
 package com.cfz.android.entity.network.resultbean;
 
-import com.google.api.client.util.Key;
+import com.cfz.android.entity.network.urlentity.BaseFinishedProductResult;
+import com.cfz.android.visual.activity.listener.GlobalConstant;
 
 /**
  * 4:等待开奖商品(完成)
  */
-public class Dengdai extends BaseResult {
+public class Dengdai extends BaseFinishedProductResult {
+
+    public int productType = GlobalConstant.TYPE_DENGDAI;
     //    等待开奖商品(完成)
 //    "1：productId
 //            2：productImg
@@ -34,23 +37,24 @@ public class Dengdai extends BaseResult {
 //    7:字符串
 //    8:字符串
 //    9:字符串"
-    @Key
-    public String productId;
-    @Key
-    public String productImg;
-    @Key
-    public Float price;
-    @Key
-    public String nickName;
-    @Key
-    public String userHeadImg;
-    @Key
-    public Integer bettingCnt;
-    @Key
-    public String luckyCode;
-    @Key
-    public String publishTime;
-    @Key
-    public String infoId;
+
+//    @Key
+//    public String productId;
+//    @Key
+//    public String productImg;
+//    @Key
+//    public Float price;
+//    @Key
+//    public String nickName;
+//    @Key
+//    public String userHeadImg;
+//    @Key
+//    public Integer bettingCnt;
+//    @Key
+//    public String luckyCode;
+//    @Key
+//    public String publishTime;
+//    @Key
+//    public String infoId;
 
 }

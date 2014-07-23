@@ -3,7 +3,7 @@ package com.cfz.android.impl;
 /**
  * Created by ok on 14-5-30.
  */
-public abstract class HttpRequestListener {
+public class HttpRequestListener {
     public void onPre() {
     }
 

@@ -39,7 +39,6 @@ public class ProductItemAdapter extends BaseAdapter implements URLConstant {
         mCachedIcons = new HashMap<String, SoftReference<Drawable>>();
         products = new ArrayList<NewProductResult>();
         imageLoader = new ImageLoader(mContext.getApplicationContext());
-
     }
 
     /**
@@ -103,7 +102,6 @@ public class ProductItemAdapter extends BaseAdapter implements URLConstant {
             view = mInflater.inflate(R.layout.item_list_product, null);
             ImageView BackNewProduct;
             productViewHolder.BackNewProduct = (ImageView) view.findViewById(R.id.imageView);
-
             productViewHolder.productName = (TextView) view.findViewById(R.id.productName);
             productViewHolder.detail = (TextView) view.findViewById(R.id.detail);
             productViewHolder.price = (TextView) view.findViewById(R.id.price);
