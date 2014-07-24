@@ -135,7 +135,7 @@ public class UserLoginFragment extends BaseFragment implements FirstPageFragment
 //        ]
 //        result=[]
 //        info=
-//                status=success
+//                statusFinished=success
 //        ]
         UserData ud = UserData.getInstance();
         ud.isLogin = true;//数据变量发生变化自动刷新数据，本地广播，或实现观察者模式

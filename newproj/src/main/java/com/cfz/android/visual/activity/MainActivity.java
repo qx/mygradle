@@ -57,7 +57,7 @@ public class MainActivity extends BaseActivity implements FragmentActivityListen
         mTabsAdapter.addTab(mTabHost.newTabSpec("simple").setIndicator(mNewIndicator),
                 NewProductFragment.class, null);
         mTabsAdapter.addTab(mTabHost.newTabSpec("contacts").setIndicator(mOldIndicator),
-                OldProductFragment.class, null);
+                ProductFinishedFragment.class, null);
         mTabsAdapter.addTab(mTabHost.newTabSpec("custom").setIndicator(mUserIndicator),
 //                UserInfoFragment.class, null);
                 UserLoginFragment.class, null);
