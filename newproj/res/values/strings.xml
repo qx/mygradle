@@ -24,12 +24,13 @@
 
 
     <string name="item_product_action_id">第%1$d期</string>
-    <string name="itme_product_name">第%1$d期</string>
-    <string name="itme_product_detail">第%1$d期</string>
-    <string name="itme_product_get_time">揭晓时间:%1$s</string>
+    <string name="itme_product_name">获奖人姓名:%1$d</string>
+    <string name="itme_product_detail">凑了%1$s份子,产品价值%2$s元</string>
+    <string name="itme_product_finished_time">揭晓时间:%1$s</string>
     <string name="itme_product_tobeget">敬请期待</string>
     <string name="itme_product_who_get">获奖人:%1$s</string>
     <string name="itme_product_text_icon">已经揭晓</string>
+    <string name="itme_product_luckycode">幸运码:%1$s</string>
     <string name="title_advice">意见反馈</string>
     <string name="advice_contact">您的联系方式</string>
     <string name="advice_content">您的意见</string>

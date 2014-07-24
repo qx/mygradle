@@ -5,7 +5,7 @@ import com.cfz.android.visual.activity.listener.GlobalConstant;
 import com.google.api.client.util.Key;
 
 /**
- * Created by ok on 7/23/14.
+ * 揭晓商品实体类
  */
 public class BaseFinishedProductResult extends BaseResult {
 

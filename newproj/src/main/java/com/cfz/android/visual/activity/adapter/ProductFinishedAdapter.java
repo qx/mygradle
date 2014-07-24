@@ -75,32 +75,39 @@ public class ProductFinishedAdapter extends BaseAdapter implements URLConstant, 
         ProductViewHolder productViewHolder;
         if (view == null) {
             productViewHolder = new ProductViewHolder();
-            view = mInflater.inflate(R.layout.item_list_product, null);
-            ImageView BackNewProduct;
-            productViewHolder.BackNewProduct = (ImageView) view.findViewById(R.id.imageView);
-            productViewHolder.productName = (TextView) view.findViewById(R.id.productName);
+            view = mInflater.inflate(R.layout.item_list_product_finished, null);
+            productViewHolder.productImg = (ImageView) view.findViewById(R.id.productImg);
+            productViewHolder.userHeadImg = (ImageView) view.findViewById(R.id.userHeadImg);
+
+            productViewHolder.nickName = (TextView) view.findViewById(R.id.nickName);
             productViewHolder.detail = (TextView) view.findViewById(R.id.detail);
-            productViewHolder.price = (TextView) view.findViewById(R.id.price);
-            productViewHolder.totalCnt = (TextView) view.findViewById(R.id.totalCnt);
-            productViewHolder.currentCnt = (TextView) view.findViewById(R.id.currentCnt);
+            productViewHolder.luckyCode = (TextView) view.findViewById(R.id.luckyCode);
+            productViewHolder.publishTime = (TextView) view.findViewById(R.id.publishTime);
+
             productViewHolder.listener = new AdapterClickListener();
             view.setTag(productViewHolder);
         } else {
             productViewHolder = (ProductViewHolder) view.getTag();
         }
 
-//        productViewHolder.productName.setText(products.get(i).productName);
-//        productViewHolder.detail.setText(products.get(i).detail);
-//        productViewHolder.price.setText(products.get(i).price + "");
-//        productViewHolder.totalCnt.setText(products.get(i).currentCnt + "");
-//        productViewHolder.currentCnt.setText(products.get(i).totalCnt + "");
+        productViewHolder.nickName.setText(products.get(i).nickName);
+//        products.get(i).bettingCnt, products.get(i).price
+
+        String sAgeFormat1 = mContext.getResources().getString(R.string.itme_product_detail);
+        String sFinal1 = String.format(sAgeFormat1, products.get(i).bettingCnt, products.get(i).price);
+        productViewHolder.detail.setText(sFinal1);//bettingCnt, price
+
+        productViewHolder.luckyCode.setText(String.format(mContext.getResources().getString(R.string.itme_product_luckycode), products.get(i).luckyCode));
+        productViewHolder.publishTime.setText(String.format(mContext.getResources().getString(R.string.itme_product_finished_time), products.get(i).publishTime));
+
         productViewHolder.listener.setPosition(new BundleInfo(
                         products.get(i).productId,
                         products.get(i).infoId,
                         products.get(i).productType)
-                );
+        );
         view.setOnClickListener(productViewHolder.listener);
-        imageLoader.DisplayImage(products.get(i).productImg, productViewHolder.BackNewProduct);
+        imageLoader.DisplayImage(products.get(i).userHeadImg, productViewHolder.userHeadImg);
+        imageLoader.DisplayImage(products.get(i).productImg, productViewHolder.productImg);
         return view;
     }
 
@@ -120,12 +127,14 @@ public class ProductFinishedAdapter extends BaseAdapter implements URLConstant, 
 
     private static final class ProductViewHolder {
 
-        ImageView BackNewProduct;
-        TextView productName;
+        ImageView productImg;
+        ImageView userHeadImg;
+        TextView nickName;
         TextView detail;
-        TextView price;
-        TextView totalCnt;
-        TextView currentCnt;
+        TextView luckyCode;
+        TextView publishTime;
+        //        TextView totalCnt;
+//        TextView currentCnt;
         AdapterClickListener listener;
 
     }

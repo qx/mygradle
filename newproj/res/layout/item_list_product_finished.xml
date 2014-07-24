@@ -6,6 +6,7 @@
               android:layout_height="match_parent">
 
     <ImageView
+            android:id="@+id/productImg"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -13,6 +14,7 @@
             android:scaleType="center"/>
 
     <ImageView
+            android:id="@+id/userHeadImg"
             android:layout_width="0dp"
             android:layout_weight="0.8"
             android:layout_height="match_parent"
@@ -27,27 +29,32 @@
             android:gravity="center_vertical">
 
         <TextView
+                android:id="@+id/nickName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/itme_product_who_get"
                 />
 
         <TextView
+                android:id="@+id/detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="凑了10份子,产品价值3333元"/>
+                android:text="@string/itme_product_detail"/>
 
         <TextView
+                android:id="@+id/luckyCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="幸运码:0000000001234"/>
+                android:text="@string/itme_product_luckycode"/>
 
         <TextView
+                android:id="@+id/publishTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/itme_product_get_time"/>
+                android:text="@string/itme_product_finished_time"/>
 
     </LinearLayout>
+
     <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
